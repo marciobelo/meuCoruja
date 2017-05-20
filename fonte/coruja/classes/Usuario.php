@@ -56,6 +56,11 @@ class Usuario {
         return $this->validouLog;
     }
     
+    public function setValidouLog($validou)
+    {
+        $this->validouLog = $validou;
+    }
+    
     /**
     * Obtem todos os registros de Logs deste usuário ainda não conferidos
     */
