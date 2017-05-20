@@ -1,0 +1,137 @@
+Verdana, Arial, Helvetica.form_habilitado {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #330000;
+}
+.form_desabilitado {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #999999;
+	background-color: #E6E6E6;
+	border: 1px solid #999999;
+}
+.form_obrigatorio {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #F3E9E9;
+	border: 1px solid #CC0000;
+	background-image: url(../images/erro_form.gif);
+	background-position: right center;
+	background-repeat: no-repeat;
+}
+.form_borda_tbl_conteudo {
+	border: 1px solid #669999;
+}
+.form_erro_img {
+	background-attachment: fixed;
+	background-image: url(../images/erro_form.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 20px;
+}
+.form_img_zero {
+	width: 0px;
+}
+.form_ok_img {
+	background-attachment: fixed;
+	background-image: url(../images/ok_form.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+.form_erro {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #ffffff;
+	border: 1px solid red;
+	background-image: url(../images/erro_form.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.form_ok {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #ffffff;
+	border: 1px solid green;
+	background-image: url(../images/ok_form.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.form_habilitadoObrigatorio {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #330000;
+	background-image: url(../images/form_obrigatorio.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+	list-style-position: inside;
+	list-style-type: none;
+}
+.titulo_link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+	text-transform: uppercase;
+	color: #333333;
+	border: 1px ridge #666633;
+}
+.font_normal {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #333300;
+	list-style-type: none;
+}
+.borda_tabela {
+	border: thin dashed #333333;
+}
+.form_habilitado_center {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #330000;
+	text-align: center;
+}
+.txt_campo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border: 1px solid #000000;
+}
+.textos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.caixa_sem_borda {
+	font-size: 10px;
+	color: #990000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: 10%;
+	text-align: center;
+	border: 0px none #000000;
+
+}
+.campo_obrigatorio {
+	border: 1px solid #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-image: url(../images/form_obrigatorio.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.txt_campoII {
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: 10%;
+	text-align: center;
+	border: 1px solid #000000;
+	text-transform: uppercase;
+
+}

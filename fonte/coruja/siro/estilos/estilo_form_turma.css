@@ -1,0 +1,94 @@
+/* ESTILO DO MURAL DE HORÁRIOS NO FORMULÁRIO DE TURMAS */
+#HOR {
+	float: left;
+	width: 80px;
+	margin-left:10px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+
+#SEG {
+	float: left;
+	width: 110px;
+	/*margin-left:20px;*/
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+#TER {
+	float: left;
+	width: 110px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+#QUA {
+	float: left;
+	width: 110px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+#QUI {
+	float: left;
+	width: 110px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+#SEX {
+	float: left;
+	width: 110px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	border-left:1px solid #666;
+	line-height: 3.0;
+}
+#SAB {
+	float: left;
+	width: 110px;
+	font-size:80%;
+	padding:2px 0 0 0;
+	text-align:center;
+	border-top:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	line-height: 3.0;
+}
+
+.limpafloat{
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+	
+.horarios{
+	font-size:10px;
+	color:#0C6;
+	line-height: 3.0;}
+

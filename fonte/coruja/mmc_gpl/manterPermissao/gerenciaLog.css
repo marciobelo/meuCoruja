@@ -1,0 +1,64 @@
+#paginacao {
+    background-color: #d6d6d6;
+    height: 30px;
+    line-height: 30px;
+    width:100%;
+    float:right
+        
+}
+
+#linhaColorida {
+    background-color: #00BFF;
+    border: none;
+}
+
+#fieldsetLog {
+    float:right;
+}
+#paginas {
+     display:inline-block;
+     margin-left: 1%;
+     margin-right: 1%;
+}
+
+.numPagina {
+    margin: 0 10px 0 10px;
+}
+
+#irPara{
+     float: right;
+     text-align: right;
+     margin-right: 3px;
+}
+
+#botaoIr {
+    width:30px;
+    margin-left:3px;
+}
+
+#digitada {
+    margin: 0 5px 0 5px;
+}
+
+#totalPagina {
+    font-size: 12px;
+}
+
+#registros {
+    display:inline-block;
+    /*height: 20px;*/
+    width:100%;
+    text-align: right;
+    font-size: 12px; 
+}
+
+#semResultado{
+    text-align:center
+}
+
+.primeira, .ultima{
+ margin: 0 5px 0 5px;   
+}
+
+    
+

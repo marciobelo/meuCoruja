@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/coruja/" />
+<title>incluirGrupoDePermissoesObrigatoriedade</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">incluirGrupoDePermissoesObrigatoriedade</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php?acao=sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr/td[4]</td>
+	<td>Emitir Histórico de Aluno</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[2]/td[3]</td>
+	<td>Consultado dados do aluno Fulano</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Grupos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=botaoCriar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>Insira um nome para o Grupo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeDoNovoGrupo</td>
+	<td>Grupo I</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>Selecione ao menos uma Permissão</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=UC01.01.00</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=UC01.01.01</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=UC01.01.02</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=novoNomeDoGrupo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>Insira um nome para o Grupo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=novoNomeDoGrupo</td>
+	<td>Grupo Inc</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.btn.fa-input</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php?acao=sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr/td[3]</td>
+	<td>Consultados os Grupos de Permissões do sistema</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[2]/td[3]</td>
+	<td>Modificado o Grupo de Permissões Grupo Inc (era Grupo I), as novas permissões são: <br /> - Consultar dados do aluno<br /> - Incluir Aluno<br /> - Editar Aluno</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[3]/td[3]</td>
+	<td>Consultados os Grupos de Permissões do sistema</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[4]/td[3]</td>
+	<td>Incluído o Grupo de Permissões Grupo I com as permissões: <br /> - Consultar dados do aluno<br /> - Incluir Aluno<br /> - Editar Aluno</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[5]/td[3]</td>
+	<td>Consultados os Grupos de Permissões do sistema</td>
+</tr>
+</tbody></table>
+</body>
+</html>

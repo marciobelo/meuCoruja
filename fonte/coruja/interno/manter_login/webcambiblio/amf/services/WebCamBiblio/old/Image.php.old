@@ -1,0 +1,124 @@
+<?php
+class Image
+{
+	// Variáveis de conexão com o db
+	private $host = "localhost";
+	private $db   = "coruja";
+	private $user = "root";
+	private $pwd  = "";
+	
+	// Parâmetros enviados pelo Flash
+	private $idPessoa;
+	private $nomeAcesso;
+	private $senha;
+	private $foto; 		
+	
+	// Debug
+	private $arq = "debug.log";
+	
+	public function saveDataToFile($byteArray, $parametros) {
+		$this->debug("Iniciando...");
+		$this->debug("saveDataToFile >>");
+		
+		$this->setFoto($byteArray);
+		$this->setParametros($parametros);
+		
+		$this->connect();
+		$this->selectDB();
+		
+		if ($this->alunoPossuiFoto()) {
+			$this->atualizaFoto();
+		} else {
+			$this->inseriFoto();
+		}
+		
+		$this->debug("saveDataToFile <<");
+		$this->debug("Finalizado");		
+    }	 
+	
+	private function setFoto($byteArray) {
+		$this->debug("setFoto >>");		
+		$this->foto = addslashes($byteArray->data);
+		$this->debug("setFoto <<");
+	}
+	
+	private function setParametros($parametros) {
+		$this->debug("setParametros >>");		
+		$vet_par = split(";",$parametros);
+		
+		$this->idPessoa   = $vet_par[0];
+		$this->nomeAcesso = $vet_par[1];
+		$this->senha      = $vet_par[2];
+		
+		$this->debug("idPessoa   = ".$this->idPessoa);
+		$this->debug("nomeAcesso = ".$this->nomeAcesso);
+		$this->debug("senha      = ".$this->senha);
+		
+		$this->debug("setParametros <<");		
+	}
+	
+	private function connect() {
+		$this->debug("connect >>");		
+		$this->link = mysql_connect($this->host,$this->user,$this->pwd);
+		$this->debug("connect <<");		
+	}
+	
+	private function selectDB() {
+		$this->debug("selectDB >>");		
+
+		mysql_select_db($this->db,$this->link);
+		
+		$this->debug("selectDB <<");		
+	}
+	
+	private function alunoPossuiFoto() {
+		$this->debug("alunoPossuiFoto >>");		
+		
+		$query = "SELECT foto
+					FROM Login
+				   WHERE idPessoa = '$this->idPessoa'";
+				   
+		$res   = mysql_query($query,$this->link);
+		
+		// se aluno ainda não possui foto
+		if (mysql_num_rows($res) == 0) {
+			$this->debug("Aluno NÃO POSSUI FOTO");		
+			$this->debug("alunoPossuiFoto <<");
+			return false;
+		} else {
+			$this->debug("Aluno POSSUI FOTO");		
+			$this->debug("alunoPossuiFoto <<");
+			return true;
+		}
+	}
+	
+	private function inseriFoto() {
+		$this->debug("inseriFoto >>");
+		
+		$query = "INSERT INTO Login (idPessoa, nomeAcesso, conteudo)
+		                 VALUES     ('$this->idPessoa', 
+						             '$this->nomeAcesso',
+									 '$this->senha',
+									 '$this->foto'
+									)";
+		mysql_query($query,$this->link);
+		
+		$this->debug("inseriFoto <<");
+	}
+	
+	private function atualizaFoto() {
+		$this->debug("atualizaFoto >>");
+		
+		$query = "UPDATE Login SET foto = '$this->foto' WHERE idPessoa = '$this->idPessoa'";
+		mysql_query($query,$this->link);
+		
+		$this->debug("atualizaFoto <<");
+	}
+	
+	private function debug($msg) {
+		$ponteiro = fopen($this->arq,a); 
+		fwrite($ponteiro,date("d/m/y H:i:s") ." - $msg \n");	
+		fclose($ponteiro);			
+	}
+}
+?>

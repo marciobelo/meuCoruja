@@ -1,0 +1,1 @@
+* Antes da execução de cada teste, deve-se iniciar a base ao estado inicial, rodando o script zerarBancoCorujaLocalhost.sh

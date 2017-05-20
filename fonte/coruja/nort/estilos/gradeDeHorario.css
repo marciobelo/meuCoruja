@@ -1,0 +1,23 @@
+/* 
+    Document   : gradeDeHorario
+    Created on : 11/01/2011, 11:13:14
+    Author     : Marcelo Atie
+    Description:
+        Estilo aplicado nas tabelas que exibirão grades de horário
+*/
+
+.gradeDeHorario {
+    border-style: solid;
+    border-collapse:collapse;
+    border-width: 2px;
+}
+
+.gradeDeHorario td{
+    border-style: solid;
+    border-width: 1.5px;
+}
+
+.gradeDeHorario .destacado{
+    background-color: #40E080;
+    /* o formulario criarTurma_gradeHorario.php precisa ter a cor alterada alterada manualmente */
+}

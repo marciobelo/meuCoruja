@@ -1,0 +1,176 @@
+/* ESTILO DOS FORMULARIOS */
+
+fieldset#coruja {
+	width:98%;
+	display:block;
+	border:1px solid #000;
+	background-color:#C2E0FF;
+	padding:5px;
+	font-family:Helvetica,Arial,sans-serif;
+	margin-bottom:0.5em;
+	line-height:1.5em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+	background:#C2E0FF;
+	font-size:80%;        
+}
+fieldset#coruja legend {
+
+    font-family:Helvetica,Arial,sans-serif;
+    font-weight:bold;
+    border:1px solid #000;
+    margin-bottom:5px;
+    padding:3px;
+    width:600px;
+    background:#fff;
+    -moz-border-radius:0.4em;
+    -khtml-border-radius:0.4em;
+}
+
+form {
+	width:100%; 
+	padding:10px; 
+	margin:0 auto;
+}
+
+form fieldset {
+	width:98%;
+	display:block;
+	border:1px solid #000;
+	background-color:#C2E0FF;
+	padding:5px;
+	font-family:Helvetica,Arial,sans-serif;
+	margin-bottom:0.5em;
+	line-height:1.5em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form fieldset#fieldsetGeral {
+	background: #C2E0FF 550px 10px;
+	font-size:80%;
+}
+
+* html form fieldset#fieldsetGeral, * html form  {
+	background-position:550px 20px;
+}
+
+* html form fieldset#current {
+	background-position:540px 20px;
+}
+
+form fieldset#opt {
+	background:#dee;
+}
+
+form legend {
+	font-family:Helvetica,Arial,sans-serif;
+	font-weight:bold;
+	border:1px solid #000;
+	margin-bottom:5px;
+	padding:3px;
+	width:600px;
+	background:#fff;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form label {
+	clear:left;
+	display:block;
+	float:left;
+	width:150px;
+	text-align:right;
+	padding-right:3px;
+	color: #333333;
+}
+
+form span#cinza{
+	color: #333333;
+}
+
+form input {
+	border:1px solid #000;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form radio {
+	border:1px solid #000;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+}
+
+form input.obrigatorio {
+	border:1px solid #000;
+	background-color:#FFFF99;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form select {
+	margin-left:0.5em;
+}
+
+form textarea {
+	width:480px;
+	height:15em;
+	border:1px solid #000;
+	padding:0.5em;
+	overflow:auto;
+}
+
+form option {
+	background:#fff;
+	color:#000;
+}
+
+form optgroup {
+	background:#abb;
+	color:#000;
+	font-family:Helvetica,Arial,sans-serif;
+}
+
+form optgroup option {
+	background:#9aa;
+	color:#fff;
+}
+
+form #button1, form #button2 {
+	color:#000;
+	padding-right:0.5em;
+	cursor:pointer;
+	width:205px;
+	margin-left:8px;
+	border:1px solid #000;
+}
+form #button3{
+	cursor:pointer;
+}
+
+form #button1:hover, form #button2:hover, form #button3:hover {
+	background-position:center left;
+	color:#c00;
+}
+
+form fieldset#fieldsetMsg {
+        width:98%;
+	display:block;
+	border:0px solid #000;
+	background-color:#C2E0FF;
+	padding:3px;
+	font-family:Helvetica,Arial,sans-serif;
+	margin-bottom:0.5em;
+	line-height:1.5em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+	background:yellow 550px 8px;
+	font-size:80%;
+}
+* html form fieldset#fieldsetMsg, * html form  {
+	background-position:550px 10px;
+}

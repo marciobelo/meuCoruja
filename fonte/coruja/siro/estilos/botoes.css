@@ -1,0 +1,42 @@
+@charset "iso8859-1";
+/* CSS Document */
+
+.confirmar{
+	font-size:12px;
+	font-family:Verdana, Helvetica;
+	font-weight:bold;
+	color:white;
+	background:#0066FF;
+	border:0px;
+	width:auto;
+	height:25px;
+	font-style: normal;
+    font-size: 8pt;
+       }
+
+.cancelar{
+	font-size:12px;
+	font-family:Verdana, Helvetica;
+	font-weight:bold;
+	color:white;
+	background:#FF0000;
+	border:0px;
+	width:auto;
+	height:25px;
+	font-style: normal;
+        font-size: 8pt;
+       }
+
+.desabilitado{
+	font-size:12px;
+	font-family:Verdana, Helvetica;
+	font-weight:bold;
+	color:white;
+	background:#999999;
+	border:0px;
+	width:auto;
+	height:25px;
+	font-style: normal;
+        font-size: 8pt;
+
+       }

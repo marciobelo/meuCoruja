@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/coruja" />
+<title>CriaNovaMatriculaAluno</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">CriaNovaMatriculaAluno</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Período Letivo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Editar Periodo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dtFim</td>
+	<td>15/07/2030</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Aluno</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tipoBusca</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nome</td>
+	<td>MANUEL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Matrícula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=novaMatricula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=matriculaAlunoNova</td>
+	<td>11204700030</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=siglaCurso</td>
+	<td>label=TASI - Tecnologia em Análise de Sistemas Informatizados</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaD</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaM</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaA</td>
+	<td>2011</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=turnoIngresso</td>
+	<td>label=NOITE</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=concursoPontos</td>
+	<td>56,78</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=concursoClassificacao</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=idFormaIngresso</td>
+	<td>label=Concurso Cota Deficiente</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Matrícula criada com sucesso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=b &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Matrícula : 11204700030</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Data da Matrícula : 04/08/2011</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Curso : TASI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Situação da Matrícula : CURSANDO</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Turno de Ingresso : NOITE</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>2011.1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Concurso Cota Deficiente</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td> 56,78</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Classificação : 4</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

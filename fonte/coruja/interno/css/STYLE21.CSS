@@ -1,0 +1,58 @@
+body {
+	font: normal 11px verdana;
+	}
+
+ul {
+		margin: 0;
+        padding: 0;
+		list-style: none;
+        list-style-type: none;
+        border-color:#FFF;
+		cursor:pointer;
+	}
+
+ul li {
+	position: relative;
+	float: left;
+	display: block;
+	text-decoration: none;
+	color: #777;
+	background:none;
+	
+}
+
+ul li:hover, ul li.over{
+	background-color:#FC0;
+}
+
+ul li ul {
+	position: absolute;
+	left:0px;
+	top: 50px;
+	display:none;
+}
+
+/* Styles for Menu Items */
+
+	
+ul li ul li {
+	display: block;
+	float:none;
+
+	}
+	
+ul li ul li:hover, ul li.over ul li.over {
+	display: block;
+	float:none;
+	background-color:#FC0;
+	}	
+
+li ul li a { padding: 2px 5px; } /* Sub Menu Styles */
+
+ul li a:hover,ul li a.over{ color: #E2144A; background: #f9f9f9; } /* Hover Styles */
+		
+li:hover ul, li.over ul {display: block; } /* The magic */
+
+sub {
+	margin:-1;
+}

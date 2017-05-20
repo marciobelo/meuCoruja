@@ -1,0 +1,5 @@
+
+# necessário para instalar o application cache
+# atualizar isso também na documentação de desenvolvedor e instalação
+sudo apt-get install php-apc
+sudo /etc/init.d/apache2 restart

@@ -1,0 +1,29 @@
+.fieldSet {
+    float: left;
+    width: 48%;
+}
+
+i {
+  cursor: pointer;
+}
+
+/*.fa.disabled,
+.fa[disabled],
+.disabled > .fa,
+[disabled] > .fa {
+  color: #555555;
+  or opacity: 0.5;
+}*/
+
+.iconeListaMatriz {
+    margin-right: 2%;
+}
+
+#mensagem {
+    background-color: #FFFF00;
+    display: none;
+}
+
+.fa-input {
+  font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

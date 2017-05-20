@@ -1,0 +1,186 @@
+/* ------- geral ------- */
+div.center{text-align:center}
+
+body {
+	font-family: Helvetica,Arial,sans-serif;
+	margin: 0;
+	padding: 0;
+	height:100%;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+a:hover {
+	text-decoration: none;
+	font-weight: normal;
+}
+
+fieldset {
+	width:98%;
+	display:block;
+	border:1px solid #000;
+	background-color:#C2E0FF;
+	padding:5px;
+	font-family:Helvetica,Arial,sans-serif;
+	margin-bottom:0.5em;
+	line-height:1.5em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+fieldset legend {
+
+    font-family:Helvetica,Arial,sans-serif;
+    font-weight:bold;
+    border:1px solid #000;
+    margin-bottom:5px;
+    padding:3px;
+    width:600px;
+    background:#fff;
+    -moz-border-radius:0.4em;
+    -khtml-border-radius:0.4em;
+}
+
+span.erro {
+	font-weight: bold;
+	color: red;
+	
+}
+
+span.destaque {
+	font-weight: bold;
+	color: blue;
+}
+
+table.simples thead tr {
+  background-color: #CCCCCC;
+}
+
+table.simples tr.even {
+  background-color: #dcdcdc;
+}
+
+table.simples td, table.simples th{
+ padding: 1px 10px 3px 12px;
+ text-align: left;
+ vertical-align: top;
+ border-right: 1px solid #013323;
+ border-bottom: 1px solid #013323;
+ border-top: 1px solid #013323;
+ border-left: 1px solid #013323;
+}
+
+ul.erro {
+    padding: 5px 5px 5px 20px;
+    background-color:yellow;
+    font-weight:bold;
+}
+
+p.erro {
+    padding: 5px 5px 5px 20px;
+    background-color:yellow;
+    font-weight:bold;
+}
+
+/* -- TOPO DA PAGINA -- */
+#topo {
+    height: 130px;
+    background-position: left;
+    background-image:url(../imagens/coruja.png);
+    background-repeat:no-repeat;
+}
+
+/* Posição do indicador de mensagens */
+#aviso_coruja {
+   position: absolute; 
+   top: 10px; 
+   left: 85%;
+}
+#qtde_aviso_coruja {
+    position: absolute;
+    left: 25px; 
+    top: 17px;
+}
+
+#curso_pre_selecao {
+    position: absolute;
+    left: 75%; 
+    top: 10px;
+}
+
+#menu_curso_pre_selecao {
+    background: url(/coruja/imagens/menu.png) no-repeat;
+}
+
+/* -- POSIÇÃO DA FOTO DO USUÁRIO NO TOPO -- */
+.usuariologado_foto {
+    position: absolute;
+    top: 10px;
+    left: 90%;
+}
+
+/* -- POSIÇÃO DO NOME DE USUÁRIO NO TOPO -- */
+.usuariologado_info {
+position:absolute;
+top:110px;
+right:20px;
+text-align:right;
+font-size:85%;
+color:#0066FF;
+}
+
+/* -- MENU -- */
+
+#menuprincipal{
+	margin: 0;
+        
+        padding:10px 0 0 0;
+/*	border-top:1px solid #09F; */
+}
+
+
+/* -- RODAPÉ -- */
+#rodape {
+	position: relative; 
+	width: 780px;
+	margin:0 auto;
+	text-align: center; 
+	padding: 20px 5px 5px 5px;
+	text-align:center;
+	font-style:italic;
+	font-weight:bold;
+	color:#0033FF;
+	font-size:80%;
+	height:25px;
+	
+	/*
+	width:760px;
+	margin-left:10px;
+	padding: 20px 5px 5px 5px;
+	text-align:center;
+	font-style:italic;
+	font-weight:bold;
+	color:#0033FF;
+	font-size:80%;
+	height:25px;
+	position:relative;
+	bottom:0;
+	*/
+}
+
+span.rotulo {
+  display: inline-block;
+  width: 120px; 
+  margin: 2px 2px;
+  border-bottom: 1px solid black;
+}
+
+span.campo {
+  display: inline-block; 
+  width: 200px;
+  border: 1px solid black;
+  padding: 2px 4px;
+  background-color: beige; margin: 2px 2px;
+}

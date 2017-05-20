@@ -1,0 +1,120 @@
+/* ESTILO DO MENU HORIZONTAL */
+div.hauptmenue {
+    width:770px;
+    padding-top:5px;
+    padding-bottom:20px;
+}
+div.untermenue {
+    font-size:7pt;
+    color:#3366FF;
+    text-align:right;
+    border-top:1px solid #00204E;
+    margin-top:40px;
+    padding-top:5px;
+    clear:both;
+}
+div.untermenue a {
+    font-size:7pt;
+    color:#3366FF;
+    text-decoration:none;
+}
+
+ul.dropdown {
+ list-style: none;
+ margin:0px;
+ padding:0px; 
+}
+ul.dropdown li {
+ float: left;
+ border-right:1px solid #3366FF;
+ padding:0px;
+ margin:0px;
+ margin-left:3px;
+ display:block;
+ /*padding: 0px; /* padding: 2px; helps Opera with hover */
+}
+ul.dropdown li ul {
+ position:absolute;
+ list-style: none;
+ margin:0px;
+ padding: 0px;
+ display:none; 
+ z-index:99;    
+ padding-top:5px;     
+}
+ul.dropdown li:hover ul, ul.dropdown li:hover ul li, ul.dropdown ul li:hover ul {
+ display:block;
+}
+ul.dropdown li a {
+ display:block;
+ padding: 0px 5px 0px 2px;
+ text-decoration: none;
+ color: #3366FF; 
+}
+ul.dropdown li a:hover {
+    color:#00204E;
+	background-color:#F0F8FF;
+}
+ul.dropdown li ul li {
+ float: left;
+ position: relative; 
+ background-color:white;
+ padding-top:2px;
+ padding-bottom:2px;
+ border-right:0px;
+ padding-left:2px;
+ margin:0px; 
+ border-right:1px solid #3366FF;
+ font-size:10pt; 
+}
+ul.dropdown li ul li:hover a {    
+    color:#00204E;
+	background-color:#F0F8FF;
+}
+ul.dropdownright {
+ list-style: none;
+ margin:0px;
+ padding:0px; 
+ text-align:right; 
+}
+ul.dropdownright li { 
+ float: right;
+ margin:0px;
+ padding:0px; 
+ text-align:right;   
+ /*padding: 0px; /* padding: 2px; helps Opera with hover */
+}
+ul.dropdownright li ul {
+ list-style: none;
+ margin:0px;
+ padding: 0px;
+ display:none;
+ width:230px; 
+ z-index:99;
+    padding-top:5px;    
+    text-align:right;
+}
+ul.dropdownright li:hover ul, ul.dropdownright ul li:hover ul {
+ display:block;
+}
+ul.dropdownright li a {
+ display:block;
+ padding: 0px 5px 0px 2px;
+ text-decoration: none;
+ color:#3366FF; 
+}
+ul.dropdownright li ul li { 
+    float: none;
+ position: relative;
+ background-color:white;
+ padding-top:2px;
+ padding-bottom:2px;
+ border-bottom:1px solid #3366FF; 
+}
+ul.dropdownright li ul li:hover {
+    background-color:#00204E;
+}
+ul.dropdownright li ul li:hover a {    
+    color:white;
+	background-color:#F0F8FF;
+}

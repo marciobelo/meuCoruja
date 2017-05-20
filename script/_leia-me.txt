@@ -1,0 +1,9 @@
+
+
+Rode os scripts de criação do banco na seguinte ordem:
+1. esquema-versão-*.sql
+2. carga-dados-basicos.sql
+3. carga-dados-massa-teste.sql
+4. esquema-trigger-validacao-*.sql
+
+Na pasta 'queries_importantes' encontram-se também sql's úteis para ações em lote

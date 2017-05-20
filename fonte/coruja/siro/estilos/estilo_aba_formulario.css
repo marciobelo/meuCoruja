@@ -1,0 +1,40 @@
+/* ESTILO DAS ABAS DOS FORMULARIOS*/
+#abanav {
+	width: 100%;	
+	margin: 0 auto;
+}
+ 
+#abas {
+	height: 20px;
+	position: relative;
+	font-size:60%;
+}
+ 
+#conteudo_abas {
+	position: relative;
+	padding: 10px;
+	border: 2px solid #78bee2;
+}
+ 
+#conteudo_abas div p {
+	font-family: Trebuchet MS, Arial, Verdana;
+	font-size: 12px;
+}
+ 
+#abas a, #abas a:visited {
+	background: url("../imagens/aba.jpg") top left no-repeat;
+	font-family: Trebuchet MS, Arial, Verdana;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	display: block;
+	width: 92px;
+	height: 17px;
+	_height: 20px;
+	margin: 0 0px 0 0;
+	text-align: center;
+	padding: 3px 0 0 0; 
+	float: left;
+}
+

@@ -1,0 +1,176 @@
+/* ESTILO DOS FORMULARIOS */
+form#cadastro {
+	width:100%; 
+	padding:10px; 
+	margin:0 auto;
+}
+
+form#cadastro fieldset {
+	width:700px;
+	display:block;
+	border:1px solid #000;
+	background-color:#C2E0FF;
+	padding:5px;
+	font-family:Helvetica,Arial,sans-serif;
+	margin-bottom:0.5em;
+	line-height:1.5em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form#cadastro fieldset#fieldsetGeral {
+	background:#C2E0FF;
+	font-size:80%;
+}
+
+* html form#cadastro fieldset#fieldsetGeral, * html form#cadastro  {
+	background-position:550px 20px;
+}
+
+* html form#cadastro fieldset#current {
+	background-position:540px 20px;
+}
+
+form#cadastro fieldset#opt {
+	background:#dee;
+}
+
+form#cadastro legend {
+	font-family:Helvetica,Arial,sans-serif;
+	font-weight:bold;
+	border:1px solid #000;
+	margin-bottom:5px;
+	padding:3px;
+	width:450px;
+	background:#fff;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form#cadastro label {
+	clear:left;
+	display:block;
+	float:left;
+	width:150px;
+	text-align:right;
+	padding-right:5px;
+	color: #333333;
+}
+
+form#cadastro input {
+	border:1px solid #000;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form#cadastro radio {
+	border:1px solid #000;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+}
+
+form#cadastro input.obrigatorio {
+	border:1px solid #000;
+	background-color:#FFFF99;
+	padding-left:0.5em;
+	margin-bottom:0.6em;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+
+form#cadastro select {
+	margin-left:0.5em;
+}
+
+form#cadastro textarea {
+	width:480px;
+	height:15em;
+	border:1px solid #000;
+	padding:0.5em;
+	overflow:auto;
+}
+
+form#cadastro option {
+	background:#fff;
+	color:#000;
+}
+
+form#cadastro optgroup {
+	background:#abb;
+	color:#000;
+	font-family:Helvetica,Arial,sans-serif;
+}
+
+form#cadastro optgroup option {
+	background:#9aa;
+	color:#fff;
+}
+
+form#cadastro #button1, form#cadastro #button2 {
+	color:#000;
+	padding-right:0.5em;
+	cursor:pointer;
+	width:205px;
+	margin-left:8px;
+	border:1px solid #000;
+}
+
+form#cadastro #button1:hover, form#cadastro #button2:hover {
+	background-position:center left;
+	color:#c00;
+}
+
+/**
+ * OS DOIS ITENS ABAIXO SÃO REFERENTES AO LINK ABRIR DIV
+ */
+.pmais {
+	background: url(../imagens/ico_mais.gif) no-repeat top left; 
+	padding-left:13px;
+	text-decoration: none;
+	font-weight: bold;
+	color:#000;
+}
+.pmenos {
+	background: url(../imagens/ico_menos.gif) no-repeat top left; 
+	padding-left:13px;
+	text-decoration: none;
+	font-weight: bold;
+	color:#000;
+}
+
+/**
+ * OS TRES ITENS ABAIXO SÃO REFERENTES AO EXIBIR ALUNO - DOCS
+ */
+
+.docDesc{
+	clear:left;
+	display:block;
+	float:left;
+	width:300px;
+	text-align:left;
+	padding:0 10px 0 20px;
+	color: #333333;	
+}
+
+.docStatusPar{
+	font-weight:bold;
+}
+
+.docStatusImpar{
+	background-color:#87CEFA;
+	font-weight:bold;
+}
+
+.pseudobotao, .pseudobotao:hover{
+	margin:25px auto;
+	background-color:#eff1ec;
+	text-align:center;
+	width:350px;
+	border:1px solid #000;
+	color:#000;
+	-moz-border-radius:0.4em;
+	-khtml-border-radius:0.4em;
+}
+

@@ -1,0 +1,149 @@
+.overlay_saga {
+	background-color: #FFFFFF;
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+
+.saga_nw {
+	background: transparent url(saga/left-top.gif) no-repeat 0 0;			
+  width:29px;
+  height:33px;
+}
+
+.saga_n {
+  background: transparent url(saga/top-middle.gif) repeat-x 0 0;			
+  height:25px;
+}
+
+.saga_ne {
+  background: transparent url(saga/right-top.gif) no-repeat 0 0;			
+  width:32px;	  
+  height:33px;
+}
+
+.saga_w {
+  background: transparent url(saga/frame-left.gif) repeat-y top left;			
+  width:2px;
+}
+
+.saga_e {
+  background: transparent url(saga/frame-right.gif) repeat-y top right;			
+  width:1px;	  
+}
+
+.saga_sw {
+  background: transparent url(saga/bottom-left-c.gif) no-repeat 0 0;			
+  width:29px;
+  height:30px;
+}
+
+.saga_s {
+  background: transparent url(saga/bottom-middle.gif) repeat-x 0 0;			
+  height:5px;
+}
+
+.saga_se, .saga_sizer  {
+  background: transparent url(saga/bottom-right-c.gif) no-repeat 0 0;			
+  width:30px;
+  height:33px;
+}
+
+.saga_sizer {
+	cursor:se-resize;	
+}
+
+.saga_close {
+	width: 23px;
+	height: 23px;
+	background: transparent url(saga/button-close-focus.gif) no-repeat 0 0;			
+	position:absolute;
+	top:0px;
+	right:27px;
+	cursor:pointer;
+	z-index:1000;
+}
+
+.saga_minimize {
+	width: 23px;
+	height: 23px;
+	background: transparent url(saga/button-min-focus.gif) no-repeat 0 0;			
+	position:absolute;
+	top:0px;
+	right:71px;
+	cursor:pointer;
+	z-index:1000;
+}
+
+.saga_maximize {
+	width: 23px;
+	height: 23px;
+	background: transparent url(saga/button-max-focus.gif) no-repeat 0 0;			
+	position:absolute;
+	top:0px;
+	right:49px;
+	cursor:pointer;
+	z-index:1000;
+}
+
+.saga_title {
+	float:left;
+	font-size:14px;
+	text-align:center;
+	margin-top:0px;
+	width:100%;
+	color:#123456;
+}
+
+.saga_content {
+	overflow:auto;
+	color: #000;
+	font-family: Tahoma, Arial, sans-serif;
+  font: 12px arial;
+	background:#EEEEEE;
+}
+
+/* For alert/confirm dialog */
+.saga_window {
+	border:1px solid #F00;	
+	background: #FFF;
+	padding:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:400px;
+}
+
+.saga_message {
+  font: 12px arial;
+	text-align:center;
+	width:100%;
+	padding-bottom:20px;
+}
+
+.saga_buttons {
+	text-align:center;
+	width:100%;
+}
+
+.saga_buttons input {
+	width:20%;
+	margin:10px;
+}
+
+.saga_progress {
+	float:left;
+	margin:auto;
+	text-align:center;
+	width:100%;
+	height:16px;
+	background: #FFF url('alert/progress.gif') no-repeat center center
+}
+
+.saga_wired_frame {
+	background: #FFF;
+	filter:alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;	
+}
+
+

@@ -1,0 +1,143 @@
+@charset "ISO-8859-1";
+/* CSS referentes as tabelas do SiRO */
+.table_lista{
+    border-style: none;
+    azimuth: center;
+    margin-right:auto;
+    margin-left:auto;
+    font-size: 10pt;
+    
+}
+
+
+ .table_RN{
+    margin-right:auto;
+    margin-left:auto;
+    font-size: 10pt;
+ }
+
+.cabecalho{
+   text-align:center;
+   font-weight:bold;
+}
+.tr_cabecalho_lista{
+background-color:#0099FF;
+text-align:center;
+font-weight:bold;
+color: #FFFFFF;
+}
+
+.tr_cabecalho_grade{
+background-color:#00EEFF;
+text-align:center;
+font-weight:bold;
+
+}
+
+.tr_turma {
+    background: #FFFFCC;
+    text-align:center;
+    font-weight:bold;
+    
+}
+
+.tr_turmaSemCor{
+    text-align:center;
+    font-weight:bold;
+    
+}
+.td_turmaConflitoGrade{
+    background: #FF0000;
+    text-align:center;
+    font-weight:bold;
+    color: #FFFFFF;
+}
+
+.td_horarioManha{
+    background: #99FFFF;
+    color: #000000;
+    font-weight:bold;
+    text-align: center;
+}
+
+.td_horarioNoite{
+    background: #00AAAA;
+    color: #000000;
+    font-weight:bold;
+    text-align: center;
+}
+
+.td_turmaGrade {
+    background: #FFFFCC;
+    text-align:center;
+    font-weight:bold;
+}
+
+.td_turmaListaCor {
+    background: #FFFFCC;
+    text-align:left;
+    font-weight:bold;
+}
+
+.td_turmaListaSemCor {
+    text-align:left;
+    font-weight:bold;
+}
+
+.td_fundoRN{
+    background: #00FF00;
+    text-align:center;
+    font-weight:bold;
+    color: #000000;
+}
+
+.td_textoRN{
+    text-align:justify;
+    font-style: oblique;
+    font-weight:bold;
+    color: #000000;
+    font-size: 10pt;
+}
+
+.RN_cabecalho{
+    background: #FFFF00;
+    text-align:center;
+    font-weight:bold;
+}
+
+.td_alerta{
+    text-align:center;
+    font-weight: bold;
+    background-color: #FFFF00;
+    color: #FF0000;
+}
+
+.td_critico{
+    text-align:center;
+    font-weight: bold;
+    color: #FF0000;
+}
+
+.td_descTurma {
+    background: #FFFFCC;
+    text-align:center;
+    font-weight:bold;
+}
+
+.a_Disc{
+    font-weight: bold;
+    color: #0000FF;
+}
+
+.RN_Justificativa{
+    text-align: justify;
+    font-weight: bold;
+    font-size: 10pt;
+    color: #FF0000;
+    width: 80%;
+    height: 200px;
+    border: solid 2px;
+    border-color: #003300;
+
+}
+

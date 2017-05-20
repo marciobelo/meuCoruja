@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/coruja" />
+<title>CadastroNovoAlunoTestCase</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">CadastroNovoAlunoTestCase</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Período Letivo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Editar Periodo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dtFim</td>
+	<td>15/07/2030</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Informações Atualizadas com Sucesso!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Aluno</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tipoBusca</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nome</td>
+	<td>FULANO</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Nenhum registro com os parâmetros informados!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nome</td>
+	<td>FULANO DA COSTA E SILVA</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNascimentoD</td>
+	<td>03</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNascimentoM</td>
+	<td>02</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNascimentoA</td>
+	<td>1991</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nacionalidade</td>
+	<td>BRASILEIRA</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=naturalidade</td>
+	<td>RIO DE JANEIRO</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Contato</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoCEP</td>
+	<td>22011060</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoLogradouro</td>
+	<td>RUA ALFREDO KOGUT</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoNumero</td>
+	<td>13</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoComplemento</td>
+	<td>506</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoBairro</td>
+	<td>LINS DE VASCONCELLOS</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enderecoMunicipio</td>
+	<td>RIO DE JANEIRO</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefoneResidencial</td>
+	<td>(21) 2332-4048</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefoneComercial</td>
+	<td>(21) 2222-3333</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefoneCelular</td>
+	<td>(21) 9999-9999</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>ist-rio@faetec.rj.gov.br</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Complementar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=corRaca</td>
+	<td>label=PARDA</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=deficienciaAuditiva</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=deficienciaMotora</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Documentos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgNumero</td>
+	<td>23256454</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgOrgaoEmissor</td>
+	<td>IFP/RJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgDataEmissaoD</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgDataEmissaoM</td>
+	<td>06</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgDataEmissaoA</td>
+	<td>1991</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cpf</td>
+	<td>02627386785</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoNascimentoNumero</td>
+	<td>1234567890</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoNascimentoLivro</td>
+	<td>ABCD</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoNascimentoFolha</td>
+	<td>122</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoNascimentoCidade</td>
+	<td>Rio de Janeiro</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoNascimentoSubDistrito</td>
+	<td>Rio de Janeiro</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=certidaoNascimentoUF</td>
+	<td>label=RJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoCasamentoNumero</td>
+	<td>0987654321</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoCasamentoLivro</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoCasamentoFolha</td>
+	<td>223</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoCasamentoCidade</td>
+	<td>São Paulo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certidaoCasamentoSubDistrito</td>
+	<td>Moema</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=certidaoCasamentoUF</td>
+	<td>label=SP</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarNumero</td>
+	<td>22222222222</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarSerie</td>
+	<td>A</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarRM</td>
+	<td>EX01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarCSM</td>
+	<td>AB45</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarDataD</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarDataM</td>
+	<td>9</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoAlistamentoMilitarDataA</td>
+	<td>2001</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaNumero</td>
+	<td>3333333333</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaSerie</td>
+	<td>B</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaCAT</td>
+	<td>AE01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaRM</td>
+	<td>AB23</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaCSM</td>
+	<td>29382</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaDataD</td>
+	<td>25</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaDataM</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=certificadoReservistaDataA</td>
+	<td>1995</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorNumero</td>
+	<td>8273628</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorZona</td>
+	<td>121</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorSecao</td>
+	<td>34</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorDataD</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorDataM</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tituloEleitorDataA</td>
+	<td>1999</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=ctps</td>
+	<td>2021193 Série 123</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Responsáveis</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeMae</td>
+	<td>AUGUSTA TEIXEIRA DOS SANTOS E SOUZA</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgMae</td>
+	<td>12345678-9 IFP/RJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomePai</td>
+	<td>LEONARDO VAZ DOS ANJOS</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgPai</td>
+	<td>3242343-4 DIC/RJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=responsavelLegal</td>
+	<td>FERNANDO DE SOUZA E CASTRO</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=rgResponsavel</td>
+	<td>29123823-2 DETRAN/RJ</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Escolar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=estabCursoOrigem</td>
+	<td>COLÉGIO CURSO MARTINS</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=estabCursoOrigemCidade</td>
+	<td>NILÓPOLIS</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=estabCursoOrigemUF</td>
+	<td>label=RJ</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cursoOrigemAnoConclusao</td>
+	<td>1993</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Matrícula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=novaMatriculaAluno</td>
+	<td>11204700011</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNovaMatriculaD</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNovaMatriculaM</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dataNovaMatriculaA</td>
+	<td>2011</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=siglaCursoNovaMatricula</td>
+	<td>label=TASI - Tecnologia em Análise de Sistemas Informatizados</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=turnoIngressoNovaMatricula</td>
+	<td>label=MANHÃ</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=idFormaIngressoNovaMatricula</td>
+	<td>label=Concurso Cota Regular</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=concursoPontosNovaMatricula</td>
+	<td>12,34</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=concursoClassificacaoNovaMatricula</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>CPF inválido</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Documentos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cpf</td>
+	<td>21764840291</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Novo aluno inserido com sucesso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Aluno</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tipoBusca</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nome</td>
+	<td>FULANO DA COSTA E SILVA</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>FULANO DA COSTA E SILVA</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>03/02/1991</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>BRASILEIRA</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>RIO DE JANEIRO</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Contato</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>(21) 2332-4048</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>RUA ALFREDO KOGUT</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>LINS DE VASCONCELLOS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>ist-rio@faetec.rj.gov.br</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Matrícula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=b &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>11204700011</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>04/08/2011</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>TASI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>CURSANDO</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>MANHÃ</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Concurso Cota Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>12,34</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Escolar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>NILÓPOLIS</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

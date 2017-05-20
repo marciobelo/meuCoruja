@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>DeferirAlunoQueEstavaIndeferidoTestCase</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">DeferirAlunoQueEstavaIndeferidoTestCase</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php?acao=sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=perfil</td>
+	<td>ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=linkMenuPeriodoLetivo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Editar Periodo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dtFim</td>
+	<td>15/07/2030</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Evento</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dtIni</td>
+	<td>15/07/2030</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=tipoEvento</td>
+	<td>label=Fim de solicitação de inscrição em turmas</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Solicitar Inscrição em Turma</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.cadastro.tipoBusca[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=matricula</td>
+	<td>1111</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=turma_77</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=solicitarInscricao</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Solicitar Inscrição em Turma</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.cadastro.tipoBusca[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=matricula</td>
+	<td>1328</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=mostraOfertaTurnoDiferente</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=turma_77</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=solicitarInscricao</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=linkMenuPeriodoLetivo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Evento</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Editar Periodo&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data</td>
+	<td>01/02/2011</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Situação de Inscrições em Turmas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=DHQ ( Desenvolvimento Humano e Qualidade de Vida )</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>name=comboAcao</td>
+	<td>label=Deferir</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=rnJustificativa</td>
+	<td>Teste.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=ConfirmarInscricao</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.erro &gt; li</td>
+	<td>Inscrição deferida.</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>name=comboAcao</td>
+	<td>label=Indeferir</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=ConfirmarInscricao</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.erro &gt; li</td>
+	<td>Inscrição do aluno indeferida com sucesso!</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manter Turmas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>name=siglaCurso</td>
+	<td>label=TASI - Tecnologia em Análise de Sistemas Informatizados</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=turno</td>
+	<td>label=MANHÃ</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Filtrar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=mudarSituacaoTurma77</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=novaSituacao</td>
+	<td>label=CONFIRMADA</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=modificar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Situação de Inscrições em Turmas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=siglaCurso</td>
+	<td>label=Tecnologia em Análise de Sistemas Informatizados - TASI</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=DHQ ( Desenvolvimento Humano e Qualidade de Vida )</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>name=comboAcao</td>
+	<td>label=Deferir</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=rnJustificativa</td>
+	<td>Aluno deve ir direto como inscrito na turma</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=ConfirmarInscricao</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Manter Alunos que cursam uma Turma</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=siglaCurso</td>
+	<td>label=TASI</td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>selenium.browserbot.getCurrentWindow().jQuery.active == 0</td>
+	<td>1000</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=idPeriodoLetivo</td>
+	<td>label=2011.1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=turno</td>
+	<td>label=MANHÃ</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//fieldset[@id='fieldsetGeral']/table/tbody/tr[4]/td[2]/a/b</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//fieldset[@id='fieldsetGeral']/table/tbody/tr[2]/td[2]</td>
+	<td>CAMILA FERREIRA BUENO DOS SANTOS</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//fieldset[@id='fieldsetGeral']/table/tbody/tr[3]/td[2]</td>
+	<td>MANUEL FERREIRA BELO</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=b</td>
+	<td>Listagem de Alunos da Turma: DHQ - Desenvolvimento Humano e Qualidade de Vida <br />Curso: TASI - Tecnologia em Análise de Sistemas Informatizados <br />Período Letivo: 2011.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Turno: MANHÃ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grade: A</td>
+</tr>
+</tbody></table>
+</body>
+</html>

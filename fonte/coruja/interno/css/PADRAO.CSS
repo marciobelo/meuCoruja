@@ -1,0 +1,316 @@
+.texto
+{
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.list
+{
+    FONT-SIZE: 11px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.verdana
+{
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.arial
+{
+    FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif
+}
+.decNone
+{
+    TEXT-DECORATION: none
+}
+.decSubline
+{
+    TEXT-DECORATION: underline
+}
+.mouseHand
+{
+	CURSOR: hand;
+}
+.botao
+{
+    FONT-SIZE: 11px;
+    COLOR: #333333;
+    LINE-HEIGHT: 10px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    HEIGHT: 18px;
+    TEXT-ALIGN: center
+}
+.size9
+{
+    FONT-SIZE: 9px
+}
+.size10
+{
+    FONT-SIZE: 10px
+}
+.size11
+{
+    FONT-SIZE: 11px
+}
+.size12
+{
+    FONT-SIZE: 12px
+}
+.size13
+{
+    FONT-SIZE: 13px
+}
+.size14
+{
+    FONT-SIZE: 14px
+}
+.size16
+{
+    FONT-SIZE: 16px
+}
+.size27
+{
+    FONT-SIZE: 27px
+}
+.nlink
+{
+    CURSOR: hand;
+    TEXT-DECORATION: none
+}
+.nlink:hover
+{
+    TEXT-DECORATION: underline
+}
+.bold
+{
+    FONT-WEIGHT: bold
+}
+.c666666
+{
+    COLOR: #666666
+}
+.c006666
+{
+    COLOR: #006666
+}
+.c999999
+{
+    COLOR: #999999
+}
+.cFFFFFF
+{
+    COLOR: #ffffff
+}
+.c009E9C
+{
+    COLOR: #009e9c
+}
+.c355858
+{
+    COLOR: #355858
+}
+.c053669
+{
+    COLOR: #053669
+}
+.c000000
+{
+    COLOR: #000000
+}
+.c484747
+{
+    COLOR: #333333
+}
+.c5B5C5C
+{
+    COLOR: #5b5c5c
+}
+.c333333
+{
+    COLOR: #333333
+}
+.c545353
+{
+    COLOR: #545353
+}
+.c027E82
+{
+    COLOR: #027e82
+}
+.cD0060F
+{
+    COLOR: #d0060f
+}
+.cF34E06
+{
+    COLOR: #f34e06
+}
+.c222222
+{
+    COLOR: #222222
+}
+.bcBEDCDC
+{
+    BORDER-LEFT-COLOR: #bedcdc;
+    BORDER-BOTTOM-COLOR: #bedcdc;
+    BORDER-TOP-COLOR: #bedcdc;
+    BORDER-RIGHT-COLOR: #bedcdc
+}
+.bcCCCCCC
+{
+    BORDER-LEFT-COLOR: #cccccc;
+    BORDER-BOTTOM-COLOR: #cccccc;
+    BORDER-TOP-COLOR: #cccccc;
+    BORDER-RIGHT-COLOR: #cccccc
+}
+.bc3A9CA1
+{
+    BORDER-LEFT-COLOR: #3a9ca1;
+    BORDER-BOTTOM-COLOR: #3a9ca1;
+    BORDER-TOP-COLOR: #3a9ca1;
+    BORDER-RIGHT-COLOR: #3a9ca1
+}
+.bc333333
+{
+    BORDER-LEFT-COLOR: #333333;
+    BORDER-BOTTOM-COLOR: #333333;
+    BORDER-TOP-COLOR: #333333;
+    BORDER-RIGHT-COLOR: #333333
+}
+.bc898B89
+{
+    BORDER-LEFT-COLOR: #898b89;
+    BORDER-BOTTOM-COLOR: #898b89;
+    BORDER-TOP-COLOR: #898b89;
+    BORDER-RIGHT-COLOR: #898b89
+}
+.bcFFFFFF
+{
+    BORDER-LEFT-COLOR: #ffffff;
+    BORDER-BOTTOM-COLOR: #ffffff;
+    BORDER-TOP-COLOR: #ffffff;
+    BORDER-RIGHT-COLOR: #ffffff
+}
+.bc999999
+{
+    BORDER-LEFT-COLOR: #999999;
+    BORDER-BOTTOM-COLOR: #999999;
+    BORDER-TOP-COLOR: #999999;
+    BORDER-RIGHT-COLOR: #999999
+}
+.bcEDEDED
+{
+    BORDER-LEFT-COLOR: #ededed;
+    BORDER-BOTTOM-COLOR: #ededed;
+    BORDER-TOP-COLOR: #ededed;
+    BORDER-RIGHT-COLOR: #ededed
+}
+.bc000000
+{
+    BORDER-LEFT-COLOR: #000000;
+    BORDER-BOTTOM-COLOR: #000000;
+    BORDER-TOP-COLOR: #000000;
+    BORDER-RIGHT-COLOR: #000000
+}
+.bgColorFFFFFF
+{
+    BACKGROUND-COLOR: #ffffff
+}
+.bgColorD6EBEB
+{
+    BACKGROUND-COLOR: #ededed
+}
+.bgColorF0F0F0
+{
+    BACKGROUND-COLOR: #f0f0f0
+}
+.bgColorDEF0F0
+{
+    BACKGROUND-COLOR: #def0f0
+}
+.bordaTop
+{
+	border: 1px solid;
+}
+.bordaBottom
+{
+    BORDER-BOTTOM: 1px solid
+}
+.bordaLeft
+{
+    BORDER-LEFT: 1px solid
+}
+.bordaRight
+{
+    BORDER-RIGHT: 1px solid
+}
+.borda2Bottom
+{
+    BORDER-BOTTOM: 2px solid
+}
+.borda2Right
+{
+    BORDER-RIGHT: none
+}
+.transparent
+{
+    FILTER: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    moz-opacity: 0.9
+}
+.FontMenu {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000000;
+	font-weight: bold;
+	padding: 1px;
+	font-style: normal;
+	text-decoration: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid #000000;
+	border-left: none;
+}
+
+.txt_campo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	border: 1px solid #000000;
+}
+.textos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.caixa_sem_borda {
+	font-size: 10px;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: 10%;
+	text-align: center;
+	border: 0px none #000000;
+
+}
+.campo_obrigatorio {
+	border: 1px solid #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-image: url(../images/form_obrigatorio.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.txt_campoII {
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	vertical-align: 10%;
+	text-align: center;
+	border: 1px solid #000000;
+	text-transform: uppercase;
+
+}
+.FontMenu_red {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: bold;
+	color: #990000;
+	text-decoration: none;
+	background-color: #336699;
+	border: none;
+}

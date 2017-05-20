@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/coruja" />
+<title>EditaMatriculaAlunoTestCase</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">EditaMatriculaAlunoTestCase</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Aluno</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>document.cadastro.tipoBusca[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=matricula</td>
+	<td>1328</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Matrícula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=editarMatricula</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaD</td>
+	<td>08</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaM</td>
+	<td>06</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=dataMatriculaA</td>
+	<td>2009</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=concursoPontos</td>
+	<td>90,12</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=concursoClassificacao</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=idFormaIngresso</td>
+	<td>label=Concurso Cota Rede Pública</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Matrícula alterada com sucesso</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Matrícula do aluno MANUEL FERREIRA BELO alterada<br />Matrícula anterior: 1328<br />Matrícula: 1328<br />Curso: TASI<br />Turno: NOITE<br />Data da matrícula: 08/06/2009<br />Período Letivo: 2009.1<br />Matriz: 01/01/2005<br />Concurso Pontos: 90,12<br />Concurso Classificação: 3<br />Forma Ingresso: Concurso Cota Rede Pública</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

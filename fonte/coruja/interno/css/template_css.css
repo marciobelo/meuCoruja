@@ -1,0 +1,623 @@
+
+body {
+	background:#FFF;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.74em;
+}
+#pagebg {
+	background-color:#E2DED2;
+	background-image: url(../images/pagebg.png);
+	background-repeat: repeat-x;
+	background-position: 0px -15px!important;
+	background-position: 0px -13px;
+}
+*, html, body {margin:0;padding:0;}
+p, div, td {line-height:135%;}
+p {margin:0;padding:5px;line-height:155%;}
+/*Basic Links*/
+a:link, a:visited {color:#415395;text-decoration:underline;}
+a:hover {color: #000000;text-decoration:none;}
+a.img{border:0;}
+
+a:focus {outline:0;}
+ul {padding-left:20px;}
+
+/*Begin Header and Logo*/
+#headerblock {
+	margin: 0px;
+	padding: 0px;
+}
+
+/*CSS for logo. This is an image replaced link as an H1 tag*/
+
+/*Controls logo hotspot width*/
+#logo {height:90px;float:left; margin-left:15px;}
+#logo h1 a{ width:315px;display:block;text-indent:-5000px;text-decoration:none;line-height:60px; margin-top:17px;}
+#logo h1 {background:none;}/*Set the line-height and width equal to your logo image here*/
+#logo h1{margin:0;padding:0;}
+
+h1 {
+	margin: 1em 0;
+	color:#415395;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2em;
+	line-height: 2em;
+	font-weight: bold;
+	text-transform: none;
+}
+h2 {
+	margin: 1em 0;
+	color:#333333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.6em;
+	line-height: 1.6em;
+	font-weight: bold;
+	text-transform: none;
+}
+
+h3 {
+	margin: 1em 0;
+	color:#666666;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.4em;
+	line-height: 1.4em;
+	font-weight: bold;
+	text-transform: none;
+}
+
+
+
+/*End Header and Logo*/
+
+.wrap_outer {
+	margin: 0px auto;
+	width: 960px;
+}
+.topbar {width:960px; height:12px; background:url(../images/topbar.png) no-repeat center bottom;}
+#header {background:url(../images/header.jpg) no-repeat top center; height:111px; width:960px;}
+.inner_wrap {background:url(../images/bgwrap.png) repeat-y center bottom;padding:7px 0px 0px 0px;margin:0px;}
+.footer {background:url(../images/footer.png) no-repeat bottom center;width:960px; height:25px;clear:both;}
+
+table#content {width:932px;margin:0px auto 0px auto;}
+
+.banners {position:relative;left:-5px;padding:0px 0px 5px 0px;margin:0;}
+.banners .modulelight div div div {text-align:center;}
+.banners .modulemid div div div {text-align:center;}
+.banners .moduledark div div div {text-align:center;}
+.banners .module div div div {text-align:center;}
+
+td#leftcol {background:#415395;vertical-align:top;width:193px;}
+td#leftcol .inside {background:#415395 url(../images/left_top.png) no-repeat top center;width:193px;}
+#leftcol .inside {color:white;}
+.main_top {background:url(../images/main_top.png) no-repeat right top;height:8px;}
+td.mainbody {background:url(../images/main_content.png) repeat-y 6px 0px;vertical-align:top; margin:0;padding:0;}
+
+#teaserblock {padding:0px 0px 5px 0px;background:#eee;width:100%; z-index:-1;}
+#teaserblock .inside {padding:2px 0px 0px 0px;margin:0px 0px 0px 6px;background:#eee;}
+#teaserblock .moduletable {margin:0;padding:0;color:#fff;}
+#teaserblock .moduletable h3 {margin:0;padding:0;color:#fff;}
+
+
+
+div.maincontent {float:left;padding:0px;margin:0; width:500px !important;width:500px;position:relative;left:18px;}
+
+/*All Modules*/
+
+/*RIGHT MODULES*/
+
+#rightcol {float:right; width:210px!important;width:185px;margin:0;padding:0;}
+#rightcol .inside {padding:0px 5px;}
+
+/*USER1 MODULE*/
+#newsflash {float:right;width:518px;height:90px;overflow:hidden;margin:5px 20px 5px 20px; padding:0px 0px 8px 0px; background:url(../../js_lush_005/images/newsflash.png) no-repeat center;}
+#newsflash .moduletable {margin:0;padding:0;}
+#newsflash .moduletable h3 {padding:6px 10px 0px 15px; margin:0; color:#8CA839;	font-family: Arial, Helvetica, sans-serif;font-size: 14px;line-height: 22px!important;font-weight: normal;letter-spacing: -.5px;}
+#newsflash .moduletable p {color:#222;}
+#newsflash .moduletable a {color:#000000;}
+
+/*LEFT MODULES*/
+#leftcol .moduletable h3
+{
+	margin:0px;
+	padding:10px 0px 0px 0px;
+	color:#FFF;
+	position:relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.35em;
+	line-height: 1.14em;
+	font-weight: normal;
+	letter-spacing: -.5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #BABABA;
+}
+#leftcol .moduletable p {font-size:1em;line-height:1.15em; color:#CCC;}
+#leftcol .moduletable {
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+/*INNER MODULES*/
+
+.back_button, .pagenav_prev, .pagenav_next {text-align:center;}
+.buttonheading {padding:0px 2px;}
+#searchbar {width:154px; height:20px;float:right;position:relative;top:10px;left:-20px;background:url(../images/searchbar.gif) no-repeat center; padding-left:5px;}
+.searchmod {
+	border:0px none;
+	padding:0px 2px;
+	margin:0;
+	height:16px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	position:relative;
+	top:2px;
+}
+/*USER 5-6-7 Modules (bottom teasers)*/
+
+
+
+/*Joomla Specific Display*/
+.small,.modifydate,.createdate {color: #999;text-align: left;font: 9px/11px Tahoma, Verdana, Helvetica;text-transform: uppercase;}
+.createdate {top:-3px;}
+.inputbox {color:#ccc;background:#fff;border: 1px solid #999;color:#333;}
+.button {background:#666;border: 1px solid #000;color:#ccc;line-height: 100%;font-size: 0.75em;padding: 3px;}
+.article_seperator {width:100%;height:16px;}
+#contact_text {width:300px;}
+table.contentpaneopen, table.contentpane, table.blog {border-collapse: collapse;padding:0;margin:0;width: 100%;}
+
+div div .syndicate div {margin:5px; padding:0;}
+
+
+/*Joomla Tables*/
+td.sectiontableheader {color: #FFF;font-weight: bold; background:#222;height: 25px;padding: 4px;}
+tr.sectiontableentry1 td {padding: 4px;background-color: #f8f8f8;}
+tr.sectiontableentry2 td {padding: 4px;background-color: #F2F2F2;}
+td.sectiontableentry1 {padding: 4px;background-color: #f8f8f8;}
+td.sectiontableentry2{padding: 4px;background-color: #F2F2F2;}
+.sectiontableentry2 a, .sectiontableentry1 a  {padding-left:5px;}
+
+/*Read More Link Styles*/
+a.readon, a.readon:hover{margin-top: 10px;display: block;float: right;line-height: 12px;background: url(../images/readon.gif) no-repeat left center;text-indent: 16px;}
+
+/*Polls*/
+table.pollstableborder td {padding:0; text-align:left; background:none;}
+.pollstableborder td {text-align:left; font: 0.9em Arial, Helvetica, sans-serif; padding: 3px 0px 3px 5px; vertical-align:middle;}
+
+/*Print and Email View*/
+body.contentpane {background:#fff}
+
+/*Keeps the blog tables from crowding*/
+table.contenttoc {margin: 5px;padding: 0px;float:right;}
+
+/*Article Index*/
+table.contenttoc {margin:5px;padding:5px;}
+table.contenttoc td {padding: 0 7px;}
+table.contenttoc th {padding: 0px 10px;font-size: 1em;color: #ccc;background: #333;}
+
+.contentheading {width:100%; white-space:nowrap;}
+
+/*Content Links*/
+
+td.contentheading, .contentheading {
+	color:#415395;
+	text-align: left;
+	text-decoration:none;
+	font: normal 1.35em/1em Arial, Helvetica, sans-serif;
+	border-bottom:1px solid #ccc;
+	padding:0;
+	margin:0;
+}
+a.contentpagetitle:link,a.contentpagetitle:visited {
+	color:#333;
+	text-align: left;
+	text-decoration:none;
+	font: bold 1.35em/1em Arial, Helvetica, sans-serif;
+}
+
+a.contentpagetitle:hover {color:#415395;text-decoration:none;}
+.componentheading {color:#000000;font:bold 1.35em/1.5em Arial, Helvetica, sans-serif;}
+
+
+
+
+/*Some bonus custom styles*/
+ol {margin-left:25px;}
+
+/*Sidenav Menus must be set to flat list in order to be styled correctly otherwise sublevels get messed up*/
+#leftcol ul#mainlevel-sidenav, #leftcol ul#mainlevel
+{list-style:none;padding:0px 0px 0px 5px;position:relative;}
+#leftcol ul#mainlevel-sidenav li a, #leftcol ul#mainlevel li a
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background: url(../images/sidenavover.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#FFF;
+width:90%;
+}
+/*Sidenav Links*/
+#leftcol ul#mainlevel a:hover,#leftcol ul#mainlevel-sidenav a:hover, #leftcol ul#mainlevel-sidenav2 a:hover
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background:url(../images/sidenavover.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+}
+#leftcol ul#mainlevel a#active_menu, #leftcol ul#mainlevel-sidenav a#active_menu-sidenav, #leftcol ul#mainlevel-sidenav2 a#active_menu-sidenav2
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background:url(../images/sidenavover.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+}
+
+/*Sidenav Menus when used as a vertical (TABLED) style*/
+#leftcol a.mainlevel:link,#leftcol a.mainlevel:visited,#leftcol a.mainlevel-sidenav:link,#leftcol a.mainlevel-sidenav:visited {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenavover.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#FFF;
+margin:0;
+width:90%;
+}
+#leftcol a.mainlevel:hover, #leftcol a.mainlevel-sidenav:hover {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenavover.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#leftcol a.mainlevel#active_menu, #leftcol a.mainlevel-sidenav#active_menu-sidenav {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenavover.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#leftcol a.mainlevel#active_menu:hover, #leftcol a.mainlevel-sidenav#active_menu-sidenav:hover {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenavover.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#leftcol a.sublevel, #leftcol a.sublevel-sidenav {
+font:normal 12px/16px Arial, Tahoma, Verdana, sans-serif;
+color:#FFF;
+}
+#leftcol a.sublevel:hover, #leftcol a.sublevel-sidenav:hover {
+font:normal 12px/16px Arial, Tahoma, Verdana, sans-serif;
+color:#FFF;
+}
+#leftcol a:link, #leftcol a:visited {color:#FFF; text-decoration:underline;}
+
+#leftcol a:hover {color:#CCC; text-decoration:none;}
+
+#leftcol div.module .mostread li, #leftcol div.module .latestnews li, #leftcol div.modulel p, #leftcol div.modulelight a {color:white;}
+#leftcol div.module li.mostreadl {list-style:none; padding-bottom:3px;}
+#leftcol div.module li.latestnews {list-style:none; padding-bottom:3px;}
+#leftcol div.module ul.latestnews {list-style:none; margin:0; padding:0;}
+#leftcol div.module ul.mostread {list-style:none; margin:0; padding:0;}
+
+
+
+
+
+/*Sidenav Menus must be set to flat list in order to be styled correctly otherwise sublevels get messed up*/
+#rightcol ul#mainlevel, #rightcol ul#mainlevel-sidenav, #rightcol ul#mainlevel-sidenav2
+{list-style:none;padding:0px 0px 0px 5px;position:relative;}
+#rightcol ul#mainlevel li a, #rightcol ul#mainlevel-sidenav li a, #rightcol ul#mainlevel-sidenav2 li a
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background: url(../images/sidenav_over_right.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#415395;
+width:90%;
+}
+/*Sidenav Links*/
+#rightcol ul#mainlevel a:hover,#rightcol ul#mainlevel-sidenav a:hover, #rightcol ul#mainlevel-sidenav2 a:hover
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background:url(../images/sidenav_over_right.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#333;
+}
+#rightcol ul#mainlevel a#active_menu, #rightcol ul#mainlevel-sidenav a#active_menu-sidenav, #rightcol ul#mainlevel-sidenav2 a#active_menu-sidenav2
+{
+text-decoration:none;
+padding-left:18px;
+padding-top:1px;
+background:url(../images/sidenav_over_right.png) no-repeat left center;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#666;
+}
+
+/*Sidenav Menus when used as a vertical (TABLED) style*/
+#rightcol a.mainlevel:link,#rightcol a.mainlevel:visited,#rightcol a.mainlevel-sidenav:link,#rightcol a.mainlevel-sidenav:visited {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenav_over_right.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#FFF;
+margin:0;
+width:90%;
+}
+#rightcol a.mainlevel:hover, #rightcol a.mainlevel-sidenav:hover {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenav_over_right.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#rightcol a.mainlevel#active_menu, #rightcol a.mainlevel-sidenav#active_menu-sidenav {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenav_over_right.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#rightcol a.mainlevel#active_menu:hover, #rightcol a.mainlevel-sidenav#active_menu-sidenav:hover {
+text-decoration:none;
+padding-left:18px;
+padding-top:3px;
+padding-bottom:1px;
+background: url(../images/sidenav_over_right.png) no-repeat 0px 5px;
+display:block;
+font:bold 12px/18px Arial, Tahoma, Verdana, sans-serif;
+color:#CCC;
+margin:0;
+width:90%;
+}
+#rightcol a.sublevel, #rightcol a.sublevel-sidenav {
+font:normal 12px/16px Arial, Tahoma, Verdana, sans-serif;
+}
+#rightcol a.sublevel:hover, #rightcol a.sublevel-sidenav:hover {
+font:normal 12px/16px Arial, Tahoma, Verdana, sans-serif;
+color:#fff;
+}
+
+
+/*rounded modules light-style (only for right position*/
+
+div.module h3 {
+	font-weight: bold;
+	color: #000;
+	margin:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px!important;
+	font-weight: normal;
+	letter-spacing: -.5px;
+}
+div.module {
+margin:0px 0px 5px 0px;
+background: transparent url(../../js_lush_005/images/_box_bl.png) no-repeat bottom left;  border: 0px solid #fff;
+}
+div.module div {
+}
+
+div.module div div {
+}
+
+div.module div div div {
+}
+div.module div div div div {
+	background: none;
+	padding: 0;
+}
+div.module .mostread li, div.module .latestnews li, div.module p, div.module a {color:black;}
+div.module li.mostread {list-style:none; padding-bottom:3px;}
+div.module li.latestnews {list-style:none; padding-bottom:3px;}
+div.module ul.latestnews {list-style:none; margin:0; padding:0;}
+div.module ul.mostread {list-style:none; margin:0; padding:0;}
+
+
+
+/*rounded modules light-style (only for right position*/
+
+div.modulelight h3 {
+	font-weight: bold;
+	color: #333;
+	margin:0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px!important;
+	font-weight: normal;
+	letter-spacing: -.5px;
+	padding-left:7px;
+}
+
+div.modulelight {
+margin:0px 0px 5px 0px;
+background: transparent url(../images/light_box_bl.png) no-repeat bottom left;  border: 0px solid #fff;
+}
+div.modulelight div {
+background: transparent url(../images/light_box_br.png) no-repeat bottom right;
+}
+div.modulelight div div {
+background: transparent url(../images/light_box_tl.png) no-repeat top left;
+}
+div.modulelight div div div {
+background: transparent url(../images/light_box_tr.png) no-repeat top right;
+padding: 10px 15px 10px 15px;
+width: auto !important;
+width: 100%;
+}
+div.modulelight div div div div {
+background: none;
+padding: 0;
+}
+
+div.modulelight .mostreadlight li, div.modulelight .latestnewslight li, div.modulelight p, div.modulelight a {color:#000;}
+div.modulelight li.mostreadlight {list-style:none; padding-bottom:3px;}
+div.modulelight li.latestnewslight {list-style:none; padding-bottom:3px;}
+div.modulelight ul.latestnewslight {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+div.modulelight ul.mostreadlight {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+/*rounded modules mid-style (only for right position*/
+
+div.modulemid h3 {
+	font-weight: bold;
+	color: #FFF;
+	margin:0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px!important;
+	font-weight: normal;
+	letter-spacing: -.5px;
+	padding-left:7px;
+}
+
+div.modulemid {
+margin:0px 0px 5px 0px;
+background: transparent url(../images/mid_box_bl.png) no-repeat bottom left;  border: 0px solid #fff;
+color:#ccc;
+}
+div.modulemid div {
+background: transparent url(../images/mid_box_br.png) no-repeat bottom right;
+}
+div.modulemid div div {
+background: transparent url(../images/mid_box_tl.png) no-repeat top left;
+}
+div.modulemid div div div {
+background: transparent url(../images/mid_box_tr.png) no-repeat top right;
+padding: 10px 15px 10px 15px;
+width: auto !important;
+width: 100%;
+}
+div.modulemid div div div div {
+background: none;
+padding: 0;
+}
+div.modulemid .mostreadmid li a, div.modulemid .latestnewsmid li a, div.modulemid p, div.modulemid a {color:#FFF;}
+div.modulemid li.mostreadmid {list-style:none; padding-bottom:3px;}
+div.modulemid li.latestnewsmid {list-style:none; padding-bottom:3px;}
+div.modulemid ul.latestnewsmid {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+div.modulemid ul.mostreadmid {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+/*rounded modules dark-style (only for right position*/
+
+div.moduledark h3 {
+	font-weight: normal;
+	color: #FFFFFF;
+	margin:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 22px!important;
+	font-weight: normal;
+	letter-spacing: -.5px;
+	padding-left:7px;
+}
+
+div.moduledark {
+margin:0px 0px 5px 0px;
+background: transparent url(../images/dark_box_bl.png) no-repeat bottom left;  border: 0px solid #fff;
+color:#ccc;
+}
+
+
+div.moduledark div {
+  background: transparent url(../images/dark_box_br.png) no-repeat bottom right;
+	
+}
+
+div.moduledark div div {
+  background: transparent url(../images/dark_box_tl.png) no-repeat top left;
+}
+
+div.moduledark div div div {
+	background: transparent url(../images/dark_box_tr.png) no-repeat top right;
+	padding: 10px 15px 10px 15px;
+	width: auto !important;
+	width: 100%;
+}
+div.moduledark div div div div {
+	background: none;
+	padding: 0;
+}
+div.moduledark .mostreaddark li a, div.moduledark .latestnewsdark li a, div.moduledark p, div.moduledark a {color:white;}
+div.moduledark li.mostreaddark {list-style:none; padding-bottom:3px;}
+div.moduledark li.latestnewsdark {list-style:none; padding-bottom:3px;}
+div.moduledark ul.latestnewsdark {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+div.moduledark ul.mostreaddark {list-style:none; margin:0; padding:0px 0px 0px 5px;}
+.right {display:none}
+/*end rounded modules*/
+.back_button {
+	float: left;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  border: 3px double #cccccc;
+  width: auto;
+  padding: 0px 10px;
+  line-height: 20px;
+  margin: 1px;
+}
+
+
+.pagenav {
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  border: 3px double #cccccc;
+  width: auto;
+  padding: 0px 10px;
+  line-height: 20px;
+  margin: 1px;
+}
+
+.pagenavbar {
+	margin-right: 10px;
+	float: right;
+}
+blockquote {padding:5px; border: 1px dashed #cecece; background: #ececec; color:#323232; margin:3px; font-size:.90em;}
+.designer, .designer a, .designer a:visited {text-align:center; text-decoration:none; margin-bottom:10px; font:11px normal Arial, Helvetica, sans-serif; color:#666;}

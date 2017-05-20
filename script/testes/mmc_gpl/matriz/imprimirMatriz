@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/coruja/" />
+<title>imprimirMatriz</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">imprimirMatriz</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/coruja/autenticar/login_controle.php?acao=sair</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeAcesso</td>
+	<td>mbelo</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr/td[4]</td>
+	<td>Emitir Histórico de Aluno</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//form[@id='formValidarLog']/table/tbody/tr[2]/td[3]</td>
+	<td>Consultado dados do aluno Fulano</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#formValidarLog &gt; input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Matriz Proposta</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=createTASI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=periodosDaMatriz</td>
+	<td>label=Seis</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeDisciplina</td>
+	<td>xpto 1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=siglaDisciplina</td>
+	<td>XPTO1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cargaHoraria</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=creditos</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nomeDisciplina</td>
+	<td>xpto6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=siglaDisciplina</td>
+	<td>XPTO6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=cargaHoraria</td>
+	<td>60</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=creditos</td>
+	<td>60</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=periodo</td>
+	<td>label=Sexto</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=preRequisitos</td>
+	<td>label=XPTO1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Matriz Curricular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Início</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Imprimir Matriz</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@value='Imprimir'])[2]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

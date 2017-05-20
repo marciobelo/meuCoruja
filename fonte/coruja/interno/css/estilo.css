@@ -1,0 +1,210 @@
+.destaqueGrid {
+	FONT-WEIGHT: bold; COLOR: #ff0000
+}
+.inputMult1 {
+	FONT-SIZE: 12px; WIDTH: 300px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.linkMiolo {
+	FONT-SIZE: 12px; COLOR: #0000aa; FONT-FAMILY: Arial; TEXT-DECORATION: none
+}
+.linkMiolo:hover {
+	COLOR: #0000aa; TEXT-DECORATION: underline
+}
+.linkMioloNegrito {
+	FONT-WEIGHT: bold; COLOR: #0000aa; TEXT-DECORATION: none
+}
+.linkMioloNegrito:hover {
+	FONT-WEIGHT: bold; COLOR: #0000aa; TEXT-DECORATION: underline
+}
+.tabelaDentroForm {
+	BACKGROUND-COLOR: #cccccc
+}
+.trDentroForm {
+	BACKGROUND-COLOR: #ffffec
+}
+.tabelaDentroForm {
+	BACKGROUND-COLOR: #cccccc
+}
+.inputTextDisabled {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; COLOR: #666666; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #fffff5
+}
+.linkNoAzul {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.linkNoAzul:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline
+}
+.inputTextArea {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; COLOR: #000000; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.inputSelect {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; COLOR: #000000; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.tabelaFormulario {
+	BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #999 1px solid; BACKGROUND-COLOR: #cccccc
+}
+.botaoSemRelevo {
+	BORDER-RIGHT: #eeeeee 1px outset; PADDING-RIGHT: 0px; BORDER-TOP: #eeeeee 1px outset; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #eeeeee 1px outset; CURSOR: pointer; PADDING-TOP: 0px; BORDER-BOTTOM: #eeeeee 1px outset; BACKGROUND-COLOR: #cccccc
+}
+.botaoPraFora {
+	BORDER-RIGHT: #eeeeee 1px inset; BORDER-TOP: #eeeeee 1px inset; BORDER-LEFT: #eeeeee 1px inset; CURSOR: pointer; BORDER-BOTTOM: #eeeeee 1px inset; BACKGROUND-COLOR: #cccccc
+}
+.botaoPraDentro {
+	BORDER-RIGHT: #eeeeee 1px inset; BORDER-TOP: #eeeeee 1px inset; BORDER-LEFT: #eeeeee 1px inset; CURSOR: pointer; BORDER-BOTTOM: #eeeeee 1px inset; BACKGROUND-COLOR: #ffffcc
+}
+.botaoLabel {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.cabecalho {
+	BORDER-RIGHT-STYLE: groove; BORDER-BOTTOM-STYLE: groove
+}
+.subMenuLink {
+	FONT-SIZE: 12px; CURSOR: pointer; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.caption {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #0000ff
+}
+.label {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.labelDestaque {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #777777; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.labelSemNegrito {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: verdana, Arial, Helvetica, sans-serif
+}
+.labelAviso {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: red; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.inputText {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; COLOR: #000000; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.inputTextFile {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; COLOR: #000000; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.inputBotao {
+	BORDER-RIGHT: #c0c0c0 1px solid; BORDER-TOP: #c0c0c0 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #c0c0c0 1px solid; BORDER-BOTTOM: #c0c0c0 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.inputBotaoHover {
+	BORDER-RIGHT: #ffffec 1px solid; BORDER-TOP: #ffffec 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #ffffec 1px solid; BORDER-BOTTOM: #ffffec 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff0000; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #0000ff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.textoBranco {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.textoTopo {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.menu {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; COLOR: black; PADDING-TOP: 2px; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.menuOver {
+	BORDER-RIGHT: 2px inset; PADDING-RIGHT: 4px; BORDER-TOP: 2px inset; PADDING-LEFT: 4px; FONT-SIZE: 9pt; PADDING-BOTTOM: 2px; VERTICAL-ALIGN: middle; BORDER-LEFT: 2px inset; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: 2px inset; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.gridTabela {
+	BACKGROUND-COLOR: #cccccc
+}
+.gridTitulo {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; COLOR: #000000; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #eeeeee
+}
+.gridLinhaConsultaPar {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #0000ff; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+.gridLinhaConsultaImpar {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #0000ff; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.gridLinhaAtrasoPar {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #cc0000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+.gridLinhaAtrasoImpar {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #cc0000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffec
+}
+.gridLinhaPar {
+	FONT-SIZE: 9pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #fefefe
+}
+.gridLinhaImpar {
+	FONT-SIZE: 9pt; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ece9d8
+}
+.gridover {
+	FONT-SIZE: 9pt; COLOR: #000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #b5ccdf
+}
+.gridLinhaDestaque {
+	FONT-SIZE: 9pt; COLOR: #0000aa; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.gridLinhaSelecionada {
+	FONT-SIZE: 9pt; COLOR: #000; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #b5ccdf
+}
+ht {
+	COLOR: #ffffff; HEIGHT: 1px; BACKGROUND-COLOR: #ffffff
+}
+.auto_complete A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; TEXT-DECORATION: none! important
+}
+.highlight {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BACKGROUND: url(../imagens/bg-h2.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; TEXT-DECORATION: none! important
+}
+.highlight A {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BACKGROUND: url(../imagens/bg-h2.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; TEXT-DECORATION: none! important
+}
+.dropDownList DIV A {
+	PADDING-LEFT: 10px; FONT-SIZE: 11px; COLOR: #3e3e3e; FONT-FAMILY: verdana; TEXT-DECORATION: none
+}
+.dropDownList {
+	BORDER-RIGHT: #c8c8c8 1px solid; BORDER-TOP: #c8c8c8 1px solid; Z-INDEX: 99; LEFT: 0px; FLOAT: left; BORDER-LEFT: #c8c8c8 1px solid; BORDER-BOTTOM: #c8c8c8 1px solid; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #ffffec
+}
+#fader {
+	Z-INDEX: 9999999; FILTER: alpha(opacity=50);
+    -moz-opacity: 0.5; LEFT: 0px; POSITION: absolute; TOP: 0px; BACKGROUND-COLOR: #c8c8c8; opacity: 0.5
+}
+#popUp {
+	BORDER-RIGHT: 3px groove; BORDER-TOP: 3px groove; Z-INDEX: 99999991; LEFT: 50%; BORDER-LEFT: 3px groove; BORDER-BOTTOM: 3px groove; POSITION: absolute; TOP: 50%; BACKGROUND-COLOR: white
+}
+#popUp .topoJanela {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; HEIGHT: 25px; BACKGROUND-COLOR: #0000ff
+}
+#popUp .titulo {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; FLOAT: left; PADDING-BOTTOM: 2px; COLOR: #ffffff; PADDING-TOP: 2px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+#popUp .btnFechar {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; DISPLAY: block; FLOAT: right; BORDER-LEFT: black 1px solid; WIDTH: 20px; CURSOR: pointer; BORDER-BOTTOM: black 1px solid; HEIGHT: 20px; BACKGROUND-COLOR: #ff9d9d; TEXT-ALIGN: center
+}
+#popUp .btnFechar:hover {
+	BACKGROUND-COLOR: #ff2929
+}
+.selected {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; BACKGROUND: url(../imagens/bg-h2.jpg); PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; TEXT-DECORATION: none! important
+}
+.autoComplete UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; CURSOR: pointer; COLOR: black; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; BACKGROUND-COLOR: #ffffec; TEXT-DECORATION: none! important
+}
+.autoComplete UL LI {
+	PADDING-LEFT: 10px
+}
+.autoComplete {
+	BORDER-RIGHT: #888 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #888 1px solid; PADDING-LEFT: 0px; FONT-SIZE: 11px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #888 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #888 1px solid; BACKGROUND-COLOR: white
+}
+.detalheHint {
+	BORDER-RIGHT: #ff8888 1px solid; BORDER-TOP: #ff8888 1px solid; BORDER-LEFT: #ff8888 1px solid; BORDER-BOTTOM: #ff8888 1px solid; FONT-FAMILY: Arial, Helvetica, sans-serif; POSITION: absolute
+}
+.detalheHint .cabecalho {
+	FONT-SIZE: 12px; BACKGROUND: #ff8888; COLOR: #ffffff
+}
+.detalheHint .texto {
+	FONT-SIZE: 12px; BACKGROUND: #fff1f1
+}
+LABEL.Hint {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; CURSOR: pointer; COLOR: #ff0000; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.frm1					{border:1px solid #666666;background:#FFFFFF;font-family:Verdana,Arial,Helvetica;font-size:9px}
+.frm2					{border:1px solid #FF8800;background:#FFFFFF;font-family:Verdana,Arial,Helvetica;font-size:9px}
+.frm3					{border:1px solid #FFFFFF;background:#FFFFFF;font-family:Verdana,Arial,Helvetica;font-size:9px;color:#666666}
+
+.blur {
+	filter:Blur(Direction=45, add=0, Strength=5);
+	width: 100%;
+}

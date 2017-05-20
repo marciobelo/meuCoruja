@@ -1,0 +1,44 @@
+delimiter |
+
+DROP PROCEDURE IF EXISTS desliga;
+|
+
+CREATE PROCEDURE `desliga`()
+begin
+	declare matricula VARCHAR(15);
+	declare fim INT default FALSE;
+	declare CUR_A_DESLIGAR cursor for
+		select matriculaAluno from MatriculaAluno
+		where idPeriodoLetivo in
+		(
+			select idPeriodoLetivo from PeriodoLetivo
+			where siglaCurso='TASI'
+			and siglaPeriodoLetivo <= '2014.2'
+		)
+		and siglaCurso='TASI'
+		and situacaoMatricula='EVADIDO';
+	declare continue handler for not found set fim = TRUE;
+
+	open CUR_A_DESLIGAR;
+	repete: loop
+		fetch CUR_A_DESLIGAR into matricula;
+		if fim then
+			leave REPETE;
+		end if;
+        
+        insert into SituacaoMatriculaHistorico
+        (`matriculaAluno`, `dataHistorico`, `situacaoMatricula`, `texto`)
+        values ( matricula, CURRENT_TIMESTAMP, 'DESLIGADO', 'Não renovação de matrícula');
+
+        update MatriculaAluno set situacaoMatricula='DESLIGADO'
+        where `matriculaAluno`=matricula;
+
+	end loop;
+	close CUR_A_DESLIGAR;
+		
+end
+|
+call desliga;
+|
+DROP PROCEDURE desliga;
+|
