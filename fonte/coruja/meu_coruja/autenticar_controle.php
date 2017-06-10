@@ -24,4 +24,3 @@ catch (Exception $ex)
     exit;
 }
 http_response_code( 401 );
-
