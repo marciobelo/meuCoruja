@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Boletim</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/tabela.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 
@@ -32,7 +33,7 @@
 		      <td data-label="AVF">6.0</td>
 		      <td data-label="Média Final">8.0</td>
 		      <td data-label="Professor">Leonardo</td>
-		      <td data-label="Faltas">10/30</td>
+		      <td data-label="Faltas">10/30<input type="image" src="img/information-circular-button.png" data-toggle="modal" data-target="#myModal"></td>
 		    </tr>
 		    <tr>
 		      <td data-label="Disciplina">ALG</td>
@@ -42,7 +43,7 @@
 		      <td data-label="AVF">6.0</td>
 		      <td data-label="Média Final">8.0</td>
 		      <td data-label="Professor">Bispo</td>
-		      <td data-label="Faltas">10/30</td>
+		      <td data-label="Faltas">10/30<input type="image" src="img/information-circular-button.png" data-toggle="modal" data-target="#myModal"></td>
 		    </tr>
 		    <tr>
 		      <td data-label="Disciplina">RD1</td>
@@ -52,7 +53,7 @@
 		      <td data-label="AVF">6.0</td>
 		      <td data-label="Média Final">8.0</td>
 		      <td data-label="Professor">M. Cláudia</td>
-		      <td data-label="Faltas">10/30</td>
+		      <td data-label="Faltas">10/30<input type="image" src="img/information-circular-button.png" data-toggle="modal" data-target="#myModal"></td>
 		    </tr>
 		    <tr>
 		      <td data-label="Disciplina">AC1</td>
@@ -62,10 +63,52 @@
 		      <td data-label="AVF">6.0</td>
 		      <td data-label="Média Final">8.0</td>
 		      <td data-label="Professor">Massillon</td>
-		      <td data-label="Faltas">10/30</td>
+		      <td data-label="Faltas">10/30<input type="image" src="img/information-circular-button.png" data-toggle="modal" data-target="#myModal"></td>
 		    </tr>
 		   </tbody>
 		</table>
 	</div>
+	<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Detalhamento de faltas</h4>
+				  </div>
+				  <div class="modal-body">
+					<table>
+						<thead>
+							<tr>
+							  <th>Data</th>
+							  <th>Quantidade</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>03/04/17</td>
+								<td>3</td>
+							</tr>
+							<tr>
+								<td>15/05/17</td>
+								<td>6</td>
+							</tr>
+							<tr>
+								<td>17/05/17</td>
+								<td>3</td>
+							</tr>
+
+						</tbody>
+					</table>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				  </div>
+				</div>
+
+		  </div>
+		</div>
 </body>
 </html>
