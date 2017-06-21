@@ -10,8 +10,8 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<?php include 'sidebar.html'; ?>
-<div class="site-wrap">
+	<?php include "sidebar.php"; ?>
+	<div class="site-wrap">
 			<h1 class="titulo-pagina">Histórico</h1>
 		<h2 class="cr">CR: 8.5</h2>
 		<ul class="accordion css-accordion">
@@ -69,4 +69,7 @@
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		</ul>
-</div>
+	</div>
+</body>
+</html>
+	

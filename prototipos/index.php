@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<?php include 'sidebar.html'; ?>
+<?php include "sidebar.php"; ?>
 	<div class="site-wrap">
 	<h1 class="titulo-pagina">Boletim</h1>
 		<table>
