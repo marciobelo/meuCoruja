@@ -10,7 +10,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<?php include "sidebar.php"; ?>
+	<?php include "sidebar.html"; ?>
 	<div class="site-wrap">
 			<h1 class="titulo-pagina">Histórico</h1>
 		<h2 class="cr">CR: 8.5</h2>
