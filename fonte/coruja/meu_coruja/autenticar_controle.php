@@ -9,7 +9,7 @@ $senha = filter_input( INPUT_GET, "senha");
 session_start();
 try
 {
-    Usuario::autenticar($nomeAcesso, $senha, "PROFESSOR");
+    Usuario::autenticar($nomeAcesso, $senha, "ALUNO");
     if( isset( $_SESSION["usuario"]) ) 
     {
         $usuario = $_SESSION["usuario"];

@@ -25,13 +25,17 @@
 					document.getElementById("avf").innerHTML = boletim.disciplinas[0].avf;
 					document.getElementById("mediaFinal").innerHTML = boletim.disciplinas[0].mediaFinal;
 					document.getElementById("professor").innerHTML = boletim.disciplinas[0].professor;
-                    document.getElementById("descricaoDisciplina").innerHTML = boletim.disciplinas[0].descricaoDisciplina;
 					document.getElementById("faltas").innerHTML = boletim.disciplinas[0].faltas;
 					document.getElementById("faltasMax").innerHTML=boletim.disciplinas[0].faltasMax;
+					
+									
 				}
 			};
+			
+			
 			xmlhttp.open("GET", "endpoint_boletim.php", true);
 			xmlhttp.send();
+			
 	</script>
 	
 	<div class="site-wrap">
@@ -52,7 +56,7 @@
 		  </thead>
 		  <tbody>
 		  	<tr>
-		      <td data-label="Disciplina"><span id="nomeDisciplina" data-tooltip="descricaoDisciplina"></td>
+		      <td data-label="Disciplina"><span id="nomeDisciplina"></td>
 		      <td data-label="AV1"> <span id="av1"></td>
 		      <td data-label="AV2">  <span id="av2"> </td>
 		      <td data-label="Média">  <span id="media"> </td>

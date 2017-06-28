@@ -1,6 +1,16 @@
 <?php
+$BASE_DIR = __DIR__ . "/../fonte/coruja";
+require_once("$BASE_DIR/config.php");
+require_once("$BASE_DIR/meu_coruja/valida_sessao.php");
+require_once("$BASE_DIR/classes/Aluno.php");
+
+$usuario = $_SESSION["usuario"];
+$idPessoa = $usuario->getIdPessoa();
+
+$aluno = Aluno::getAlunoByIdPessoa( $idPessoa);
+
 $dadosUsuario= new stdClass();
-$dadosUsuario->nome = "Um nome Qualquer"; //Pegar nome do usuário logado: SELECT nome FROM usuario='?'
+$dadosUsuario->nome = $aluno->getNome();
 $dadosUsuario->curso = "Um Curso Qualquer";
 $dadosUsuario->matricula = "123456789";
 
