@@ -29,27 +29,27 @@
 			  	</thead>
 				<tbody>
 		  			<tr>
-		      			<td data-label="Disciplina">AL1</td>
+                        <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Nota">6.0</td>
 		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">AC1</td>
+                        <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 1">AC1</span></td>
 		      			<td data-label="Nota">3.0</td>
 		      			<td data-label="Situação">Reprovado por Nota</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">ALG</td>
+                        <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
 		      			<td data-label="Nota">7.0</td>
 		      			<td data-label="Situação">Reprovado por Falta</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">RD1</td>
+                        <td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</span></td>
 		      			<td data-label="Nota">8.0</td>
 		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">MAT</td>
+                        <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
 		      			<td data-label="Nota">9.0</td>
 		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>

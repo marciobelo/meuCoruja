@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6a3c0c8a-3d55-488d-a814-cc129bfe2d32" name="vertrigo" url="http://localhost:8080">
+        <fileTransfer port="0" mountedRoot="C:\Program Files (x86)\VertrigoServ\Apache\htdocs" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
