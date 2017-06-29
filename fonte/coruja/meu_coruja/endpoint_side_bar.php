@@ -1,5 +1,5 @@
 <?php
-$BASE_DIR = __DIR__ . "/../fonte/coruja";
+$BASE_DIR = __DIR__ . "/..";
 require_once("$BASE_DIR/config.php");
 require_once("$BASE_DIR/meu_coruja/valida_sessao.php");
 require_once("$BASE_DIR/classes/Aluno.php");

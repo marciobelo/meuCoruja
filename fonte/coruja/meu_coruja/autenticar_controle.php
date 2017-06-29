@@ -2,7 +2,7 @@
 $BASE_DIR = __DIR__ . "/..";
 require_once("$BASE_DIR/config.php");
 require_once("$BASE_DIR/classes/Usuario.php");
-
+echo "$BASE_DIR/classes/Usuario.php";
 $nomeAcesso = filter_input(INPUT_GET, "nomeAcesso");
 $senha = filter_input( INPUT_GET, "senha");
 
