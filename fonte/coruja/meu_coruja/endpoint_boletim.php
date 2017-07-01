@@ -42,7 +42,7 @@ $boletim = array(
 		'mediaFinal'=>8.0,
 		'professor'=>'Ferlin',
 		'descricaoDisciplina'=>'Redes 1',
-		'faltas'=>5,
+		'faltas'=>13,
 		'faltasMax'=>30
                 )
 	);

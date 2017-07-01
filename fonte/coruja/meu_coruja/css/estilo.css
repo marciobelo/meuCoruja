@@ -301,8 +301,9 @@ div#myModal h4{
 	text-align: center;
 }
 
-
-
 input[type:"image"]{
 	
+}
+.informacao{
+    margin-left: 10px;
 }
