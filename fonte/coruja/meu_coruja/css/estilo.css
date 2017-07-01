@@ -74,6 +74,12 @@
   background-size: 200%;
 }
 
+@media screen and (max-width: 600px) {
+	.site-wrap{
+		padding:1em;
+	}
+}
+
 /* Nav Trigger */
 .nav-trigger {
   /* critical styles - hide the checkbox input */
@@ -144,7 +150,7 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
   padding: 0 10px;
   margin: 0 auto;
   list-style: none outside;
-  max-width: 85%;
+  max-width: 100%;
 }
 
 .accordion > * + * { border-top: 1px solid white; }
