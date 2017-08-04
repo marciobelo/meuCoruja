@@ -55,7 +55,6 @@
     <div class="site-wrap">
 	
 	<h1>Boletim</h1>
-        <a href="sair.php">Sair</a>
             <table id="boletim">
                 <thead>
 		    <tr>

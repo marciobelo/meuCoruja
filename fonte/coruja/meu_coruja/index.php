@@ -1,5 +1,7 @@
-<?php if (isset($_SESSION['usuario'])) {
-    header('location:endpoint_side_bar.php');
+<?php
+	session_start();
+	if (isset($_SESSION['usuario'])) {
+		header('location:boletim.php');
 }
 ?>
 <!DOCTYPE html>

@@ -7,7 +7,7 @@ class BD {
      */
     public static function conectar() 
     {
-        $con=mysql_connect( Config::BANCO_SERVIDOR . ":" . Config::BANCO_PORTA, 
+        $con=@mysql_connect( Config::BANCO_SERVIDOR . ":" . Config::BANCO_PORTA, 
                 Config::BANCO_USUARIO, Config::BANCO_SENHA);
         $db=mysql_select_db( Config::BANCO_NOME, $con);
         if($con) 
