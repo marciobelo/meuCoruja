@@ -15,7 +15,10 @@
             $usuario->setValidouLog(true);
             //echo 'Usuario autenticado com sucesso';
             http_response_code( 200 );
-            header('location:boletim.php');
+            header('location:boletim.html');
+            exit;
+        }else{
+            return http_response_code(401);
             exit;
         }
     } 

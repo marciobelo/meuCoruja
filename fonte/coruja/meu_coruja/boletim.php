@@ -3,12 +3,14 @@
     if (!isset($_SESSION['usuario'])) {
         header('location:index.php');
     }
+    header( "Content-Type: text/html; charset=ISO-8859-1");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Boletim</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,27 +27,53 @@
                         boletim = JSON.parse(this.responseText);
                         var tr;
                         for (var i = 0; i < boletim.length; i++) {
-                            tr = $('<tr/>');
+                            /*tr = $('<tr/>');
                             tr.append("<td data-label='Disciplina'>" + boletim[i].nome + "</td>");
                             tr.append("<td data-label='AV1'>" + boletim[i].av1 + "</td>");
                             tr.append("<td data-label='AV2'>" + boletim[i].av2 + "</td>");
-                            tr.append("<td data-label='MÃ©dia'>" + boletim[i].media + "</td>");
+                            tr.append("<td data-label='Média'>" + boletim[i].media + "</td>");
                             tr.append("<td data-label='AVF'>" + boletim[i].avf + "</td>");
-                            tr.append("<td data-label='MÃ©dia Final'>" + boletim[i].mediaFinal + "</td>");
+                            tr.append("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>");
                             tr.append("<td data-label='Professor'>" + boletim[i].professor + "</td>");
-                            tr.append("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><input type='image'  class='informacao' src='img/information-circular-button.png' data-toggle='modal' data-target='#myModal'></td>");
+                            tr.append("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>");
 
                             $("#boletim").append(tr);
+*/
+                            $("#boletim").find('tbody')
+                                .append(($('<tr>'))
+                                    .append($("<td data-label='Disciplina'>" + boletim[i].nome + "</td>"))
+                                    .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
+                                    .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
+                                    .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
+                                    .append($("<td data-label='AVF'>" + boletim[i].avf + "</td>"))
+                                    .append($("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>"))
+                                    .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
+                                    .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
+                            )
+                                
+                            
+                                        
+                            
+                            
                         }                                              
                     }
                 };
 
                 xmlhttp.open("GET", "endpoint_boletim.php", true);
                 xmlhttp.send();
-
+                    if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("lastname", "Smith");
+    // Retrieve
+    //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
             });
        
         </script>
+        
+        
 
 </head>
 <body>
@@ -62,9 +90,9 @@
                         
                         <th>AV1</th>
                         <th>AV2</th>
-                        <th>MÃ©dia</th>
+                        <th>Média</th>
                         <th>AVF</th>
-                        <th>MÃ©dia Final</th>
+                        <th>Média Final</th>
                         <th>Professor</th>
                         <th>Faltas</th>
 		    </tr>

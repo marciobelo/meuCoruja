@@ -9,7 +9,13 @@
     
     $usuario = $_SESSION["usuario"];
     $idPessoa = $usuario->getIdPessoa();
-            
+    
+    var_dump(Curso::obterCurso("TASI"));
+    $curso = Curso::obterCurso("TASI");
+    $ts = TempoSemanal::obterTempoSemanalOrdenado($curso);
+    var_dump($ts);
+    
+   /*         
     $numMatriculaAluno = $usuario->getNomeAcesso();
     $matriculaAluno = MatriculaAluno::obterMatriculaAluno( $numMatriculaAluno);
     $mc = $matriculaAluno->getMatrizCurricular();
@@ -26,7 +32,7 @@
     //("Não existem período letivos disponíveis na data atual do curso)
     //$periodoLetivoAtual = PeriodoLetivo::obterPeriodoLetivoAtual($curso->getSiglaCurso());
     
-    
+    */
     
     //var_dump(Turma::obterTurmasLiberadasOuConfirmadas($curso->getSiglaCurso(), "20"));
     

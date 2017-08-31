@@ -3,12 +3,13 @@
     if (!isset($_SESSION['usuario'])) {
         header('location:index.php');
     }
+    header( "Content-Type: text/html; charset=ISO-8859-1");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Minha Grade HorÃ¡ria</title>
+	<title>Minha Grade Horária</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/tabela.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
@@ -20,7 +21,7 @@
 <body>
 	<?php include 'sidebar.html'; ?>
 	<div class="site-wrap">
-		<h1 class="titulo-pagina">Grade HorÃ¡ria</h1>
+		<h1 class="titulo-pagina">Grade Horária</h1>
 		<ul class="accordion css-accordion">
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item1" />
@@ -29,7 +30,7 @@
 		    <table>
 		  		<thead>
 				    <tr>
-				      <th>HorÃ¡rio</th>
+				      <th>Horário</th>
 				      <th>Disciplina</th>
 				      <th>Sala</th>
 				      <th>Professor</th>
@@ -37,28 +38,28 @@
 			  	</thead>
 				<tbody>
 		  			<tr>
-		      			<td data-label="HorÃ¡rio">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
+		      			<td data-label="Horário">7:00</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">ClÃ¡udia Ferlin</td>
+		      			<td data-label="Professor">Cláudia Ferlin</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="HorÃ¡rio">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
+		      			<td data-label="Horário">7:50</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">ClÃ¡udia Ferlin</td>
+		      			<td data-label="Professor">Cláudia Ferlin</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="HorÃ¡rio">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
+		      			<td data-label="Horário">8:40</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">ClÃ¡udia Ferlin</td>
+		      			<td data-label="Professor">Cláudia Ferlin</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="HorÃ¡rio">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
+		      			<td data-label="Horário">9:30</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">ClÃ¡udia Ferlin</td>
+		      			<td data-label="Professor">Cláudia Ferlin</td>
 		      		</tr>
 		      	</tbody>
 		    </table>
@@ -67,7 +68,7 @@
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">TerÃ§a<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item2" class="accordion-item-hd">Terça<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		  <li class="accordion-item">
@@ -87,7 +88,7 @@
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">SÃ¡bado<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item3" class="accordion-item-hd">Sábado<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		</ul>

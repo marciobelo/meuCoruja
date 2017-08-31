@@ -31,7 +31,7 @@
 }
 
 .span-info-usuario{
-	display: block;
+  display: block;
   padding: 0.5em;
   color: white;
   font-size: 0.8em;
@@ -67,6 +67,7 @@
   bottom: 100%;
   left: 0;
   z-index: 1;
+  
   
   /* non-critical apperance styles */
   padding: 4em;

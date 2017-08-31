@@ -1,24 +1,10 @@
-	
-
-        <ul class="navigation">
-	<li class="nav-item">
-		<img class="img-circle" src="img/alunoTeste.png">
-		<span class="span-info-usuario" id="nomeUsuario"></span>
-		<span class="span-info-usuario" id="curso" ></span>
-		<span class="span-info-usuario" id="matricula"></span>
-		</li>
-	<li class="nav-item"><a href="boletim.php">Boletim</a></li>
-	<li class="nav-item"><a href="grade.php">Minha Grade</a></li>
-	<li class="nav-item"><a href="historico.php">HistÃ³rico</a></li>
-	<li class="nav-item"><a href="pendencias.php">PendÃªncias</a></li>
-        <li class="nav-item"><a href="sair.php">Sair</a></li>
-</ul>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger"></label>
-
-		
-		<script>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <script>
+                    $(document).ready(function(){
+                        $("a[href*='" + location.pathname + "']").addClass("active");
+                    });
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -26,10 +12,45 @@
 					document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
 					document.getElementById("curso").innerHTML = dadosUsuario.curso;
 					document.getElementById("matricula").innerHTML = dadosUsuario.matricula;
+                                        localStorage.setItem("nomeUsuario",dadosUsuario.nome);
 				}
 			};
 			xmlhttp.open("GET", "endpoint_side_bar.php", true);
 			xmlhttp.send();
-		</script>
+                        
+	</script>
+        <script>   
+            function mostrarAtivo(tag){
+              var tag_li = document.getElementById('teste');
+              var tag_a = tag_li.getElementsByTagName('a');
+              for (i=0; i<tag_a.length; i++ ){
+                tag_a[i].style.backgroundColor = "";
+                tag_a[i].style.color = "";
+              }
+              tag.style.backgroundColor = "#ff0000"; // altera o fundo
+              tag.style.color = "#ffffff"; // altera a cor
+            }
+        </script>
+    </head>
+    <ul class="navigation" id="teste">
+	<li class="nav-item">
+		<img class="img-circle" src="img/alunoTeste.png">
+		<span class="span-info-usuario" id="nomeUsuario"></span>
+		<span class="span-info-usuario" id="curso" ></span>
+		<span class="span-info-usuario" id="matricula"></span>
+	</li>
+	<li class="nav-item"><a href="boletim.html" onclick="mostrarAtivo(this);">Boletim</a></li>
+	<li class="nav-item"><a href="grade.php">Minha Grade</a></li>
+	<li class="nav-item"><a href="historico.php">Histórico</a></li>
+        <li class="nav-item"><a class="current" href="pendencias.php">Pendências</a></li>
+        <li class="nav-item"><a href="sair.php">Sair</a></li>
+    </ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
 		
+		
+                
+</html>
 		
