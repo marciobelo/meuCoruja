@@ -1,22 +1,24 @@
-<?php
-	session_start();
-	if (isset($_SESSION['usuario'])) {
-		header('location:boletim.php');
-                
-}
-?>
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-    <title>Meu Coruja</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-        
-
-</head>
-<body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <title>Meu Coruja</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <script>
+            var xmlhttp = new XMLHttpRequest();     
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location = "boletim.html";
+                }
+            }
+            xmlhttp.open("GET", "autenticar_controle.php", true);
+            xmlhttp.send();
+        </script>
+    </head>
+    <body>
 	
 	<div class="wrapper">
             <div id="result"></div>
@@ -29,15 +31,15 @@
 		</form>
 	</div>
 	<script>
-// Check browser support
-if (typeof(Storage) !== "undefined") {
-    // Store
-    //localStorage.setItem("lastname", "Smith");
-    // Retrieve
-    document.getElementById("result").innerHTML = localStorage.getItem("nomeUsuario");
-} else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
-</script>
-</body>
+            // Check browser support
+            if (typeof(Storage) !== "undefined") {
+                // Store
+                //localStorage.setItem("lastname", "Smith");
+                // Retrieve
+                document.getElementById("result").innerHTML = localStorage.getItem("nomeUsuario");
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+        </script>
+    </body>
 </html>

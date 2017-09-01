@@ -9,7 +9,7 @@
     try
     {
         Usuario::autenticar($nomeAcesso, $senha, "ALUNO");
-        if( isset( $_SESSION["usuario"]) ) 
+        if( isset($_SESSION["usuario"]) ) 
         {
             $usuario = $_SESSION["usuario"];
             $usuario->setValidouLog(true);
@@ -24,12 +24,12 @@
     } 
     catch (Exception $ex) 
     {
-        http_response_code( 401 );
+        http_response_code( 404 );
         echo 'erro';
         exit;
     }
-    http_response_code( 401 );
-    echo 'Usuario ou senha incorretos';
-    header("Refresh:2; url=index.php");
+    //http_response_code( 401 );
+    //echo 'Usuario ou senha incorretos';
+    //header("Refresh:2; url=index.html");
 ?>
 

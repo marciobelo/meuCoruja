@@ -12,33 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
         
         <script>
-            $(document).ready(function(){
-                $.ajax({url: "endpoint_boletim.php",
-                    success: function(result){
-                        boletim = JSON.parse(result);
-                        for (var i = 0; i < boletim.length; i++) {
-                             $("#boletim").find('tbody')
-                                 .append(($('<tr>'))
-                                     .append($("<td data-label='Disciplina'>" + boletim[i].nome + "</td>"))
-                                     .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
-                                     .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
-                                     .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
-                                     .append($("<td data-label='AVF'>" + boletim[i].avf + "</td>"))
-                                     .append($("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>"))
-                                     .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
-                                     .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
-                                );
-                        } 
-                },error: function(){
-                    //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
-                    if(localStorage.nomeUsuario !== null){
-                        $("#div1").html(localStorage.curso,localStorage.curso,localStorage.matricula);
-                    }else{
-                        $("#div1").html("Erro ao obter dados do localStorage");
-                    }
-                }});
-            }); 
-            
+        
             $(document).ready(function (){ 
                 jQuery(document).ready(adicionarSideBar);
 
@@ -47,6 +21,32 @@
                         $('body').prepend(sidebar);
                     });
                 }
+
+                $(document).ready(function(){
+                    $.ajax({url: "endpoint_boletim21.php",
+                        success: function(result){
+                            boletim = JSON.parse(result);
+                            for (var i = 0; i < boletim.length; i++) {
+                                 $("#boletim").find('tbody')
+                                     .append(($('<tr>'))
+                                         .append($("<td data-label='Disciplina'>" + boletim[i].nome + "</td>"))
+                                         .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
+                                         .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
+                                         .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
+                                         .append($("<td data-label='AVF'>" + boletim[i].avf + "</td>"))
+                                         .append($("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>"))
+                                         .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
+                                         .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
+                                    )
+                            } 
+                    },error: function(){
+                        $("#div1").html(localStorage.nomeUsuario,localStorage.curso,localStorage.matricula);
+                    }});
+                })
+                
+                
+                
+                    
             });
        
         </script>
@@ -59,7 +59,7 @@
     <div class="site-wrap">
         
 	<h1>Boletim</h1>
-            <div id="div1"><h2></h2></div>
+        <div id="div1"><h2>Requisição Bem sucedida</h2></div>
             <table id="boletim">
                 <thead>
 		    <tr>
