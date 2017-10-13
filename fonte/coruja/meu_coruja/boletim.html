@@ -14,12 +14,13 @@
         <script>
             $(document).ready(function(){
                 $.ajax({url: "endpoint_boletim.php",
-                    success: function(result){
+                    success: function(result,status,jqXHR){
+                        console.log(jqXHR.status);
                         boletim = JSON.parse(result);
                         for (var i = 0; i < boletim.length; i++) {
                              $("#boletim").find('tbody')
                                  .append(($('<tr>'))
-                                     .append($("<td data-label='Disciplina'>" + boletim[i].nome + "</td>"))
+                                     .append($("<td data-label='Disciplina' id='linha"+[i]+".nome'>" + boletim[i].nome + "</td>"))
                                      .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
                                      .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
                                      .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
@@ -28,13 +29,28 @@
                                      .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
                                      .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                                 );
+                            localStorage.setItem("linha["+[i]+"].nome",boletim[i].nome);
+                            localStorage.setItem("linha["+[i]+"].av1",boletim[i].av1);
+                            localStorage.setItem("linha["+[i]+"].av2",boletim[i].av2);
+                            localStorage.setItem("linha["+[i]+"].media",boletim[i].media);
+                            localStorage.setItem("linha["+[i]+"].avf",boletim[i].avf);
+                            localStorage.setItem("linha["+[i]+"].mediaFinal",boletim[i].mediaFinal);
+                            localStorage.setItem("linha["+[i]+"].professor",boletim[i].professor);
+                            localStorage.setItem("linha["+[i]+"].faltas",boletim[i].faltas);
+                            localStorage.setItem("meuCoruja","{nome: 'Eduardo'}");
                         } 
-                },error: function(){
-                    //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
-                    if(localStorage.nomeUsuario !== null){
-                        $("#div1").html(localStorage.curso,localStorage.curso,localStorage.matricula);
+                },error: function(jqXHR){
+                    console.log(jqXHR.status);
+                    if(jqXHR.status === 401){
+                        window.open("index.html","_self");
+                    }else if(localStorage.nomeUsuario !== null){
+                        for(var i=0; i<localStorage.length; i++){
+                            $("#linha["+[i]+"].nome").html(localStorage.getItem("linha["+[i]+"].nome"));
+                            //console.log("#linha"+[i]+".nome");
+                            //console.log(localStorage.getItem("linha[0].nome"));
+                        }
                     }else{
-                        $("#div1").html("Erro ao obter dados do localStorage");
+                        console.log("Erro ao obter dados do localStorage");
                     }
                 }});
             }); 

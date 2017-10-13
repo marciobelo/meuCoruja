@@ -4,7 +4,8 @@
         <script>
             $(document).ready(function(){
                     $.ajax({url: "endpoint_side_bar.php",
-                        success: function(result){
+                        success: function(result,status,jqXHR){
+                            console.log(jqXHR.status);
                             dadosUsuario = JSON.parse(result);
                             document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
                             document.getElementById("curso").innerHTML = dadosUsuario.curso;
@@ -12,9 +13,13 @@
                             localStorage.setItem("nomeUsuario",dadosUsuario.nome);
                             localStorage.setItem("curso",dadosUsuario.curso);
                             localStorage.setItem("matricula",dadosUsuario.matricula);
-                    },error: function(){
+                    },error: function(jqXHR){
+                        console.log(jqXHR.status);
+                        if(jqXHR.status === 401){
+                            window.open("index.html","_self");
+                        }
                         //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
-                        if(localStorage.nomeUsuario !== null){
+                        else if(localStorage.nomeUsuario !== null){
                             $("#nomeUsuario").html(localStorage.nomeUsuario);
                             $("#curso").html(localStorage.curso);
                             $("#matricula").html(localStorage.matricula);
