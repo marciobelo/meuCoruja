@@ -3,12 +3,13 @@
     if (!isset($_SESSION['usuario'])) {
         header('location:index.php');
     }
+    header( "Content-Type: text/html; charset=ISO-8859-1");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Histórico</title>
+	<title>Hist�rico</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/tabela.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
@@ -16,10 +17,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="link3">
 	<?php include "sidebar.html"; ?>
 	<div class="site-wrap">
-			<h1 class="titulo-pagina">Histórico</h1>
+			<h1 class="titulo-pagina">Hist�rico</h1>
 		<h2 class="cr">CR: 8.5</h2>
 		<ul class="accordion css-accordion">
 		  <li class="accordion-item">
@@ -31,7 +32,7 @@
 				    <tr>
 				      <th>Disciplina</th>
 				      <th>Nota</th>
-				      <th>Situação</th>
+				      <th>Situa��o</th>
 				    </tr>
 			  	</thead>
 				<tbody>
@@ -46,7 +47,7 @@
 		      			<td data-label="Situação">Reprovado por Nota</td>
 		      		</tr>
 		      		<tr>
-                        <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
+                        <td data-label="Disciplina"><span data-tooltip="�lgebra Linear">ALG</span></td>
 		      			<td data-label="Nota">7.0</td>
 		      			<td data-label="Situação">Reprovado por Falta</td>
 		      		</tr>
@@ -56,7 +57,7 @@
 		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      		<tr>
-                        <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
+                        <td data-label="Disciplina"><span data-tooltip="Matem�tica">MAT</span></td>
 		      			<td data-label="Nota">9.0</td>
 		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>

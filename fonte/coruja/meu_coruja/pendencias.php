@@ -3,6 +3,7 @@
     if (!isset($_SESSION['usuario'])) {
         header('location:index.php');
     }
+    header( "Content-Type: text/html; charset=ISO-8859-1");
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,21 +18,21 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body class="link4">
 	<?php include 'sidebar.html'; ?>
 	<div class="site-wrap">
 
-		<h1 class="titulo-pagina">PendÃªncias</h1>
+		<h1 class="titulo-pagina">Pendências</h1>
 		<ul class="accordion css-accordion">
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item1" />
-		    <label for="item1" class="accordion-item-hd">1Âº PerÃ­odo<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item1" class="accordion-item-hd">1º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd">
 		    <table>
 		  		<thead>
 				    <tr>
 				      <th>Disciplina</th>
-				      <th>Carga HorÃ¡ria</th>
+				      <th>Carga Horária</th>
 				    </tr>
 			  	</thead>
 				<tbody>
@@ -54,22 +55,22 @@
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">2Âº PerÃ­odo<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item2" class="accordion-item-hd">2º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">3Âº PerÃ­odo<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item3" class="accordion-item-hd">3º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">4Âº PerÃ­odo<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item2" class="accordion-item-hd">4º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">5Âº PerÃ­odo<span class="accordion-item-hd-cta">&#9650;</span></label>
+		    <label for="item2" class="accordion-item-hd">5º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
 		    <div class="accordion-item-bd"></div>
 		  </li>
 		</ul>

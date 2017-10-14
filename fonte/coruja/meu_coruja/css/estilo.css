@@ -56,16 +56,19 @@
   background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(75,20,20,0.65) 100%);
 }
 
+
 /* Site Wrapper - Everything that isn't navigation */
 .site-wrap {
   /* Critical position and size styles */
   min-height: 100%;
-  min-width: 100%;
+  min-width: calc(100vw - 200px);
+  
   background-color: white; /* Needs a background or else the nav will show through */
   position: relative;
   top: 0;
   bottom: 100%;
-  left: 0;
+  
+  left: 0px;
   z-index: 1;
   
   
@@ -79,11 +82,14 @@
 	.site-wrap{
 		padding:1em;
 	}
+        
 }
+
 
 /* Nav Trigger */
 .nav-trigger {
   /* critical styles - hide the checkbox input */
+  
   position: absolute;
   clip: rect(0, 0, 0, 0);
 }
@@ -103,22 +109,37 @@ label[for="nav-trigger"] {
 }
 
 /* Make the Magic Happen */
-.nav-trigger + label, .site-wrap {
-  transition: left 0.2s;
+.nav-trigger + label, .site-wrap{
+    transition-duration: 0s;
+    transition-property: none;
 }
 
 .nav-trigger:checked + label {
   left: 215px;
+  
 }
 
 .nav-trigger:checked ~ .site-wrap {
   left: 200px;
+  width: calc(100vw - 200px);
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
 }
 
 body {
 	/* Without this, the body has excess horizontal scroll when the menu is open */
   overflow-x: hidden;
+}
+
+.link1 li#link1,
+.link2 li#link2,
+.link3 li#link3,
+.link4 li#link4
+{
+   background-color:#c74438;
+}
+.link1 li#link1 a:hover
+{
+   color: white !important; 
 }
 
 /* Additional non-critical styles */
