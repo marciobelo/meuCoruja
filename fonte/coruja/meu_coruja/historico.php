@@ -17,7 +17,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body class="link3">
+    <body class="link3">
 	<?php include "sidebar.html"; ?>
 	<div class="site-wrap">
 			<h1 class="titulo-pagina">Histórico</h1>
@@ -78,6 +78,6 @@
 		  </li>
 		</ul>
 	</div>
-</body>
+    </body>
 </html>
 	
