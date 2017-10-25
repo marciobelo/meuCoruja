@@ -37,16 +37,16 @@
 			  	</thead>
 				<tbody>
 		  			<tr>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
-		      			<td data-label="Carga HorÃ¡ria">120 Hrs</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Carga Horária">120 Hrs</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">RD1</td>
-		      			<td data-label="Carga HorÃ¡ria">80 Hrs</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</td>
+		      			<td data-label="Carga Horária">80 Hrs</td>
 		      		</tr>
 		      		<tr>
-		      			<td data-label="Disciplina">ALG</td>
-		      			<td data-label="Carga HorÃ¡ria">100 Hrs</td>
+		      			<td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</td>
+		      			<td data-label="Carga Horária">100 Hrs</td>
 		      		</tr>
 		      	</tbody>
 		    </table>
@@ -56,22 +56,114 @@
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
 		    <label for="item2" class="accordion-item-hd">2º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Carga Horária</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Carga Horária">120 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</td>
+		      			<td data-label="Carga Horária">80 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</td>
+		      			<td data-label="Carga Horária">100 Hrs</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
 		    <label for="item3" class="accordion-item-hd">3º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Carga Horária</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Carga Horária">120 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</td>
+		      			<td data-label="Carga Horária">80 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</td>
+		      			<td data-label="Carga Horária">100 Hrs</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">4º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item4" />
+		    <label for="item4" class="accordion-item-hd">4º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Carga Horária</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Carga Horária">120 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</td>
+		      			<td data-label="Carga Horária">80 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</td>
+		      			<td data-label="Carga Horária">100 Hrs</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">5º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item5" />
+		    <label for="item5" class="accordion-item-hd">5º Período<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Carga Horária</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Carga Horária">120 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</td>
+		      			<td data-label="Carga Horária">80 Hrs</td>
+		      		</tr>
+		      		<tr>
+		      			<td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</td>
+		      			<td data-label="Carga Horária">100 Hrs</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		</ul>
 	</div>

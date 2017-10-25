@@ -37,29 +37,29 @@
 			  	</thead>
 				<tbody>
 		  			<tr>
-                        <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de ProgramaÃ§Ã£o 1">AL1</span></td>
+                        <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
 		      			<td data-label="Nota">6.0</td>
-		      			<td data-label="SituaÃ§Ã£o">Aprovado</td>
+		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      		<tr>
                         <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 1">AC1</span></td>
 		      			<td data-label="Nota">3.0</td>
-		      			<td data-label="SituaÃ§Ã£o">Reprovado por Nota</td>
+		      			<td data-label="Situação">Reprovado por Nota</td>
 		      		</tr>
 		      		<tr>
                         <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
 		      			<td data-label="Nota">7.0</td>
-		      			<td data-label="SituaÃ§Ã£o">Reprovado por Falta</td>
+		      			<td data-label="Situação">Reprovado por Falta</td>
 		      		</tr>
 		      		<tr>
                         <td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</span></td>
 		      			<td data-label="Nota">8.0</td>
-		      			<td data-label="SituaÃ§Ã£o">Aprovado</td>
+		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      		<tr>
                         <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
 		      			<td data-label="Nota">9.0</td>
-		      			<td data-label="SituaÃ§Ã£o">Aprovado</td>
+		      			<td data-label="Situação">Aprovado</td>
 		      		</tr>
 		      	</tbody>
 		    </table>
@@ -69,12 +69,86 @@
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
 		    <label for="item2" class="accordion-item-hd">2016.1<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Nota</th>
+				      <th>Situação</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 2">AL2</span></td>
+		      			<td data-label="Nota">7.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 2">AC2</span></td>
+		      			<td data-label="Nota">3.0</td>
+		      			<td data-label="Situação">Reprovado por Nota</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Estatística">EST</span></td>
+		      			<td data-label="Nota">7.0</td>
+		      			<td data-label="Situação">Reprovado por Falta</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Redes 2">RD2</span></td>
+		      			<td data-label="Nota">8.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
+		      			<td data-label="Nota">9.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		  <li class="accordion-item">
 		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
 		    <label for="item3" class="accordion-item-hd">2015.2<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
+                    <div class="accordion-item-bd">
+                        <table>
+		  		<thead>
+				    <tr>
+				      <th>Disciplina</th>
+				      <th>Nota</th>
+				      <th>Situação</th>
+				    </tr>
+			  	</thead>
+				<tbody>
+		  			<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
+		      			<td data-label="Nota">6.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 1">AC1</span></td>
+		      			<td data-label="Nota">3.0</td>
+		      			<td data-label="Situação">Reprovado por Nota</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
+		      			<td data-label="Nota">7.0</td>
+		      			<td data-label="Situação">Reprovado por Falta</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</span></td>
+		      			<td data-label="Nota">8.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      		<tr>
+                        <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
+		      			<td data-label="Nota">9.0</td>
+		      			<td data-label="Situação">Aprovado</td>
+		      		</tr>
+		      	</tbody>
+		    </table>
+                    </div>
 		  </li>
 		</ul>
 	</div>
