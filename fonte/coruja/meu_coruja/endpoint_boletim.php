@@ -1,53 +1,53 @@
 <?php
-/*{
-	boletim:
-	[
-		{"nomeDisciplina":"AL1", "av1":7, "av2":5, "media":8, "avf":6, "mediaFinal":8, "professor":"Leonardo", "descricaoDisciplina":"Algoritmo e Linguagem de Programação", "faltas":10, "faltasMax":30}
-	]
-}
-*/
+    
+    $BASE_DIR = __DIR__ . "/..";
+    require_once("$BASE_DIR/config.php");
+    require_once("$BASE_DIR/meu_coruja/valida_sessao.php");
+    require_once("$BASE_DIR/classes/MatriculaAluno.php");
+    
+    $usuario = $_SESSION["usuario"];
+    $numMatriculaAluno = $usuario->getNomeAcesso();
+    
+    $ma = MatriculaAluno::obterMatriculaAluno($numMatriculaAluno);
+    
+    $inscricoes = $ma->obterInscricoesCursando();
+    $boletim = array();
+    
+    //var_dump($inscricoes);
+    
+    foreach($inscricoes as $inscricao)
+    {
+        $linha = array();
+        $avaliacoes = array();
+        $dadosUsuario = new stdClass();
+        
+        $dadosUsuario->siglaDisciplina = $inscricao->getTurma()->getSiglaDisciplina();
+        $dadosUsuario->nomeProfessor = $inscricao->getTurma()->getProfessor()->getNome();
+        $dadosUsuario->mediaFinal = $inscricao->getMediaFinal();
+        $dadosUsuario->faltas = $inscricao->getTotalFaltas();
+        $itens = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
+        
+        
+        foreach($itens as $item)
+        {
+            
+            $avaliacao = new stdClass();
+            $avaliacao->nota = $item->getNota();
+            $avaliacao->rotulo = $item->getItemCriterioAvaliacao()->getRotulo();
+            
+            array_push($avaliacoes,$avaliacao);
+        }
+        
+        array_push($linha, $dadosUsuario);
+        array_push($linha, $avaliacoes);
+        
+        
+        array_push($boletim, $linha);
+        
+    }
+    
+    //var_dump($boletim);
 
-
-$boletim = array(
-	array(
-		'nome' => 'AL1',
-		'av1' => 7.0,
-		'av2' => 5.0,
-		'media' =>8.0,
-		'avf' =>6.0,
-		'mediaFinal'=>8.0,
-		'professor'=>'Leonardo',
-		'descricaoDisciplina'=>'Algoritmo e Linguagem de Programação',
-		'faltas'=>10,
-		'faltasMax'=>30
-	),
-		array(
-		'nome' => 'AL2',
-		'av1' => 7.0,
-		'av2' => 4,
-		'media' =>8.5,
-		'avf' =>7,
-		'mediaFinal'=>8.5,
-		'professor'=>'Miguel',
-		'descricaoDisciplina'=>'Algoritmo e Linguagem de Programação 2',
-		'faltas'=>15,
-		'faltasMax'=>30
-	),
-                array(
-                'nome' => 'RD1',
-		'av1' => 6,
-		'av2' => 5.5,
-		'media' =>7,
-		'avf' =>6.75,
-		'mediaFinal'=>8.0,
-		'professor'=>'Ferlin',
-		'descricaoDisciplina'=>'Redes 1',
-		'faltas'=>13,
-		'faltasMax'=>30
-                )
-	);
-	
-$jsonBoletim = json_encode($boletim);
-
-echo $jsonBoletim;
+    $jsonBoletim = json_encode($boletim,JSON_UNESCAPED_UNICODE);
+    echo($jsonBoletim);
 ?>

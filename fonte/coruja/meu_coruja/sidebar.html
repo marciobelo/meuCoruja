@@ -10,9 +10,11 @@
                             document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
                             document.getElementById("curso").innerHTML = dadosUsuario.curso;
                             document.getElementById("matricula").innerHTML = dadosUsuario.matricula;
-                            localStorage.setItem("nomeUsuario",dadosUsuario.nome);
-                            localStorage.setItem("curso",dadosUsuario.curso);
-                            localStorage.setItem("matricula",dadosUsuario.matricula);
+                            var Usuario={};
+                            Usuario.nome = dadosUsuario.nome;
+                            Usuario.curso = dadosUsuario.curso;
+                            Usuario.matricula = dadosUsuario.matricula;
+                            localStorage.setItem("Usuario",JSON.stringify(Usuario));
                     },error: function(jqXHR){
                         console.log(jqXHR.status);
                         if(jqXHR.status === 401){
@@ -56,7 +58,7 @@
 	</li>
 	<li class="nav-item" id="link1"><a href="boletim.html">Boletim</a></li>
 	<li class="nav-item" id="link2"><a href="grade.html">Minha Grade</a></li>
-	<li class="nav-item"><a href="historico.php">Histórico</a></li>
+	<li class="nav-item"><a href="historico.html">Histórico</a></li>
         <li class="nav-item"><a class="current" href="pendencias.php">Pendências</a></li>
         <li class="nav-item"><a href="sair.php">Sair</a></li>
     </ul>

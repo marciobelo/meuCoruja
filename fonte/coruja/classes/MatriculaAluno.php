@@ -793,6 +793,27 @@ class MatriculaAluno
         }
         return $matriculas;
     }
+    
+    
+    public function obterInscricoesCursando()
+    {
+        $inscricoes = array();
+        $query = sprintf("select I.idTurma from Inscricao I "
+                . "where I.matriculaAluno='%s'"
+                . " and I.situacaoInscricao='%s'", 
+                $this->matriculaAluno,
+                Inscricao::CUR);
+        $con = BD::conectar(); 
+        $result = mysql_query($query, $con);
+        while($row = mysql_fetch_array($result, MYSQL_ASSOC)) 
+        {
+            $idTurma = $row['idTurma'];
+            $inscricao = Inscricao::getInscricao($idTurma, $this->matriculaAluno);
+            $inscricoes[] = $inscricao;
+        }
+        return $inscricoes;
+    }
+    
 
     private static function listaMatriculaAluno( $conditionalStatement = '' ) 
     {

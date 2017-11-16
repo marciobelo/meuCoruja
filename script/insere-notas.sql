@@ -1,0 +1,3 @@
+INSERT INTO `coruja`.`itemcriterioavaliacaoinscricaonota` (`idItemCriterioAvaliacao`, `idTurma`, `matriculaAluno`, `nota`, `comentario`, `dataNotificacao`) VALUES ('3', '10', '1125', '7', 'Nota adicionada por Eduardo', '2017-11-16'),
+																																									('4', '10', '1125', '8', 'Nota adicionada por Eduardo', '2017-11-16'),
+                                                                                                                                                                    ('5', '10', '1125', '7.5', 'Nota adicionada por Eduardo', '2017-11-16');

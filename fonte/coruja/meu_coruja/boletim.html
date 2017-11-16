@@ -20,27 +20,24 @@
                         for (var i = 0; i < boletim.length; i++) {
                              $("#boletim").find('tbody')
                                  .append(($('<tr>'))
-                                     .append($("<td data-label='Disciplina' id='linha"+[i]+".nome'>" + boletim[i].nome + "</td>"))
-                                     .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
-                                     .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
-                                     .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
-                                     .append($("<td data-label='AVF'>" + boletim[i].avf + "</td>"))
-                                     .append($("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>"))
-                                     .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
-                                     .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
+                                     .append($("<td data-label='Disciplina' id='linha"+[i]+".nome'>" + boletim[i][0].siglaDisciplina + "</td>"))
+                                     .append($("<td data-label='AV1'>" + boletim[i][1][0].nota + "</td>"))
+                                     .append($("<td data-label='AV2'>" + boletim[i][1][1].nota + "</td>"))
+                                     .append($("<td data-label='Média'>" + boletim[i][1][2].nota + "</td>"))
+                                     .append($("<td data-label='AVF'>" + boletim[i][1][3].nota + "</td>"))
+                                     .append($("<td data-label='Média Final'>" + boletim[i][1][4].nota + "</td>"))
+                                     .append($("<td data-label='Professor'>" + boletim[i][0].nomeProfessor + "</td>"))
+                                     .append($("<td data-label='Faltas'><span>"+boletim[i][0].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                                 );
-                            localStorage.setItem("linha["+[i]+"].nome",boletim[i].nome);
-                            localStorage.setItem("linha["+[i]+"].av1",boletim[i].av1);
-                            localStorage.setItem("linha["+[i]+"].av2",boletim[i].av2);
-                            localStorage.setItem("linha["+[i]+"].media",boletim[i].media);
-                            localStorage.setItem("linha["+[i]+"].avf",boletim[i].avf);
-                            localStorage.setItem("linha["+[i]+"].mediaFinal",boletim[i].mediaFinal);
-                            localStorage.setItem("linha["+[i]+"].professor",boletim[i].professor);
-                            localStorage.setItem("linha["+[i]+"].faltas",boletim[i].faltas);
-                            localStorage.setItem("meuCoruja","{nome: 'Eduardo'}");
-                        } 
+                            console.log(boletim[i]);
+                            var disciplinaBoletim=new Array();
+                            disciplinaBoletim=boletim;
+                            localStorage.setItem("Boletim", JSON.stringify(disciplinaBoletim));
+                            
+                        }
+                        
                 },error: function(jqXHR){
-                    console.log(jqXHR.status);
+                    //console.log(jqXHR.status);
                     if(jqXHR.status === 401){
                         window.open("index.html","_self");
                     }else if(localStorage.nomeUsuario !== null){
