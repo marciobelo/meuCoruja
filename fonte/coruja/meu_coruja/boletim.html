@@ -12,11 +12,15 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
         
         <script>
+            
+            
+            
             $(document).ready(function(){
                 $.ajax({url: "endpoint_boletim.php",
                     success: function(result,status,jqXHR){
                         console.log(jqXHR.status);
                         boletim = JSON.parse(result);
+                        
                         for (var i = 0; i < boletim.length; i++) {
                              $("#boletim").find('tbody')
                                  .append(($('<tr>'))
@@ -27,7 +31,7 @@
                                      .append($("<td data-label='AVF'>" + boletim[i][1][3].nota + "</td>"))
                                      .append($("<td data-label='Média Final'>" + boletim[i][1][4].nota + "</td>"))
                                      .append($("<td data-label='Professor'>" + boletim[i][0].nomeProfessor + "</td>"))
-                                     .append($("<td data-label='Faltas'><span>"+boletim[i][0].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
+                                     .append($("<td data-label='Faltas'><span>"+boletim[i][0].faltas+"</span> /<span> "+boletim[i][0].limiteFaltas+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                                 );
                             console.log(boletim[i]);
                             var disciplinaBoletim=new Array();

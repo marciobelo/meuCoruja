@@ -814,7 +814,31 @@ class MatriculaAluno
         return $inscricoes;
     }
     
-
+    public function obterInscricoesConcluidas()
+    {
+        $inscricoes = array();
+        $query = sprintf("select I.idTurma,I.situacaoInscricao,I.dataInscricao,I.mediaFinal,I.totalFaltas from Inscricao I "
+                . "where I.matriculaAluno='%s'"
+                . " and I.situacaoInscricao in('%s','%s','%s')", 
+                $this->matriculaAluno,
+                Inscricao::AP,
+                Inscricao::RM,
+                Inscricao::RF);
+        $con = BD::conectar(); 
+        $result = mysql_query($query, $con);
+        
+        while($row = mysql_fetch_array($result, MYSQL_ASSOC)) 
+        {
+            $idTurma = $row['idTurma'];
+            $inscricao = Inscricao::getInscricao($idTurma, $this->matriculaAluno);
+            $inscricoes[] = $inscricao;
+        }
+        return $inscricoes;
+    }
+    
+    
+    
+    
     private static function listaMatriculaAluno( $conditionalStatement = '' ) 
     {
         $con = BD::conectar();

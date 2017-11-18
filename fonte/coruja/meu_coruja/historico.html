@@ -21,6 +21,37 @@
             });
             
             
+            $(document).ready(function(){
+                $.ajax({url: "endpoint_historico.php",
+                    success: function(result,status,jqXHR){
+                        console.log(jqXHR.status);
+                        historico = JSON.parse(result);
+                        console.log(historico);
+                        
+                        for (var i = 0; i < historico.length; i++) {
+                             
+                                
+                            
+                            
+                        }
+                        
+                },error: function(jqXHR){
+                    //console.log(jqXHR.status);
+                    if(jqXHR.status === 401){
+                        window.open("index.html","_self");
+                    }else if(localStorage.nomeUsuario !== null){
+                        for(var i=0; i<localStorage.length; i++){
+                            $("#linha["+[i]+"].nome").html(localStorage.getItem("linha["+[i]+"].nome"));
+                            //console.log("#linha"+[i]+".nome");
+                            //console.log(localStorage.getItem("linha[0].nome"));
+                        }
+                    }else{
+                        console.log("Erro ao obter dados do localStorage");
+                    }
+                }});
+            }); 
+            
+            
         </script>
     </head>
     <body class="link3">
