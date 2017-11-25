@@ -19,176 +19,83 @@
                     });
                 }
             });
-            
-            
-            $(document).ready(function(){
+
+
+
+
+            $(document).ready(function () {
                 $.ajax({url: "endpoint_historico.php",
-                    success: function(result,status,jqXHR){
+                    success: function (result, status, jqXHR) {
                         console.log(jqXHR.status);
                         historico = JSON.parse(result);
                         console.log(historico);
-                        
+
+
+
                         for (var i = 0; i < historico.length; i++) {
-                             
-                                
-                            
-                            
+                            $("#historico").find('tbody')
+                                    .append(($('<tr>'))
+                                            .append($("<td data-label='Disciplina' id='linha" + [i] + ".nome'>" + historico[i].siglaDisciplina + "</td>"))
+                                            .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
+                                            .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
+                                            .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
+                                            .append($("<td data-label='Data Inscrição'>" + historico[i].periodoLetivo + "</td>"))
+                                            );
+
+
+                            function exibeCR() {
+                                document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[i].cr);
+                            }
+                            exibeCR();
+
+
                         }
-                        
-                },error: function(jqXHR){
-                    //console.log(jqXHR.status);
-                    if(jqXHR.status === 401){
-                        window.open("index.html","_self");
-                    }else if(localStorage.nomeUsuario !== null){
-                        for(var i=0; i<localStorage.length; i++){
-                            $("#linha["+[i]+"].nome").html(localStorage.getItem("linha["+[i]+"].nome"));
-                            //console.log("#linha"+[i]+".nome");
-                            //console.log(localStorage.getItem("linha[0].nome"));
+                        var cachehistorico=new Array();
+                            cacheHistorico =historico;
+                            localStorage.setItem("Historico", JSON.stringify(cacheHistorico));
+
+                    }, error: function (jqXHR) {
+                        //console.log(jqXHR.status);
+                        if (jqXHR.status === 401) {
+                            window.open("index.html", "_self");
+                        } else if (localStorage.nomeUsuario !== null) {
+                            for (var i = 0; i < localStorage.length; i++) {
+                                $("#linha[" + [i] + "].nome").html(localStorage.getItem("linha[" + [i] + "].nome"));
+                                //console.log("#linha"+[i]+".nome");
+                                //console.log(localStorage.getItem("linha[0].nome"));
+                            }
+                        } else {
+                            console.log("Erro ao obter dados do localStorage");
                         }
-                    }else{
-                        console.log("Erro ao obter dados do localStorage");
-                    }
-                }});
-            }); 
-            
-            
+                    }});
+            });
+
+
         </script>
     </head>
     <body class="link3">
-        
+
         <div class="site-wrap">
             <h1 class="titulo-pagina">Histórico</h1>
-            <h2 class="cr">CR: 8.5</h2>
-            <ul class="accordion css-accordion">
-                <li class="accordion-item">
-                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item1" />
-                    <label for="item1" class="accordion-item-hd">2016.2<span class="accordion-item-hd-cta">&#9650;</span></label>
-                    <div class="accordion-item-bd">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Disciplina</th>
-                                    <th>Nota</th>
-                                    <th>Situação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-                                    <td data-label="Nota">6.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 1">AC1</span></td>
-                                    <td data-label="Nota">3.0</td>
-                                    <td data-label="Situação">Reprovado por Nota</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
-                                    <td data-label="Nota">7.0</td>
-                                    <td data-label="Situação">Reprovado por Falta</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</span></td>
-                                    <td data-label="Nota">8.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
-                                    <td data-label="Nota">9.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <h2 class="cr" id="cr">CR:</h2>
 
-                    </div>
-                </li>
-                <li class="accordion-item">
-                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-                    <label for="item2" class="accordion-item-hd">2016.1<span class="accordion-item-hd-cta">&#9650;</span></label>
-                    <div class="accordion-item-bd">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Disciplina</th>
-                                    <th>Nota</th>
-                                    <th>Situação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 2">AL2</span></td>
-                                    <td data-label="Nota">7.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 2">AC2</span></td>
-                                    <td data-label="Nota">3.0</td>
-                                    <td data-label="Situação">Reprovado por Nota</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Estatística">EST</span></td>
-                                    <td data-label="Nota">7.0</td>
-                                    <td data-label="Situação">Reprovado por Falta</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Redes 2">RD2</span></td>
-                                    <td data-label="Nota">8.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
-                                    <td data-label="Nota">9.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-                <li class="accordion-item">
-                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-                    <label for="item3" class="accordion-item-hd">2015.2<span class="accordion-item-hd-cta">&#9650;</span></label>
-                    <div class="accordion-item-bd">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Disciplina</th>
-                                    <th>Nota</th>
-                                    <th>Situação</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-                                    <td data-label="Nota">6.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Arquitetura de Computadores 1">AC1</span></td>
-                                    <td data-label="Nota">3.0</td>
-                                    <td data-label="Situação">Reprovado por Nota</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Álgebra Linear">ALG</span></td>
-                                    <td data-label="Nota">7.0</td>
-                                    <td data-label="Situação">Reprovado por Falta</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Redes 1">RD1</span></td>
-                                    <td data-label="Nota">8.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Disciplina"><span data-tooltip="Matemática">MAT</span></td>
-                                    <td data-label="Nota">9.0</td>
-                                    <td data-label="Situação">Aprovado</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
+            <table  id="historico">
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Nota</th>
+                        <th>Faltas</th>
+                        <th>Situação</th>
+                        <th>Período Letivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
         </div>
+
     </body>
 </html>
 

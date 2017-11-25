@@ -14,6 +14,26 @@ function isNull($str){
     }
 }
 
+function verificaPeriodo($dataInscricao){
+    $array[0] = explode("-",$dataInscricao)[0];
+    if(explode("-",$dataInscricao)[1]<6){
+        $array[1]=1;
+    }else{
+        $array[1]=2;
+    }
+    return $periodoLetivo = implode(".",$array);
+}
+
+function verificaSituacao($siglaSituacao){
+    if ($siglaSituacao == "RF"){
+        return "Reprovado por falta";
+    }elseif ($siglaSituacao == "RM"){
+        return "Reprovado por média";
+    }elseif($siglaSituacao == "APs"){
+        return "Aprovado";
+    }
+}
+
 $usuario = $_SESSION["usuario"];
 $numMatriculaAluno = $usuario->getNomeAcesso();
 
@@ -25,19 +45,22 @@ $historico = array();
 //var_dump($inscricoes);
 
 foreach ($inscricoes as $inscricao) {
-    $linha = array();
     $dadosUsuario = new stdClass();
     
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $dadosUsuario->situacao = isNull($inscricao->getSituacaoInscricao());
+    $dadosUsuario->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
+    $dadosUsuario->periodoLetivo = verificaPeriodo(isNull($inscricao->getDataInscricao()));
+    $dadosUsuario->cr = $ma->calcularCR();
     
     
     array_push($historico, $dadosUsuario);
 }
+    
+    
 
-//var_dump($boletim);
+//var_dump($historico);
 
 
 $jsonHistorico = json_encode($historico, JSON_UNESCAPED_UNICODE);

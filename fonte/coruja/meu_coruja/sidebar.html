@@ -2,72 +2,72 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <script>
-            $(document).ready(function(){
-                    $.ajax({url: "endpoint_side_bar.php",
-                        success: function(result,status,jqXHR){
-                            console.log(jqXHR.status);
-                            dadosUsuario = JSON.parse(result);
-                            document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
-                            document.getElementById("curso").innerHTML = dadosUsuario.curso;
-                            document.getElementById("matricula").innerHTML = dadosUsuario.matricula;
-                            var Usuario={};
-                            Usuario.nome = dadosUsuario.nome;
-                            Usuario.curso = dadosUsuario.curso;
-                            Usuario.matricula = dadosUsuario.matricula;
-                            localStorage.setItem("Usuario",JSON.stringify(Usuario));
-                    },error: function(jqXHR){
+            $(document).ready(function () {
+                $.ajax({url: "endpoint_side_bar.php",
+                    success: function (result, status, jqXHR) {
                         console.log(jqXHR.status);
-                        if(jqXHR.status === 401){
-                            window.open("index.html","_self");
+                        dadosUsuario = JSON.parse(result);
+                        document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
+                        document.getElementById("curso").innerHTML = dadosUsuario.curso;
+                        document.getElementById("matricula").innerHTML = dadosUsuario.matricula;
+                        var Usuario = {};
+                        Usuario.nome = dadosUsuario.nome;
+                        Usuario.curso = dadosUsuario.curso;
+                        Usuario.matricula = dadosUsuario.matricula;
+                        localStorage.setItem("Usuario", JSON.stringify(Usuario));
+                    }, error: function (jqXHR) {
+                        console.log(jqXHR.status);
+                        if (jqXHR.status === 401) {
+                            window.open("index.html", "_self");
                         }
                         //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
-                        else if(localStorage.nomeUsuario !== null){
+                        else if (localStorage.nomeUsuario !== null) {
                             $("#nomeUsuario").html(localStorage.nomeUsuario);
                             $("#curso").html(localStorage.curso);
                             $("#matricula").html(localStorage.matricula);
-                        }else{
+                        } else {
                             $("#div1").html("Erro ao obter dados do localStorage");
                         }
                     }});
-                });
-                   
-	</script>
+            });
+
+        </script>
         <script>
-            
-            
-            $(document).ready(function(){
-                if ($(window).width() <= 600){
+
+
+            $(document).ready(function () {
+                if ($(window).width() <= 600) {
                     $('#nav-trigger').prop('checked', false);
-                }else{
+                } else {
                     $('#nav-trigger').prop('checked', true);
-                } 
+                }
             });
         </script>
-            
-        
-        
+
+
+
     </head>
     <body>
-    <ul class="navigation" id="navbar">
-        <li class="nav-item">
-            <img class="img-circle" src="img/alunoTeste.png">
-            <span class="span-info-usuario" id="nomeUsuario"></span>
-            <span class="span-info-usuario" id="curso" ></span>
-            <span class="span-info-usuario" id="matricula"></span>
-            <span class="span-info-usuario" id="div1"></span>
-	</li>
-	<li class="nav-item" id="link1"><a href="boletim.html">Boletim</a></li>
-	<li class="nav-item" id="link2"><a href="grade.html">Minha Grade</a></li>
-	<li class="nav-item"><a href="historico.html">Histórico</a></li>
-        <li class="nav-item"><a class="current" href="pendencias.php">Pendências</a></li>
-        <li class="nav-item"><a href="sair.php">Sair</a></li>
-    </ul>
-    
-    <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-    <label for="nav-trigger"></label>
+        <ul class="navigation" id="navbar">
+            <li class="nav-item">
+                <img class="img-circle" src="img/alunoTeste.png">
+                <span class="span-info-usuario" id="nomeUsuario"></span>
+                <span class="span-info-usuario" id="curso" ></span>
+                <span class="span-info-usuario" id="matricula"></span>
+                <span class="span-info-usuario" id="div1"></span>
+            </li>
+            <li class="nav-item" id="link1"><a href="boletim.html">Boletim</a></li>
+            <li class="nav-item" id="link2"><a href="grade.html">Minha Grade</a></li>
+            <li class="nav-item"><a href="historico.html">Histórico</a></li>
+            <li class="nav-item"><a class="current" href="pendencias.php">Pendências</a></li>
+            <li class="nav-item"><a href="sair.php">Sair</a></li>
+        </ul>
+
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger"></label>
     </body>  
-		
-		
-                
+
+
+
 </html>
-		
+
