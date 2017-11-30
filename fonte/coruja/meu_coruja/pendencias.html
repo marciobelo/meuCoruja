@@ -3,7 +3,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-        <title>Histórico</title>
+        <title>Pendências</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,34 +24,26 @@
 
 
             $(document).ready(function () {
-                $.ajax({url: "endpoint_historico.php",
+                $.ajax({url: "endpoint_pendencias.php",
                     success: function (result, status, jqXHR) {
                         console.log(jqXHR.status);
-                        historico = JSON.parse(result);
-                        console.log(historico);
+                        pendencias = JSON.parse(result);
+                        console.log(pendencias);
 
 
 
-                        for (var i = 0; i < historico.length; i++) {
+                        for (var i = 0; i < pendencias.length; i++) {
                             $("#historico").find('tbody')
                                     .append(($('<tr>'))
-                                            .append($("<td data-label='Disciplina' data-tooltip='"+historico[i].nomeDisciplina+"'>" + historico[i].siglaDisciplina + "</td>"))
-                                            .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
-                                            .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
-                                            .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
-                                            .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
+                                            .append($("<td data-label='Disciplina' data-tooltip='"+pendencias[i].nomeDisciplina+"'>" + pendencias[i].siglaDisciplina + "</td>"))
+                                            //.append($("<td data-label='Média Final'>" + pendencias[i].nomeDisciplina + "</td>"))
+                                            .append($("<td data-label='Carga Horária'>" + pendencias[i].cargaHoraria + " hrs</td>"))
+                                            .append($("<td data-label='Período'>" + pendencias[i].periodo + "º Período</td>"))
                                             );
 
-
-                            function exibeCR() {
-                                document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[i].cr);
-                            }
-                            exibeCR();
-
-
                         }
-                            cacheHistorico =historico;
-                            localStorage.setItem("meuCoruja.Historico", JSON.stringify(cacheHistorico));
+                        cachePendencias = pendencias;
+                        localStorage.setItem("meuCoruja.Pendencias", JSON.stringify(cachePendencias));
 
                     }, error: function (jqXHR) {
                         //console.log(jqXHR.status);
@@ -75,17 +67,15 @@
     <body class="link3">
 
         <div class="site-wrap">
-            <h1 class="titulo-pagina">Histórico</h1>
-            <h2 class="cr" id="cr">CR:</h2>
+            <h1 class="titulo-pagina">Disciplinas Pendentes</h1>
+
 
             <table  id="historico">
                 <thead>
                     <tr>
                         <th>Disciplina</th>
-                        <th>Nota</th>
-                        <th>Faltas</th>
-                        <th>Situação</th>
-                        <th>Período Letivo</th>
+                        <th>Carga Horária </th>
+                        <th>Período</th>
                     </tr>
                 </thead>
                 <tbody>

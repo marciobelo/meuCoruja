@@ -268,6 +268,8 @@ header,
   position: relative;
   z-index: 2;
   cursor: pointer;
+  display: inline-block;
+  
 }
 
 /* Hide the tooltip content by default */
@@ -278,6 +280,7 @@ header,
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   pointer-events: none;
+  
 }
 
 /* Position tooltip above the element */

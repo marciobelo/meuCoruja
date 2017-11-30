@@ -24,7 +24,7 @@
                         for (var i = 0; i < boletim.length; i++) {
                              $("#boletim").find('tbody')
                                  .append(($('<tr>'))
-                                     .append($("<td data-label='Disciplina' id='linha"+[i]+".nome'>" + boletim[i][0].siglaDisciplina + "</td>"))
+                                     .append($("<td data-label='Disciplina'data-tooltip='"+boletim[i][0].nomeDisciplina+"'>" + boletim[i][0].siglaDisciplina + "</td>"))
                                      .append($("<td data-label='AV1'>" + boletim[i][1][0].nota + "</td>"))
                                      .append($("<td data-label='AV2'>" + boletim[i][1][1].nota + "</td>"))
                                      .append($("<td data-label='Média'>" + boletim[i][1][2].nota + "</td>"))

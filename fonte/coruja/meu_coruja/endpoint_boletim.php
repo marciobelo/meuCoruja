@@ -31,11 +31,13 @@ foreach ($inscricoes as $inscricao) {
     
 
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
+    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getNomeDisciplina());
     $dadosUsuario->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
     $dadosUsuario->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
     $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+    
     $itens = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
 
 
