@@ -33,10 +33,11 @@
                                      .append($("<td data-label='Professor'>" + boletim[i][0].nomeProfessor + "</td>"))
                                      .append($("<td data-label='Faltas'><span>"+boletim[i][0].faltas+"</span> /<span> "+boletim[i][0].limiteFaltas+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                                 );
+                            document.getElementById("siglaPeriodoLetivo").innerHTML=boletim[i][0].siglaPeriodoLetivo;
                             console.log(boletim[i]);
-                            var disciplinaBoletim=new Array();
+                            //var disciplinaBoletim=new Array();
                             disciplinaBoletim=boletim;
-                            localStorage.setItem("Boletim", JSON.stringify(disciplinaBoletim));
+                            localStorage.setItem("meuCoruja.Boletim", JSON.stringify(disciplinaBoletim));
                             
                         }
                         
@@ -79,7 +80,7 @@
     <div class="site-wrap">
         
 	<h1>Boletim</h1>
-            <div id="div1"><h2></h2></div>
+        <div><h2 id="siglaPeriodoLetivo"></h2></div>
             <table id="boletim">
                 <thead>
 		    <tr>

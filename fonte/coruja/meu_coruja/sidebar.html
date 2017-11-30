@@ -14,7 +14,7 @@
                         Usuario.nome = dadosUsuario.nome;
                         Usuario.curso = dadosUsuario.curso;
                         Usuario.matricula = dadosUsuario.matricula;
-                        localStorage.setItem("Usuario", JSON.stringify(Usuario));
+                        localStorage.setItem("meuCoruja.Usuario", JSON.stringify(Usuario));
                     }, error: function (jqXHR) {
                         console.log(jqXHR.status);
                         if (jqXHR.status === 401) {

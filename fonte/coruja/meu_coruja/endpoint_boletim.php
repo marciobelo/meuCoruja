@@ -35,6 +35,7 @@ foreach ($inscricoes as $inscricao) {
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
     $dadosUsuario->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
+    $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
     $itens = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
 
 

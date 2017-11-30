@@ -44,6 +44,7 @@ foreach ($inscricoes as $inscricao) {
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
     $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+    
     $dadosUsuario->cr = $ma->calcularCR();
     
     
