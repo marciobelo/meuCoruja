@@ -39,7 +39,7 @@
                                             .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
                                             .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
                                             .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
-                                            .append($("<td data-label='Data Inscrição'>" + historico[i].periodoLetivo + "</td>"))
+                                            .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
                                             );
 
 
@@ -50,7 +50,6 @@
 
 
                         }
-                        var cachehistorico=new Array();
                             cacheHistorico =historico;
                             localStorage.setItem("Historico", JSON.stringify(cacheHistorico));
 

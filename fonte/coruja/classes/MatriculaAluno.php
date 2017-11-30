@@ -817,18 +817,34 @@ class MatriculaAluno
     public function obterInscricoesConcluidas()
     {
         $inscricoes = array();
-        $query = sprintf("select I.idTurma,I.situacaoInscricao,I.dataInscricao,I.mediaFinal,I.totalFaltas from Inscricao I "
+        /*$query = sprintf("select I.idTurma,I.situacaoInscricao,I.dataInscricao,I.mediaFinal,I.totalFaltas from Inscricao I "
                 . "where I.matriculaAluno='%s'"
                 . " and I.situacaoInscricao in('%s','%s','%s')", 
                 $this->matriculaAluno,
                 Inscricao::AP,
                 Inscricao::RM,
-                Inscricao::RF);
+                Inscricao::RF);*/
+        $query=sprintf("select PL.`siglaPeriodoLetivo`, T.`turno`, "
+            ."T.`gradeHorario`, CC.`siglaDisciplina`, "
+            ."CC.`nomeDisciplina`, CC.`creditos`, "
+            ."CC.`cargaHoraria`, I.`mediaFinal`, I.`situacaoInscricao`, I.`idTurma` "
+            ."from Inscricao I, Turma T, ComponenteCurricular CC, PeriodoLetivo PL "
+            ."where I.`matriculaAluno` = '%s' "
+            ."and I.`idTurma` = T.`idTurma` "
+            ."and T.`siglaCurso` = CC.`siglaCurso` "
+            ."and T.`idMatriz` = CC.`idMatriz` "
+            ."and T.`siglaDisciplina` = CC.`siglaDisciplina` "
+            ."and T.`idPeriodoLetivo` = PL.`idPeriodoLetivo` "
+            ."and I.`situacaoInscricao` in ('AP','RF','RM','ID') " //ID -> Isento de Disciplina
+            ."and T.`tipoSituacaoTurma` = 'FINALIZADA' " //ID -> Isento de Disciplina
+            ."ORDER BY PL.`siglaPeriodoLetivo` DESC, CC.`siglaDisciplina` ASC",
+            $this->matriculaAluno);
+        
         $con = BD::conectar(); 
         $result = mysql_query($query, $con);
         
         while($row = mysql_fetch_array($result, MYSQL_ASSOC)) 
-        {
+        {   
             $idTurma = $row['idTurma'];
             $inscricao = Inscricao::getInscricao($idTurma, $this->matriculaAluno);
             $inscricoes[] = $inscricao;

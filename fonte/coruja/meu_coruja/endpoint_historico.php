@@ -14,23 +14,15 @@ function isNull($str){
     }
 }
 
-function verificaPeriodo($dataInscricao){
-    $array[0] = explode("-",$dataInscricao)[0];
-    if(explode("-",$dataInscricao)[1]<6){
-        $array[1]=1;
-    }else{
-        $array[1]=2;
-    }
-    return $periodoLetivo = implode(".",$array);
-}
-
 function verificaSituacao($siglaSituacao){
     if ($siglaSituacao == "RF"){
         return "Reprovado por falta";
     }elseif ($siglaSituacao == "RM"){
         return "Reprovado por média";
-    }elseif($siglaSituacao == "APs"){
+    }elseif($siglaSituacao == "AP"){
         return "Aprovado";
+    }elseif($siglaSituacao == "ID"){
+        return "Isento de disciplina";
     }
 }
 
@@ -51,7 +43,7 @@ foreach ($inscricoes as $inscricao) {
     $dadosUsuario->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
-    $dadosUsuario->periodoLetivo = verificaPeriodo(isNull($inscricao->getDataInscricao()));
+    $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
     $dadosUsuario->cr = $ma->calcularCR();
     
     
