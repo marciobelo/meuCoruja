@@ -31,7 +31,7 @@ foreach ($inscricoes as $inscricao) {
     
 
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getNomeDisciplina());
+    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
     $dadosUsuario->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());

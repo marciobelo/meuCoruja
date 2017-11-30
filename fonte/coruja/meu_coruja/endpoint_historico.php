@@ -40,7 +40,7 @@ foreach ($inscricoes as $inscricao) {
     $dadosUsuario = new stdClass();
     
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getNomeDisciplina());
+    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
     $dadosUsuario->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
