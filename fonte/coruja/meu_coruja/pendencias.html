@@ -24,41 +24,17 @@
 
 
             $(document).ready(function () {
-                $.ajax({url: "endpoint_pendencias.php",
-                    success: function (result, status, jqXHR) {
-                        console.log(jqXHR.status);
-                        pendencias = JSON.parse(result);
-                        console.log(pendencias);
-
-
-
-                        for (var i = 0; i < pendencias.length; i++) {
-                            $("#historico").find('tbody')
-                                    .append(($('<tr>'))
-                                            .append($("<td data-label='Disciplina' data-tooltip='"+pendencias[i].nomeDisciplina+"'>" + pendencias[i].siglaDisciplina + "</td>"))
-                                            //.append($("<td data-label='Média Final'>" + pendencias[i].nomeDisciplina + "</td>"))
-                                            .append($("<td data-label='Carga Horária'>" + pendencias[i].cargaHoraria + " hrs</td>"))
-                                            .append($("<td data-label='Período'>" + pendencias[i].periodo + "º Período</td>"))
-                                            );
-
-                        }
-                        cachePendencias = pendencias;
-                        localStorage.setItem("meuCoruja.Pendencias", JSON.stringify(cachePendencias));
-
-                    }, error: function (jqXHR) {
-                        //console.log(jqXHR.status);
-                        if (jqXHR.status === 401) {
-                            window.open("index.html", "_self");
-                        } else if (localStorage.nomeUsuario !== null) {
-                            for (var i = 0; i < localStorage.length; i++) {
-                                $("#linha[" + [i] + "].nome").html(localStorage.getItem("linha[" + [i] + "].nome"));
-                                //console.log("#linha"+[i]+".nome");
-                                //console.log(localStorage.getItem("linha[0].nome"));
-                            }
-                        } else {
-                            console.log("Erro ao obter dados do localStorage");
-                        }
-                    }});
+                pendencias = JSON.parse(localStorage.getItem('meuCoruja'))[3];
+                console.log(pendencias);
+                for (var i = 0; i < pendencias.length; i++) {
+                    $("#pendencias").find('tbody')
+                            .append(($('<tr>'))
+                                    .append($("<td data-label='Disciplina' data-tooltip='" + pendencias[i].nomeDisciplina + "'>" + pendencias[i].siglaDisciplina + "</td>"))
+                                    //.append($("<td data-label='Média Final'>" + pendencias[i].nomeDisciplina + "</td>"))
+                                    .append($("<td data-label='Carga Horária'>" + pendencias[i].cargaHoraria + " hrs</td>"))
+                                    .append($("<td data-label='Período'>" + pendencias[i].periodo + "º Período</td>"))
+                                    );
+                }
             });
 
 
@@ -70,7 +46,7 @@
             <h1 class="titulo-pagina">Disciplinas Pendentes</h1>
 
 
-            <table  id="historico">
+            <table  id="pendencias">
                 <thead>
                     <tr>
                         <th>Disciplina</th>

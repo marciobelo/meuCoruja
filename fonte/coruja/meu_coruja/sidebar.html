@@ -3,18 +3,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <script>
             $(document).ready(function () {
-                $.ajax({url: "endpoint_side_bar.php",
+                $.ajax({url: "endpoint_meucoruja.php",
                     success: function (result, status, jqXHR) {
-                        console.log(jqXHR.status);
-                        dadosUsuario = JSON.parse(result);
-                        document.getElementById("nomeUsuario").innerHTML = dadosUsuario.nome;
-                        document.getElementById("curso").innerHTML = dadosUsuario.curso;
-                        document.getElementById("matricula").innerHTML = dadosUsuario.matricula;
-                        var Usuario = {};
-                        Usuario.nome = dadosUsuario.nome;
-                        Usuario.curso = dadosUsuario.curso;
-                        Usuario.matricula = dadosUsuario.matricula;
-                        localStorage.setItem("meuCoruja.Usuario", JSON.stringify(Usuario));
+                        //console.log(jqXHR.status);
+                        meuCoruja = JSON.parse(result);
+                        
+                        localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));
+                        
+                        usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                        
+                        document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
+                        document.getElementById("curso").innerHTML = usuario.nomeCurso;
+                        document.getElementById("matricula").innerHTML = usuario.matricula;
+                        
                     }, error: function (jqXHR) {
                         console.log(jqXHR.status);
                         if (jqXHR.status === 401) {

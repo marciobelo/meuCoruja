@@ -24,49 +24,27 @@
 
 
             $(document).ready(function () {
-                $.ajax({url: "endpoint_historico.php",
-                    success: function (result, status, jqXHR) {
-                        console.log(jqXHR.status);
-                        historico = JSON.parse(result);
-                        console.log(historico);
+                historico = JSON.parse(localStorage.getItem('meuCoruja'))[2];
+                console.log(historico);
 
 
 
-                        for (var i = 0; i < historico.length; i++) {
-                            $("#historico").find('tbody')
-                                    .append(($('<tr>'))
-                                            .append($("<td data-label='Disciplina' data-tooltip='"+historico[i].nomeDisciplina+"'>" + historico[i].siglaDisciplina + "</td>"))
-                                            .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
-                                            .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
-                                            .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
-                                            .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
-                                            );
+                for (var i = 0; i < historico.length; i++) {
+                    $("#historico").find('tbody')
+                            .append(($('<tr>'))
+                                    .append($("<td data-label='Disciplina' data-tooltip='" + historico[i].nomeDisciplina + "'>" + historico[i].siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
+                                    .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
+                                    .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
+                                    .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
+                                    );
+                }
+                
+                function exibeCR() {
+                    document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[0].cr);
+                }
+                exibeCR();
 
-
-                            function exibeCR() {
-                                document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[i].cr);
-                            }
-                            exibeCR();
-
-
-                        }
-                            cacheHistorico =historico;
-                            localStorage.setItem("meuCoruja.Historico", JSON.stringify(cacheHistorico));
-
-                    }, error: function (jqXHR) {
-                        //console.log(jqXHR.status);
-                        if (jqXHR.status === 401) {
-                            window.open("index.html", "_self");
-                        } else if (localStorage.nomeUsuario !== null) {
-                            for (var i = 0; i < localStorage.length; i++) {
-                                $("#linha[" + [i] + "].nome").html(localStorage.getItem("linha[" + [i] + "].nome"));
-                                //console.log("#linha"+[i]+".nome");
-                                //console.log(localStorage.getItem("linha[0].nome"));
-                            }
-                        } else {
-                            console.log("Erro ao obter dados do localStorage");
-                        }
-                    }});
             });
 
 

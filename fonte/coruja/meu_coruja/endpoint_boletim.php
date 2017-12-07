@@ -28,8 +28,8 @@ foreach ($inscricoes as $inscricao) {
     $linha = array();
     $avaliacoes = array();
     $dadosUsuario = new stdClass();
+    //var_dump($inscricao->obterResumoApontamentoDiaLetivo($inscricao->getTurma()->obterDataAulaMaisRecente()));
     
-
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
     $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
     $dadosUsuario->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());

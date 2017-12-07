@@ -6,7 +6,8 @@
     require_once("$BASE_DIR/classes/MatriculaAluno.php");
     require_once("$BASE_DIR/classes/MatrizCurricular.php");
     require_once("$BASE_DIR/classes/Curso.php");
-
+    
+    
     $usuario = $_SESSION["usuario"];
     $idPessoa = $usuario->getIdPessoa();
     $numMatriculaAluno = $usuario->getNomeAcesso();
