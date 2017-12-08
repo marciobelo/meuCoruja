@@ -35,12 +35,18 @@
                                     .append($("<td data-label='Período'>" + pendencias[i].periodo + "º Período</td>"))
                                     );
                 }
+                sidebar = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                console.log(sidebar);
+                
+                document.getElementById("nomeUsuario").innerHTML = sidebar.nomeUsuario;
+                document.getElementById("curso").innerHTML = sidebar.nomeCurso;
+                document.getElementById("matricula").innerHTML = sidebar.matricula;
             });
 
 
         </script>
     </head>
-    <body class="link3">
+    <body class="link4">
 
         <div class="site-wrap">
             <h1 class="titulo-pagina">Disciplinas Pendentes</h1>

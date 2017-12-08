@@ -9,11 +9,13 @@
     try
     {
         Usuario::autenticar($nomeAcesso, $senha, "ALUNO");
+        
         if( isset($_SESSION["usuario"]) ) 
         {
             $usuario = $_SESSION["usuario"];
             $usuario->setValidouLog(true);
             //echo 'Usuario autenticado com sucesso';
+            
             http_response_code( 200 );
             header('location:boletim.html');
             exit;

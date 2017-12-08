@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <title>Boletim</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/tabela.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+        <script>
+            $(document).ready(function () {
+                jQuery(document).ready(adicionarSideBar);
+
+                function adicionarSideBar() {
+                    $.get("sidebar.html", function (sidebar) {
+                        $('body').prepend(sidebar);
+                    });
+                }
+            });
+
+            $(document).ready(function () {
+                $.ajax({url: "endpoint_meucoruja.php",
+                    success: function (result, status, jqXHR) {
+                        boletim = JSON.parse(localStorage.getItem('meuCoruja'))[1];
+                        detalhamentoFaltas = boletim[0][2];
+                        console.log(boletim);
+
+
+                        for (var i = 0; i < detalhamentoFaltas.length; i++) {
+                            siglaDisciplina = boletim[i][0].siglaDisciplina;
+                            nomeDisciplina = boletim[i][0].nomeDisciplina;
+                            qtdeFaltas = detalhamentoFaltas[i].qtdeFaltas;
+                            data = detalhamentoFaltas[i].data;
+                            siglaPeriodo = detalhamentoFaltas[i].siglaPeriodo;
+                            $("#detalhamentoFaltas").find('tbody')
+                                    .append(($('<tr>'))
+                                            .append($("<td data-label='Disciplina' data-tooltip='" + nomeDisciplina + "'>" + siglaDisciplina + "</td>"))
+                                            .append($("<td data-label='Quantidade de Faltas'>" + qtdeFaltas + "</td>"))
+                                            .append($("<td data-label='Data'>" + data + "</td>"))
+                                            .append($("<td data-label='Situação'>" + siglaPeriodo + "</td>"))
+
+                                            );
+                        }
+                    }});
+            });
+        </script>
+
+
+
+
+    </head>
+    <body class="link1">
+
+        <div class="site-wrap">
+
+            <h1>Faltas</h1>
+            <table id="detalhamentoFaltas">
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                        <th>Período</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

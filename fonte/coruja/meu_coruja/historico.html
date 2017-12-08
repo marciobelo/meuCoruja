@@ -24,27 +24,40 @@
 
 
             $(document).ready(function () {
-                historico = JSON.parse(localStorage.getItem('meuCoruja'))[2];
-                console.log(historico);
+                $.ajax({url: "endpoint_meucoruja.php",
+                    success: function (result, status, jqXHR) {
+
+                        historico = JSON.parse(localStorage.getItem('meuCoruja'))[2];
+                        console.log(historico);
+                        for (var i = 0; i < historico.length; i++) {
+                            $("#historico").find('tbody')
+                                    .append(($('<tr>'))
+                                            .append($("<td data-label='Disciplina' data-tooltip='" + historico[i].nomeDisciplina + "'>" + historico[i].siglaDisciplina + "</td>"))
+                                            .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
+                                            .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
+                                            .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
+                                            .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
+                                            );
+                        }
+                        
+                        //sidebar
+                        sidebar = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                        console.log(sidebar);
+                        usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+
+                        document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
+                        document.getElementById("curso").innerHTML = usuario.nomeCurso;
+                        document.getElementById("matricula").innerHTML = usuario.matricula;
+
+                        function exibeCR() {
+                            if (JSON.stringify(historico) !== "[]") {
+                                document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[0].cr);
+                            }
+                        }
 
 
-
-                for (var i = 0; i < historico.length; i++) {
-                    $("#historico").find('tbody')
-                            .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina' data-tooltip='" + historico[i].nomeDisciplina + "'>" + historico[i].siglaDisciplina + "</td>"))
-                                    .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
-                                    .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
-                                    .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
-                                    .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
-                                    );
-                }
-                
-                function exibeCR() {
-                    document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[0].cr);
-                }
-                exibeCR();
-
+                        exibeCR();
+                    }});
             });
 
 

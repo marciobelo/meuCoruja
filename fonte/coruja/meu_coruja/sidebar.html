@@ -2,36 +2,38 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <script>
-            $(document).ready(function () {
-                $.ajax({url: "endpoint_meucoruja.php",
-                    success: function (result, status, jqXHR) {
-                        //console.log(jqXHR.status);
-                        meuCoruja = JSON.parse(result);
-                        
-                        localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));
-                        
-                        usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
-                        
-                        document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
-                        document.getElementById("curso").innerHTML = usuario.nomeCurso;
-                        document.getElementById("matricula").innerHTML = usuario.matricula;
-                        
-                    }, error: function (jqXHR) {
-                        console.log(jqXHR.status);
-                        if (jqXHR.status === 401) {
-                            window.open("index.html", "_self");
-                        }
-                        //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
-                        else if (localStorage.nomeUsuario !== null) {
-                            $("#nomeUsuario").html(localStorage.nomeUsuario);
-                            $("#curso").html(localStorage.curso);
-                            $("#matricula").html(localStorage.matricula);
-                        } else {
-                            $("#div1").html("Erro ao obter dados do localStorage");
-                        }
-                    }});
-            });
+            /* $(document).ready(function () {
+             $.ajax({url: "endpoint_meucoruja.php",
+             success: function (result, status, jqXHR) {
+             console.log(jqXHR.status);
+             meuCoruja = JSON.parse(result);
+             console.log(meuCoruja);
+             localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));
+             
+             usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+             
+             document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
+             document.getElementById("curso").innerHTML = usuario.nomeCurso;
+             document.getElementById("matricula").innerHTML = usuario.matricula;
+             
+             }, error: function (jqXHR) {
+             console.log(jqXHR.status);
+             if (jqXHR.status === 401) {
+             window.open("index.html", "_self");
+             }
+             //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
+             else if (localStorage.nomeUsuario !== null) {
+             $("#nomeUsuario").html(localStorage.nomeUsuario);
+             $("#curso").html(localStorage.curso);
+             $("#matricula").html(localStorage.matricula);
+             } else {
+             $("#div1").html("Erro ao obter dados do localStorage");
+             }
+             }});
+             });
+             */
 
+            
         </script>
         <script>
 
@@ -46,7 +48,6 @@
         </script>
 
 
-
     </head>
     <body>
         <ul class="navigation" id="navbar">
@@ -59,8 +60,8 @@
             </li>
             <li class="nav-item" id="link1"><a href="boletim.html">Boletim</a></li>
             <li class="nav-item" id="link2"><a href="grade.html">Minha Grade</a></li>
-            <li class="nav-item"><a href="historico.html">Histórico</a></li>
-            <li class="nav-item"><a class="current" href="pendencias.html">Pendências</a></li>
+            <li class="nav-item" id="link3"><a href="historico.html">Histórico</a></li>
+            <li class="nav-item" id="link4"><a class="current" href="pendencias.html">Pendências</a></li>
             <li class="nav-item"><a href="sair.php">Sair</a></li>
         </ul>
 

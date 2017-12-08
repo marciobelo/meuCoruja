@@ -8,23 +8,23 @@ require_once("$BASE_DIR/classes/MatriculaAluno.php");
 require_once("$BASE_DIR/classes/MatrizCurricular.php");
 require_once("$BASE_DIR/classes/Curso.php");
 
-function isNull($str){
-    
-    if($str == null){
+function isNull($str) {
+
+    if ($str == null) {
         return "-";
-    }else{
+    } else {
         return $str;
     }
 }
 
-function verificaSituacao($siglaSituacao){
-    if ($siglaSituacao == "RF"){
+function verificaSituacao($siglaSituacao) {
+    if ($siglaSituacao == "RF") {
         return "Reprovado por falta";
-    }elseif ($siglaSituacao == "RM"){
+    } elseif ($siglaSituacao == "RM") {
         return "Reprovado por média";
-    }elseif($siglaSituacao == "AP"){
+    } elseif ($siglaSituacao == "AP") {
         return "Aprovado";
-    }elseif($siglaSituacao == "ID"){
+    } elseif ($siglaSituacao == "ID") {
         return "Isento de disciplina";
     }
 }
@@ -86,6 +86,31 @@ foreach ($inscricoes as $inscricao) {
     array_push($linha, $dadosUsuario);
     array_push($linha, $avaliacoes);
 
+    $detalhesFaltas = array();
+    $diasLetivoDateTime = $inscricao->getTurma()->obterDatasDiaLetivo();
+    //var_dump($diasLetivoDateTime);
+    foreach ($diasLetivoDateTime as $diaLetivoTurma) {
+        $diaLetivo = new DiaLetivoTurma($inscricao->getTurma(), $diaLetivoTurma);
+        $str = $inscricao->obterResumoApontamentoDiaLetivo($diaLetivo);
+        
+        if ($diaLetivo->getDataLiberacao() !== null) {
+            $qtdeFaltas = substr_count($str, "F");
+            
+            $detalhesFalta = new stdClass();
+            //$detalhesFaltas->siglaDisciplina = $diaLetivo->getTurma()->getSiglaDisciplina();
+            $detalhesFalta->data = $diaLetivo->getData()->date;
+            $detalhesFalta->qtdeFaltas = $qtdeFaltas;
+            $detalhesFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+            array_push($detalhesFaltas, $detalhesFalta);
+            
+        }
+    }
+    array_push($linha, $detalhesFaltas);
+
+
+
+
+
 
     array_push($boletim, $linha);
 }
@@ -102,17 +127,17 @@ $historico = array();
 
 foreach ($inscricoes as $inscricao) {
     $dadosUsuario = new stdClass();
-    
+
     $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
     $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
     $dadosUsuario->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
     $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
     $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
     $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
-    
-    $dadosUsuario->cr = $matriculaAluno->calcularCR();
-    
-    
+
+    $dadosUsuario->cr = isNull($matriculaAluno->calcularCR());
+
+
     array_push($historico, $dadosUsuario);
 }
 array_push($meuCoruja, $historico);
@@ -140,4 +165,5 @@ array_push($meuCoruja, $pendencias);
 
 $jsonMeuCoruja = json_encode($meuCoruja, JSON_UNESCAPED_UNICODE);
 echo $jsonMeuCoruja;
+
 
