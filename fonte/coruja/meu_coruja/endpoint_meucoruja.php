@@ -31,7 +31,6 @@ function verificaSituacao($siglaSituacao) {
 
 /////USUARIO
 
-$meuCoruja = array();
 $usuario = $_SESSION["usuario"];
 $idPessoa = $usuario->getIdPessoa();
 $numMatriculaAluno = $usuario->getNomeAcesso();
@@ -47,46 +46,46 @@ $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
 
-array_push($meuCoruja, $u);
-
 /////
 //BOLETIM//
 /////
 
 $inscricoes = $matriculaAluno->obterInscricoesCursando();
 
-$boletim = array();
-
-
+$boletim = new stdClass();
+$disciplinas = array();
 
 foreach ($inscricoes as $inscricao) {
-    $linha = array();
+    //$linha = array();
+    $disciplina = new stdClass();
+    //informações de cada disciplina
+    $infoDisciplina = new stdClass();
+    $infoDisciplina->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
+    $infoDisciplina ->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
+    $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
+    $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
+    $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
+    
+    $boletim->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+    
+    $disciplina->info = $infoDisciplina;
+    
+    //Avaliações de cada disciplina
     $avaliacoes = array();
-    $dadosUsuario = new stdClass();
-    $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
-    $dadosUsuario->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
-    $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
-    $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
-    $dadosUsuario->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
-    $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
-
     $itens = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
-
-
     foreach ($itens as $item) {
 
         $avaliacao = new stdClass();
 
-        $avaliacao->nota = isNull($item->getNota());
         $avaliacao->rotulo = isNull($item->getItemCriterioAvaliacao()->getRotulo());
+        $avaliacao->nota = isNull($item->getNota());
+        
         array_push($avaliacoes, $avaliacao);
     }
-
-    array_push($linha, $dadosUsuario);
-    array_push($linha, $avaliacoes);
-
-    $detalhesFaltas = array();
+    $disciplina->avaliacoes = $avaliacoes;
+    
+    //Detalhamento de faltas de cada disciplina
+    $detalhamentoFaltas = array();
     $diasLetivoDateTime = $inscricao->getTurma()->obterDatasDiaLetivo();
     //var_dump($diasLetivoDateTime);
     foreach ($diasLetivoDateTime as $diaLetivoTurma) {
@@ -96,59 +95,54 @@ foreach ($inscricoes as $inscricao) {
         if ($diaLetivo->getDataLiberacao() !== null) {
             $qtdeFaltas = substr_count($str, "F");
             
-            $detalhesFalta = new stdClass();
-            //$detalhesFaltas->siglaDisciplina = $diaLetivo->getTurma()->getSiglaDisciplina();
-            $detalhesFalta->data = $diaLetivo->getData()->date;
-            $detalhesFalta->qtdeFaltas = $qtdeFaltas;
-            $detalhesFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
-            array_push($detalhesFaltas, $detalhesFalta);
+            $detalhamentoFalta = new stdClass();
+            $detalhamentoFalta->data = $diaLetivo->getData()->date;
+            $detalhamentoFalta->qtdeFaltas = $qtdeFaltas;
+            $detalhamentoFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+            
+            array_push($detalhamentoFaltas, $detalhamentoFalta);
             
         }
     }
-    array_push($linha, $detalhesFaltas);
-
-
-
-
-
-
-    array_push($boletim, $linha);
+    $disciplina->detalhamentoFaltas = $detalhamentoFaltas;
+    
+    array_push($disciplinas,$disciplina);
 }
-array_push($meuCoruja, $boletim);
+$boletim->disciplinas = $disciplinas;
 
 
 
 
 
-/////HISTÓRICO////////////////////////////////////////////////
+/////HISTÓRICO///////
 
 $inscricoes = $matriculaAluno->obterInscricoesConcluidas();
-$historico = array();
-
+$dadosHistorico = array();
+$historico = new stdClass();
 foreach ($inscricoes as $inscricao) {
-    $dadosUsuario = new stdClass();
+    $disciplinaHistorico = new stdClass();
+    $disciplinaHistorico->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
+    $disciplinaHistorico->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
+    $disciplinaHistorico->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
+    $disciplinaHistorico->mediaFinal = isNull($inscricao->getMediaFinal());
+    $disciplinaHistorico->faltas = isNull($inscricao->getTotalFaltas());
+    $disciplinaHistorico->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+    $disciplinaHistorico->cr = isNull($matriculaAluno->calcularCR());
 
-    $dadosUsuario->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $dadosUsuario->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
-    $dadosUsuario->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
-    $dadosUsuario->mediaFinal = isNull($inscricao->getMediaFinal());
-    $dadosUsuario->faltas = isNull($inscricao->getTotalFaltas());
-    $dadosUsuario->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
-
-    $dadosUsuario->cr = isNull($matriculaAluno->calcularCR());
-
-
-    array_push($historico, $dadosUsuario);
+    array_push($dadosHistorico, $disciplinaHistorico);
 }
-array_push($meuCoruja, $historico);
+$historico->disciplinas = $dadosHistorico;
+$historico->cr = $disciplinaHistorico->cr;
+//array_push($meuCoruja, $historico);
 
 
 
 
-///////PENDÊNCIAS////////////////////
+///////PENDÊNCIAS//////
 
 $inscricoes = $matriculaAluno->obterComponentesCurricularPendentes();
 
+$disciplinasPendentes= new stdClass();
 $pendencias = array();
 
 foreach ($inscricoes as $inscricao) {
@@ -159,9 +153,14 @@ foreach ($inscricoes as $inscricao) {
     $pendencia->cargaHoraria = isNull($inscricao->getCargaHoraria());
     array_push($pendencias, $pendencia);
 }
+$disciplinasPendentes->disciplinas = $pendencias;
 
-array_push($meuCoruja, $pendencias);
 
+$meuCoruja = new stdClass();
+$meuCoruja->usuario=$u;
+$meuCoruja->boletim=$boletim;
+$meuCoruja->historico=$historico;
+$meuCoruja->pendencias=$disciplinasPendentes;
 
 $jsonMeuCoruja = json_encode($meuCoruja, JSON_UNESCAPED_UNICODE);
 echo $jsonMeuCoruja;

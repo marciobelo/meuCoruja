@@ -11,6 +11,7 @@
             var xmlhttp = new XMLHttpRequest();     
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
+                    //
                     window.location.replace("boletim.html");
                 }
             }
@@ -28,7 +29,7 @@
 		  <input type="text" class="form-control" name="nomeAcesso" placeholder="Matrícula" required="" autofocus="" />
 		  <input type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
                   <br>
-		  <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>   
+		  <button class="btn btn-lg btn-primary btn-block" id="btn" type="submit">Entrar</button>   
 		</form>
 	</div>
 	<script>

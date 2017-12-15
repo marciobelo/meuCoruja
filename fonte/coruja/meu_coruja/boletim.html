@@ -12,6 +12,14 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
         <script>
+            function buscarNota(nomeChave, Array){
+                for(var i=0;i<Array.length;i++){
+                    if(Array[i].rotulo === nomeChave){
+                        return Array[i];
+                    }
+                }
+            }
+            
             $(document).ready(function () {
                 jQuery(document).ready(adicionarSideBar);
 
@@ -27,23 +35,34 @@
                     success: function (result, status, jqXHR) {
                         meuCoruja = JSON.parse(result);
                         localStorage.setItem("meuCoruja", JSON.stringify(meuCoruja));
-                        boletim = JSON.parse(localStorage.getItem('meuCoruja'))[1];
-                        //console.log(JSON.parse(localStorage.getItem('meuCoruja'))[1][0][0].nomeDisciplina);
-                        //console.log(JSON.parse(localStorage.getItem('meuCoruja'))[1].length);
-
-                        for (var i = 0; i < JSON.parse(localStorage.getItem('meuCoruja'))[1].length; i++) {
-
-                            siglaDisciplina = boletim[i][0].siglaDisciplina;
-                            nomeDisciplina = boletim[i][0].nomeDisciplina;
-                            professor = boletim[i][0].nomeProfessor;
-                            faltas = boletim[i][0].faltas;
-                            limiteFaltas = boletim[i][0].limiteFaltas;
+                        boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
+                        console.log(boletim);
+                        console.log(boletim.disciplinas.length);
+                        for (var i = 0; i < boletim.disciplinas.length; i++) {
+                            
+                            console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
+                            nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
+                            professor = boletim.disciplinas[i].info.nomeProfessor;
+                            faltas = boletim.disciplinas[i].info.faltas;
+                            limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
                             //avaliacoes
-                            av1 = boletim[i][1][0].nota;
-                            av2 = boletim[i][1][1].nota;
-                            media = boletim[i][1][2].nota;
-                            avf = boletim[i][1][3].nota;
-                            mediaFinal = boletim[i][1][4].nota;
+                            var avaliacoes = [];
+                            for(var j = 0; j<boletim.disciplinas[i].avaliacoes.length; j++ ){
+                                
+                                avaliacao = {rotulo:boletim.disciplinas[i].avaliacoes[j].rotulo, nota:boletim.disciplinas[i].avaliacoes[j].nota};
+                                avaliacoes.push(avaliacao);
+                                
+                                av1 = boletim.disciplinas[i].avaliacoes[j].nota;
+                                av2 = boletim.disciplinas[i].avaliacoes[1].nota;
+                                media = boletim.disciplinas[i].avaliacoes[2].nota;
+                                avf = boletim.disciplinas[i].avaliacoes[3].nota;
+                                mediaFinal = boletim.disciplinas[i].avaliacoes[4].nota;
+                                //console.log(Object.values(avaliacoes[j]));
+                                
+                            }
+                            console.log(buscarNota("AV1",avaliacoes).nota);
+                            
+                            
                             $("#boletim").find('tbody')
                                     .append(($('<tr>'))
                                             .append($("<td data-label='Disciplina' data-tooltip='" + nomeDisciplina + "'>" + siglaDisciplina + "</td>"))
@@ -55,14 +74,14 @@
                                             .append($("<td data-label='Professor'>" + professor + "</td>"))
                                             .append($("<td data-label='Faltas'><span>" + faltas + "</span> /<span> " + limiteFaltas + "</span><a href= 'detalhamentoFaltas.html'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                                             );
-                            var periodoLetivo = JSON.parse(localStorage.getItem('meuCoruja'))[1][i][0].siglaPeriodoLetivo;
+                                    $("#boletim td:last-child").css({color: "red"});
                         }
+                        periodoLetivo = boletim.siglaPeriodoLetivo;
                         document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
 
                         //sidebar
-                        sidebar = JSON.parse(localStorage.getItem('meuCoruja'))[0];
-                        console.log(sidebar);
-                        usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                        
+                        usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
 
                         document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
                         document.getElementById("curso").innerHTML = usuario.nomeCurso;

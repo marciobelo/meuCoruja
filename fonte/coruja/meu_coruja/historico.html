@@ -24,40 +24,36 @@
 
 
             $(document).ready(function () {
-                $.ajax({url: "endpoint_meucoruja.php",
-                    success: function (result, status, jqXHR) {
 
-                        historico = JSON.parse(localStorage.getItem('meuCoruja'))[2];
-                        console.log(historico);
-                        for (var i = 0; i < historico.length; i++) {
-                            $("#historico").find('tbody')
-                                    .append(($('<tr>'))
-                                            .append($("<td data-label='Disciplina' data-tooltip='" + historico[i].nomeDisciplina + "'>" + historico[i].siglaDisciplina + "</td>"))
-                                            .append($("<td data-label='Média Final'>" + historico[i].mediaFinal + "</td>"))
-                                            .append($("<td data-label='Faltas'>" + historico[i].faltas + "</td>"))
-                                            .append($("<td data-label='Situação'>" + historico[i].situacao + "</td>"))
-                                            .append($("<td data-label='Período Letivo'>" + historico[i].siglaPeriodoLetivo + "</td>"))
-                                            );
-                        }
-                        
-                        //sidebar
-                        sidebar = JSON.parse(localStorage.getItem('meuCoruja'))[0];
-                        console.log(sidebar);
-                        usuario = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                historico = JSON.parse(localStorage.getItem('meuCoruja')).historico;
+                console.log(historico);
+                for (var i = 0; i < historico.disciplinas.length; i++) {
+                    $("#historico").find('tbody')
+                            .append(($('<tr>'))
+                                    .append($("<td data-label='Disciplina' data-tooltip='" + historico.disciplinas[i].nomeDisciplina + "'>" + historico.disciplinas[i].siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='Média Final'>" + historico.disciplinas[i].mediaFinal + "</td>"))
+                                    .append($("<td data-label='Faltas'>" + historico.disciplinas[i].faltas + "</td>"))
+                                    .append($("<td data-label='Situação'>" + historico.disciplinas[i].situacao + "</td>"))
+                                    .append($("<td data-label='Período Letivo'>" + historico.disciplinas[i].siglaPeriodoLetivo + "</td>"))
+                                    );
+                }
 
-                        document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
-                        document.getElementById("curso").innerHTML = usuario.nomeCurso;
-                        document.getElementById("matricula").innerHTML = usuario.matricula;
+                function exibeCR() {
+                    if (JSON.stringify(historico) !== "[]") {
+                        document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico.cr);
+                    }
+                }
 
-                        function exibeCR() {
-                            if (JSON.stringify(historico) !== "[]") {
-                                document.getElementById("cr").innerHTML = "CR: " + parseFloat(historico[0].cr);
-                            }
-                        }
+                exibeCR();
 
+                //sidebar
 
-                        exibeCR();
-                    }});
+                usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
+
+                document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
+                document.getElementById("curso").innerHTML = usuario.nomeCurso;
+                document.getElementById("matricula").innerHTML = usuario.matricula;
+
             });
 
 

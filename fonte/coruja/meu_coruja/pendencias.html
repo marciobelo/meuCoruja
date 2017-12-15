@@ -24,18 +24,17 @@
 
 
             $(document).ready(function () {
-                pendencias = JSON.parse(localStorage.getItem('meuCoruja'))[3];
+                pendencias = JSON.parse(localStorage.getItem('meuCoruja')).pendencias;
                 console.log(pendencias);
-                for (var i = 0; i < pendencias.length; i++) {
+                for (var i = 0; i < pendencias.disciplinas.length; i++) {
                     $("#pendencias").find('tbody')
                             .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina' data-tooltip='" + pendencias[i].nomeDisciplina + "'>" + pendencias[i].siglaDisciplina + "</td>"))
-                                    //.append($("<td data-label='Média Final'>" + pendencias[i].nomeDisciplina + "</td>"))
-                                    .append($("<td data-label='Carga Horária'>" + pendencias[i].cargaHoraria + " hrs</td>"))
-                                    .append($("<td data-label='Período'>" + pendencias[i].periodo + "º Período</td>"))
+                                    .append($("<td data-label='Disciplina' data-tooltip='" + pendencias.disciplinas[i].nomeDisciplina + "'>" + pendencias.disciplinas[i].siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='Carga Horária'>" + pendencias.disciplinas[i].cargaHoraria + " hrs</td>"))
+                                    .append($("<td data-label='Período'>" + pendencias.disciplinas[i].periodo + "º Período</td>"))
                                     );
                 }
-                sidebar = JSON.parse(localStorage.getItem('meuCoruja'))[0];
+                sidebar = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
                 console.log(sidebar);
                 
                 document.getElementById("nomeUsuario").innerHTML = sidebar.nomeUsuario;
