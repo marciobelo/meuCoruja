@@ -96,7 +96,8 @@ foreach ($inscricoes as $inscricao) {
             $qtdeFaltas = substr_count($str, "F");
             
             $detalhamentoFalta = new stdClass();
-            $detalhamentoFalta->data = $diaLetivo->getData()->date;
+            $data = date_parse($diaLetivo->getData()->date);
+            $detalhamentoFalta->data = $data['hour'].":".$data['minute']." ".$data['day']."/".$data['month']."/".$data['year'];
             $detalhamentoFalta->qtdeFaltas = $qtdeFaltas;
             $detalhamentoFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
             
