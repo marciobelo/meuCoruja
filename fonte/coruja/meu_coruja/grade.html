@@ -1,279 +1,205 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Minha Grade Horária</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/tabela.css">
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Minha Grade Horária</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/tabela.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
-        
-            $(document).ready(function (){ 
-                
+
+            $(document).ready(function () {
+
                 jQuery(document).ready(adicionarSideBar);
 
                 function adicionarSideBar() {
-                    $.get("sidebar.html",function(sidebar){
+                    $.get("sidebar.html", function (sidebar) {
                         $('body').prepend(sidebar);
                     });
                 }
 
+                $(document).ready(function () {
+                    $.ajax({url: "endpoint_meucoruja.php",
+                        success: function (result, status, jqXHR) {
+                            meuCoruja = JSON.parse(result);
+                            boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim.disciplinas;
+                             console.log(meuCoruja);
+                            for (i = 0; i < boletim.length; i++) {
+                                //console.log(boletim[i].minhaGrade);
+                                for (j = 0; j < boletim[i].minhaGrade.length; j++) {
+                                    switch (boletim[i].minhaGrade[j].diaDaSemana) {
+                                        case "SEG":
+                                            flg_dia = "SEG";
+                                            break;
+                                        case "TER":
+                                            flg_dia = "TER";
+                                            break;
+                                        case "QUA":
+                                            flg_dia = "QUA";
+                                            break;
+                                        case "QUI":
+                                            flg_dia = "QUI";
+                                            break;
+                                        case "SEX":
+                                            flg_dia = "SEX";
+                                            break;
+                                        case "SAB":
+                                            flg_dia = "SAB";
+                                            break;
+                                    }
+                                    horario =  boletim[i].minhaGrade[j].horario;
+                                    nomeDisciplina = "testes";
+                                    siglaDisciplina = boletim[i].minhaGrade[j].siglaDisciplina;
+                                    professor = boletim[i].minhaGrade[j].professor;
+                                    $("#" + flg_dia).find('tbody')
+                                            .append(($('<tr>'))
+                                                    .append($("<td data-label='Horário'>" + horario + "</td>"))
+                                                    .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
+                                                    .append($("<td data-label='Sala'>" + boletim[i].minhaGrade[j].sala + "</td>"))
+                                                    .append($("<td data-label='Professor'>" + professor + "</td>"))
+                                                    );
+                                }
 
-                
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        boletim = JSON.parse(this.responseText);
-                        var tr;
-                        for (var i = 0; i < boletim.length; i++) {
-                            $("#boletim").find('tbody')
-                                .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina'>" + boletim[i].nome + "</td>"))
-                                    .append($("<td data-label='AV1'>" + boletim[i].av1 + "</td>"))
-                                    .append($("<td data-label='AV2'>" + boletim[i].av2 + "</td>"))
-                                    .append($("<td data-label='Média'>" + boletim[i].media + "</td>"))
-                                    .append($("<td data-label='AVF'>" + boletim[i].avf + "</td>"))
-                                    .append($("<td data-label='Média Final'>" + boletim[i].mediaFinal + "</td>"))
-                                    .append($("<td data-label='Professor'>" + boletim[i].professor + "</td>"))
-                                    .append($("<td data-label='Faltas'><span>"+boletim[i].faltas+"</span>/<span>"+boletim[i].faltasMax+"</span><a href= 'detalhamentoFaltas.php'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
-                            )
-                        }                                              
-                    }
-                };
-                
-                
+                            }
 
-                xmlhttp.open("GET", "endpoint_boletim.php", true);
-                xmlhttp.send();
-                    
+
+                        }
+                    });
+                });
             });
-       
+
         </script>
 
-</head>
-<body class="link2">
-	<div class="site-wrap">
-		<h1 class="titulo-pagina">Grade Horária</h1>
-		<ul class="accordion css-accordion">
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item1" />
-		    <label for="item1" class="accordion-item-hd">Segunda<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd">
-		    <table>
-		  		<thead>
-				    <tr>
-				      <th>Horário</th>
-				      <th>Disciplina</th>
-				      <th>Sala</th>
-				      <th>Professor</th>
-				    </tr>
-			  	</thead>
-				<tbody>
-		  			<tr>
-		      			<td data-label="Horário">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      	</tbody>
-		    </table>
+    </head>
+    <body class="link2">
+        <div class="site-wrap">
+            <h1 class="titulo-pagina">Grade Horária</h1>
+            <ul class="accordion css-accordion">
+                <!-- SEG -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item1" />
+                    <label for="item1" class="accordion-item-hd">Segunda<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    <div class="accordion-item-bd">
+                        <table id="SEG">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
 
-		    </div>
-		  </li>
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
-		    <label for="item2" class="accordion-item-hd">Terça<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    </div>
+                </li>
+
+                <!-- TER -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item2" />
+                    <label for="item2" class="accordion-item-hd">Terça<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    <div class="accordion-item-bd">
+                        <table id="TER">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+
+                <!-- QUA -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
+                    <label for="item3" class="accordion-item-hd">Quarta<span class="accordion-item-hd-cta">&#9650;</span></label>
+                    <div class="accordion-item-bd">
+                        <table id="QUA">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+
+                <!-- QUI -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item4" />
+                    <label for="item4" class="accordion-item-hd">Quinta<span class="accordion-item-hd-cta">&#9650;</span></label>
                     <div class="accordion-item-bd">
                         <table>
-		  		<thead>
-				    <tr>
-				      <th>Horário</th>
-				      <th>Disciplina</th>
-				      <th>Sala</th>
-				      <th>Professor</th>
-				    </tr>
-			  	</thead>
-				<tbody>
-		  			<tr>
-		      			<td data-label="Horário">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      	</tbody>
-		    </table>
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-		  </li>
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">Quarta<span class="accordion-item-hd-cta">&#9650;</span></label>
+                </li>
+
+                <!-- SEX -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item5" />
+                    <label for="item5" class="accordion-item-hd">Sexta<span class="accordion-item-hd-cta">&#9650;</span></label>
                     <div class="accordion-item-bd">
-                        <table>
-		  		<thead>
-				    <tr>
-				      <th>Horário</th>
-				      <th>Disciplina</th>
-				      <th>Sala</th>
-				      <th>Professor</th>
-				    </tr>
-			  	</thead>
-				<tbody>
-		  			<tr>
-		      			<td data-label="Horário">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      	</tbody>
-		    </table>
+                        <table id="SEX">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-		  </li>
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">Quinta<span class="accordion-item-hd-cta">&#9650;</span></label>
+                </li>
+
+                <!-- SAB -->
+                <li class="accordion-item">
+                    <input class="accordion-item-input" type="checkbox" name="accordion" id="item6" />
+                    <label for="item6" class="accordion-item-hd">Sábado<span class="accordion-item-hd-cta">&#9650;</span></label>
                     <div class="accordion-item-bd">
-                        <table>
-		  		<thead>
-				    <tr>
-				      <th>Horário</th>
-				      <th>Disciplina</th>
-				      <th>Sala</th>
-				      <th>Professor</th>
-				    </tr>
-			  	</thead>
-				<tbody>
-		  			<tr>
-		      			<td data-label="Horário">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      	</tbody>
-		    </table>
+                        <table id="SAB">
+                            <thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Disciplina</th>
+                                    <th>Sala</th>
+                                    <th>Professor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-		  </li>
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">Sexta<span class="accordion-item-hd-cta">&#9650;</span></label>
-                    <div class="accordion-item-bd">
-                        <table>
-		  		<thead>
-				    <tr>
-				      <th>Horário</th>
-				      <th>Disciplina</th>
-				      <th>Sala</th>
-				      <th>Professor</th>
-				    </tr>
-			  	</thead>
-				<tbody>
-		  			<tr>
-		      			<td data-label="Horário">7:00</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">7:50</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">8:40</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      		<tr>
-		      			<td data-label="Horário">9:30</td>
-		      			<td data-label="Disciplina"><span data-tooltip="Algoritmo e Linguagem de Programação 1">AL1</span></td>
-		      			<td data-label="Sala">H1</td>
-		      			<td data-label="Professor">Cláudia Ferlin</td>
-		      		</tr>
-		      	</tbody>
-		    </table>
-                    </div>
-		  </li>
-		  <li class="accordion-item">
-		    <input class="accordion-item-input" type="checkbox" name="accordion" id="item3" />
-		    <label for="item3" class="accordion-item-hd">Sábado<span class="accordion-item-hd-cta">&#9650;</span></label>
-		    <div class="accordion-item-bd"></div>
-		  </li>
-		</ul>
-	</div>
-</body>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>

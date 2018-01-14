@@ -12,18 +12,11 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
         <script>
-            function buscarNota(nomeChave, Array) {
-                for (var i = 0; i < Array.length; i++) {
-                    if (Array[i].rotulo === nomeChave) {
-                        return Array[i].nota;
-                    }
-                }
-            }
+            
             function abrirDetalhamentoFaltas(id){
-                id = $(id).closest('tr').index()
+                id = $(id).closest('tr').index();
                 sessionStorage.setItem('idDetalhamentoFaltas',id);
                 window.location = "detalhamentoFaltas.html";
-                
             }
             
             $(document).ready(function () {
@@ -62,14 +55,13 @@
 
                             $("#boletim").find('tbody')
                              .append(($('<tr>'))
-                             .append($("<td data-label='Disciplina' data-tooltip='" + nomeDisciplina + "'>" + siglaDisciplina + "</td>"))
+                             .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
                              .append($("<td data-label='AV1'>" + av1 + "</td>"))
                              .append($("<td data-label='AV2'>" + av2 + "</td>"))
                              .append($("<td data-label='Média'>" + media + "</td>"))
                              .append($("<td data-label='AVF'>" + avf + "</td>"))
                              .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
                              .append($("<td data-label='Professor'>" + professor + "</td>"))
-                             //.append($("<td data-label='Faltas'><span>" + faltas + "</span> /<span> " + limiteFaltas + "</span><a href= 'detalhamentoFaltas.html'><input type='image'  class='informacao' src='img/information-circular-button.png'></a></td>"))
                              .append($("<td data-label='Faltas'>\n\
                                             <span>" + faltas + "</span> / \n\
                                             <span> " + limiteFaltas + "</span>&nbsp"
@@ -86,13 +78,6 @@
                         periodoLetivo = boletim.siglaPeriodoLetivo;
                         document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
 
-                        //sidebar
-
-                        usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
-
-                        document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
-                        document.getElementById("curso").innerHTML = usuario.nomeCurso;
-                        document.getElementById("matricula").innerHTML = usuario.matricula;
                     }});
             });
         </script>

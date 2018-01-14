@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <script>
             /* $(document).ready(function () {
              $.ajax({url: "endpoint_meucoruja.php",
@@ -21,7 +21,7 @@
              if (jqXHR.status === 401) {
              window.open("index.html", "_self");
              }
-             //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÍVEIS
+             //VERIFICAR LOCAL STORAGE E PEGAR DADOS, SE DISPONÃVEIS
              else if (localStorage.nomeUsuario !== null) {
              $("#nomeUsuario").html(localStorage.nomeUsuario);
              $("#curso").html(localStorage.curso);
@@ -32,7 +32,13 @@
              }});
              });
              */
-
+            $(document).ready(function () {
+                usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
+                console.log(usuario.nomeUsuario);
+                document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
+                document.getElementById("curso").innerHTML = usuario.nomeCurso;
+                document.getElementById("matricula").innerHTML = usuario.matricula;
+            });
             
         </script>
         <script>
@@ -60,8 +66,8 @@
             </li>
             <li class="nav-item" id="link1"><a href="boletim.html">Boletim</a></li>
             <li class="nav-item" id="link2"><a href="grade.html">Minha Grade</a></li>
-            <li class="nav-item" id="link3"><a href="historico.html">Histórico</a></li>
-            <li class="nav-item" id="link4"><a class="current" href="pendencias.html">Pendências</a></li>
+            <li class="nav-item" id="link3"><a href="historico.html">HistÃ³rico</a></li>
+            <li class="nav-item" id="link4"><a class="current" href="pendencias.html">PendÃªncias</a></li>
             <li class="nav-item"><a href="sair.php">Sair</a></li>
         </ul>
 

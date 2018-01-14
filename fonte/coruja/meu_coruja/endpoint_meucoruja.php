@@ -7,6 +7,11 @@ require_once("$BASE_DIR/classes/Aluno.php");
 require_once("$BASE_DIR/classes/MatriculaAluno.php");
 require_once("$BASE_DIR/classes/MatrizCurricular.php");
 require_once("$BASE_DIR/classes/Curso.php");
+require_once("$BASE_DIR/classes/Aloca.php");
+require_once("$BASE_DIR/classes/TempoSemanal.php");
+require_once("$BASE_DIR/classes/Espaco.php");
+
+error_reporting(0);
 
 function isNull($str) {
 
@@ -58,6 +63,7 @@ $disciplinas = array();
 foreach ($inscricoes as $inscricao) {
     //$linha = array();
     $disciplina = new stdClass();
+    
     //informações de cada disciplina
     $infoDisciplina = new stdClass();
     $infoDisciplina->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
@@ -107,6 +113,31 @@ foreach ($inscricoes as $inscricao) {
     }
     $disciplina->detalhamentoFaltas = $detalhamentoFaltas;
     
+    //Grade Horária da disciplina
+    
+    $minhaGrade = array();
+
+    $grades =Aloca::getListAlocaByIdTurma($inscricao->getIdTurma());
+    
+    foreach($grades as $grade){
+        $gradeDisciplina = new stdClass();
+        $tempo = TempoSemanal::getTempoSemanalById($grade->getIdTempoSemanal());
+        $espaco = Espaco::obterEspacoPorId($grade->getIdEspaco());
+        $gradeDisciplina->sala = $espaco->getNome();
+        $gradeDisciplina->diaDaSemana = $tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getDiaSemana();
+        
+        $horaInicio = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraInicio());
+        $horaFim = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraFim());
+        $gradeDisciplina->horario = $horaInicio['hour'].":".$horaInicio['minute']." - ".$horaFim['hour'].":".$horaFim['minute'];
+        
+        $gradeDisciplina->siglaDisciplina = $inscricao->getTurma()->getSiglaDisciplina();
+        $gradeDisciplina->professor = $inscricao->getTurma()->getProfessor()->getNome();
+        
+        array_push($minhaGrade, $gradeDisciplina);
+        
+    }
+    $disciplina->minhaGrade = $minhaGrade;
+
     array_push($disciplinas,$disciplina);
 }
 $boletim->disciplinas = $disciplinas;
