@@ -21,55 +21,50 @@
                         $('body').prepend(sidebar);
                     });
                 }
-
+            });
                 $(document).ready(function () {
-                    $.ajax({url: "endpoint_meucoruja.php",
-                        success: function (result, status, jqXHR) {
-                            meuCoruja = JSON.parse(result);
-                            boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim.disciplinas;
-                             console.log(meuCoruja);
-                            for (i = 0; i < boletim.length; i++) {
-                                //console.log(boletim[i].minhaGrade);
-                                for (j = 0; j < boletim[i].minhaGrade.length; j++) {
-                                    switch (boletim[i].minhaGrade[j].diaDaSemana) {
-                                        case "SEG":
-                                            flg_dia = "SEG";
-                                            break;
-                                        case "TER":
-                                            flg_dia = "TER";
-                                            break;
-                                        case "QUA":
-                                            flg_dia = "QUA";
-                                            break;
-                                        case "QUI":
-                                            flg_dia = "QUI";
-                                            break;
-                                        case "SEX":
-                                            flg_dia = "SEX";
-                                            break;
-                                        case "SAB":
-                                            flg_dia = "SAB";
-                                            break;
-                                    }
-                                    horario =  boletim[i].minhaGrade[j].horario;
-                                    nomeDisciplina = "testes";
-                                    siglaDisciplina = boletim[i].minhaGrade[j].siglaDisciplina;
-                                    professor = boletim[i].minhaGrade[j].professor;
-                                    $("#" + flg_dia).find('tbody')
-                                            .append(($('<tr>'))
-                                                    .append($("<td data-label='Horário'>" + horario + "</td>"))
-                                                    .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
-                                                    .append($("<td data-label='Sala'>" + boletim[i].minhaGrade[j].sala + "</td>"))
-                                                    .append($("<td data-label='Professor'>" + professor + "</td>"))
-                                                    );
-                                }
-
-                            }
 
 
+                boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim.disciplinas;
+                
+                for (i = 0; i < boletim.length; i++) {
+                    //console.log(boletim[i].minhaGrade);
+                    for (j = 0; j < boletim[i].minhaGrade.length; j++) {
+                        switch (boletim[i].minhaGrade[j].diaDaSemana) {
+                        case "SEG":
+                                flg_dia = "SEG";
+                                break;
+                                case "TER":
+                                flg_dia = "TER";
+                                break;
+                                case "QUA":
+                                flg_dia = "QUA";
+                                break;
+                                case "QUI":
+                                flg_dia = "QUI";
+                                break;
+                                case "SEX":
+                                flg_dia = "SEX";
+                                break;
+                                case "SAB":
+                                flg_dia = "SAB";
+                                break;
                         }
-                    });
-                });
+                        horario = boletim[i].minhaGrade[j].horario;
+                                nomeDisciplina = "testes";
+                                siglaDisciplina = boletim[i].minhaGrade[j].siglaDisciplina;
+                                professor = boletim[i].minhaGrade[j].professor;
+                                $("#" + flg_dia).find('tbody')
+                                .append(($('<tr>'))
+                                        .append($("<td data-label='Horário'>" + horario + "</td>"))
+                                        .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
+                                        .append($("<td data-label='Sala'>" + boletim[i].minhaGrade[j].sala + "</td>"))
+                                        .append($("<td data-label='Professor'>" + professor + "</td>"))
+                                        );
+                    }
+
+                }
+
             });
 
         </script>
