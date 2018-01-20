@@ -1,7 +1,7 @@
 <html>
     <head>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <title>Pendências</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -29,7 +29,7 @@
                 for (var i = 0; i < pendencias.disciplinas.length; i++) {
                     $("#pendencias").find('tbody')
                             .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina' data-tooltip='" + pendencias.disciplinas[i].nomeDisciplina + "'>" + pendencias.disciplinas[i].siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='Disciplina' >" + pendencias.disciplinas[i].siglaDisciplina + "</td>"))
                                     .append($("<td data-label='Carga Horária'>" + pendencias.disciplinas[i].cargaHoraria + " hrs</td>"))
                                     .append($("<td data-label='Período'>" + pendencias.disciplinas[i].periodo + "º Período</td>"))
                                     );

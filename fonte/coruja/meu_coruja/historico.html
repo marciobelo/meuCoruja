@@ -1,7 +1,8 @@
 <html>
     <head>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <title>Histórico</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,7 +31,7 @@
                 for (var i = 0; i < historico.disciplinas.length; i++) {
                     $("#historico").find('tbody')
                             .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina' data-tooltip='" + historico.disciplinas[i].nomeDisciplina + "'>" + historico.disciplinas[i].siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='Disciplina'>" + historico.disciplinas[i].siglaDisciplina + "</td>"))
                                     .append($("<td data-label='Média Final'>" + historico.disciplinas[i].mediaFinal + "</td>"))
                                     .append($("<td data-label='Faltas'>" + historico.disciplinas[i].faltas + "</td>"))
                                     .append($("<td data-label='Situação'>" + historico.disciplinas[i].situacao + "</td>"))

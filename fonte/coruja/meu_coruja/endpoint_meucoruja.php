@@ -12,6 +12,9 @@ require_once("$BASE_DIR/classes/TempoSemanal.php");
 require_once("$BASE_DIR/classes/Espaco.php");
 
 error_reporting(0);
+//error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE); 
+
 
 function isNull($str) {
 

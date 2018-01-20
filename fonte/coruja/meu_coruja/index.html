@@ -2,34 +2,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/login.css">
-        <script>
-            var xmlhttp = new XMLHttpRequest();     
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //
-                    window.location.replace("boletim.html");
-                }
-            }
-            xmlhttp.open("GET", "autenticar_controle.php", true);
-            xmlhttp.send();
-        </script>
+
         <title>Meu Coruja</title>
     </head>
     <body>
 	
 	<div class="wrapper">
             <div id="result"></div>
-            <form class="form-signin" action="autenticar_controle.php" method="post">       
+                <form class="form-signin" id="loginForm" action="teste.php">       
 		  <h2 class="form-signin-heading">Meu Coruja</h2>
-		  <input type="text" class="form-control" name="nomeAcesso" placeholder="Matrícula" required="" autofocus="" />
-		  <input type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
+		  <input id="usuario" type="text" class="form-control" name="nomeAcesso" placeholder="Matrícula" required="" autofocus="" />
+		  <input id="senha" type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
+                  <span id="msgErro" style="color:red; visibility: hidden; font-weight: bold;"></span>
                   <br>
-		  <button class="btn btn-lg btn-primary btn-block" id="btn" type="submit">Entrar</button>   
+		  <button class="btn btn-lg btn-primary btn-block" id="btnEntrar" type="submit">Entrar</button>   
 		</form>
 	</div>
 	<script>
@@ -42,6 +34,50 @@
             } else {
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             }
+        </script>
+        <script>
+            
+            function requestMeuCoruja(){
+                $.ajax({
+                    url: "endpoint_meucoruja.php", 
+                    success: function(result, status, jqXHR){
+                        console.log(status);
+                        meuCoruja = JSON.parse(result);
+                        localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));            
+                        window.location.replace("boletim.html");
+                        
+                    },
+                    error: function(result,status,jqXHR){
+                        console.log("deu ruim");
+                    }
+                        
+                    });
+            }
+            
+            $('#loginForm').submit(function (e) {
+                
+                console.log("chamando");
+                $.ajax({
+                    type: "POST",
+                    url: "autenticar_controle.php",
+                    data: $('#loginForm').serialize(),
+                    success: function (result) {
+                        if(result){
+                            requestMeuCoruja();
+                        }
+                    },
+                    error: function (jqXHR) {
+                            console.log(jqXHR.status);
+                            if (jqXHR.status === 401) {
+                                document.getElementById("msgErro").innerHTML = "Usuário ou Senha incorretos!";
+                                document.getElementById("msgErro").style.visibility = "visible";
+                                //window.open("index.html", "_self");
+                            }
+                        }
+                });
+                e.preventDefault();
+            });
+                
         </script>
     </body>
 </html>

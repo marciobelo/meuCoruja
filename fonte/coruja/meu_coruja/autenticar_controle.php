@@ -17,11 +17,11 @@
             //echo 'Usuario autenticado com sucesso';
             
             http_response_code( 200 );
-            header('location:boletim.html');
-            exit;
+            //header('location:boletim.html');
+            echo http_response_code(200);
+            //exit;
         }else{
             return http_response_code(401);
-            exit;
         }
     } 
     catch (Exception $ex) 

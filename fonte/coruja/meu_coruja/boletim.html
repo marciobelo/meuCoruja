@@ -2,7 +2,8 @@
 <html>
     <head>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="manifest" href="manifest.json">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <title>Boletim</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,13 +13,13 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
         <script>
-            
-            function abrirDetalhamentoFaltas(id){
+
+            function abrirDetalhamentoFaltas(id) {
                 id = $(id).closest('tr').index();
-                sessionStorage.setItem('idDetalhamentoFaltas',id);
+                sessionStorage.setItem('idDetalhamentoFaltas', id);
                 window.location = "detalhamentoFaltas.html";
             }
-            
+
             $(document).ready(function () {
                 jQuery(document).ready(adicionarSideBar);
 
@@ -30,39 +31,37 @@
             });
 
             $(document).ready(function () {
-                $.ajax({url: "endpoint_meucoruja.php",
-                    success: function (result, status, jqXHR) {
-                        meuCoruja = JSON.parse(result);
-                        localStorage.setItem("meuCoruja", JSON.stringify(meuCoruja));
-                        boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
-                        console.log(boletim);
-                        console.log(boletim.disciplinas.length);
+                //meuCoruja = JSON.parse(result);
+                //localStorage.setItem("meuCoruja", JSON.stringify(meuCoruja));
+                boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
+                console.log(boletim);
+                console.log(boletim.disciplinas.length);
 
-                        for (i = 0; i < boletim.disciplinas.length; i++) {
+                for (i = 0; i < boletim.disciplinas.length; i++) {
 
-                            console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
-                            nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
-                            professor = boletim.disciplinas[i].info.nomeProfessor;
-                            faltas = boletim.disciplinas[i].info.faltas;
-                            limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
-                            //avaliacoes
+                    console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
+                    nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
+                    professor = boletim.disciplinas[i].info.nomeProfessor;
+                    faltas = boletim.disciplinas[i].info.faltas;
+                    limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
+                    //avaliacoes
 
-                            av1 = boletim.disciplinas[i].avaliacoes[0].nota;
-                            av2 = boletim.disciplinas[i].avaliacoes[1].nota;
-                            media = boletim.disciplinas[i].avaliacoes[2].nota;
-                            avf = boletim.disciplinas[i].avaliacoes[3].nota;
-                            mediaFinal = boletim.disciplinas[i].avaliacoes[4].nota;
+                    av1 = boletim.disciplinas[i].avaliacoes[0].nota;
+                    av2 = boletim.disciplinas[i].avaliacoes[1].nota;
+                    media = boletim.disciplinas[i].avaliacoes[2].nota;
+                    avf = boletim.disciplinas[i].avaliacoes[3].nota;
+                    mediaFinal = boletim.disciplinas[i].avaliacoes[4].nota;
 
-                            $("#boletim").find('tbody')
-                             .append(($('<tr>'))
-                             .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
-                             .append($("<td data-label='AV1'>" + av1 + "</td>"))
-                             .append($("<td data-label='AV2'>" + av2 + "</td>"))
-                             .append($("<td data-label='Média'>" + media + "</td>"))
-                             .append($("<td data-label='AVF'>" + avf + "</td>"))
-                             .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
-                             .append($("<td data-label='Professor'>" + professor + "</td>"))
-                             .append($("<td data-label='Faltas'>\n\
+                    $("#boletim").find('tbody')
+                            .append(($('<tr>'))
+                                    .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
+                                    .append($("<td data-label='AV1'>" + av1 + "</td>"))
+                                    .append($("<td data-label='AV2'>" + av2 + "</td>"))
+                                    .append($("<td data-label='Média'>" + media + "</td>"))
+                                    .append($("<td data-label='AVF'>" + avf + "</td>"))
+                                    .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
+                                    .append($("<td data-label='Professor'>" + professor + "</td>"))
+                                    .append($("<td data-label='Faltas'>\n\
                                             <span>" + faltas + "</span> / \n\
                                             <span> " + limiteFaltas + "</span>&nbsp"
                                             + "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
@@ -70,15 +69,15 @@
                                                     </span>\n\
                                                 </a>\n\
                                         </td>"))
-                             );
-                             
-                            
+                                    );
 
-                        }
-                        periodoLetivo = boletim.siglaPeriodoLetivo;
-                        document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
 
-                    }});
+
+                }
+                periodoLetivo = boletim.siglaPeriodoLetivo;
+                document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
+
+
             });
         </script>
 
