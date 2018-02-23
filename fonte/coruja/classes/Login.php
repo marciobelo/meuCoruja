@@ -11,7 +11,8 @@ class Login
     private $bloqueado;
     private $motivoBloqueio;
     private $pessoa;
-
+    private $foto;
+    
     private $permissoes; // array of Permite
     private $gruposFuncao;
 
@@ -86,7 +87,7 @@ class Login
             $login = new Login( $linha["nomeAcesso"],
                         $linha["bloqueado"] === "SIM",
                         $linha["motivoBloqueio"],
-                        Pessoa::obterPessoaPorId( $idPessoa) );
+                        Pessoa::obterPessoaPorId( $idPessoa));
             $login->permissoes = Permite::obterPermissoesPorIdPessoa($idPessoa);
             $login->gruposFuncao = GrupoFuncao::obterGruposDeFuncaoPorPermissoes($login->permissoes);
             return $login;

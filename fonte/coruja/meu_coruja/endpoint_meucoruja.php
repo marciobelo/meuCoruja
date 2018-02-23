@@ -12,9 +12,6 @@ require_once("$BASE_DIR/classes/TempoSemanal.php");
 require_once("$BASE_DIR/classes/Espaco.php");
 
 error_reporting(0);
-//error_reporting(E_ERROR | E_PARSE);
-//error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE); 
-
 
 function isNull($str) {
 
@@ -45,7 +42,6 @@ $numMatriculaAluno = $usuario->getNomeAcesso();
 $matriculaAluno = MatriculaAluno::obterMatriculaAluno($numMatriculaAluno);
 $mc = $matriculaAluno->getMatrizCurricular();
 $curso = $mc->getCurso();
-
 $aluno = Aluno::getAlunoByIdPessoa($idPessoa);
 
 
@@ -53,7 +49,6 @@ $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
-
 /////
 //BOLETIM//
 /////
@@ -197,7 +192,9 @@ $meuCoruja->boletim=$boletim;
 $meuCoruja->historico=$historico;
 $meuCoruja->pendencias=$disciplinasPendentes;
 
-$jsonMeuCoruja = json_encode($meuCoruja, JSON_UNESCAPED_UNICODE);
+$jsonMeuCoruja = json_encode($meuCoruja, JSON_PARTIAL_OUTPUT_ON_ERROR);
 echo $jsonMeuCoruja;
+
+
 
 

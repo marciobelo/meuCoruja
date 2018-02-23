@@ -38,10 +38,13 @@
                 console.log(boletim.disciplinas.length);
 
                 for (i = 0; i < boletim.disciplinas.length; i++) {
-
+                    
                     console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
                     nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
                     professor = boletim.disciplinas[i].info.nomeProfessor;
+                    emailProfessor = professor + "@gmail.com";
+                    emailProfessor = emailProfessor.replace(/\s+/g, '');
+                    console.log(emailProfessor);
                     faltas = boletim.disciplinas[i].info.faltas;
                     limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
                     //avaliacoes
@@ -60,7 +63,7 @@
                                     .append($("<td data-label='Média'>" + media + "</td>"))
                                     .append($("<td data-label='AVF'>" + avf + "</td>"))
                                     .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
-                                    .append($("<td data-label='Professor'>" + professor + "</td>"))
+                                    .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>"+professor + "</td>"))
                                     .append($("<td data-label='Faltas'>\n\
                                             <span>" + faltas + "</span> / \n\
                                             <span> " + limiteFaltas + "</span>&nbsp"

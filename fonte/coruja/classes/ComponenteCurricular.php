@@ -236,7 +236,7 @@ class ComponenteCurricular
                 if( $creditosTotal > 0 ) {
                     $mediaFinal = $notaTotal / $creditosTotal;
                     $quitacaoComponenteEquivalenteTO=new QuitacaoComponenteCurricularTO(
-                        $periodoLetivo, $mediaFinal , $this->getCreditos() );
+                        $periodoLetivo, $mediaFinal , $this->getCreditos(), FALSE);
                     return $quitacaoComponenteEquivalenteTO;
                 }
             }
@@ -273,7 +273,7 @@ class ComponenteCurricular
                     if( $creditosTotal > 0 ) {
                         $mediaFinal = $notaTotal / $creditosTotal;
                         $quitacaoComponenteEquivalenteTO=new QuitacaoComponenteCurricularTO(
-                            $periodoLetivo, $mediaFinal , $this->getCreditos() );
+                            $periodoLetivo, $mediaFinal , $this->getCreditos(), FALSE);
                         return $quitacaoComponenteEquivalenteTO;
                     }
                 }
