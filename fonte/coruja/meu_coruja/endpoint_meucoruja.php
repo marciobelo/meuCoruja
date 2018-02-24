@@ -45,6 +45,8 @@ $curso = $mc->getCurso();
 $aluno = Aluno::getAlunoByIdPessoa($idPessoa);
 
 
+
+
 $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
@@ -65,7 +67,8 @@ foreach ($inscricoes as $inscricao) {
     //informações de cada disciplina
     $infoDisciplina = new stdClass();
     $infoDisciplina->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $infoDisciplina ->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
+    $infoDisciplina->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
+    $infoDisciplina->emailProfessor = Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail();
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
     $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
     $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
@@ -186,11 +189,18 @@ foreach ($inscricoes as $inscricao) {
 $disciplinasPendentes->disciplinas = $pendencias;
 
 
+////Controle////
+$itensCriterioAvaliacao = ItemCriterioAvaliacao::obterItensCriterioAvaliacao();
+$controle->ItensCriterioAvaliacao = $itensCriterioAvaliacao;
+
+
+
 $meuCoruja = new stdClass();
-$meuCoruja->usuario=$u;
-$meuCoruja->boletim=$boletim;
-$meuCoruja->historico=$historico;
-$meuCoruja->pendencias=$disciplinasPendentes;
+$meuCoruja->usuario = $u;
+$meuCoruja->boletim = $boletim;
+$meuCoruja->historico = $historico;
+$meuCoruja->pendencias = $disciplinasPendentes;
+$meuCoruja->controle = $controle;
 
 $jsonMeuCoruja = json_encode($meuCoruja, JSON_PARTIAL_OUTPUT_ON_ERROR);
 echo $jsonMeuCoruja;

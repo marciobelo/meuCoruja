@@ -34,16 +34,24 @@
                 //meuCoruja = JSON.parse(result);
                 //localStorage.setItem("meuCoruja", JSON.stringify(meuCoruja));
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
-                console.log(boletim);
+                controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
+                console.log(controle);
                 console.log(boletim.disciplinas.length);
-
+                
+                $('thead tr').append( $('<th />', {text : 'Disciplina'}));
+                for(i = 0; i < controle.ItensCriterioAvaliacao.length-1; i++){
+                    $('thead tr').append( $('<th />', {text : controle.ItensCriterioAvaliacao[i].rotulo}));
+                }
+                $('thead tr').append( $('<th />', {text : 'Professor'}));
+                $('thead tr').append( $('<th />', {text : 'Faltas'}));
+                
+                
                 for (i = 0; i < boletim.disciplinas.length; i++) {
-                    
+
                     console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
                     nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
                     professor = boletim.disciplinas[i].info.nomeProfessor;
-                    emailProfessor = professor + "@gmail.com";
-                    emailProfessor = emailProfessor.replace(/\s+/g, '');
+                    emailProfessor = boletim.disciplinas[i].info.emailProfessor;
                     console.log(emailProfessor);
                     faltas = boletim.disciplinas[i].info.faltas;
                     limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
@@ -63,7 +71,7 @@
                                     .append($("<td data-label='Média'>" + media + "</td>"))
                                     .append($("<td data-label='AVF'>" + avf + "</td>"))
                                     .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
-                                    .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>"+professor + "</td>"))
+                                    .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
                                     .append($("<td data-label='Faltas'>\n\
                                             <span>" + faltas + "</span> / \n\
                                             <span> " + limiteFaltas + "</span>&nbsp"
@@ -95,17 +103,17 @@
             <h1>Boletim</h1>
             <div><h2 id="siglaPeriodoLetivo" align="center"></h2></div>
             <table id="boletim">
-                <thead>
+                <thead id="theadBoletim">
                     <tr>
-                        <th>Disciplina</th>
+                        <!--<th>Disciplina</th>
                         <th>AV1</th>
                         <th>AV2</th>
                         <th>Média</th>
                         <th>AVF</th>
                         <th>Média Final</th>
                         <th>Professor</th>
-                        <th>Faltas</th>
-                    </tr>
+                        <th>Faltas</th>-->
+                        </tr>
                 </thead>
                 <tbody>
                 </tbody>
