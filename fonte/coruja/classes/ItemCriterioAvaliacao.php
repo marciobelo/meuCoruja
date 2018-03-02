@@ -40,6 +40,9 @@ class ItemCriterioAvaliacao {
         return $this->formulaCalculo;
     }
 
+    public function getDescricao() {
+        return $this->descricao;
+    }
     /**
      * Exibe texto da nota lançada ou calculada
      * @param Inscricao $inscricao
@@ -137,17 +140,24 @@ class ItemCriterioAvaliacao {
         return new ItemCriterioAvaliacao($linha["idItemCriterioAvaliacao"], $linha["idCriterioAvaliacao"], $linha["rotulo"], $linha["descricao"], $linha["ordem"], $linha["tipo"], $linha["formulaCalculo"]);
     }
 
-    public static function obterItensCriterioAvaliacao() {
+    public static function obterItensPorIdCriterioAvaliacao($idCriterioAvaliacao) {
         $con = BD::conectar();
-        //$query = sprintf("SELECT MAX(idItemCriterioAvaliacao) FROM itemcriterioavaliacao;");
-        //$qtdItensCriterioAvaliacao = mysqli_fetch_array(mysql_query($query, $con));
-        $query = sprintf("SELECT idItemCriterioAvaliacao, rotulo FROM itemcriterioavaliacao");
+        $query = sprintf("SELECT ica.*
+                        FROM itemcriterioavaliacao ica 
+                        INNER JOIN criterioavaliacao ca ON ica.idCriterioAvaliacao = ca.idCriterioavaliacao
+                        WHERE ica.idCriterioAvaliacao = %d", $idCriterioAvaliacao);
         $result = mysql_query($query, $con);
-        
-        while($row = mysql_fetch_assoc($result)){
-            $arrayItensCriterioAvaliacao[] = $row;
+        $col = array();
+        while( $linha = mysql_fetch_array($result) ) {
+            $col[] = new ItemCriterioAvaliacao($linha["idItemCriterioAvaliacao"],
+                    $linha["idCriterioAvaliacao"],
+                    $linha["rotulo"],
+                    $linha["descricao"],
+                    $linha["ordem"],
+                    $linha["tipo"],
+                    $linha["formulaCalculo"]);
         }
-        return $arrayItensCriterioAvaliacao;
+        return $col;
     }
 
     public function isLancado() {

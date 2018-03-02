@@ -46,5 +46,16 @@ class CriterioAvaliacao {
         return $col;
     }
     
+    public static function obterIdCriteriosAvaliacao() {
+        $con = BD::conectar();
+        $query = sprintf("SELECT idCriterioAvaliacao from CriterioAvaliacao");
+        $result = mysql_query($query, $con);
+        $idCriteriosAvaliacao = array();
+        while ($linha = mysql_fetch_array($result)){
+            $idCriteriosAvaliacao[] = $linha["idCriterioAvaliacao"];
+        }
+        
+        return $idCriteriosAvaliacao;
+    }
 }
 ?>

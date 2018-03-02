@@ -881,5 +881,15 @@ class Turma {
                 !$this->isPautaLiberadaPeloProfessor() &&
                 !$this->getPeriodoLetivo()->isDataForaPeriodo( Util::obterDataAtual() );
     }
+    
+    public function getIdCriterioAvaliacao() {
+        $con = BD::conectar();
+        $query = sprintf("SELECT idCriterioAvaliacao FROM turma where idTurma = 1 limit 1");
+        $result = mysql_query($query, $con);
+        $value = mysql_fetch_object($result);
+        
+        return $value->idCriterioAvaliacao;
+    }
+    
 }
 ?>

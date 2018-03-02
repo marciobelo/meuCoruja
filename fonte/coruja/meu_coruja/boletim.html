@@ -31,8 +31,6 @@
             });
 
             $(document).ready(function () {
-                //meuCoruja = JSON.parse(result);
-                //localStorage.setItem("meuCoruja", JSON.stringify(meuCoruja));
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
                 controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
                 console.log(controle);
@@ -105,61 +103,12 @@
             <table id="boletim">
                 <thead id="theadBoletim">
                     <tr>
-                        <!--<th>Disciplina</th>
-                        <th>AV1</th>
-                        <th>AV2</th>
-                        <th>Média</th>
-                        <th>AVF</th>
-                        <th>Média Final</th>
-                        <th>Professor</th>
-                        <th>Faltas</th>-->
-                        </tr>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </div>
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Detalhamento de faltas</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Quantidade</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td data-label="Data">03/04/17</td>
-                                    <td data-label="Quantidade">3</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Data">15/05/17</td>
-                                    <td data-label="Quantidade">6</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Data">17/05/17</td>
-                                    <td data-label="Quantidade">3</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
+        
     </body>
 </html>

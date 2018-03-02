@@ -61,7 +61,6 @@ $boletim = new stdClass();
 $disciplinas = array();
 
 foreach ($inscricoes as $inscricao) {
-    //$linha = array();
     $disciplina = new stdClass();
     
     //informações de cada disciplina
@@ -72,6 +71,7 @@ foreach ($inscricoes as $inscricao) {
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
     $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
     $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
+    $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getIdCriterioAvaliacao());
     
     $boletim->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
     
@@ -118,7 +118,7 @@ foreach ($inscricoes as $inscricao) {
     
     $minhaGrade = array();
 
-    $grades =Aloca::getListAlocaByIdTurma($inscricao->getIdTurma());
+    $grades = Aloca::getListAlocaByIdTurma($inscricao->getIdTurma());
     
     foreach($grades as $grade){
         $gradeDisciplina = new stdClass();
@@ -141,11 +141,8 @@ foreach ($inscricoes as $inscricao) {
 
     array_push($disciplinas,$disciplina);
 }
+ 
 $boletim->disciplinas = $disciplinas;
-
-
-
-
 
 /////HISTÓRICO///////
 
@@ -166,7 +163,6 @@ foreach ($inscricoes as $inscricao) {
 }
 $historico->disciplinas = $dadosHistorico;
 $historico->cr = $disciplinaHistorico->cr;
-//array_push($meuCoruja, $historico);
 
 
 
@@ -190,10 +186,28 @@ $disciplinasPendentes->disciplinas = $pendencias;
 
 
 ////Controle////
-$itensCriterioAvaliacao = ItemCriterioAvaliacao::obterItensCriterioAvaliacao();
-$controle->ItensCriterioAvaliacao = $itensCriterioAvaliacao;
 
+$controle = new stdClass();
 
+$criteriosAvaliacao = array();
+$idsCriteriosAvaliacao = CriterioAvaliacao::obterIdCriteriosAvaliacao();
+foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
+    $itensCriterioAvaliacao = ItemCriterioAvaliacao::obterItensPorIdCriterioAvaliacao($idCriterioAvaliacao);
+    $criterioAvaliacao = new stdClass();
+    $criterioAvaliacao->idCriterioAvaliacao = $idCriterioAvaliacao;
+    $itens = array();
+    foreach ($itensCriterioAvaliacao as $itemCriterioAvaliacao){
+        $item = new stdClass();
+        $item->idItemCriterioAvaliacao = $itemCriterioAvaliacao->getIdItemCriterioAvaliacao();
+        $item->rotulo = $itemCriterioAvaliacao->getRotulo();
+        $item->descricao = $itemCriterioAvaliacao->getDescricao();
+        array_push($itens, $item);
+    }
+    $criterioAvaliacao->itensCriterioAvaliacao = $itens;
+    array_push($criteriosAvaliacao, $criterioAvaliacao);
+}
+
+$controle->criteriosAvaliacao = $criteriosAvaliacao;
 
 $meuCoruja = new stdClass();
 $meuCoruja->usuario = $u;
