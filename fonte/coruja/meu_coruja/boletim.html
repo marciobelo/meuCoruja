@@ -37,8 +37,11 @@
                 console.log(boletim.disciplinas.length);
                 
                 $('thead tr').append( $('<th />', {text : 'Disciplina'}));
-                for(i = 0; i < controle.ItensCriterioAvaliacao.length-1; i++){
-                    $('thead tr').append( $('<th />', {text : controle.ItensCriterioAvaliacao[i].rotulo}));
+                console.log(controle.criteriosAvaliacao);
+                for(i = 0; i < controle.criteriosAvaliacao.length-1; i++){
+                    for (j = 0; j < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length-1; j++){
+                        $('thead tr').append( $('<th />', {text : controle.criteriosAvaliacao[i].itensCriterioAvaliacao[j].rotulo}));
+                    }
                 }
                 $('thead tr').append( $('<th />', {text : 'Professor'}));
                 $('thead tr').append( $('<th />', {text : 'Faltas'}));
