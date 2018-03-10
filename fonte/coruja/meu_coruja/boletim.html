@@ -13,23 +13,19 @@
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
         <script>
-
             function abrirDetalhamentoFaltas(id) {
                 id = $(id).closest('tr').index();
                 sessionStorage.setItem('idDetalhamentoFaltas', id);
                 window.location = "detalhamentoFaltas.html";
             }
-
             $(document).ready(function () {
                 jQuery(document).ready(adicionarSideBar);
-
                 function adicionarSideBar() {
                     $.get("sidebar.html", function (sidebar) {
                         $('body').prepend(sidebar);
                     });
                 }
             });
-
             $(document).ready(function () {
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
                 controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
@@ -48,7 +44,6 @@
                 
                 
                 for (i = 0; i < boletim.disciplinas.length; i++) {
-
                     console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
                     nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
                     professor = boletim.disciplinas[i].info.nomeProfessor;
@@ -57,13 +52,11 @@
                     faltas = boletim.disciplinas[i].info.faltas;
                     limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
                     //avaliacoes
-
                     av1 = boletim.disciplinas[i].avaliacoes[0].nota;
                     av2 = boletim.disciplinas[i].avaliacoes[1].nota;
                     media = boletim.disciplinas[i].avaliacoes[2].nota;
                     avf = boletim.disciplinas[i].avaliacoes[3].nota;
                     mediaFinal = boletim.disciplinas[i].avaliacoes[4].nota;
-
                     $("#boletim").find('tbody')
                             .append(($('<tr>'))
                                     .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
@@ -82,14 +75,9 @@
                                                 </a>\n\
                                         </td>"))
                                     );
-
-
-
                 }
                 periodoLetivo = boletim.siglaPeriodoLetivo;
                 document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
-
-
             });
         </script>
 

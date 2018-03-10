@@ -3,7 +3,7 @@
         <link rel="manifest" href="manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-        <title>Pendências</title>
+        <title>Mensagens</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,49 +19,39 @@
                     });
                 }
             });
-
+            
+            function adicionarMensagem(i){
+                $("#mensagens").append($("<a class='list-group-item list-group-item-action flex-column align-items-start'>" +
+                        "<div class='d-flex w-100 justify-content-between'>"+
+                        "<h5 class='mb-1' style='overflow-wrap: break-word;'>" + mensagens[i].assunto + "</h5>"+
+                        "</div>"+
+                        "<p class='mb-1' style='overflow-wrap: break-word;'>"+ mensagens[i].texto +"</p>"+
+                        "<small>" + mensagens[i].data + "</small></a></div>"));
+            }
 
 
 
             $(document).ready(function () {
-                pendencias = JSON.parse(localStorage.getItem('meuCoruja')).pendencias;
-                console.log(pendencias);
-                for (var i = 0; i < pendencias.disciplinas.length; i++) {
-                    $("#pendencias").find('tbody')
-                            .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina' >" + pendencias.disciplinas[i].siglaDisciplina + "</td>"))
-                                    .append($("<td data-label='Carga Horária'>" + pendencias.disciplinas[i].cargaHoraria + " hrs</td>"))
-                                    .append($("<td data-label='Período'>" + pendencias.disciplinas[i].periodo + "º Período</td>"))
-                                    );
+                mensagens = JSON.parse(localStorage.getItem('meuCoruja')).controle.mensagens;
+                console.log(mensagens);
+                for (var i = 0; i < mensagens.length; i++) {
+                    adicionarMensagem(i);
                 }
                 sidebar = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
                 console.log(sidebar);
-
+                
             });
 
 
         </script>
     </head>
-    <body class="link4">
+    <body class="link5">
 
         <div class="site-wrap">
-            <h1 class="titulo-pagina">Disciplinas Pendentes</h1>
-
-            <table  id="pendencias" style="overflow: hidden;">
-                <thead>
-                    <tr>
-                        <th>Disciplina</th>
-                        <th>Carga Horária </th>
-                        <th>Período</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
-
+            <h1 class="titulo-pagina">Últimas Mensagens</h1>
+           
+            <div class="list-group" id="mensagens"></div>
         </div>
-
     </body>
 </html>
 

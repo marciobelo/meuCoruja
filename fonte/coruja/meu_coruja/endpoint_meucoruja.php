@@ -10,6 +10,7 @@ require_once("$BASE_DIR/classes/Curso.php");
 require_once("$BASE_DIR/classes/Aloca.php");
 require_once("$BASE_DIR/classes/TempoSemanal.php");
 require_once("$BASE_DIR/classes/Espaco.php");
+require_once("$BASE_DIR/classes/Mensagem.php");
 
 error_reporting(0);
 
@@ -207,6 +208,18 @@ foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
     array_push($criteriosAvaliacao, $criterioAvaliacao);
 }
 
+
+$mensagens = Array();
+$arrayMsg = Mensagem::obterUltimasMensagens((int)$idPessoa);
+foreach($arrayMsg as $msg){
+    $mensagem = new stdClass();
+    $mensagem->idMensagem = $msg->getIdMensagem();
+    $mensagem->assunto = $msg->getAssunto();
+    $mensagem->texto = $msg->getTexto();
+    $mensagem->data = $msg->getDataMensagem()->format('d-m-Y H:i');
+    array_push($mensagens, $mensagem);
+}
+$controle->mensagens = $mensagens;
 $controle->criteriosAvaliacao = $criteriosAvaliacao;
 
 $meuCoruja = new stdClass();

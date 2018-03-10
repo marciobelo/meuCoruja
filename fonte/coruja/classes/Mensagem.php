@@ -132,7 +132,7 @@ class Mensagem {
      * @param int $idPessoa
      * @return array de mensagens
      */
-    public static function obterUltimasMensagens(int $idPessoa) 
+    public static function obterUltimasMensagens($idPessoa) 
     {
         $con = BD::conectar();
         $query = sprintf("select * from Mensagem M inner join 
