@@ -210,13 +210,13 @@ foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
 
 
 $mensagens = Array();
-$arrayMsg = Mensagem::obterUltimasMensagens((int)$idPessoa);
+$arrayMsg = Mensagem::obterUltimasMensagensQtd((int)$idPessoa, 50);
 foreach($arrayMsg as $msg){
     $mensagem = new stdClass();
     $mensagem->idMensagem = $msg->getIdMensagem();
     $mensagem->assunto = $msg->getAssunto();
     $mensagem->texto = $msg->getTexto();
-    $mensagem->data = $msg->getDataMensagem()->format('d-m-Y H:i');
+    $mensagem->data = $msg->getDataMensagem()->format('d-m-Y');
     array_push($mensagens, $mensagem);
 }
 $controle->mensagens = $mensagens;

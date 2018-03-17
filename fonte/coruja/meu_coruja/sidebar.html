@@ -5,7 +5,6 @@
         <script>
             $(document).ready(function () {
                 usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
-                console.log(usuario.nomeUsuario);
                 document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
                 document.getElementById("curso").innerHTML = usuario.nomeCurso;
                 document.getElementById("matricula").innerHTML = usuario.matricula;

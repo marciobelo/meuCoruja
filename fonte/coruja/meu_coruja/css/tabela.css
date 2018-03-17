@@ -5,11 +5,11 @@
   table {
     border: 1px solid #ccc;
     width: 100%;
-    margin:auto;
+    /*margin: auto;*/
+    margin-bottom: 50px;
     padding:0;
     border-collapse: collapse;
     border-spacing: 0;
-
   }
 
   table tr {

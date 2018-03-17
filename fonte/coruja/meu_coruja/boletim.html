@@ -26,56 +26,78 @@
                     });
                 }
             });
-            $(document).ready(function () {
-                boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
-                controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
-                console.log(controle);
-                console.log(boletim.disciplinas.length);
-                
-                $('thead tr').append( $('<th />', {text : 'Disciplina'}));
-                console.log(controle.criteriosAvaliacao);
-                for(i = 0; i < controle.criteriosAvaliacao.length-1; i++){
-                    for (j = 0; j < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length-1; j++){
-                        $('thead tr').append( $('<th />', {text : controle.criteriosAvaliacao[i].itensCriterioAvaliacao[j].rotulo}));
+
+
+            function InserirTabelas() {
+                //For de Critérios de Avaliação
+                for (i = 0; i < controle.criteriosAvaliacao.length; i++) {
+                    if (controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length > 0) {
+                    //Append Tabela
+                    $('#boletim').append('<table id=criterioAvaliacao' + i + '/>');
+                    //Append Header
+                    $('#criterioAvaliacao' + i).append($('<thead><tr/></thead>'));
+                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th/>', {text: 'Disciplina'}));
+
+                    for (j = 0; j < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length - 1; j++) {
+                        $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: controle.criteriosAvaliacao[i].itensCriterioAvaliacao[j].rotulo}));
                     }
-                }
-                $('thead tr').append( $('<th />', {text : 'Professor'}));
-                $('thead tr').append( $('<th />', {text : 'Faltas'}));
-                
-                
-                for (i = 0; i < boletim.disciplinas.length; i++) {
-                    console.log(siglaDisciplina = boletim.disciplinas[i].info.siglaDisciplina);
-                    nomeDisciplina = boletim.disciplinas[i].info.nomeDisciplina;
-                    professor = boletim.disciplinas[i].info.nomeProfessor;
-                    emailProfessor = boletim.disciplinas[i].info.emailProfessor;
-                    console.log(emailProfessor);
-                    faltas = boletim.disciplinas[i].info.faltas;
-                    limiteFaltas = boletim.disciplinas[i].info.limiteFaltas;
-                    //avaliacoes
-                    av1 = boletim.disciplinas[i].avaliacoes[0].nota;
-                    av2 = boletim.disciplinas[i].avaliacoes[1].nota;
-                    media = boletim.disciplinas[i].avaliacoes[2].nota;
-                    avf = boletim.disciplinas[i].avaliacoes[3].nota;
-                    mediaFinal = boletim.disciplinas[i].avaliacoes[4].nota;
-                    $("#boletim").find('tbody')
-                            .append(($('<tr>'))
-                                    .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
-                                    .append($("<td data-label='AV1'>" + av1 + "</td>"))
-                                    .append($("<td data-label='AV2'>" + av2 + "</td>"))
-                                    .append($("<td data-label='Média'>" + media + "</td>"))
-                                    .append($("<td data-label='AVF'>" + avf + "</td>"))
-                                    .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
-                                    .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
-                                    .append($("<td data-label='Faltas'>\n\
+                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Professor'}));
+                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Faltas'}));
+
+                    //Append Linhas
+                    $('#criterioAvaliacao' + i).append('<tbody/>');
+
+                    for (k = 0; k < boletim.disciplinas.length; k++) {
+                        siglaDisciplina = boletim.disciplinas[k].info.siglaDisciplina;
+                        nomeDisciplina = boletim.disciplinas[k].info.nomeDisciplina;
+                        professor = boletim.disciplinas[k].info.nomeProfessor;
+                        emailProfessor = boletim.disciplinas[k].info.emailProfessor;
+                        faltas = boletim.disciplinas[k].info.faltas;
+                        limiteFaltas = boletim.disciplinas[k].info.limiteFaltas;
+                        //avaliacoes
+                        console.log(controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length);
+                        /*for (l = 0; l < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length; l++){
+                            console.log(boletim.disciplinas[k].info.idCriterioAvaliacao);
+                        }*/
+                        av1 = boletim.disciplinas[k].avaliacoes[0].nota;
+                        av2 = boletim.disciplinas[k].avaliacoes[1].nota;
+                        media = boletim.disciplinas[k].avaliacoes[2].nota;
+                        avf = boletim.disciplinas[k].avaliacoes[3].nota;
+                        mediaFinal = boletim.disciplinas[k].avaliacoes[4].nota;
+                        
+                        if (boletim.disciplinas[k].info.idCriterioAvaliacao - 1 === i) {
+
+                            $("#criterioAvaliacao" + i + ' tbody')
+                                    .append(($('<tr>'))
+                                            .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
+                                            .append($("<td data-label='AV1'>" + av1 + "</td>"))
+                                            .append($("<td data-label='AV2'>" + av2 + "</td>"))
+                                            .append($("<td data-label='Média'>" + media + "</td>"))
+                                            .append($("<td data-label='AVF'>" + avf + "</td>"))
+                                            .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
+                                            .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
+                                            .append($("<td data-label='Faltas'>\n\
                                             <span>" + faltas + "</span> / \n\
                                             <span> " + limiteFaltas + "</span>&nbsp"
-                                            + "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
+                                                    + "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
                                                     <span class='glyphicon glyphicon-zoom-in' aria-hidden='true'>\n\
                                                     </span>\n\
                                                 </a>\n\
                                         </td>"))
-                                    );
+                                            );
+                        }
+                    }
                 }
+                }
+            }
+
+
+
+            $(document).ready(function () {
+                boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
+                controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
+
+                InserirTabelas();
                 periodoLetivo = boletim.siglaPeriodoLetivo;
                 document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
             });
@@ -91,15 +113,18 @@
 
             <h1>Boletim</h1>
             <div><h2 id="siglaPeriodoLetivo" align="center"></h2></div>
-            <table id="boletim">
+            <div id="boletim"></div>
+
+
+            <!--<table id="boletim">
                 <thead id="theadBoletim">
                     <tr>
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
+            </table>-->
         </div>
-        
+
     </body>
 </html>

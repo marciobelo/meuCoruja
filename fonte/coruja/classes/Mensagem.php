@@ -147,6 +147,22 @@ class Mensagem {
         }
         return $col;
     }
+    
+    public static function obterUltimasMensagensQtd($idPessoa, $qtd) 
+    {
+        $con = BD::conectar();
+        $query = sprintf("select * from Mensagem M inner join 
+            MensagemPessoa MP on M.idMensagem = MP.idMensagem 
+            where MP.idPessoa = %d
+            order by M.dataMensagem DESC limit %d", 
+                $idPessoa, $qtd );
+        $result = mysql_query($query, $con);
+        $col = array();
+        while( $linha = mysql_fetch_array($result) ) {
+            $col[] = Mensagem::converterLinhaBanco( $linha );
+        }
+        return $col;
+    }
 
     /**
      * Retorna o total de mensagens para um usuário
