@@ -155,7 +155,7 @@ class Mensagem {
             MensagemPessoa MP on M.idMensagem = MP.idMensagem 
             where MP.idPessoa = %d
             order by M.dataMensagem DESC limit %d", 
-                $idPessoa, $qtd );
+                $idPessoa, $qtd);
         $result = mysql_query($query, $con);
         $col = array();
         while( $linha = mysql_fetch_array($result) ) {

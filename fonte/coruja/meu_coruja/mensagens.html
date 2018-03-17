@@ -32,13 +32,19 @@
 
 
             $(document).ready(function () {
-                mensagens = JSON.parse(localStorage.getItem('meuCoruja')).controle.mensagens;
-                console.log(mensagens);
+                msgControle = JSON.parse(localStorage.getItem('meuCoruja')).controle.msgControle;
+                mensagens = msgControle.mensagens;
+                possuiMaisMsg = msgControle.flgMensagens;
+                console.log(possuiMaisMsg);
                 for (var i = 0; i < mensagens.length; i++) {
                     adicionarMensagem(i);
                 }
                 sidebar = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
                 console.log(sidebar);
+                
+                if (possuiMaisMsg === true) {
+                    $('#mensagens').after('<h4 style="text-align:center;color:red">Você possui mais mensagens. Para vê-las, acesse o Coruja.</h4>');    
+                }
                 
             });
 

@@ -211,7 +211,16 @@ foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
 
 
 $mensagens = Array();
-$arrayMsg = Mensagem::obterUltimasMensagensQtd((int)$idPessoa, 50);
+$msgControle = new stdClass();
+
+$qtdMsgs = 50;
+$arrayMsg = Mensagem::obterUltimasMensagensQtd((int)$idPessoa, $qtdMsgs + 1);
+$possuiMaisMensagens = false;
+if (count($arrayMsg) > $qtdMsgs){
+    $possuiMaisMensagens = true;
+}
+$msgControle->flgMensagens = $possuiMaisMensagens;
+
 foreach($arrayMsg as $msg){
     $mensagem = new stdClass();
     $mensagem->idMensagem = $msg->getIdMensagem();
@@ -220,7 +229,9 @@ foreach($arrayMsg as $msg){
     $mensagem->data = $msg->getDataMensagem()->format('d-m-Y');
     array_push($mensagens, $mensagem);
 }
-$controle->mensagens = $mensagens;
+$msgControle->mensagens = $mensagens;
+
+$controle->msgControle = $msgControle;
 $controle->criteriosAvaliacao = $criteriosAvaliacao;
 
 $meuCoruja = new stdClass();
