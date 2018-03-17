@@ -85,6 +85,7 @@ foreach ($inscricoes as $inscricao) {
 
         $avaliacao = new stdClass();
 
+        $avaliacao->idCriterioAvaliacao = $item->getItemCriterioAvaliacao()->getIdItemCriterioAvaliacao();
         $avaliacao->rotulo = isNull($item->getItemCriterioAvaliacao()->getRotulo());
         $avaliacao->nota = isNull($item->getNota());
         

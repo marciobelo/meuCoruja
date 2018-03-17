@@ -18,89 +18,85 @@
                 sessionStorage.setItem('idDetalhamentoFaltas', id);
                 window.location = "detalhamentoFaltas.html";
             }
-            $(document).ready(function () {
-                jQuery(document).ready(adicionarSideBar);
-                function adicionarSideBar() {
-                    $.get("sidebar.html", function (sidebar) {
-                        $('body').prepend(sidebar);
-                    });
-                }
-            });
-
-
+            
+            function adicionarSideBar() {
+                $.get("sidebar.html", function (sidebar) {
+                    $('body').prepend(sidebar);
+                });
+            };
+            
             function InserirTabelas() {
                 //For de Critérios de Avaliação
                 for (i = 0; i < controle.criteriosAvaliacao.length; i++) {
                     if (controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length > 0) {
-                    //Append Tabela
-                    $('#boletim').append('<table id=criterioAvaliacao' + i + '/>');
-                    //Append Header
-                    $('#criterioAvaliacao' + i).append($('<thead><tr/></thead>'));
-                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th/>', {text: 'Disciplina'}));
+                        //Append Tabela
+                        $('#boletim').append('<table id=criterioAvaliacao' + i + '/>');
 
-                    for (j = 0; j < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length - 1; j++) {
-                        $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: controle.criteriosAvaliacao[i].itensCriterioAvaliacao[j].rotulo}));
-                    }
-                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Professor'}));
-                    $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Faltas'}));
+                        //Append Header
+                        $('#criterioAvaliacao' + i).append($('<thead><tr/></thead>'));
+                        $('#criterioAvaliacao' + i + ' thead tr').append($('<th/>', {text: 'Disciplina'}));
 
-                    //Append Linhas
-                    $('#criterioAvaliacao' + i).append('<tbody/>');
+                        for (j = 0; j < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length; j++) {
+                            $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: controle.criteriosAvaliacao[i].itensCriterioAvaliacao[j].rotulo}));
+                        }
+                        $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Professor'}));
+                        $('#criterioAvaliacao' + i + ' thead tr').append($('<th />', {text: 'Faltas'}));
 
-                    for (k = 0; k < boletim.disciplinas.length; k++) {
-                        siglaDisciplina = boletim.disciplinas[k].info.siglaDisciplina;
-                        nomeDisciplina = boletim.disciplinas[k].info.nomeDisciplina;
-                        professor = boletim.disciplinas[k].info.nomeProfessor;
-                        emailProfessor = boletim.disciplinas[k].info.emailProfessor;
-                        faltas = boletim.disciplinas[k].info.faltas;
-                        limiteFaltas = boletim.disciplinas[k].info.limiteFaltas;
-                        //avaliacoes
-                        console.log(controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length);
-                        /*for (l = 0; l < controle.criteriosAvaliacao[i].itensCriterioAvaliacao.length; l++){
-                            console.log(boletim.disciplinas[k].info.idCriterioAvaliacao);
-                        }*/
-                        av1 = boletim.disciplinas[k].avaliacoes[0].nota;
-                        av2 = boletim.disciplinas[k].avaliacoes[1].nota;
-                        media = boletim.disciplinas[k].avaliacoes[2].nota;
-                        avf = boletim.disciplinas[k].avaliacoes[3].nota;
-                        mediaFinal = boletim.disciplinas[k].avaliacoes[4].nota;
-                        
-                        if (boletim.disciplinas[k].info.idCriterioAvaliacao - 1 === i) {
+                        //Append Linhas
+                        $('#criterioAvaliacao' + i).append('<tbody/>');
 
-                            $("#criterioAvaliacao" + i + ' tbody')
-                                    .append(($('<tr>'))
-                                            .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"))
-                                            .append($("<td data-label='AV1'>" + av1 + "</td>"))
-                                            .append($("<td data-label='AV2'>" + av2 + "</td>"))
-                                            .append($("<td data-label='Média'>" + media + "</td>"))
-                                            .append($("<td data-label='AVF'>" + avf + "</td>"))
-                                            .append($("<td data-label='Média Final'>" + mediaFinal + "</td>"))
-                                            .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
-                                            .append($("<td data-label='Faltas'>\n\
-                                            <span>" + faltas + "</span> / \n\
-                                            <span> " + limiteFaltas + "</span>&nbsp"
-                                                    + "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
-                                                    <span class='glyphicon glyphicon-zoom-in' aria-hidden='true'>\n\
-                                                    </span>\n\
-                                                </a>\n\
-                                        </td>"))
-                                            );
+                        for (k = 0; k < boletim.disciplinas.length; k++) {
+                            siglaDisciplina = boletim.disciplinas[k].info.siglaDisciplina;
+                            //nomeDisciplina = boletim.disciplinas[k].info.nomeDisciplina;
+                            professor = boletim.disciplinas[k].info.nomeProfessor;
+                            emailProfessor = boletim.disciplinas[k].info.emailProfessor;
+                            faltas = boletim.disciplinas[k].info.faltas;
+                            limiteFaltas = boletim.disciplinas[k].info.limiteFaltas;
+
+
+                            if (boletim.disciplinas[k].info.idCriterioAvaliacao - 1 === i) {
+                                $("#criterioAvaliacao" + i + ' tbody')
+                                        .append(($("<tr id=disciplina" + k + ">")));
+
+                                $("#criterioAvaliacao" + i + " tbody tr#disciplina" + k)
+                                        .append($("<td data-label='Disciplina'>" + siglaDisciplina + "</td>"));
+
+
+                                for (l = 0; l < boletim.disciplinas[k].avaliacoes.length; l++) {
+                                    if (boletim.disciplinas[k].avaliacoes[l].idCriterioAvaliacao ===
+                                            controle.criteriosAvaliacao[i].itensCriterioAvaliacao[l].idItemCriterioAvaliacao) {
+                                        $("#criterioAvaliacao" + i + " tbody tr#disciplina" + k)
+                                                .append($("<td data-label='" + boletim.disciplinas[k].avaliacoes[l].rotulo + "'>" +
+                                                        boletim.disciplinas[k].avaliacoes[l].nota + "</td>"));
+                                    }
+                                }
+
+                                $("#criterioAvaliacao" + i + " tbody tr#disciplina" + k)
+                                        .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
+                                        .append($
+                                                ("<td data-label='Faltas'>\n\
+                                        <span>" + faltas + "</span> / \n\
+                                        <span> " + limiteFaltas + "</span>&nbsp" +
+                                                        "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
+                                            <span class='glyphicon glyphicon-zoom-in' aria-hidden='true'/>\n\
+                                        </a>\n\
+                                    </td>"));
+                            }
                         }
                     }
-                }
                 }
             }
 
 
-
             $(document).ready(function () {
+                jQuery(document).ready(adicionarSideBar);
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
                 controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
-
                 InserirTabelas();
                 periodoLetivo = boletim.siglaPeriodoLetivo;
                 document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
             });
+
         </script>
 
 
