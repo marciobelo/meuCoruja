@@ -72,7 +72,8 @@ foreach ($inscricoes as $inscricao) {
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
     $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
     $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
-    $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getIdCriterioAvaliacao());
+    $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getCriterioAvaliacao()->getIdCriterioAvalicao());
+
     
     $boletim->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
     
@@ -96,7 +97,6 @@ foreach ($inscricoes as $inscricao) {
     //Detalhamento de faltas de cada disciplina
     $detalhamentoFaltas = array();
     $diasLetivoDateTime = $inscricao->getTurma()->obterDatasDiaLetivo();
-    //var_dump($diasLetivoDateTime);
     foreach ($diasLetivoDateTime as $diaLetivoTurma) {
         $diaLetivo = new DiaLetivoTurma($inscricao->getTurma(), $diaLetivoTurma);
         $str = $inscricao->obterResumoApontamentoDiaLetivo($diaLetivo);
@@ -194,19 +194,24 @@ $controle = new stdClass();
 $criteriosAvaliacao = array();
 $idsCriteriosAvaliacao = CriterioAvaliacao::obterIdCriteriosAvaliacao();
 foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
-    $itensCriterioAvaliacao = ItemCriterioAvaliacao::obterItensPorIdCriterioAvaliacao($idCriterioAvaliacao);
-    $criterioAvaliacao = new stdClass();
-    $criterioAvaliacao->idCriterioAvaliacao = $idCriterioAvaliacao;
-    $itens = array();
-    foreach ($itensCriterioAvaliacao as $itemCriterioAvaliacao){
-        $item = new stdClass();
-        $item->idItemCriterioAvaliacao = $itemCriterioAvaliacao->getIdItemCriterioAvaliacao();
-        $item->rotulo = $itemCriterioAvaliacao->getRotulo();
-        $item->descricao = $itemCriterioAvaliacao->getDescricao();
-        array_push($itens, $item);
+    if(in_array($idCriterioAvaliacao ,CriterioAvaliacao::obterIdCriteriosAvaliacaoCursando($matriculaAluno->getMatriculaAluno()))){
+        
+        $itensCriterioAvaliacao = ItemCriterioAvaliacao::obterItensPorIdCriterioAvaliacao($idCriterioAvaliacao);
+
+        $criterioAvaliacao = new stdClass();
+        $criterioAvaliacao->idCriterioAvaliacao = $idCriterioAvaliacao;
+        $itens = array();
+        foreach ($itensCriterioAvaliacao as $itemCriterioAvaliacao){
+            $item = new stdClass();
+            $item->idItemCriterioAvaliacao = $itemCriterioAvaliacao->getIdItemCriterioAvaliacao();
+            $item->rotulo = $itemCriterioAvaliacao->getRotulo();
+            $item->descricao = $itemCriterioAvaliacao->getDescricao();
+            array_push($itens, $item);
+        }
+        $criterioAvaliacao->itensCriterioAvaliacao = $itens;
+
+        array_push($criteriosAvaliacao, $criterioAvaliacao);
     }
-    $criterioAvaliacao->itensCriterioAvaliacao = $itens;
-    array_push($criteriosAvaliacao, $criterioAvaliacao);
 }
 
 

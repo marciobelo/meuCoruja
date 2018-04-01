@@ -14,7 +14,6 @@
 
         <script>
             function abrirDetalhamentoFaltas(id) {
-                id = $(id).closest('tr').index();
                 sessionStorage.setItem('idDetalhamentoFaltas', id);
                 window.location = "detalhamentoFaltas.html";
             }
@@ -24,7 +23,6 @@
                     $('body').prepend(sidebar);
                 });
             };
-            
             function InserirTabelas() {
                 //For de Critérios de Avaliação
                 for (i = 0; i < controle.criteriosAvaliacao.length; i++) {
@@ -70,14 +68,13 @@
                                                         boletim.disciplinas[k].avaliacoes[l].nota + "</td>"));
                                     }
                                 }
-
                                 $("#criterioAvaliacao" + i + " tbody tr#disciplina" + k)
                                         .append($("<td data-label='Professor'><a href='mailto:" + emailProfessor + "'>" + professor + "</td>"))
                                         .append($
                                                 ("<td data-label='Faltas'>\n\
                                         <span>" + faltas + "</span> / \n\
                                         <span> " + limiteFaltas + "</span>&nbsp" +
-                                                        "<a onclick='abrirDetalhamentoFaltas(this)'>\n\
+                                                        "<a onclick='abrirDetalhamentoFaltas("+k+")'>\n\
                                             <span class='glyphicon glyphicon-zoom-in' aria-hidden='true'/>\n\
                                         </a>\n\
                                     </td>"));
@@ -111,15 +108,6 @@
             <div><h2 id="siglaPeriodoLetivo" align="center"></h2></div>
             <div id="boletim"></div>
 
-
-            <!--<table id="boletim">
-                <thead id="theadBoletim">
-                    <tr>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>-->
         </div>
 
     </body>

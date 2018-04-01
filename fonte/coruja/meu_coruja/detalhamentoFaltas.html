@@ -24,9 +24,8 @@
             
             
             $(document).ready(function () {
-                console.log(sessionStorage.getItem("idDetalhamentoFaltas"));
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
-
+                
                 dadosDisciplina = boletim.disciplinas[sessionStorage.getItem("idDetalhamentoFaltas")].info;
                 siglaDisciplina = dadosDisciplina.siglaDisciplina;
                 detalhamentoFaltas = boletim.disciplinas[sessionStorage.getItem("idDetalhamentoFaltas")].detalhamentoFaltas;

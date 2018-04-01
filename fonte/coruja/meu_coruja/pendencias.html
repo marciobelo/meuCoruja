@@ -25,7 +25,6 @@
 
             $(document).ready(function () {
                 pendencias = JSON.parse(localStorage.getItem('meuCoruja')).pendencias;
-                console.log(pendencias);
                 for (var i = 0; i < pendencias.disciplinas.length; i++) {
                     $("#pendencias").find('tbody')
                             .append(($('<tr>'))
@@ -35,7 +34,6 @@
                                     );
                 }
                 sidebar = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
-                console.log(sidebar);
 
             });
 
