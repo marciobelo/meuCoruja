@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html manifest="meucoruja.appcache">
     <head>
         <link rel="manifest" href="manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -24,17 +24,6 @@
 		  <button class="btn btn-lg btn-primary btn-block" id="btnEntrar" type="submit">Entrar</button>   
 		</form>
 	</div>
-	<script>
-            // Check browser support
-            if (typeof(Storage) !== "undefined") {
-                // Store
-                //localStorage.setItem("lastname", "Smith");
-                // Retrieve
-                //document.getElementById("result").innerHTML = localStorage.getItem("nomeUsuario");
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            }
-        </script>
         <script>
             
             function requestMeuCoruja(){

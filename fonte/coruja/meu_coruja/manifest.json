@@ -1,8 +1,8 @@
 {
   "short_name": "Meu Coruja",
-  "name": "App Meu Coruja da FAETERJ-RIO",
+  "name": "Aplicativo Meu Coruja da FAETERJ-RIO",
   "display": "standalone",
-  "orientation": "landscape",
+  "orientation": "portrait",
   "start_url": "index.html?launcher=true",
   "icons": [{
     "src": "img/icone_teste.png",
