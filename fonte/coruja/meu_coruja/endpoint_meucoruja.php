@@ -52,6 +52,8 @@ $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
+$u->foto =  base64_encode(Usuario::obterUsuarioPorIdPessoa($idPessoa)->getFoto());
+
 /////
 //BOLETIM//
 /////

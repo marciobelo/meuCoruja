@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title></title>
         <link rel="manifest" href="manifest.json">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <script>
@@ -8,6 +9,10 @@
                 document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
                 document.getElementById("curso").innerHTML = usuario.nomeCurso;
                 document.getElementById("matricula").innerHTML = usuario.matricula;
+                if (usuario.foto !== '')
+                    document.getElementById("foto").src = "data:image/png;base64,"+usuario.foto;
+                else
+                    document.getElementById("foto").src = "img/imgAluno.png";
             });
             
         </script>
@@ -28,7 +33,7 @@
     <body>
         <ul class="navigation" id="navbar">
             <li class="nav-item">
-                <img class="img-circle" src="img/alunoTeste.png">
+                <img id="foto" class="img-circle">
                 <span class="span-info-usuario" id="nomeUsuario"></span>
                 <span class="span-info-usuario" id="curso" ></span>
                 <span class="span-info-usuario" id="matricula"></span>
