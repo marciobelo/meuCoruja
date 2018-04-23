@@ -89,8 +89,13 @@
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
                 controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
                 InserirTabelas();
-                periodoLetivo = boletim.siglaPeriodoLetivo;
-                document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
+                if (typeof boletim.siglaPeriodoLetivo === 'undefined'){
+                    document.getElementById("siglaPeriodoLetivo").innerHTML = "Você não possui nenhuma disciplina atualmente."
+                }else{
+                    periodoLetivo = boletim.siglaPeriodoLetivo;
+                    document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
+                }
+                
             });
 
         </script>

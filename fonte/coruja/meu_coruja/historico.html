@@ -27,6 +27,7 @@
             $(document).ready(function () {
 
                 historico = JSON.parse(localStorage.getItem('meuCoruja')).historico;
+                console.log(historico);
                 for (var i = 0; i < historico.disciplinas.length; i++) {
                     $("#historico").find('tbody')
                             .append(($('<tr>'))

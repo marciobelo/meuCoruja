@@ -7,6 +7,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/login.css">
 
         <title>Meu Coruja</title>
@@ -14,14 +15,20 @@
     <body>
 	<div class="wrapper">
             <div id="result"></div>
-                <form class="form-signin" id="loginForm" action="teste.php">       
-		  <h2 class="form-signin-heading">Meu Coruja</h2>
-		  <input id="usuario" type="text" class="form-control" name="nomeAcesso" placeholder="Matrícula" required="" autofocus="" />
-		  <input id="senha" type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
-                  <span id="msgErro" style="color:red; visibility: hidden; font-weight: bold;"></span>
-                  <br>
-		  <button class="btn btn-lg btn-primary btn-block" id="btnEntrar" type="submit">Entrar</button>   
-		</form>
+            <form class="form-signin" id="loginForm" action="teste.php">       
+              <h2 class="form-signin-heading">Meu Coruja</h2>
+              <input id="usuario" type="text" class="form-control" name="nomeAcesso" placeholder="Matrícula" required="" autofocus="" />
+              <br>
+              <input id="senha" type="password" class="form-control" name="senha" placeholder="Senha" required=""/>      
+              <br>
+              <!--<button class="btn btn-lg btn-primary btn-block" id="btnEntrar" type="submit">Entrar</button>  -->
+              <button class="btn btn-lg btn-primary btn-block" id="btnEntrar" type="submit">
+                  <i class="fa fa-circle-o-notch fa-spin" id="btnLogin-loader"></i>
+                  <span id="btnLogin-label">Entrar</span>
+              </button>
+              <span id="msgErro" style="color:red; display: none; font-weight: bold;"></span>
+            </form>
+            
 	</div>
         <script>
             
@@ -36,15 +43,24 @@
                         
                     },
                     error: function(result,status,jqXHR){
-                        console.log("deu ruim");
+                        if (JSON.parse(localStorage.getItem('meuCoruja')).usuario.matricula ===
+                                document.getElementById("usuario").innerHTML){
+                            window.location.replace("boletim.html");
+                        }else{
+                            console.log("Erro ao buscar dados, não foi possível acessar o Meu Coruja");
+                        }
+                        
+                        
                     }
                         
                     });
             }
             
             $('#loginForm').submit(function (e) {
-                
                 console.log("chamando");
+                document.getElementById("btnLogin-loader").style.display = "inline";
+                document.getElementById("btnLogin-label").innerHTML = "Carregando";
+                
                 $.ajax({
                     type: "POST",
                     url: "autenticar_controle.php",
@@ -58,10 +74,13 @@
                             console.log(jqXHR.status);
                             if (jqXHR.status === 401) {
                                 document.getElementById("msgErro").innerHTML = "Usuário ou Senha incorretos!";
-                                document.getElementById("msgErro").style.visibility = "visible";
-                                //window.open("index.html", "_self");
+                                document.getElementById("msgErro").style.display = "inline";
                             }
-                        }
+                            
+                    },complete: function(){
+                        document.getElementById("btnLogin-loader").style.display = "none";
+                        document.getElementById("btnLogin-label").innerHTML = "Entrar";
+                    }
                 });
                 e.preventDefault();
             });

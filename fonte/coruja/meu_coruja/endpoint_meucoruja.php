@@ -27,7 +27,7 @@ function verificaSituacao($siglaSituacao) {
     if ($siglaSituacao == "RF") {
         return "Reprovado por falta";
     } elseif ($siglaSituacao == "RM") {
-        return "Reprovado por média";
+        return "Reprovado por media";
     } elseif ($siglaSituacao == "AP") {
         return "Aprovado";
     } elseif ($siglaSituacao == "ID") {
@@ -157,7 +157,8 @@ foreach ($inscricoes as $inscricao) {
     $disciplinaHistorico = new stdClass();
     $disciplinaHistorico->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
     $disciplinaHistorico->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
-    $disciplinaHistorico->situacao = verificaSituacao(isNull($inscricao->getSituacaoInscricao()));
+    $disciplinaHistorico->situacao = isNull(verificaSituacao($inscricao->getSituacaoInscricao()));
+    //  var_dump(verificaSituacao($inscricao->getSituacaoInscricao()));
     $disciplinaHistorico->mediaFinal = isNull($inscricao->getMediaFinal());
     $disciplinaHistorico->faltas = isNull($inscricao->getTotalFaltas());
     $disciplinaHistorico->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
