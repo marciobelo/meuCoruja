@@ -45,13 +45,13 @@ $mc = $matriculaAluno->getMatrizCurricular();
 $curso = $mc->getCurso();
 $aluno = Aluno::getAlunoByIdPessoa($idPessoa);
 
-
-
-
 $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
+$u->login = Login::obterLoginPorIdPessoa($idPessoa);
+$u->senha = Login::obterHashSenha($numMatriculaAluno);
+
 $u->foto =  base64_encode(Usuario::obterUsuarioPorIdPessoa($idPessoa)->getFoto());
 
 /////
@@ -250,6 +250,7 @@ $meuCoruja->pendencias = $disciplinasPendentes;
 $meuCoruja->controle = $controle;
 
 $jsonMeuCoruja = json_encode($meuCoruja, JSON_PARTIAL_OUTPUT_ON_ERROR);
+
 echo $jsonMeuCoruja;
 
 

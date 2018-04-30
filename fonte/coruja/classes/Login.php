@@ -273,4 +273,15 @@ class Login
             throw new Exception("Erro ao bloquear login de usuario");
         }        
     }
+    
+    public function ObterHashSenha($nomeAcesso){
+        $con   = BD::conectar();
+        $query = sprintf("SELECT senha
+                          FROM Login 
+                          WHERE nomeAcesso = '%s'", mysql_escape_string($nomeAcesso));
+        
+        $result = mysql_query($query, $con);
+        $senha =mysql_result($result,0,0);
+        return $senha;
+    }
 }

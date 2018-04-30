@@ -53,12 +53,13 @@ body {
 }
 
 .loader {
-    border: 6px solid #f3f3f3; /* Light grey */
-    border-top: 6px solid #3498db; /* Blue */
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 7px;
+    height: 7px;
     animation: spin 1s linear infinite;
+    display: none;
 }
 
 @keyframes spin {
@@ -66,16 +67,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-.buttonload {
-    background-color: #4CAF50; /* Green background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 24px; /* Some padding */
-    font-size: 16px; /* Set a font-size */
-}
-
-.fa {
-    margin-left: -12px;
-    margin-right: 8px;
+#btnLogin-loader{
     display: none;
 }
