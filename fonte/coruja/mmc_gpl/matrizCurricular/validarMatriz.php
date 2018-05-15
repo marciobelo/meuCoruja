@@ -27,7 +27,7 @@ if ($acao === 'obter') {
     echo json_encode($litagemComponentesSemValidacaoCompleta);
     exit;
 } else if ($acao === 'efetivar') {
-    if(!$usuario->temPermissao("UC11.01.02.04")) {
+    if(!$login->temPermissao("UC11.01.02.04")) {
         echo "semPermissao";
         exit;
     }
@@ -76,6 +76,6 @@ if ($acao === 'obter') {
     
     $con = BD::conectar();
     $strLog = "Validada a Matriz Curricular Porposta do Curso " . $siglaCurso . " Com data inicial de vig&ecirc;ncia para " . $_POST['dataInicialVigencia'];
-    $usuario->incluirLog("UC11.01.04", $strLog, $con);
+    $login->incluirLog("UC11.01.04", $strLog, $con);
     echo "sucesso";
 }

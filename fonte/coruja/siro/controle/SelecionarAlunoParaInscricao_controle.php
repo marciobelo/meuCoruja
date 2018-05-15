@@ -10,12 +10,10 @@ echo '<div id="menuprincipal">';
     require_once "$BASE_DIR/includes/menu_horizontal.php";
 echo '</div>';
 
-// Recupera o usu?rio logado da sess?o
-$usuario = $_SESSION["usuario"];
-$idPessoa = $usuario->getIdPessoa();
+$idPessoa = $login->getIdPessoa();
 
 //VERIFICA SE E ALUNO
-if(!$usuario->temPermissao($SELECIONAR_ALUNO_PARA_INSCRICAO)){
+if(!$login->temPermissao($SELECIONAR_ALUNO_PARA_INSCRICAO)){
     require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
     exit;
 }

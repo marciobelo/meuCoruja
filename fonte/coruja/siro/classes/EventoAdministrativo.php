@@ -118,10 +118,10 @@ class EventoAdministrativo{
                         $periodoLetivo->getDatafim().") ".
                         "do curso ".$classeCurso->getSiglaCurso()." (".$classeCurso->getNomeCurso()."). ";
 
-             $usuario = $_SESSION["usuario"];
+             $login = $_SESSION["login"];
              global $INCLUIR_EVENTOS_PERIODO_LETIVO;
 
-             $usuario->incluirLog($INCLUIR_EVENTOS_PERIODO_LETIVO,$descricao);
+             $login->incluirLog($INCLUIR_EVENTOS_PERIODO_LETIVO,$descricao);
 
              return "";
         }
@@ -180,11 +180,11 @@ class EventoAdministrativo{
             }elseif(mysql_errno()!=0){
             	return $msg_erro;
             }else{
-                $usuario = $_SESSION["usuario"];
+                $login = $_SESSION["login"];
                 global $ALTERAR_EVENTOS_PERIODO_LETIVO;
 
                 //insere o log
-                $usuario->incluirLog($ALTERAR_EVENTOS_PERIODO_LETIVO,$descricao);
+                $login->incluirLog($ALTERAR_EVENTOS_PERIODO_LETIVO,$descricao);
 
                 return "";
             }
@@ -247,9 +247,9 @@ class EventoAdministrativo{
                     "do curso ".$classeCurso->getSiglaCurso()." (".$classeCurso->getNomeCurso()."). ";
         }
 
-        $usuario = $_SESSION["usuario"];
+        $login = $_SESSION["login"];
 
-        $usuario->incluirLog($idCasoUso,$descricao);
+        $login->incluirLog($idCasoUso,$descricao);
 
         return $collection;
     }
@@ -356,10 +356,10 @@ class EventoAdministrativo{
           echo "<br />Erro ao excluir periodo letivo!<br /><br />";
         }
         else{
-            $usuario = $_SESSION["usuario"];
+            $login = $_SESSION["login"];
             global $EXCLUIR_EVENTOS_PERIODO_LETIVO;
 
-            $usuario->incluirLog($EXCLUIR_EVENTOS_PERIODO_LETIVO,$descricao);
+            $login->incluirLog($EXCLUIR_EVENTOS_PERIODO_LETIVO,$descricao);
         }
     }
 

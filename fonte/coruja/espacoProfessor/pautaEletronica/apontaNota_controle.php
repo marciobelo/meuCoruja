@@ -1,6 +1,5 @@
 <?php
 require_once("../../includes/comum.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Turma.php");
 require_once("$BASE_DIR/classes/PeriodoLetivo.php");
 require_once("$BASE_DIR/classes/Professor.php");
@@ -18,19 +17,21 @@ require_once("$BASE_DIR/classes/Inscricao.php");
  * erro: <msg> (houve erro... msg detalha erro)
  */
 
-$acao = $_POST["acao"];
-$idTurma = $_POST["idTurma"];
-$numMatriculaAluno = $_POST["numMatriculaAluno"];
-$idItemCriterioAvaliacao = $_POST["idItemCriterioAvaliacao"];
-$stringNota = $_POST["stringNota"];
-$comentario = utf8_decode( $_POST["stringComentario"] );
-$usuario = $_SESSION["usuario"];
+$acao = filter_input( INPUT_POST, "acao", FILTER_SANITIZE_STRING);
+$idTurma = filter_input( INPUT_POST, "idTurma", FILTER_SANITIZE_NUMBER_INT);
+$numMatriculaAluno = filter_input( INPUT_POST, "numMatriculaAluno", 
+        FILTER_SANITIZE_STRING);
+$idItemCriterioAvaliacao = filter_input( INPUT_POST, 
+        "idItemCriterioAvaliacao", FILTER_SANITIZE_NUMBER_INT);
+$stringNota = filter_input( INPUT_POST, "stringNota", FILTER_SANITIZE_STRING);
+$comentario = utf8_decode( filter_input( INPUT_POST, "stringComentario", 
+        FILTER_SANITIZE_STRING) );
 
 $turma = Turma::getTurmaById($idTurma);
 $professor = $turma->getProfessor();
 
-// Verifica se o professor é o titular da turma informada
-if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
+if( !$turma->isPodeEditarPauta($login) ) 
+{
     echo "erro: Usuário não tem permissão para executar essa ação!";
     exit;
 }
@@ -66,4 +67,3 @@ switch( $acao ) {
         }
         break;
 }
-?>

@@ -11,7 +11,7 @@ require_once "$BASE_DIR/nort/includes/manterTurmas_obterMatrizAlocacoes.php";
 require_once "$BASE_DIR/nort/includes/manterTurmas_validacoes.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($EDITAR_TURMA)) {
+if(!$login->temPermissao($EDITAR_TURMA)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -328,9 +328,5 @@ function registrarLog($turma, $histNomeProfessor, $histQuantidade, $histAlocacoe
     $mensagem .= ")";
 
     global $EDITAR_TURMA;
-    $_SESSION["usuario"]->incluirLog($EDITAR_TURMA, $mensagem);
+    $_SESSION["login"]->incluirLog($EDITAR_TURMA, $mensagem);
 }
-
-?>
-
-

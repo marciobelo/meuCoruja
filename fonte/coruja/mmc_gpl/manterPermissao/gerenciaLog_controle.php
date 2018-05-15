@@ -34,7 +34,7 @@
             $login = Login::obterLoginPorNomeAcesso($_REQUEST['nomeAcesso']);
             $camposLog .= '<br/> - Nome de Acesso: ' . $_REQUEST['nomeAcesso'];
             
-            $idPessoa = (is_null($login)) ? -1 : $login->pessoa->getIdPessoa();
+            $idPessoa = (is_null($login)) ? -1 : $login->getPessoa()->getIdPessoa();
 
             $arrWhere[] = "log.idPessoa = '%d'";
             $arrParamSprintf[] = $idPessoa; 
@@ -54,13 +54,13 @@
             $arrParamSprintf[] = mysql_escape_string($_REQUEST['parteLog']);
         }
         
-        if(!$_SESSION['usuario']->temPermissao("UC10.01.00")) {
+        if(!$login->temPermissao("UC10.01.00")) {
             require_once "../sem_permissao.php";
             exit;
         } else {
             $con = BD::conectar();
             $strLog = "Consultados os registros de Log de <br/>".  $camposLog;
-            $_SESSION['usuario']->incluirLog('UC10.01.00', $strLog, $con);
+            $_SESSION['login']->incluirLog('UC10.01.00', $strLog, $con);
         }
         
         $registrosPorPagina = 50;

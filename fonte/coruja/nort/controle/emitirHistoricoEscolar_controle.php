@@ -9,7 +9,7 @@ require_once "$BASE_DIR/classes/BD.php";
 require_once "$BASE_DIR/nort/classes/historicoEscolar/HistoricoEscolarPDF.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($EMITIR_HISTORICO)) {
+if(!$login->temPermissao($EMITIR_HISTORICO)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -100,5 +100,5 @@ function registrarLog($matricula) {
 
     $mensagem = "Emitido Histórico do aluno $nome, matrícula $matriculaAluno, do curso $siglaCurso ($nomeCurso)";
 
-    $_SESSION["usuario"]->incluirLog('UC01.02.00', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.02.00', $mensagem);
 }

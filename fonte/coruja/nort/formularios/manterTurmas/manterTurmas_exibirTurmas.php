@@ -42,6 +42,11 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
         document.frmDevolverPautaAoProfessor.idTurma.value = idTurma;
         document.frmDevolverPautaAoProfessor.submit();
     }
+    
+    function editarPauta(idTurma)
+    {
+        window.open("/coruja/espacoProfessor/pautaEletronica/pautaEletronica_controle.php?idTurma=" + idTurma, "_top");
+    }
 
     function criarTurma(){
         document.frmCriarTurma.voltar_turno = document.formBuscar.turno; <!-- necessário apenas para o botao volar-->
@@ -160,6 +165,8 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
                     <input type="button" value="Enviar Extrato ao Professor" onclick="enviarExtratoTurmaParaProfessor(<?php echo $auxTurma['idTurma'] ?>)" >
                     <?php if( $auxTurma['dataLiberacaoPautaPeloProfessor'] != null && $auxTurma['tipoSituacaoTurma'] == 'CONFIRMADA' ) { ?>
                     <input type="button" value="Devolver Pauta ao Professor" onclick="devolverPautaAoProfessor(<?php echo $auxTurma['idTurma'] ?>)" >
+                    <?php } else { ?>
+                    <input type="button" value="Editar Pauta" onclick="editarPauta(<?php echo $auxTurma['idTurma'] ?>)" >
                     <?php } ?>
                 </td>
             </tr>

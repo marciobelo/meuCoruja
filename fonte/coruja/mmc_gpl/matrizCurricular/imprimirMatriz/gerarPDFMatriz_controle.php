@@ -8,7 +8,7 @@ require_once "$BASE_DIR/classes/ComponenteCurricular.php";
 require_once "$BASE_DIR/classes/ComponenteCurricularProposto.php";
 require_once "$BASE_DIR/mmc_gpl/matrizCurricular/imprimirMatriz/imprimirMatrizPDF.php";
 
-if(!$usuario->temPermissao("UC11.01.04")) {
+if(!$login->temPermissao("UC11.01.04")) {
     require_once "../../sem_permissao.php";
     exit;
 }
@@ -158,4 +158,4 @@ $strLog = "Impressa a Matriz Curricular Proposta do curso " . $siglaCurso;
 if ($isProposta !== 'true') {
     $strLog = "Impressa a Matriz Curricular com data inicial de vig&ecirc;ncia de " . $dataVigencia . " do curso " . $siglaCurso;
 }
-$usuario->incluirLog('UC11.01.04', $strLog, $con);
+$login->incluirLog('UC11.01.04', $strLog, $con);

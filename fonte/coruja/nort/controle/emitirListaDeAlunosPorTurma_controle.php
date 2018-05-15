@@ -7,7 +7,7 @@ require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/nort/classes/alunosPorTurma/AlunosPorTurmaPDF.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($EMITIR_LISTAGEM_DE_ALUNOS_POR_TURMA)) 
+if(!$login->temPermissao($EMITIR_LISTAGEM_DE_ALUNOS_POR_TURMA)) 
 {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
@@ -303,7 +303,7 @@ function registrarLog( $turmas)
         " professor $nomeDoProfessor";
 
     }//Fim do Loop que percorre a lista com ID's das turmas
-    $_SESSION["usuario"]->incluirLog('UC01.07.00', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.07.00', $mensagem);
 }
 
 function gerarPDF($turmas) {

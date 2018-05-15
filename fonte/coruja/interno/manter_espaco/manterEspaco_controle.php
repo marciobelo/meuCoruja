@@ -7,7 +7,7 @@ $acao=$_REQUEST["acao"];
 
 if($acao=="listar") {
    
-    if(!$usuario->temPermissao($MANTER_ESPACO)) {
+    if(!$login->temPermissao($MANTER_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -18,7 +18,7 @@ if($acao=="listar") {
     
 } else if($acao=="prepararAlterar") {
 
-    if(!$usuario->temPermissao($ALTERAR_ESPACO)) {
+    if(!$login->temPermissao($ALTERAR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -31,7 +31,7 @@ if($acao=="listar") {
     require_once "$BASE_DIR/interno/manter_espaco/telaEditaEspaco.php";
 } else if($acao=="alterar") {
     
-    if(!$usuario->temPermissao($ALTERAR_ESPACO)) {
+    if(!$login->temPermissao($ALTERAR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -63,7 +63,7 @@ if($acao=="listar") {
                 $espacoAntes->getCapacidade() . " para " .
                 $formEspaco->getCapacidade() . " alunos";
 
-            $usuario->incluirLog($ALTERAR_ESPACO, $descricao,$con);
+            $login->incluirLog($ALTERAR_ESPACO, $descricao,$con);
 
             mysql_query("COMMIT", $con);
 
@@ -86,7 +86,7 @@ if($acao=="listar") {
   }
 } else if($acao=="prepararExcluir") {
 
-    if(!$usuario->temPermissao($EXCLUIR_ESPACO)) {
+    if(!$login->temPermissao($EXCLUIR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -104,7 +104,7 @@ if($acao=="listar") {
 
 } else if($acao=="excluir") {
 
-    if(!$usuario->temPermissao($EXCLUIR_ESPACO)) {
+    if(!$login->temPermissao($EXCLUIR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -123,7 +123,7 @@ if($acao=="listar") {
             $espaco->getNome() ." , com capacidade de " .
             $espaco->getCapacidade() . " alunos";
 
-        $usuario->incluirLog($EXCLUIR_ESPACO, $descricao,$con);
+        $login->incluirLog($EXCLUIR_ESPACO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -145,7 +145,7 @@ if($acao=="listar") {
     }
 
 } else if($acao=="prepararIncluir") {
-     if(!$usuario->temPermissao($INCLUIR_ESPACO)) {
+     if(!$login->temPermissao($INCLUIR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;    
     }
@@ -153,7 +153,7 @@ if($acao=="listar") {
      require_once "$BASE_DIR/interno/manter_espaco/telaIncluirEspaco.php";
 } else if($acao=="incluir") {
 
-    if(!$usuario->temPermissao($INCLUIR_ESPACO)) {
+    if(!$login->temPermissao($INCLUIR_ESPACO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -175,7 +175,7 @@ if($acao=="listar") {
             $_REQUEST['nome']." , com capacidade de " .
             $_REQUEST['capacidade']. " alunos";
 
-        $usuario->incluirLog($INCLUIR_ESPACO, $descricao,$con);
+        $login->incluirLog($INCLUIR_ESPACO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 

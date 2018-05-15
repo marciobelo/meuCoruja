@@ -1,9 +1,7 @@
 <?php
 require_once("../../includes/comum.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Mensagem.php");
 
-$usuario = $_SESSION["usuario"];
 $acao = $_REQUEST["acao"];
 
 switch( $acao ) 
@@ -12,18 +10,18 @@ switch( $acao )
         
         $idMensagem = filter_input(INPUT_GET, "idMensagem");
         if( !isset($idMensagem) ) {
-            $mensagem = Mensagem::obterMensagemNaoLidaMaisAntiga( $usuario->getIdPessoa() );
+            $mensagem = Mensagem::obterMensagemNaoLidaMaisAntiga( $login->getIdPessoa() );
             
             if( $mensagem == null ) {
-                $mensagem = Mensagem::obterMensagemMaisRecente( $usuario->getIdPessoa() );
+                $mensagem = Mensagem::obterMensagemMaisRecente( $login->getIdPessoa() );
             }
         } else {
-            $mensagem = Mensagem::obterMensagemPorId( $idMensagem, $usuario->getIdPessoa() );
+            $mensagem = Mensagem::obterMensagemPorId( $idMensagem, $login->getIdPessoa() );
             
         }
-        $totalMensagem = Mensagem::obterTotalMensagem( $usuario->getIdPessoa() );
+        $totalMensagem = Mensagem::obterTotalMensagem( $login->getIdPessoa() );
         
-        $ultimasMensagens= Mensagem::obterUltimasMensagens( $usuario->getIdPessoa() );
+        $ultimasMensagens= Mensagem::obterUltimasMensagens( $login->getIdPessoa() );
         if( $mensagem == null ) {
             $posicaoMensagem = "?";
         } else {
@@ -42,15 +40,15 @@ switch( $acao )
                 $posicaoMensagem = "?";
             }
             
-            $idMensagemAnterior = $mensagem->obterIdMensagemAnterior( $usuario->getIdPessoa() );
-            $idMensagemPosterior = $mensagem->obterIdMensagemPosterior( $usuario->getIdPessoa() );
+            $idMensagemAnterior = $mensagem->obterIdMensagemAnterior( $login->getIdPessoa() );
+            $idMensagemPosterior = $mensagem->obterIdMensagemPosterior( $login->getIdPessoa() );
         }
         
         include_once "$BASE_DIR/interno/quadroAvisos/formVisualizaMensagem.php";
         break;
     case "darCiencia":
         $idMensagem = $_POST["idMensagem"];
-        $idPessoa = $usuario->getIdPessoa();
+        $idPessoa = $login->getIdPessoa();
         $mensagem = Mensagem::obterMensagemPorId($idMensagem, $idPessoa);
         $mensagem->marcarComoLidaPor($idPessoa);
         Header("Location: /coruja/interno/quadroAvisos/index_controle.php?acao=exibir&idMensagem=" . $idMensagem);

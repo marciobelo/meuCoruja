@@ -1,6 +1,5 @@
 <?php
 require_once("../../includes/comum.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Turma.php");
 require_once("$BASE_DIR/classes/PeriodoLetivo.php");
 require_once("$BASE_DIR/classes/Professor.php");
@@ -15,13 +14,11 @@ $acao = $_REQUEST["acao"];
 $idTurma = $_REQUEST["idTurma"];
 $data = $_REQUEST["data"];
 
-$usuario = $_SESSION["usuario"];
-
 $turma = Turma::getTurmaById($idTurma);
 $professor = $turma->getProfessor();
 
 // Verifica se o professor é o titular da turma informada
-if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
+if( $professor->getIdPessoa() != $login->getIdPessoa() ) {
     trigger_error("Usuário não tem permissão para executar essa ação!",E_USER_ERROR);
     exit;
 }
@@ -98,7 +95,7 @@ if( !isset ($acao) ) {
                                     $turma->getSiglaCurso()
                                     );
                             global $RECLAMAR_ALUNO_PAUTA_TURMA;
-                            $usuario->incluirLog($RECLAMAR_ALUNO_PAUTA_TURMA,  $strLog, $con);
+                            $login->incluirLog($RECLAMAR_ALUNO_PAUTA_TURMA,  $strLog, $con);
 
                             $arrIdPessoa = array();
                             $arrIdPessoa[] = Config::SECRETARIA_ID_PESSOA;
@@ -146,4 +143,3 @@ if( !isset ($acao) ) {
         break;
     }
 }
-?>

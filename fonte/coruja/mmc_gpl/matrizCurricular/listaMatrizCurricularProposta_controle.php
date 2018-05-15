@@ -6,13 +6,13 @@ require_once "$BASE_DIR/classes/MatrizCurricular.php";
 require_once "$BASE_DIR/classes/MatrizCurricularProposta.php";
 require_once "$BASE_DIR/classes/Curso.php";
 
-if(!$usuario->temPermissao("UC11.01.00")) {
+if(!$login->temPermissao("UC11.01.00")) {
     require_once "../sem_permissao.php";
     exit;
 } else {
     $con = BD::conectar();
     $strLog = "Consultadas as Matrizes Curriculares Propostas do sistema";
-    $usuario->incluirLog("UC11.01.00", $strLog, $con);
+    $login->incluirLog("UC11.01.00", $strLog, $con);
 }
 
 $mensagemValidacao = (isset($_POST['mensagemValidacao']) && !empty($_POST['mensagemValidacao'])) ? $_POST['mensagemValidacao'] : '';

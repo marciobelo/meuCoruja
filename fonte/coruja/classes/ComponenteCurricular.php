@@ -6,6 +6,7 @@ require_once "$BASE_DIR/classes/MatriculaAluno.php";
 require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/classes/Inscricao.php";
 require_once "$BASE_DIR/classes/to/QuitacaoComponenteCurricularTO.php";
+require_once "$BASE_DIR/classes/ComponenteCurricularProposto.php";
 
 class ComponenteCurricular 
 {
@@ -236,7 +237,7 @@ class ComponenteCurricular
                 if( $creditosTotal > 0 ) {
                     $mediaFinal = $notaTotal / $creditosTotal;
                     $quitacaoComponenteEquivalenteTO=new QuitacaoComponenteCurricularTO(
-                        $periodoLetivo, $mediaFinal , $this->getCreditos(), FALSE);
+                        $periodoLetivo, $mediaFinal , $this->getCreditos() );
                     return $quitacaoComponenteEquivalenteTO;
                 }
             }
@@ -273,7 +274,7 @@ class ComponenteCurricular
                     if( $creditosTotal > 0 ) {
                         $mediaFinal = $notaTotal / $creditosTotal;
                         $quitacaoComponenteEquivalenteTO=new QuitacaoComponenteCurricularTO(
-                            $periodoLetivo, $mediaFinal , $this->getCreditos(), FALSE);
+                            $periodoLetivo, $mediaFinal , $this->getCreditos() );
                         return $quitacaoComponenteEquivalenteTO;
                     }
                 }

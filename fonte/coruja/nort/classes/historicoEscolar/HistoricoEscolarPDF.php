@@ -97,7 +97,8 @@ class HistoricoEscolarPDF extends FpdfNort {
         $this->SetFont('Arial','',$tamFontePequena);
         $txt = 'DECRETO DE CRIAÇÃO Nº30.938 DE 18/03/2002 DOERJ 19/03/2002 PÁG. 8
 RECONHECIMENTO: PARECER CEE Nº066/2009 DE 09/06/2009 DOERJ 14/07/2009 PÁG.10
-DELIBERAÇÃO CEE Nº325 DE 17/01/2012 D.O.E.R.J. 04/09/2012';
+DELIBERAÇÃO CEE 361 DE 11/04/2017 D.O.E.R.J. 02/05/2017
+DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
         $this->MultiCell($tamHorizontalDoCabecalho,4.0,$txt, $this->debug,'L');
 
         //Texto: Histórico Escolar

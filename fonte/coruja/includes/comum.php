@@ -35,7 +35,7 @@
             echo "</td><td>\n";
             echo "PHP " . PHP_VERSION . " (" . PHP_OS . ")";
             echo "</td></tr></table>\n";
-            echo "<p>Por favor comunique este erro pelo e-mail <b>centralservicos.ist-rio@faetec.rj.gov.br</b></p>";
+            echo "<p>Por favor comunique este erro pelo e-mail <b>mbelo.br@gmail.com</b></p>";
             echo "</body></html>";
             exit(1);
             break;
@@ -54,7 +54,7 @@
             Atenção: a definição das classes devem ser carregadas antes da recuperação dos dados da sessão
             BUG documentado em http://www.webdeveloper.com/forum/showthread.php?t=144267
     */
-    require_once "$BASE_DIR/classes/Usuario.php";
+    require_once "$BASE_DIR/classes/Login.php";
 	
     // Inicia o gerenciamento de sessão
     session_start();
@@ -63,8 +63,8 @@
     if( $_SERVER['PHP_SELF'] != "/coruja/autenticar/login_controle.php" ) {
 
         /** Verifica se existe usuário autenticado em sessão, caso contrário, desvia para página de login */
-        $usuario = $_SESSION["usuario"];
-        if( (!isset($usuario)) || (!$usuario->getValidouLog()) ) {
+        $login = $_SESSION["login"];
+        if( (!isset($login)) || (!$login->getValidouLog()) ) {
                 // Encaminha para a página de autenticação
                 header("Location: /coruja/index.php");
                 exit;

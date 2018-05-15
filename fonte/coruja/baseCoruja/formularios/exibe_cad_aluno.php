@@ -13,7 +13,6 @@
     require_once "$BASE_DIR/classes/PeriodoLetivo.php";
     require_once "$BASE_DIR/classes/MatrizCurricular.php";
     require_once "$BASE_DIR/classes/FormaIngresso.php";
-    require_once "$BASE_DIR/classes/Usuario.php";
     
     $formExibeAluno = new formularioExibir();
     $infoPessoa = Pessoa::obterPessoaPorId($idPessoa);
@@ -23,7 +22,7 @@
     $buscaMatriculas = MatriculaAluno::obterMatriculasAlunoPorIdPessoa( $idPessoa);
     
     // Obter dados de usuário do Aluno
-    $login = Login::obterLoginPorIdPessoa($idPessoa);
+    $loginAluno = Login::obterLoginPorIdPessoa($idPessoa);
     
     // Inicia a exibição da página
     require_once("$BASE_DIR/includes/topo.php");
@@ -125,6 +124,8 @@ if(count($msgsErro)>0) {
 <?php
     echo '</div>';
     require_once("$BASE_DIR/includes/rodape.php");
-    if(!isset($aba)) $aba="1";
-    echo "<script>abreAba($aba);</script>";
-?>
+    if( !isset( $aba))
+    {
+        $aba = "1";
+    }
+    echo "<script>abreAba( $aba);</script>";

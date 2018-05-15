@@ -7,7 +7,7 @@ require_once "$BASE_DIR/classes/Aluno.php";
 require_once "$BASE_DIR/classes/Inscricao.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($EDITAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA)) {
+if(!$login->temPermissao($EDITAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         exit();
 }
@@ -220,6 +220,6 @@ function registrarLog($turma, $matAluno, $inscricaoEstadoAntigo, $inscricaoEstad
     $mensagem .= "parecer de '$parAnt' para '$parNov'.";
 
     global $EDITAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA;
-    $_SESSION["usuario"]->incluirLog($EDITAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA, $mensagem);
+    $_SESSION["login"]->incluirLog($EDITAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA, $mensagem);
 }
 ?>

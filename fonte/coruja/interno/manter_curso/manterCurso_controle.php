@@ -9,7 +9,7 @@ $acao = $_REQUEST["acao"];
 if($acao === "listar") 
 {
    
-    if(!$usuario->temPermissao($MANTER_CURSO)) {
+    if(!$login->temPermissao($MANTER_CURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -21,7 +21,7 @@ if($acao === "listar")
 } 
 else if( $acao === "prepararAlterar") 
 {
-    if(!$usuario->temPermissao($ALTERAR_CURSO)) {
+    if(!$login->temPermissao($ALTERAR_CURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -36,7 +36,7 @@ else if( $acao === "prepararAlterar")
 } 
 else if( $acao === "alterar") 
 {
-    if(!$usuario->temPermissao($ALTERAR_CURSO)) {
+    if(!$login->temPermissao($ALTERAR_CURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -63,7 +63,7 @@ else if( $acao === "alterar")
         $descricao="Alterado o curso, do nome ".$cursoAntes->getNomeCurso() .
                 " para " .$formCurso->getNomeCurso();
 
-        $usuario->incluirLog($ALTERAR_CURSO, $descricao,$con);
+        $login->incluirLog($ALTERAR_CURSO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
         $cursos = Curso::obterListaCurso();
@@ -81,7 +81,7 @@ else if( $acao === "alterar")
 } 
 else if( $acao === "prepararExcluir") 
 {
-    if( !$usuario->temPermissao($EXCLUIR_CURSO)) 
+    if( !$login->temPermissao($EXCLUIR_CURSO)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
@@ -95,7 +95,7 @@ else if( $acao === "prepararExcluir")
 } 
 else if($acao === "excluir") 
 {
-    if( !$usuario->temPermissao($EXCLUIR_CURSO)) 
+    if( !$login->temPermissao($EXCLUIR_CURSO)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
@@ -114,7 +114,7 @@ else if($acao === "excluir")
         $descricao="Excluído o Curso ".
         $curso->getNomeCurso();
 
-        $usuario->incluirLog($EXCLUIR_CURSO, $descricao,$con);
+        $login->incluirLog($EXCLUIR_CURSO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -136,7 +136,7 @@ else if($acao === "excluir")
 } 
 else if( $acao === "prepararIncluir") 
 {
-     if(!$usuario->temPermissao($INCLUIR_CURSO)) 
+     if(!$login->temPermissao($INCLUIR_CURSO)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;    
@@ -146,7 +146,7 @@ else if( $acao === "prepararIncluir")
 } 
 else if( $acao === "incluir") 
 {
-    if( !$usuario->temPermissao($INCLUIR_CURSO)) 
+    if( !$login->temPermissao($INCLUIR_CURSO)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
@@ -168,7 +168,7 @@ else if( $acao === "incluir")
         $descricao="Incluído o Curso " .
             $formCurso->getNomeCurso();
 
-        $usuario->incluirLog($INCLUIR_CURSO, $descricao,$con);
+        $login->incluirLog($INCLUIR_CURSO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 

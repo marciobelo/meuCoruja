@@ -19,7 +19,7 @@ if ($acao !== 'excluir') {
     
     //criar
     if (is_null($matrizProposta)) {
-        if(!$usuario->temPermissao("UC11.01.01")) {
+        if(!$login->temPermissao("UC11.01.01")) {
             require_once "../sem_permissao.php";
             exit;
         }
@@ -34,10 +34,10 @@ if ($acao !== 'excluir') {
         
         $con = BD::conectar();
         $strLog = "Criada a Matriz Curricular Proposta do Curso " . $siglaCurso;
-        $usuario->incluirLog("UC11.01.01", $strLog, $con);
+        $login->incluirLog("UC11.01.01", $strLog, $con);
     //editar    
     } else {
-        if(!$usuario->temPermissao("UC11.01.02")) {
+        if(!$login->temPermissao("UC11.01.02")) {
             require_once "../sem_permissao.php";
             exit;
         }
@@ -71,7 +71,7 @@ if ($acao !== 'excluir') {
          
         $con = BD::conectar();
         $strLog = "Editada a Matriz Curricular Proposta do Curso " . $siglaCurso;
-        $usuario->incluirLog("UC11.01.02", $strLog, $con);
+        $login->incluirLog("UC11.01.02", $strLog, $con);
     }
     
     $totalPeriodos = $matrizProposta->getTotalPeriodos();
@@ -117,7 +117,7 @@ if ($acao !== 'excluir') {
 require_once "$BASE_DIR/mmc_gpl/matrizCurricular/matrizCurricularPropostaForm.php";
     
 } else {
-    if(!$usuario->temPermissao("UC11.01.03")) {
+    if(!$login->temPermissao("UC11.01.03")) {
         require_once "../sem_permissao.php";
         exit;
     }
@@ -127,7 +127,7 @@ require_once "$BASE_DIR/mmc_gpl/matrizCurricular/matrizCurricularPropostaForm.ph
     
     $con = BD::conectar();
     $strLog = "Exclu&iacute;da a Matriz Curricular Proposta do Curso " . $siglaCurso;
-    $usuario->incluirLog("UC11.01.03", $strLog, $con);
+    $login->incluirLog("UC11.01.03", $strLog, $con);
     
     Header("Location: listaMatrizCurricularProposta_controle.php");
 }

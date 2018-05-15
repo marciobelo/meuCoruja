@@ -13,7 +13,7 @@ switch ($acao) {
     case 'buscarMatricula':
 
         // Verifica Permissão
-        if(!$usuario->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
+        if(!$login->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }
@@ -24,7 +24,7 @@ switch ($acao) {
     case 'gerarPDF':
 
         // Verifica Permissão
-        if(!$usuario->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
+        if(!$login->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }
@@ -36,10 +36,10 @@ switch ($acao) {
         break;
     case 'gerarPDFproprioAluno':
 
-        $numMatricula = $usuario->getNomeAcesso();
+        $numMatricula = $login->getNomeAcesso();
         $matricula=MatriculaAluno::obterMatriculaAluno($numMatricula);
 
-        if( (!$usuario->isAluno()) || $matricula==null ) {
+        if( (!$login->isAluno()) || $matricula==null ) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }
@@ -49,10 +49,10 @@ switch ($acao) {
         require_once "$BASE_DIR/includes/rodape.php";
         break;
     case 'exibirPDF':
-        if($usuario->isAluno()) {
-            $numMatricula = $usuario->getNomeAcesso();
+        if($login->isAluno()) {
+            $numMatricula = $login->getNomeAcesso();
         } else {
-            if(!$usuario->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
+            if(!$login->temPermissao($EMITIR_FICHA_DE_MATRICULA)) {
                 trigger_error("Usuário sem permissão.",E_USER_ERROR);
             }
             $numMatricula = $_REQUEST["matriculaAluno"];
@@ -98,7 +98,6 @@ function registrarLog($numMatricula) {
         "$siglaCurso ($nomeCurso)";
 
     global $EMITIR_FICHA_DE_MATRICULA;
-    $_SESSION["usuario"]->incluirLog($EMITIR_FICHA_DE_MATRICULA, $mensagem);
+    $_SESSION["login"]->incluirLog($EMITIR_FICHA_DE_MATRICULA, $mensagem);
 
 }
-?>

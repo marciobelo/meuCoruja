@@ -23,6 +23,10 @@
                 font-weight: bold;
                 font-size: smaller;
             }
+            span.cabec_sigla_disc {
+                font-weight: bold;
+                font-size: large;
+            }
             span.cabec_rotulo {
                 font-size: small;
             }
@@ -57,7 +61,7 @@
                 border: 1px solid black ;
             }
             th#matricula {
-                width: 8%;
+                width: 10%;
             }
             th#nome {
                 width: 60%;
@@ -68,11 +72,8 @@
             th#assinaturaRecebido {
                 width: 12%;
             }
-            th#pi {
-                width: 4%
-            }
             th#nota {
-                width: 4%;
+                width: 6%;
             }
         </style>
     </head>
@@ -90,8 +91,8 @@
             <span class="cabec_valor"><?php echo $turma->getPeriodoLetivo()->getSiglaPeriodoLetivo(); ?></span>
         <br/>
             <span class="cabec_rotulo_inicio">Disciplina:</span>&nbsp;
-            <span class="cabec_valor"><?php echo $turma->getComponenteCurricular()->getSiglaDisciplina(); ?>
-                &nbsp;(<?php echo $turma->getComponenteCurricular()->getNomeDisciplina(); ?>)</span>
+            <span class="cabec_sigla_disc"><?php echo $turma->getComponenteCurricular()->getSiglaDisciplina(); ?>
+                </span><span class="cabec_valor">&nbsp;(<?php echo $turma->getComponenteCurricular()->getNomeDisciplina(); ?>)</span>
             &nbsp;&boxh;&nbsp;
         <span class="cabec_rotulo">Turno:</span>&nbsp;
             <span class="cabec_valor"><?php echo $turma->getTurno(); ?></span>
@@ -119,7 +120,6 @@
                     <th id="nome">Nome do Aluno</th>
                     <th id="assinatura">Ass.Presença</th>
                     <th id="assinaturaRecebido">Ass.Recebido</th>
-                    <th id="pi">B&ocirc;nus P.I.*1</th>
                     <th id="nota">Nota</th>
                 </tr>
             </thead>
@@ -132,12 +132,10 @@
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
-        <span style="font-size: xx-small">*1 B&ocirc;nus por participação na Prova Integradora</span>
         <hr/>
         <p>Coruja&nbsp;&boxh;&nbsp;Emitido em <?php $d = new DateTime(); echo $d->format("d/m/Y"); ?></p>
     </body>

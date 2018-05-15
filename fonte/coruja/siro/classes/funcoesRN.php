@@ -3,7 +3,6 @@ require_once "$BASE_DIR/classes/Pessoa.php";
 require_once "$BASE_DIR/classes/Curso.php";
 require_once "$BASE_DIR/classes/Turma.php";
 require_once "$BASE_DIR/classes/PeriodoLetivo.php";
-require_once "$BASE_DIR/classes/Usuario.php";
 require_once "$BASE_DIR/classes/Inscricao.php";
 require_once "$BASE_DIR/classes/MatriculaAluno.php";
 require_once "$BASE_DIR/classes/Aluno.php";

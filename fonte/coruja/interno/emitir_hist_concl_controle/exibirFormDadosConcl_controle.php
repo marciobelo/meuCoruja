@@ -79,7 +79,10 @@ height=189></IFRAME>
     </tr>
     <tr>
       <td>ENADE :</td>
-      <td><input name="enade" type="text" class="form_obrigatorio" id="enade" size="50" title="O campo enade é obrigatório" value="<?php echo utf8_decode($xml->historico->enade); ?>"/></td>
+      <td>
+          <textarea name="enade" cols="40" rows="2" class="form_obrigatorio" id="enade" ><?php echo utf8_decode($xml->historico->enade); ?></textarea>
+          <!--<input name="enade" type="text" class="form_obrigatorio" id="enade" size="50" title="O campo enade é obrigatório" value="<?php echo utf8_decode($xml->historico->enade); ?>"/>-->
+      </td>
     </tr>
     <tr>
       <td>DATA DA COLA&Ccedil;&Atilde;O DE GRAU :</td>

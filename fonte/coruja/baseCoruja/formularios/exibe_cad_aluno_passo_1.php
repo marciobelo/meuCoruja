@@ -42,14 +42,14 @@
              width="100" height="90" />
         <p>
 <?php
-        if( $login == null) 
+        if( $loginAluno == null) 
         {
             echo "Sem Login<br /><a href='/coruja/interno/manter_login/manterLogin_controle.php?acao=prepararCriarLogin&idPessoa=" . $infoPessoa->getIdPessoa() . "'>Criar Login</a>";
         } 
         else 
         {
-            echo $login->getNomeAcesso();
-            if( $login->isBloqueado() )
+            echo $loginAluno->getNomeAcesso();
+            if( $loginAluno->isBloqueado() )
             {
                 echo "<br />Conta <span style='color: red; font-weight: bold;'>BLOQUEADA</span>: <a href='/coruja/interno/manter_login/manterLogin_controle.php?acao=exibirLogin&idPessoa=" . $infoPessoa->getIdPessoa() . "'>Ver Detalhes</a>";
             }

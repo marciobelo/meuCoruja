@@ -23,7 +23,6 @@ class ItemCriterioAvaliacaoInscricaoNota {
         return $this->itemCriterioAvaliacao;
     }
 
-
     public static function obterItensCriterioAvaliacaoInscricaoNota( Inscricao $inscricao ) {
         $con = BD::conectar();
         $query = sprintf("select ICA.idItemCriterioAvaliacao,

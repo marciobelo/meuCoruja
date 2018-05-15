@@ -6,7 +6,7 @@ require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/nort/classes/relatorioDeAlunosPorSituacao/RelatorioDeAlunosPorSituacaoPDF.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($EMITIR_RELATORIO_DE_ALUNOS_POR_SITUACAO)) {
+if(!$login->temPermissao($EMITIR_RELATORIO_DE_ALUNOS_POR_SITUACAO)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -198,5 +198,5 @@ function registrarLog($umCurso, $situacoes, $periodoLetivoIni, $periodoLetivoFim
     }
     $mensagem .= "que ingressaram do período letivo $periodoLetivoIni até $periodoLetivoFim";
 
-    $_SESSION["usuario"]->incluirLog('UC01.05.00', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.05.00', $mensagem);
 }

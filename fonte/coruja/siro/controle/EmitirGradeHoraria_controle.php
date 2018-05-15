@@ -13,18 +13,11 @@ require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 echo"<link href='../estilos/tabelas.css' rel='stylesheet' type='text/css' />";
 echo"<link href='../estilos/botoes.css' rel='stylesheet' type='text/css' />";
 
-
 // TOPO DA PÁGINA
 include_once "$BASE_DIR/includes/topo.php";
 
-
-// Recupera o usuário logado da sessão
-$usuario = $_SESSION["usuario"];
-
-
-
 //VERIFICA SE E ALUNO
-if(!MatriculaAluno::existeAluno($usuario->getIdPessoa())){
+if(!MatriculaAluno::existeAluno($login->getIdPessoa())){
 
     $idPessoa=$_POST['idPessoa'];
     // MENU HORIZONTAL COMPLETO
@@ -33,14 +26,15 @@ if(!MatriculaAluno::existeAluno($usuario->getIdPessoa())){
     echo '</div>';
 
     // Verifica Permissao
-    if(!$usuario->temPermissao($EMITIR_PROTOCOLO_GRADE_HORARIA)) {
+    if(!$login->temPermissao($EMITIR_PROTOCOLO_GRADE_HORARIA)) {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit;
     }
 
 }
-else{
-    $idPessoa=$usuario->getIdPessoa();
+else
+{
+    $idPessoa = $login->getIdPessoa();
     // MENU HORIZONTAL DO ALUNO
     echo '<div id="menuprincipal">';
     include_once "$BASE_DIR/includes/menu_horizontal.php";
@@ -90,15 +84,12 @@ $identificao .="Aluno: ".$matriculaAluno->getMatriculaAluno()." - ".$aluno->getN
 
 require "$BASE_DIR/siro/formularios/gradeHoraria/gradeHorariaDoPeriodo.php";
 
-
-$usuario = $_SESSION["usuario"];
-
 $descricao = "Emitida a Grade Hor&aacute;ria do Aluno ".$matriculaAluno->getMatriculaAluno()." - ".$aluno->getNome().
             " do curso ".$classeCurso->getSiglaCurso()." (".$classeCurso->getNomeCurso().") ".
             "no Per&iacute;odo Letivo de ".$periodoLetivo->getSiglaPeriodoLetivo()." (".$periodoLetivo->getDataInicio()." - ".$periodoLetivo->getDataFim().")";
 
 //insere o log
-$usuario->incluirLog($EMITIR_PROTOCOLO_GRADE_HORARIA,$descricao);
+$login->incluirLog($EMITIR_PROTOCOLO_GRADE_HORARIA,$descricao);
 
 echo "<script>".
      "function imprimirGrade(){".

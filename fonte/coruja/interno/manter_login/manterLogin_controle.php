@@ -1,7 +1,6 @@
 <?php
 require_once "../../includes/comum.php";
 require_once "$BASE_DIR/classes/BD.php";
-require_once "$BASE_DIR/classes/Usuario.php";
 require_once "$BASE_DIR/classes/Pessoa.php";
 require_once "$BASE_DIR/classes/Login.php";
 require_once "$BASE_DIR/classes/MatriculaAluno.php";
@@ -16,7 +15,6 @@ if( $acao == "exibirTrocaSenha")
 } 
 else if( $acao === "trocarSenha") 
 {
-    $usuario = $_SESSION["usuario"];
     $senhaAtual = $_REQUEST["senhaAtual"];
     $novaSenha = $_REQUEST["novaSenha"];
     $confirmaSenha = $_REQUEST["confirmaSenha"];
@@ -25,7 +23,7 @@ else if( $acao === "trocarSenha")
     {
         try 
         {
-            $usuario->trocarSenha($senhaAtual,$novaSenha);
+            $login->trocarSenha($senhaAtual,$novaSenha);
             $msgsErro=array();
             array_push($msgsErro, "Senha alterada com sucesso.");
         } 
@@ -43,11 +41,10 @@ else if( $acao === "trocarSenha")
 
     require_once "$BASE_DIR/interno/manter_login/telaTrocaSenha.php";
 } 
-else if( $acao==="prepararCriarLogin") 
+else if( $acao === "prepararCriarLogin") 
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($CRIAR_LOGIN)) {
+    if(!$login->temPermissao($CRIAR_LOGIN)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
     $idPessoa = filter_input(INPUT_GET, "idPessoa", FILTER_SANITIZE_NUMBER_INT);
@@ -64,8 +61,7 @@ else if( $acao==="prepararCriarLogin")
 else if($acao==="criarLogin") 
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($CRIAR_LOGIN)) {
+    if(!$login->temPermissao($CRIAR_LOGIN)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -89,7 +85,7 @@ else if($acao==="criarLogin")
         $strLog=sprintf("Criado usuário com login %s para a pessoa %s.",
                 $formLogin->getNomeAcesso(),
                 $pessoa->getNome());
-        $usuario->incluirLog($CRIAR_LOGIN,$strLog,$con);
+        $login->incluirLog($CRIAR_LOGIN,$strLog,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -109,8 +105,7 @@ else if($acao==="criarLogin")
 else if($acao === "prepararAlterarFotoLogin") 
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_FOTO_LOGIN)) {
+    if(!$login->temPermissao($ALTERAR_FOTO_LOGIN)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -127,8 +122,7 @@ else if($acao === "prepararAlterarFotoLogin")
 else if($acao === "alterarFotoLogin") 
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_FOTO_LOGIN)) {
+    if(!$login->temPermissao($ALTERAR_FOTO_LOGIN)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
     
@@ -162,7 +156,7 @@ else if($acao === "alterarFotoLogin")
         $strLog=sprintf("Alterada foto do login %s para a pessoa %s.",
                 $formLogin->getNomeAcesso(),
                 $pessoa->getNome());
-        $usuario->incluirLog($ALTERAR_FOTO_LOGIN,$strLog,$con);
+        $login->incluirLog($ALTERAR_FOTO_LOGIN,$strLog,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -182,8 +176,7 @@ else if($acao === "alterarFotoLogin")
 else if( $acao === "resetarSenha")
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($RESETAR_SENHA_LOGIN)) {
+    if(!$login->temPermissao($RESETAR_SENHA_LOGIN)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -208,7 +201,7 @@ else if( $acao === "resetarSenha")
         $strLog = sprintf("Resetada a senha e desbloqueado o login %s para a pessoa %s.",
                 $login->getNomeAcesso(),
                 $pessoa->getNome());
-        $usuario->incluirLog($RESETAR_SENHA_LOGIN,$strLog,$con);
+        $login->incluirLog($RESETAR_SENHA_LOGIN,$strLog,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -228,8 +221,7 @@ else if( $acao === "resetarSenha")
 else if( $acao === "exibirLogin")
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if( !$usuario->temPermissao( "UC03.09.00")) // MANTER_LOGIN
+    if( !$login->temPermissao( "UC03.09.00")) // MANTER_LOGIN
     {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
@@ -245,9 +237,8 @@ else if( $acao === "exibirLogin")
 else if( $acao === "desbloquearLogin")
 {
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
     $DESBLOQUEAR_LOGIN = "UC03.09.05";
-    if( !$usuario->temPermissao( $DESBLOQUEAR_LOGIN))
+    if( !$login->temPermissao( $DESBLOQUEAR_LOGIN))
     {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
@@ -265,7 +256,7 @@ else if( $acao === "desbloquearLogin")
         $strLog = sprintf("Desbloqueado o login %s para a pessoa %s.",
                 $login->getNomeAcesso(),
                 $pessoa->getNome());
-        $usuario->incluirLog( $DESBLOQUEAR_LOGIN, $strLog, $con);
+        $login->incluirLog( $DESBLOQUEAR_LOGIN, $strLog, $con);
         $formLogin->setBloqueado( false);
         $formLogin->setMotivoBloqueio( "");
         

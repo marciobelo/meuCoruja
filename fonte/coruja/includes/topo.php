@@ -105,10 +105,10 @@
     <div id="topo">
         <?php
         // PEGA O NOME DE USUÁRIO E IDPESSOA DO USUÁRIO LOGADO
-        $usuarioLogado = $_SESSION['usuario'];
-        $usuarioNome = $usuarioLogado->getNomeAcesso();
-        $usuarioEmail = $usuarioLogado->getEmail();
-        $avisosNaoLidos = $usuarioLogado->obterQtdeAvisosNaoLidos();
+        $login = $_SESSION["login"];
+        $nomeAcesso = $login->getNomeAcesso();
+        $loginEmail = $login->getEmail();
+        $avisosNaoLidos = $login->obterQtdeAvisosNaoLidos();
         
         $cursoFiltro = "";
         if( isset($_SESSION["siglaCursoFiltro"]))
@@ -124,7 +124,7 @@
         </div>
 
         <?php
-        if( $usuarioLogado->getPerfil() == Usuario::ADMINISTRADOR ) {
+        if( $login->getPerfil() == Login::ADMINISTRADOR ) {
             
         ?>
         <div id="curso_pre_selecao">
@@ -149,12 +149,12 @@
         
         // EXIBE A FOTO DO USUÁRIO
         echo "<div class='usuariologado_foto'>";
-        echo "<img src='/coruja/baseCoruja/controle/obterFotoLogado_controle.php' width='100' height='90' border=0 alt='$usuarioNome' />";
+        echo "<img src='/coruja/baseCoruja/controle/obterFotoLogado_controle.php' width='100' height='90' border=0 alt='$nomeAcesso' />";
         echo "</div>";
         ?>
         <?php
         echo "<div class='usuariologado_info'>";
-        echo "$usuarioNome ($usuarioEmail) ";
+        echo "$nomeAcesso ($loginEmail) ";
         echo "<br />";
         echo "( <a href='/coruja/interno/manter_login/manterLogin_controle.php?acao=exibirTrocaSenha'>Alterar Senha</a> | <a href='/coruja/autenticar/login_controle.php?acao=sair'>Sair</a> )";
         echo "</div>";

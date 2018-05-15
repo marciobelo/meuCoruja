@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html manifest = "meucoruja.appcache">
     <head>
         <link rel="manifest" href="manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -121,7 +121,7 @@
                                     exibirMensagemErro(2);
                                     return;
                             }else if((meuCoruja.usuario.matricula === null)
-                                    || (meuCoruja.usuario.senha === null)){
+                                    || (meuCoruja.usuario.hashLogin === null)){
                                     console.log("Usuário ou Senha Inexistentes");
                                     exibirMensagemErro(2);
                                     return;
@@ -130,7 +130,7 @@
                             // Verifico se a senha inserida bate com a do objeto meuCoruja
 
                             if ((meuCoruja.usuario.matricula === document.getElementById("usuario").value) 
-                                && (meuCoruja.usuario.senha === MD5(document.getElementById("senha").value))){
+                                && (meuCoruja.usuario.hashLogin === MD5(document.getElementById("senha").value))){
                                 window.location.replace("boletim.html");
                             }else{
                                 exibirMensagemErro(2);

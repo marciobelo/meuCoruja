@@ -22,7 +22,7 @@
                     <form method="post" id="formValidarLog" action="/coruja/autenticar/login_controle.php">
                         <input type="hidden" name="acao" value="validarLog" />
                         <h1><?php echo htmlspecialchars("Log de alterações na conta de: " .
-                            $usuario->getNomeAcesso(), ENT_QUOTES, "iso-8859-1"); ?></h1>
+                            $login->getNomeAcesso(), ENT_QUOTES, "iso-8859-1"); ?></h1>
                         <?php
                         // Exibe mensagem de erro quando existir
                         if( isset($erro) ) {
@@ -49,14 +49,15 @@
                             <!-- Registro de Log do Usuario -->
                             <tbody>
                                 <?php
-                                $logs = $usuario->getLogsNaoConferidos();
+                                
+                                $logs = $login->getLogsNaoConferidos();
                                 foreach($logs as $log) {
                                     ?>
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="confere[]"
                                                value="<?php echo $log->idCasoUso . ";" . $log->dataHora; ?>"
-                                                   <?php if($log->critico=="NÃO") echo "checked"; ?>
+                                                   <?php if( $log->critico === "NÃO") { echo "checked"; } ?>
                                                />
                                     </td>
                                     <td>

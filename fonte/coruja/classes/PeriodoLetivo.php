@@ -162,10 +162,10 @@ class PeriodoLetivo
             	return $msg_erro;
             }else{
 
-                $usuario = $_SESSION["usuario"];
+                $login = $_SESSION["login"];
                 global $MANTER_PERIODO_LETIVO_INCLUIR;
 
-                $usuario->incluirLog($MANTER_PERIODO_LETIVO_INCLUIR,$descricao,$con);
+                $login->incluirLog($MANTER_PERIODO_LETIVO_INCLUIR,$descricao,$con);
 
                 return "";    
             }
@@ -207,10 +207,10 @@ class PeriodoLetivo
             }elseif(mysql_errno()!=0){
                 return $msg_erro;
             }else {
-                $usuario = $_SESSION["usuario"];
+                $login = $_SESSION["login"];
                 global $ALTERAR_PERIODO_LETIVO;
 
-                $usuario->incluirLog($ALTERAR_PERIODO_LETIVO,$descricao,$con);
+                $login->incluirLog($ALTERAR_PERIODO_LETIVO,$descricao,$con);
                 return "";
             }
     }
@@ -234,9 +234,9 @@ class PeriodoLetivo
         if(!$sqlPeriodo){
             return $msgErro;
         } else {
-            $usuario = $_SESSION["usuario"];
+            $login = $_SESSION["login"];
             global $EXCLUIR_PERIODO_LETIVO;
-            $usuario->incluirLog($EXCLUIR_PERIODO_LETIVO,$descricao,$con);
+            $login->incluirLog($EXCLUIR_PERIODO_LETIVO,$descricao,$con);
             return "Período Letivo excluído com sucesso!";
         }
     }

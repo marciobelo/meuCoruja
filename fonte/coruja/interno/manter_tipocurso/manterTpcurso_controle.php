@@ -7,7 +7,7 @@ $acao=$_REQUEST["acao"];
 
 if($acao=="listar") {
    
-    if(!$usuario->temPermissao($MANTER_TIPOCURSO)) {
+    if(!$login->temPermissao($MANTER_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -18,7 +18,7 @@ if($acao=="listar") {
     
 } else if($acao=="prepararAlterar") {
 
-    if(!$usuario->temPermissao($ALTERAR_TIPOCURSO)) {
+    if(!$login->temPermissao($ALTERAR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -31,7 +31,7 @@ if($acao=="listar") {
     require_once "$BASE_DIR/interno/manter_tipocurso/telaEditaTpcursos.php";
 } else if($acao=="alterar") {
     
-    if(!$usuario->temPermissao($ALTERAR_TIPOCURSO)) {
+    if(!$login->temPermissao($ALTERAR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -59,7 +59,7 @@ if($acao=="listar") {
                 $TipoCursoAntes->getDescricao() . " para " .
                 $formTipoCurso->getDescricao();
 
-            $usuario->incluirLog($ALTERAR_TIPOCURSO, $descricao,$con);
+            $login->incluirLog($ALTERAR_TIPOCURSO, $descricao,$con);
 
             mysql_query("COMMIT", $con);
             $tipocursos = TipoCurso::obterTipoCursos();
@@ -76,7 +76,7 @@ if($acao=="listar") {
 
 } else if($acao=="prepararExcluir") {
 
-    if(!$usuario->temPermissao($EXCLUIR_TIPOCURSO)) {
+    if(!$login->temPermissao($EXCLUIR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -92,7 +92,7 @@ if($acao=="listar") {
 
 } else if($acao=="excluir") {
 
-    if(!$usuario->temPermissao($EXCLUIR_TIPOCURSO)) {
+    if(!$login->temPermissao($EXCLUIR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -110,7 +110,7 @@ if($acao=="listar") {
         $descricao="Excluído o Tipo de curso " .
         $tipocursos->getDescricao();
 
-        $usuario->incluirLog($EXCLUIR_TIPOCURSO, $descricao,$con);
+        $login->incluirLog($EXCLUIR_TIPOCURSO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 
@@ -132,7 +132,7 @@ if($acao=="listar") {
     }
 
 } else if($acao=="prepararIncluir") {
-     if(!$usuario->temPermissao($INCLUIR_TIPOCURSO)) {
+     if(!$login->temPermissao($INCLUIR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;    
     }
@@ -140,7 +140,7 @@ if($acao=="listar") {
      require_once "$BASE_DIR/interno/manter_tipocurso/telaIncluirTpcursos.php";
 } else if($acao=="incluir") {
 
-    if(!$usuario->temPermissao($INCLUIR_TIPOCURSO)) {
+    if(!$login->temPermissao($INCLUIR_TIPOCURSO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -161,7 +161,7 @@ if($acao=="listar") {
         $descricao="Incluído o Tipo de Curso " .
             $formTipoCurso->getDescricao();
 
-        $usuario->incluirLog($INCLUIR_TIPOCURSO, $descricao,$con);
+        $login->incluirLog($INCLUIR_TIPOCURSO, $descricao,$con);
 
         mysql_query("COMMIT", $con);
 

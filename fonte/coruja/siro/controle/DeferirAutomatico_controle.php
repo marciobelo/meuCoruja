@@ -3,7 +3,7 @@ require_once "../../includes/comum.php";
 require_once "$BASE_DIR/classes/Inscricao.php";
 require_once "$BASE_DIR/classes/Turma.php";
 
-if( !$usuario->temPermissao( "UC02.01.01")) {
+if( !$login->temPermissao( "UC02.01.01")) {
     echo "-2";
     exit;
 }

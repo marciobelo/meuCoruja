@@ -2,11 +2,13 @@
 header("Content-type:image/png");
 require_once("../../includes/comum.php");
 
-$usuario = $_SESSION["usuario"];
+$login = $_SESSION["login"];
 
-if($usuario->getFoto()==null) {
+if( $login->getFoto() == null) 
+{
     readfile("$BASE_DIR/imagens/sem_foto.jpg");
-} else {
-    echo $usuario->getFoto();
+} 
+else 
+{
+    echo $login->getFoto();
 }
-?>

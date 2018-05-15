@@ -16,7 +16,7 @@ if($acao === "AlocacaoProfessor")
     global $collection2;
     global $collection3;
 
-    if(!$usuario->temPermissao($EXIBIR_ALOCACAO_PROFESSOR)) 
+    if(!$login->temPermissao($EXIBIR_ALOCACAO_PROFESSOR)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
@@ -42,7 +42,7 @@ if($acao === "AlocacaoProfessor")
 } 
 else if($acao=="exibirPDF") 
 {
-    if(!$usuario->temPermissao($EXIBIR_ALOCACAO_PROFESSOR)) 
+    if(!$login->temPermissao($EXIBIR_ALOCACAO_PROFESSOR)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
@@ -56,7 +56,7 @@ else if($acao=="exibirPDF")
     $var.=", do período letivo ";
     $var.=$periodoletivo->getSiglaPeriodoLetivo();
 
-    $usuario->incluirLog($EXIBIR_ALOCACAO_PROFESSOR, $var);
+    $login->incluirLog($EXIBIR_ALOCACAO_PROFESSOR, $var);
 
     $PDF->geraGrade(282,$_REQUEST['curso'], $professor->getNome(), $periodoletivo->getSiglaPeriodoLetivo());
     $PDF->Output();

@@ -1,13 +1,11 @@
 <?php
 require_once("../../includes/comum.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Turma.php");
 require_once("$BASE_DIR/classes/Professor.php");
 require_once("$BASE_DIR/classes/Mensagem.php");
 
 $idTurma = $_REQUEST["idTurma"];
 $acao = $_REQUEST["acao"];
-$usuario = $_SESSION["usuario"];
 $idItemCriterioAvaliacao = $_REQUEST["idItemCriterioAvaliacao"];
 
 $turma = Turma::getTurmaById($idTurma);
@@ -18,26 +16,28 @@ if( isset ($_SESSION["msgsErro"]) ) {
     unset ($_SESSION["msgsErro"]);
 }
 
-// Verifica se o professor é o titular da turma informada
-if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
+if( !$turma->isPodeEditarPauta($login) ) 
+{
     $msgsErro = array();
     $msgsErro[] = "Você não está autorizado a abrir a pauta eletrônica dessa turma";
-    $professorLogado = Professor::getProfessorByIdPessoa($usuario->getIdPessoa() );
+    $professorLogado = Professor::getProfessorByIdPessoa( $login->getIdPessoa());
     $turmas = Turma::obterTurmasConfirmadasPorProfessor( $professorLogado );
     include "$BASE_DIR/espacoProfessor/index.php";
+    exit;
 }
 
 $inscricoesDePauta = $turma->getInscricoesDePauta();
 $criterioAvaliacao = $turma->getCriterioAvaliacao();
 $itensCriterioAvaliacao = $criterioAvaliacao->getItensCriterioAvaliacao();
 
-if( $acao == "exibirAvaliacaoLancarNotas" ) {
-    
-    $itemCriterioAvaliacao = ItemCriterioAvaliacao::obterPorId($idItemCriterioAvaliacao);
+if( $acao === "exibirAvaliacaoLancarNotas" ) 
+{
+    $itemCriterioAvaliacao = ItemCriterioAvaliacao::obterPorId( $idItemCriterioAvaliacao);
     include "$BASE_DIR/espacoProfessor/pautaEletronica/formPautaEletronicaAvaliacaoLancarNotas.php";
     
-} else if( $acao == "liberarNotasItemCriterio" ) {
-    
+} 
+else if( $acao === "liberarNotasItemCriterio" ) 
+{
     $con = BD::conectar();
     try {
         mysql_query("BEGIN", $con); // Inicia transação
@@ -45,7 +45,6 @@ if( $acao == "exibirAvaliacaoLancarNotas" ) {
         // Registra como liberado o item de critério de avaliação para uma turma
         $itemCriterioAvaliacao = ItemCriterioAvaliacao::obterPorId($idItemCriterioAvaliacao);
         $turma->liberarItemCriterioAvaliacao( $itemCriterioAvaliacao, $con );
-        
         
         // Envia e-mail para todos os alunos dessa turma que tiveram a nota atualizada nessa liberação
         $notasDaTurmaEmString = "";
@@ -95,14 +94,20 @@ if( $acao == "exibirAvaliacaoLancarNotas" ) {
                                 $turma->getTurno(),
                                 $turma->getGradeHorario(),
                                 $turma->getPeriodoLetivo()->getSiglaPeriodoLetivo() );
-        $usuario->incluirLog($LIBERAR_NOTAS_TURMA,  $strLog, $con);
-        
+        $login->incluirLog($LIBERAR_NOTAS_TURMA,  $strLog, $con);
+        if( $login->getIdPessoa() != $professor->getIdPessoa()) // se for a secretaria apontando
+        {
+            $descricao = "Notas liberadas na sua pauta por " . $login->getPessoa()->getNome() .
+                    "\n<br/>" . $strLog;
+            Log::incluirLog( $professor->getIdPessoa(), $LIBERAR_NOTAS_TURMA, $descricao, $con);
+        }        
         mysql_query("COMMIT", $con);
         Header("Location: /coruja/espacoProfessor/pautaEletronica/pautaEletronicaAvaliacao_controle.php?idTurma=" . 
                 $turma->getIdTurma() );
         exit;    
-        
-    } catch(Exception $ex) {
+    } 
+    catch(Exception $ex) 
+    {
         mysql_query("ROLLBACK", $con);
         
         $msgsErro = array();
@@ -110,10 +115,11 @@ if( $acao == "exibirAvaliacaoLancarNotas" ) {
         include "$BASE_DIR/espacoProfessor/pautaEletronica/formPautaEletronicaAvaliacaoLancarNotas.php";
     }
 
-} else if( $acao == "reabrirItemCriterioAvaliacaoNotas" ) {
-
-    try {
-        
+} 
+else if( $acao === "reabrirItemCriterioAvaliacaoNotas") 
+{
+    try 
+    {
         $con = BD::conectar();
         mysql_query("BEGIN", $con); // Inicia transação
 
@@ -128,20 +134,26 @@ if( $acao == "exibirAvaliacaoLancarNotas" ) {
                                 $turma->getTurno(),
                                 $turma->getGradeHorario(),
                                 $turma->getPeriodoLetivo()->getSiglaPeriodoLetivo() );
-        $usuario->incluirLog($REABRIR_NOTAS_TURMA,  $strLog, $con);
-        
+        $login->incluirLog($REABRIR_NOTAS_TURMA,  $strLog, $con);
+        if( $login->getIdPessoa() != $professor->getIdPessoa()) // se for a secretaria apontando
+        {
+            $descricao = "Reaberta para apontamento por " . $login->getPessoa()->getNome() .
+                    "\n<br/>" . $strLog;
+            Log::incluirLog( $professor->getIdPessoa(), $REABRIR_NOTAS_TURMA, $descricao, $con);
+        }    
         mysql_query("COMMIT", $con);
         include "$BASE_DIR/espacoProfessor/pautaEletronica/formPautaEletronicaAvaliacaoLancarNotas.php";
         
-    } catch(Exception $ex) {
+    } 
+    catch(Exception $ex) 
+    {
         mysql_query("ROLLBACK", $con);
-        
         $msgsErro = array();
         $msgsErro[] = "Erro ao registrar lançamento de notas: " . $ex->getMessage();
         include "$BASE_DIR/espacoProfessor/pautaEletronica/formPautaEletronicaAvaliacao.php";
     }
-    
-} else {
+} 
+else 
+{
     include "$BASE_DIR/espacoProfessor/pautaEletronica/formPautaEletronicaAvaliacao.php";
 }
-?>

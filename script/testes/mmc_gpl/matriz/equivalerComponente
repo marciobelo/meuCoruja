@@ -57,8 +57,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>id=createTASI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -97,8 +107,13 @@
 	<td></td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>css=span.fa.fa-pencil-square-o</td>
+	<td>id=edit_XPTO</td>
 	<td></td>
 </tr>
 <tr>
@@ -114,6 +129,11 @@
 <tr>
 	<td>click</td>
 	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>

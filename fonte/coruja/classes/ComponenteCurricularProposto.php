@@ -1,8 +1,8 @@
 <?php
 require_once "$BASE_DIR/classes/BD.php";
-require_once "$BASE_DIR/baseCoruja/classes/bdfuncoes.php";
 
-class ComponenteCurricularProposto {
+class ComponenteCurricularProposto 
+{
     private $siglaCurso;
     private $idMatriz;
     private $siglaDisciplina;
@@ -112,8 +112,8 @@ class ComponenteCurricularProposto {
             throw new Exception("Erro ao inserir na tabela Componente Curricular Proposto.");
         }
         
-        $strLog = "Adicionado o Componente Curricular Proposto " . $siglaDisciplina . " na Matriz Curricular Proposta do Curso " . $siglaCursoMatrizProposta;  
-        $_SESSION['usuario']->incluirLog('UC11.01.02.01', $strLog, $con);
+        $strLog = "Adicionado o Componente Curricular Proposto " . $siglaDisciplina . " na Matriz Curricular Proposta do Curso " . $siglaCursoMatrizProposta;
+        $_SESSION['login']->incluirLog('UC11.01.02.01', $strLog, $con);
     }
     
     public function editar($oldSiglaDisciplina, $siglaCurso, $idMatriz, $siglaDisciplina, $nomeDisciplina, $creditos, $cargaHoraria, $periodo, $tipoComponenteCurricular, $posicaoPeriodo=0) {
@@ -140,7 +140,7 @@ class ComponenteCurricularProposto {
         }
         
         $strLog = "Editado o Componente Curricular Proposto " . $siglaDisciplina . " (era " . $oldSiglaDisciplina . ") na Matriz Curricular Proposta do Curso " . $siglaCurso;  
-        $_SESSION['usuario']->incluirLog('UC11.01.02.02', $strLog, $con);
+        $_SESSION['login']->incluirLog('UC11.01.02.02', $strLog, $con);
     }
     
     public static function obterComponeteCurricular($siglaCurso, $idUltimaMatrizEquivalente, $siglaDisciplina) {
@@ -210,7 +210,7 @@ class ComponenteCurricularProposto {
         }
         
         $strLog = "Exclu&iacute;do o Componente Curricular Proposto " . $this->getSiglaDisciplina() . " da Matriz Curricular Proposta do Curso " . $this->getSiglaCurso();  
-        $_SESSION['usuario']->incluirLog('UC11.01.02.03', $strLog, $con);
+        $_SESSION['login']->incluirLog('UC11.01.02.03', $strLog, $con);
     
         return true;
     }

@@ -29,7 +29,7 @@ if( $acao === "emitirEspaco")
     global $collection2;
     global $collection3;
 
-    if(!$usuario->temPermissao($EXIBIR_ESPELHO_OCUPACAO)) {
+    if(!$login->temPermissao($EXIBIR_ESPELHO_OCUPACAO)) {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
     }
@@ -47,7 +47,7 @@ if( $acao === "emitirEspaco")
 } 
 else if($acao=="exibirPDF") 
 {
-    if(!$usuario->temPermissao($EXIBIR_ESPELHO_OCUPACAO)) 
+    if(!$login->temPermissao($EXIBIR_ESPELHO_OCUPACAO)) 
     {
        require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
        exit;
@@ -62,7 +62,7 @@ else if($acao=="exibirPDF")
     $var.=", do período letivo ";
     $var.=$periodoletivo->getSiglaPeriodoLetivo();
 
-    $usuario->incluirLog($EXIBIR_ESPELHO_OCUPACAO, $var);
+    $login->incluirLog($EXIBIR_ESPELHO_OCUPACAO, $var);
 
     $PDF->geraGrade(282,$_REQUEST['siglaCurso'], $espaco->getNome(), $periodoletivo->getSiglaPeriodoLetivo());
     $PDF->Output();

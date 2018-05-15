@@ -8,7 +8,7 @@ require_once "$BASE_DIR/classes/Mensagem.php";
 require_once "$BASE_DIR/nort/includes/manterTurmas_obterMatrizAlocacoes.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($MANTER_TURMAS)) {
+if(!$login->temPermissao($MANTER_TURMAS)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -124,7 +124,7 @@ switch( $acao)
                     $turma->getGradeHorario(),
                     $turma->getPeriodoLetivo()->getSiglaPeriodoLetivo(),
                     $turma->getProfessor()->getNome() );
-            $usuario->incluirLog($LIBERAR_PAUTA_TURMA,  $strLog, $con);
+            $login->incluirLog($LIBERAR_PAUTA_TURMA,  $strLog, $con);
 
             mysql_query("COMMIT", $con);
 
@@ -273,7 +273,7 @@ function registrarLog($siglaCurso, $nomeCurso, $siglaPeiodoLetivo, $siglaDiscipl
     $mensagem = "Consultada turma do curso $siglaCurso($nomeCurso), Período Letivo $siglaPeiodoLetivo, ";
     $mensagem .= "disciplina $siglaDisciplina - $nomeDisciplina, Turno $turno, Grade $grade, situação $situacao";
 
-    $_SESSION["usuario"]->incluirLog('UC01.03.00', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.03.00', $mensagem);
 }
 
 function exibirTurmas() {

@@ -12,9 +12,6 @@ require_once "$BASE_DIR/siro/classes/buscaAluno.php";
 require_once "$BASE_DIR/classes/Aluno.php";
 require_once "$BASE_DIR/siro/classes/formulario.class.php";
 
-// Recupera o usuario logado da sessao
-$usuario = $_SESSION["usuario"];
-
 $act = filter_input( INPUT_GET, "act", FILTER_SANITIZE_STRING);
 $acao = filter_input( INPUT_POST, "acao", FILTER_SANITIZE_STRING);
 $passo = filter_input( INPUT_POST, "passo", FILTER_SANITIZE_STRING);
@@ -47,7 +44,7 @@ else
 if( $act === "main") // acao para exibir a pagina de filtro de curso
 { 
     // Verifica Permissao
-    if(!$usuario->temPermissao($MANTER_ALUNOS_QUE_CURSAM_TURMA)) {
+    if(!$login->temPermissao($MANTER_ALUNOS_QUE_CURSAM_TURMA)) {
             require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
             exit;
     }
@@ -126,7 +123,7 @@ if( $act === "main") // acao para exibir a pagina de filtro de curso
                 "Período Letivo " . $periodoLetivo->getSiglaPeriodoLetivo() . ", turno " .
                 $turma->getTurno() . ", grade " . $turma->getGradeHorario() . ", " .
                 "do Curso " . $curso->getSiglaCurso() . " (" . $curso->getNomeCurso() . ")";
-        $usuario->incluirLog($MANTER_ALUNOS_QUE_CURSAM_TURMA, $strLog, $con);
+        $login->incluirLog($MANTER_ALUNOS_QUE_CURSAM_TURMA, $strLog, $con);
 
         // Avisa ao professor aluno excluído da pauta
         if( $turma->isNotificaProfessorMudancaPauta() ) {
@@ -268,7 +265,7 @@ if( $act === "main") // acao para exibir a pagina de filtro de curso
                     "Período Letivo " . $periodoLetivo->getSiglaPeriodoLetivo() . ", turno " .
                     $turma->getTurno() . ", grade " . $turma->getGradeHorario() . ", " .
                     "do Curso " . $curso->getSiglaCurso() . " (" . $curso->getNomeCurso() . ")";
-            $usuario->incluirLog($INCLUIR_ALUNOS_QUE_CURSAM_TURMA, $strLog, $con);
+            $login->incluirLog($INCLUIR_ALUNOS_QUE_CURSAM_TURMA, $strLog, $con);
 
             // Avisa ao professor aluno incluído na pauta
             if( $turma->isNotificaProfessorMudancaPauta() ) {

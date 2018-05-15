@@ -92,7 +92,7 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
                     $indice = 1;
                     foreach ($ultimasMensagens as $mensagemUltimas) {
                         echo "<li>";
-                        if( $mensagemUltimas->foiLidaPor($usuario->getIdPessoa()) ) {
+                        if( $mensagemUltimas->foiLidaPor($login->getIdPessoa()) ) {
                             $cssClass = "lida";
                         } else {
                             $cssClass = "naoLida";
@@ -130,7 +130,7 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
                 <div id="rodapeMensagem">
 
                     <?php
-                    if( $mensagem->foiLidaPor($usuario->getIdPessoa()) ) {
+                    if( $mensagem->foiLidaPor($login->getIdPessoa()) ) {
                         echo "<span>Estou ciente!</span>";
                     } else {
                     ?>

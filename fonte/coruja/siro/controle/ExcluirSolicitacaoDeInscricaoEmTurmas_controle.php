@@ -19,9 +19,6 @@ include_once "$BASE_DIR/classes/Aluno.php";
 // TOPO DA PÁGINA
 include_once "$BASE_DIR/includes/topo.php";
 
-// Recupera o usuário logado da sessão
-$usuario = $_SESSION["usuario"];
-
 // MENU HORIZONTAL
 echo '<div id="menuprincipal">';
 include_once "$BASE_DIR/includes/menu_horizontal.php";
@@ -29,15 +26,15 @@ echo '</div>';
 
 // Se não é o próprio aluno, verifica se tem permissão para excluir solicitação
 $matriculaAluno = null;
-if(!$usuario->isAluno()) {
+if(!$login->isAluno()) {
     // Verifica Permissao
-    if(!$usuario->temPermissao($EXCLUIR_SOLICITACAO_INSCRICAO_TURMA)) {
+    if(!$login->temPermissao($EXCLUIR_SOLICITACAO_INSCRICAO_TURMA)) {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit;
     }
     $matriculaAluno = MatriculaAluno::obterMatriculaAluno($_SESSION['matrAlunoSelec']);
 } else {
-    $matriculaAluno = MatriculaAluno::obterMatriculaAluno($usuario->getNomeAcesso());
+    $matriculaAluno = MatriculaAluno::obterMatriculaAluno($login->getNomeAcesso());
 }
 $idPessoa = $matriculaAluno->getIdPessoa();
 
@@ -70,7 +67,7 @@ if($action == "excluirSolicitacao") {
             "Período Letivo ".$periodoLetivo->getSiglaPeriodoLetivo() . ", turno " .
             $turma->getTurno() . " grade " . $turma->getGradeHorario() . " " .
             "do Curso " . $curso->getSiglaCurso() . " (" . $curso->getNomeCurso() . ")";
-        $usuario->incluirLog($EXCLUIR_SOLICITACAO_INSCRICAO_TURMA,$strLog,$con);
+        $login->incluirLog($EXCLUIR_SOLICITACAO_INSCRICAO_TURMA,$strLog,$con);
 
         mysql_query("COMMIT", $con);
 

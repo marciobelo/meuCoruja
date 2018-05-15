@@ -4,7 +4,6 @@ require_once "$BASE_DIR/classes/Aluno.php";
 require_once "$BASE_DIR/classes/MatriculaAluno.php";
 require_once "$BASE_DIR/classes/Curso.php";
 require_once "$BASE_DIR/classes/MatrizCurricular.php";
-require_once "$BASE_DIR/classes/Usuario.php";
 
 require_once "$BASE_DIR/interno/emitir_decl_matr_aluno/DeclMatrAlunoPDF.php";
 
@@ -12,7 +11,7 @@ $acao = $_REQUEST["acao"];
 if(!isset ($acao)) { // ação inicial
 
     // Verifica Permissão
-    if(!$usuario->temPermissao($EMITIR_DECL_MATR_CURSO)) {
+    if(!$login->temPermissao($EMITIR_DECL_MATR_CURSO)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         exit();
     }
@@ -23,7 +22,7 @@ if(!isset ($acao)) { // ação inicial
 } else if($acao=="exibirResumo") {
 
     // Verifica Permissão
-    if(!$usuario->temPermissao($EMITIR_DECL_MATR_CURSO)) {
+    if(!$login->temPermissao($EMITIR_DECL_MATR_CURSO)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         exit();
     }
@@ -32,7 +31,7 @@ if(!isset ($acao)) { // ação inicial
     $aluno = Aluno::getAlunoByNumMatricula($numMatriculaAluno);
     $matriculaAluno = MatriculaAluno::obterMatriculaAluno($numMatriculaAluno);
     $periodoReferencia = $matriculaAluno->getPeriodoReferencia();
-    $temPermissaoAlterarPeriodo = $usuario->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO);
+    $temPermissaoAlterarPeriodo = $login->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO);
 
     // Verifica se o aluno está cursando
     if( $matriculaAluno->getSituacaoMatricula() != 'CURSANDO') {
@@ -52,15 +51,15 @@ if(!isset ($acao)) { // ação inicial
     $matriculaAluno = MatriculaAluno::obterMatriculaAluno($numMatriculaAluno);
     $periodoReferenciaReal = $matriculaAluno->getPeriodoReferencia();
     $periodoMaxPermitido = $matriculaAluno->getMatrizCurricular()->obterQuantidadePeriodos();
-    $temPermissaoAlterarPeriodo = $usuario->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO);
+    $temPermissaoAlterarPeriodo = $login->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO);
 
     $matrizCurricular = $matriculaAluno->getMatrizCurricular();
     $curso = $matrizCurricular->getCurso();
 
     // Verifica Permissão
-    if( !$usuario->temPermissao($EMITIR_DECL_MATR_CURSO) ||
+    if( !$login->temPermissao($EMITIR_DECL_MATR_CURSO) ||
         ($periodoReferencia != $periodoReferenciaReal) &&
-            (!$usuario->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO)) ) {
+            (!$login->temPermissao($EMITIR_DECL_MATR_CURSO_ALTERAR_PERIODO)) ) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         exit();
     }
@@ -92,7 +91,7 @@ if(!isset ($acao)) { // ação inicial
     $strLog = "Emitida declaração de matrícula para o aluno " . $aluno->getNome() .
             ", matrícula " . $numMatriculaAluno . ", do curso " .
             $matriculaAluno->getSiglaCurso() . ", com período de referência " . $periodoReferencia;
-    $usuario->incluirLog($uc,  $strLog);
+    $login->incluirLog($uc,  $strLog);
 
 
     $emitirPDF = true;

@@ -6,7 +6,6 @@
     $idPessoa    = filter_input( INPUT_POST, "idPessoa", FILTER_SANITIZE_NUMBER_INT);
     $idGrupo     = filter_input( INPUT_POST, "idGrupo", FILTER_SANITIZE_NUMBER_INT);
     $acao        = filter_input( INPUT_POST, "acao", FILTER_SANITIZE_STRING);
-    $usuario     = $_SESSION['usuario'];
     $con         = BD::conectar();
     $loginPessoa = Login::obterLoginPorIdPessoa($idPessoa); 
     $grupo       = GrupoFuncao::obterPorId($idGrupo);
@@ -17,7 +16,7 @@
         $idPermissaoVerificar = 'UC09.01.04';
     }
 
-    if(!$usuario->temPermissao($idPermissaoVerificar)) {
+    if(!$login->temPermissao($idPermissaoVerificar)) {
         echo "Sem Permissao";
         exit;
     }
@@ -59,7 +58,7 @@
         }
 
         $strLog = $acaoLog . " o Grupo de permiss&otilde;es " . $grupo->getNome() . " " . $conectivo . " Usu&aacute;rio " . $loginPessoa->getPessoa()->getNome(). ", Nome de Acesso " . $loginPessoa->getNomeAcesso();
-        $usuario->incluirLog($idPermissaoVerificar, $strLog, $con);
+        $login->incluirLog($idPermissaoVerificar, $strLog, $con);
 
         mysql_query("COMMIT", $con);
         

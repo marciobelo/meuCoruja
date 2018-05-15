@@ -12,8 +12,7 @@ $acao = $_REQUEST["acao"];
 if($acao=="ExibirDados") {
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($MANTER_PROFESSOR)) {
+    if(!$login->temPermissao($MANTER_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -23,24 +22,21 @@ if($acao=="ExibirDados") {
 } else if($acao=="novoCadastro") {
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($INCLUIR_PROFESSOR)) {
+    if(!$login->temPermissao($INCLUIR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
     require_once("$BASE_DIR/interno/manter_professor/novo_professor.php");
     exit;
-} else if($acao=="salvarProfessor") {
+} else if($acao==="salvarProfessor") {
 
     require_once "$BASE_DIR/classes/Pessoa.php";
     require_once "$BASE_DIR/classes/Professor.php";
     require_once "$BASE_DIR/classes/MatriculaProfessor.php";
     require_once "$BASE_DIR/interno/manter_professor/ManterProfessorForm.php";
 
-
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($INCLUIR_PROFESSOR)) {
+    if(!$login->temPermissao($INCLUIR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -85,7 +81,7 @@ if($acao=="ExibirDados") {
 
             $strLog = "Inserido o professor com os dados:<br/> Matricula ->" .$formProfessor->novaMatriculaProfessor." Nome ->".$formProfessor->nome;
 
-            $usuario->incluirLog($INCLUIR_PROFESSOR,$strLog,$con);
+            $login->incluirLog($INCLUIR_PROFESSOR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
 
@@ -115,12 +111,13 @@ if($acao=="ExibirDados") {
     require_once("$BASE_DIR/interno/manter_professor/novo_professor.php");
     exit;
 
-} else if($acao=="preparaEdicaoProfessor") {
+} 
+else if($acao=="preparaEdicaoProfessor") 
+{
     require_once "$BASE_DIR/interno/manter_professor/ManterProfessorForm.php";
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_PROFESSOR)) {
+    if(!$login->temPermissao($ALTERAR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -131,14 +128,15 @@ if($acao=="ExibirDados") {
 
     require_once("$BASE_DIR/interno/manter_professor/editar_professor.php");
 
-} else if($acao=="salvarProfessorEditado") {
+} 
+else if($acao === "salvarProfessorEditado") 
+{
     require_once "$BASE_DIR/classes/Professor.php";
     require_once "$BASE_DIR/classes/MatriculaProfessor.php";
     require_once "$BASE_DIR/interno/manter_professor/ManterProfessorForm.php";
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_PROFESSOR)) {
+    if(!$login->temPermissao($ALTERAR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -191,7 +189,7 @@ if($acao=="ExibirDados") {
 
         $strLog = "Dados do Professor " . $professorAntes->getNome() . " alterados:<br/>";
         $strLog .= Util::obterEntradasLogAlteradas($professorAntes->toString(),$professorDepois->toString());
-        $usuario->incluirLog($ALTERAR_PROFESSOR,$strLog,$con);
+        $login->incluirLog($ALTERAR_PROFESSOR,$strLog,$con);
 
         mysql_query("COMMIT", $con);
     } catch (Exception $ex) {
@@ -203,19 +201,20 @@ if($acao=="ExibirDados") {
     }
 
     // Exibe mensagem de sucesso e remete para consulta ao aluno
-    $msgsErro=array();
+    $msgsErro = array();
     array_push($msgsErro, "Dados do professor alterados com sucesso.");
     $professor = Professor::getProfessorByIdPessoa($idPessoa);
 
     require_once("$BASE_DIR/interno/manter_professor/exibe_dados_professor.php");
     exit;
 
-} else if($acao=="preparaEdicaoMatricula") {
+} 
+else if($acao=="preparaEdicaoMatricula") 
+{
     require_once "$BASE_DIR/interno/manter_professor/ManterMatriculaProfForm.php";
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_PROFESSOR)) {
+    if(!$login->temPermissao($ALTERAR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -227,8 +226,9 @@ if($acao=="ExibirDados") {
 
     require_once("$BASE_DIR/interno/manter_professor/editar_matricula_professor.php");
 
-} else if($acao=="salvarMatriculaEditada") {
-
+} 
+else if($acao=="salvarMatriculaEditada") 
+{
     require_once("$BASE_DIR/classes/MatriculaProfessor.php");
     require_once("$BASE_DIR/classes/Professor.php");
     require_once("$BASE_DIR/interno/manter_professor/ManterMatriculaProfForm.php");
@@ -237,8 +237,7 @@ if($acao=="ExibirDados") {
     $formMatricula->atualizarDadosForm();
 
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($ALTERAR_PROFESSOR)) {
+    if(!$login->temPermissao($ALTERAR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -293,7 +292,7 @@ if($acao=="ExibirDados") {
             Util::dataSQLParaBr($formMatricula->getDataInicio()) . "<br/>";
         $strLog .= "Data de Encerramento: " . 
             Util::dataSQLParaBr($formMatricula->getDataEncerramento()) . "<br/>";
-        $usuario->incluirLog($uc,  $strLog, $con);
+        $login->incluirLog($uc,  $strLog, $con);
 
         mysql_query("COMMIT", $con);
     } catch (Exception $ex) {
@@ -314,10 +313,11 @@ if($acao=="ExibirDados") {
     require_once("$BASE_DIR/interno/manter_professor/exibe_dados_professor.php");
     exit;
 
-} else if($acao=="preparaNovaMatricula") {
-
+} 
+else if( $acao === "preparaNovaMatricula") 
+{
     // Verifica antes se usuário tem permissão
-    if(!$usuario->temPermissao($ALTERAR_PROFESSOR)) {
+    if(!$login->temPermissao($ALTERAR_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
 
@@ -326,4 +326,3 @@ if($acao=="ExibirDados") {
 } else {
     trigger_error("Ação não identificada.",E_USER_ERROR);
 }
-?>

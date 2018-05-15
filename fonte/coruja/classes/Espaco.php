@@ -17,7 +17,7 @@ class Espaco {
         $this->nome = $nome;
         $this->capacidade = $capacidade;
     }
-    
+
     /**
      * Altera um espaco
      * @param <type> $idEspaco

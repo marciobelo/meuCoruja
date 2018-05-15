@@ -892,13 +892,4 @@ class Turma {
         return $this->getProfessor()->getIdPessoa() === $login->getIdPessoa()
                 || $login->getIdPessoa() == Config::SECRETARIA_ID_PESSOA; 
     }
-	
-    public function getIdCriterioAvaliacao() {
-        $con = BD::conectar();
-        $query = sprintf("SELECT idCriterioAvaliacao FROM turma where idTurma = 1 limit 1");
-        $result = mysql_query($query, $con);
-        $value = mysql_fetch_object($result);
-        
-        return $value->idCriterioAvaliacao;
-    }
 }

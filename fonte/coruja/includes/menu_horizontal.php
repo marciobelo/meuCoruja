@@ -1,7 +1,6 @@
 <?php
-    $usuario=$_SESSION["usuario"];
-    if( ($usuario==null) || !isset($usuario) ) {
-        trigger_error("Não foi possível identificar o usuário autenticado.",E_USER_ERROR);
+    if( ($login==null) || !isset($login) ) {
+        trigger_error("Não foi possível identificar o login autenticado.",E_USER_ERROR);
     }
 ?>
 <div class="hauptmenue" align="center">
@@ -9,7 +8,7 @@
         <ul class="dropdown">
             <li><a href="/coruja/baseCoruja/index.php">In&iacute;cio</a></li>
 <?php
-    if( $usuario->getPerfil() == Usuario::ADMINISTRADOR ) {
+    if( $login->getPerfil() == Login::ADMINISTRADOR ) {
 ?>
             <li><a href="#">Cadastro</a>
          	    <ul>                    
@@ -42,7 +41,7 @@
                 <ul>
                     <li><a href="/coruja/nort/controle/manterTurmas_controle.php">Manter Turmas</a></li>
                     <li><a href="/coruja/nort/controle/lancarNotas_controle.php">Lan&ccedil;ar Notas</a></li>
-                    <li><a href="/coruja/siro/controle/ManterAlunosQueCursamTurma_controle.php?act=main">Manter Alunos que cursam uma Turma</a></li>
+                    <li><a href="/coruja/siro/controle/ManterAlunosQueCursamTurma_controle.php?act=main" id="manter_alunos_que_cursam_uma_turma">Manter Alunos que cursam uma Turma</a></li>
                 </ul>
             </li>        
             <li><a href="#">Inscrições</a>
@@ -67,7 +66,7 @@
             </li>
             <li style="border: 0px none ;"><a href="#"><nobr>Ajuda</nobr></a></li>        
 <?php
-    } else if($usuario->getPerfil() == Usuario::ALUNO ) {
+    } else if( $login->getPerfil() == Login::ALUNO ) {
 ?>
             <li><a href="#">Inscri&ccedil;&otilde;es</a>
                 <ul>
@@ -82,7 +81,7 @@
                 </ul>
             </li>
 <?php
-    } else if($usuario->getPerfil() == Usuario::PROFESSOR) {
+    } else if( $login->getPerfil() == Login::PROFESSOR) {
 ?>
             <li><a href="/coruja/espacoProfessor/index_controle.php?acao=exibirIndex">Pauta Eletr&ocirc;nica</a></li>
 <?php

@@ -350,9 +350,9 @@ class Inscricao {
                     "do curso ".$classeCurso->getSiglaCurso()." (".$classeCurso->getNomeCurso()."). ";
 
 
-            $usuario = $_SESSION["usuario"];
+            $login = $_SESSION["login"];
 
-            $usuario->incluirLog($EXIBIR_RESULTADO_SOLICITACAO_INSCRICAO,$descricao);
+            $login->incluirLog($EXIBIR_RESULTADO_SOLICITACAO_INSCRICAO,$descricao);
             return $listaSolicitantes;
     }
 
@@ -806,9 +806,9 @@ class Inscricao {
                 $descricao.=" Com a seguinte justificativa: ".$parecerInscricao;
             }
 
-            $usuario = $_SESSION["usuario"];
+            $login = $_SESSION["login"];
 
-            $usuario->incluirLog($UC,$descricao);
+            $login->incluirLog($UC,$descricao);
          }
     }
 

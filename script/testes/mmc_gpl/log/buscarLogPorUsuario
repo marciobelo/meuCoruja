@@ -77,6 +77,16 @@
 	<td>mbelo</td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>teste</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=perfil</td>
+	<td>label=ADMINISTRADOR</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>css=input[type=&quot;submit&quot;]</td>
 	<td></td>

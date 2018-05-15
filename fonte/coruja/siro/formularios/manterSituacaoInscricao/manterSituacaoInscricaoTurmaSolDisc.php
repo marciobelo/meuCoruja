@@ -74,7 +74,7 @@ if($acaoSolicitacao=="Cancelar") {
                     else
                     {
                         window.alert( retorno + " alunos foram deferidos automaticamente.");
-                        location.href= "/coruja/siro/controle/ManterSituacaoInscricaoTurma_controle.php?action=turmaSelecionada";
+                        location.href= "/coruja/siro/controle/ManterSituacaoInscricaoTurma_controle.php?action=turmaSelecionada&idTurma=<?php echo $turmaSelecionada->getIdTurma(); ?>";
                     }
                 },
                 error: function()

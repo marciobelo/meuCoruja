@@ -4,15 +4,12 @@ require_once "$BASE_DIR/classes/Curso.php";
 require_once "$BASE_DIR/classes/Turma.php";
 require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/classes/TempoSemanal.php";
-require_once "$BASE_DIR/classes/Usuario.php";
 require_once "$BASE_DIR/classes/Inscricao.php";
 require_once "$BASE_DIR/classes/MatriculaAluno.php";
 require_once "$BASE_DIR/classes/Aluno.php";
 require_once "$BASE_DIR/classes/EventoPeriodoLetivo.php";
 require_once "$BASE_DIR/classes/Mensagem.php";
 require_once "$BASE_DIR/siro/classes/funcoesRN.php";
-
-$usuario = $_SESSION["usuario"];
 
 include_once "$BASE_DIR/includes/topo.php";
 
@@ -44,7 +41,7 @@ else
 if( $action === "curso" && $siglaCurso === NULL) {// acao para exibir a pagina de filtro de curso
     
     
-    if( !$usuario->temPermissao($MANTER_SITUACAO_INSCRICOES_TURMAS)) // Verifica Permissão
+    if( !$login->temPermissao($MANTER_SITUACAO_INSCRICOES_TURMAS)) // Verifica Permissão
     {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit;
@@ -130,7 +127,7 @@ else if($action === "manterSolicitacao")
     if($acaoSolicitacao === "Indeferir") 
     {
         // Verifica Permissão UC02.01.02
-        if( !$usuario->temPermissao($INDEFERIR_SOLICATACAO_INSCRICAO)) {
+        if( !$login->temPermissao($INDEFERIR_SOLICATACAO_INSCRICAO)) {
             require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
             exit;
         }
@@ -138,7 +135,7 @@ else if($action === "manterSolicitacao")
 
     if( $acaoSolicitacao === "Cancelar") 
     {
-        if(!$usuario->temPermissao($CANCELAR_SOLICATAÇÃO_INSCRICAO)) {
+        if(!$login->temPermissao($CANCELAR_SOLICATAÇÃO_INSCRICAO)) {
             require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
             exit;
         }
@@ -215,7 +212,7 @@ else if($action === "manterSolicitacao")
 
     if(($acaoSolicitacao == 'Deferir') && ($colideRN08 || !$cumpreRequisitosRN09 || $alunoRF_RN10 || ($contaRN11>=3 || $alunoRN12 || $tIngressoRN22))) {
         // Verifica Permissão UC02.01.01
-        if(!$usuario->temPermissao($DEFERIR_SOLICATACAO_INSCRICAO_JUSTIFICATIVA)) {
+        if(!$login->temPermissao($DEFERIR_SOLICATACAO_INSCRICAO_JUSTIFICATIVA)) {
             require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
             exit;
         }
@@ -282,7 +279,7 @@ else if($action === "confirmarDeferirInscricao")
                         $strLog = $strMsg;
                     }                    
                     
-                    $usuario->incluirLog($UC, $strLog, $con);
+                    $login->incluirLog($UC, $strLog, $con);
                     $arrIdPessoa = array();
                     $arrIdPessoa[] = $turma->getProfessor()->getIdPessoa();
                     Mensagem::depositarMensagem("Aluno confirmado em pauta", $strMsg . ".", $arrIdPessoa, $con);
@@ -358,7 +355,7 @@ else if($action == "confirmarIndeferirInscricao")
             }
             $strMsg .= sprintf(". Motivo: '%s'", $parecerInscricao);
 
-            $usuario->incluirLog($INDEFERIR_SOLICATACAO_INSCRICAO, $strLog, $con);
+            $login->incluirLog($INDEFERIR_SOLICATACAO_INSCRICAO, $strLog, $con);
             
             // Avisa ao professor a negativa
             if( $inscAluno->isReclamadoPeloProfessor() ) {

@@ -127,8 +127,13 @@
 	<td>label=Híbrida 1</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>name=Prosseguir</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>Turma criada com sucesso</td>
 	<td></td>
 </tr>
 <tr>
@@ -232,8 +237,13 @@
 	<td>label=LIBERADA</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>id=modificar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>Situação modificada com sucesso</td>
 	<td></td>
 </tr>
 <tr>

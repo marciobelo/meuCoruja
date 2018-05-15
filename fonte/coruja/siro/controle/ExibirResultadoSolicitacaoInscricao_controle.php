@@ -8,9 +8,6 @@ require_once "$BASE_DIR/classes/ComponenteCurricular.php";
 require_once "$BASE_DIR/classes/MatriculaAluno.php";
 require_once "$BASE_DIR/siro/classes/buscaAluno.php";
 	
-// Recupera o usuário logado da sessão
-$usuario = $_SESSION["usuario"];
-
 $act = filter_input( INPUT_GET, "act");
 $acao = filter_input( INPUT_POST, "acao");
 $passo = filter_input( INPUT_POST, "passo");
@@ -45,7 +42,7 @@ if( $act === "main")
     // acao para exibir a pagina de filtro de curso
 
     // Verifica Permissão
-    if(!$usuario->temPermissao($EXIBIR_RESULTADO_SOLICITACAO_INSCRICAO)) {
+    if(!$login->temPermissao($EXIBIR_RESULTADO_SOLICITACAO_INSCRICAO)) {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit;
     }

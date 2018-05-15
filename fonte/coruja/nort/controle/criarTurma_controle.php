@@ -11,7 +11,7 @@ require_once "$BASE_DIR/nort/includes/manterTurmas_obterMatrizAlocacoes.php";
 require_once "$BASE_DIR/nort/includes/manterTurmas_validacoes.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($CRIAR_TURMA)) {
+if(!$login->temPermissao($CRIAR_TURMA)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -96,13 +96,15 @@ switch ($acao) {
         // Cria suas alocações
         // Registra Log
        
-        $siglaCurso = mysql_real_escape_string($_POST['siglaCurso']);
-        $idMatriz = mysql_real_escape_string($_POST['idMatriz']);
-        $siglaDisciplina = mysql_real_escape_string($_POST['siglaDisciplina']);
-        $gradeHorario = mysql_real_escape_string($_POST['gradeHorario']);
-        $turno = mysql_real_escape_string(utf8_decode($_POST['turno'])); // Corrige codificação (acentuação)
-        $idPeriodoLetivo = mysql_real_escape_string($_POST['idPeriodoLetivo']);
-        $qtdeTotal = mysql_real_escape_string($_POST['qtdeTotal']); 
+        //$siglaCurso = mysql_real_escape_string($_POST['siglaCurso']);
+        $siglaCurso = filter_input( INPUT_POST, "siglaCurso", FILTER_SANITIZE_STRING);
+        $idMatriz = filter_input( INPUT_POST, "idMatriz", FILTER_SANITIZE_NUMBER_INT);
+        $siglaDisciplina = filter_input( INPUT_POST, "siglaDisciplina", FILTER_SANITIZE_STRING);
+        $gradeHorario = filter_input( INPUT_POST, "gradeHorario", FILTER_SANITIZE_STRING);
+        $turno = utf8_decode( filter_input( INPUT_POST, "turno", FILTER_SANITIZE_STRING));
+        //mysql_real_escape_string(utf8_decode($_POST['turno'])); // Corrige codificação (acentuação)
+        $idPeriodoLetivo = filter_input( INPUT_POST, "idPeriodoLetivo", FILTER_SANITIZE_NUMBER_INT);
+        $qtdeTotal = filter_input( INPUT_POST, "qtdeTotal", FILTER_SANITIZE_NUMBER_INT);
         
         // Valida se já não há turma, não cancelada, na mesma grade
         if( Turma::existeTurmaNaoCancelada($siglaCurso,$idMatriz,
@@ -232,6 +234,5 @@ function registrarLog($turma){
     $mensagem .= ")";
 
     global $CRIAR_TURMA;
-    $_SESSION["usuario"]->incluirLog($CRIAR_TURMA, $mensagem);
+    $_SESSION["login"]->incluirLog($CRIAR_TURMA, $mensagem);
 }
-?>

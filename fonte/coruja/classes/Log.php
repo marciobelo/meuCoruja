@@ -1,6 +1,6 @@
 <?php
-class Log {
-
+class Log 
+{
     private $idPessoa;
     private $nome;
     private $nomeAcesso;
@@ -106,5 +106,43 @@ class Log {
         }
 
         return $arrLogs;
+    }
+    
+    /**
+    * Obtem todos os registros de Logs deste usuário ainda não conferidos
+    */
+    public static function getLogsNaoConferidos($nomeAcesso) 
+    {
+        $con = BD::conectar();
+        $query=sprintf("select Log.idCasoUso as idCasoUso,Log.dataHora as dataHora," .
+                "Log.descricao as descricaoLog,Funcao.descricao as descricaoFuncao," .
+                "Funcao.critico as critico from Login inner join Pessoa on " .
+                "Login.idPessoa=Pessoa.idPessoa inner join Log on " .
+                "Pessoa.idPessoa=Log.idPessoa inner join Funcao on " .
+                "Log.idCasoUso=Funcao.idCasoUso where Login.nomeAcesso='%s' ".
+                "and Log.confere='NÃO' " .
+                "order by Funcao.critico DESC,Log.dataHora DESC",$nomeAcesso);
+        $result = mysql_query( $query,$con);
+        $logs = array();
+        while( $linha = mysql_fetch_object($result) ) 
+        {
+                $logs[] = $linha;
+        }
+        return $logs;
+    }
+    
+    public static function incluirLog( $idPessoa,$idCasoUso,$descricao,$con)
+    {
+        if( $con == null) { $con = BD::conectar(); }
+        $query = sprintf("insert into Log (idPessoa,idCasoUso,descricao) "
+                . "values (%d,'%s','%s')",
+                $idPessoa,
+                $idCasoUso,
+                mysql_escape_string($descricao));
+        $result = mysql_query($query,$con);
+        if(!$result) 
+        {
+            throw new Exception("Erro ao inserir na tabela Log.");
+        }
     }
 }

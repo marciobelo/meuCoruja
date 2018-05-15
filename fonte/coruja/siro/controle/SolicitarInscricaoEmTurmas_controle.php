@@ -13,9 +13,6 @@ require_once "$BASE_DIR/classes/Curso.php";
 require_once "$BASE_DIR/classes/Aluno.php";
 require_once "$BASE_DIR/siro/classes/funcoesRN.php";
 
-// Recupera o usuário logado da sessão
-$usuario = $_SESSION["usuario"];
-
 $act = filter_input( INPUT_GET, "act", FILTER_SANITIZE_STRING);
 $action = filter_input( INPUT_GET, "action", FILTER_SANITIZE_STRING);
 
@@ -25,7 +22,7 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
 if( $act === "main") // NO PRIMEIRO ACESSO VIA UC02.06.03
 { 
     // Verifica Permissao
-    if(!$usuario->temPermissao( $SOLICITAR_INSCRICOES_EM_TURMAS)) 
+    if(!$login->temPermissao( $SOLICITAR_INSCRICOES_EM_TURMAS)) 
     {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         require_once "$BASE_DIR/includes/rodape.php";
@@ -43,15 +40,15 @@ else if( $action === 'idPessoa')
     $matriculaAluno=MatriculaAluno::obterMatriculaAluno( $_SESSION['matrAlunoSelec']);
     $action = "listar";
 }
-else if( !$usuario->isAluno()) 
+else if( !$login->isAluno()) 
 {
     $matriculaAluno=MatriculaAluno::obterMatriculaAluno($_SESSION['matrAlunoSelec']);
     $idPessoa=$matriculaAluno->getIdPessoa();
 }
 else 
 { //CASO NÃO VENHA PELO UC02.06.03
-    $idPessoa=$usuario->getIdPessoa();
-    $matriculaAluno=MatriculaAluno::obterMatriculaAluno($usuario->getNomeAcesso());
+    $idPessoa=$login->getIdPessoa();
+    $matriculaAluno=MatriculaAluno::obterMatriculaAluno($login->getNomeAcesso());
 }
 
 if( $matriculaAluno->getSituacaoMatricula() !== "CURSANDO") 
@@ -203,7 +200,7 @@ elseif( $action === "inserir")
                 "Período Letivo " . $periodoLetivo->getSiglaPeriodoLetivo() . ", turno " .
                 $turma->getTurno() . ", grade " . $turma->getGradeHorario() . ", " .
                 "do Curso " . $curso->getSiglaCurso() . " (" . $curso->getNomeCurso() . ")";
-        $usuario->incluirLog($SOLICITAR_INSCRICOES_EM_TURMAS, $strLog, $con);
+        $login->incluirLog($SOLICITAR_INSCRICOES_EM_TURMAS, $strLog, $con);
         mysql_query("COMMIT", $con);
     } catch(Exception $ex) {
             mysql_query("ROLLBACK", $con);

@@ -465,6 +465,7 @@ CREATE  TABLE IF NOT EXISTS `Login` (
   `bloqueado` ENUM('SIM','NÃO') NOT NULL DEFAULT 'NÃO' ,
   `foto` LONGBLOB NULL ,
   `motivoBloqueio` VARCHAR(255) NULL comment 'Motivo pelo qual o Login foi bloqueado',
+  `tentativas` INT UNSIGNED DEFAULT 0 NOT NULL comment 'Quantidade de vezes que se tentou logar com este login e falhou',
   PRIMARY KEY (`idPessoa`) ,
   INDEX `fk_Login_Pessoa` (`idPessoa` ASC) ,
   UNIQUE INDEX `ind_Login_Nome_Acesso` (`nomeAcesso` ASC) ,
@@ -768,6 +769,19 @@ create table `MensagemPessoa` (
 		references `Pessoa` (`idPessoa`)
 ) ENGINE = InnoDB;
 
+create table `ResumoApontamentoDiaLetivo` (
+`idTurma` INT UNSIGNED NOT NULL,
+`matriculaAluno` VARCHAR(15) NOT NULL,
+`data` DATE NOT NULL,
+`resumo` varchar(255) NULL comment 'String onde cada caractere representa um status quanto a presença na aula',
+primary key (`idTurma`,`matriculaAluno`,`data`),
+constraint `fk_ResumoApontamentoDiaLetivo_Inscricao`
+foreign key (`idTurma`,`matriculaAluno`)
+references `Inscricao` (`idTurma`,`matriculaAluno`)
+on delete cascade
+on update cascade
+) ENGINE = InnoDB;
+
 CREATE TABLE IF NOT EXISTS `GrupoFuncao` (
   `id` INT NOT NULL AUTO_INCREMENT, 
   `nome` VARCHAR(255) NOT NULL ,
@@ -818,3 +832,10 @@ CREATE TABLE IF NOT EXISTS `EquivalenciaProposta` (
 `siglaDisciplina` CHAR(6) NOT NULL ,
 `siglaEquivalencia` CHAR(6) NOT NULL ,
 PRIMARY KEY (`siglaDisciplina`, `idMatriz`, `siglaCurso`, `siglaEquivalencia`));
+
+create table if not exists `LoginErro`
+(
+`dataHoraRegistro` TIMESTAMP NOT NULL DEFAULT NOW(),
+`texto` TEXT not null
+);
+

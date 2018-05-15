@@ -1,25 +1,26 @@
 <?php
 require_once("../../includes/comum.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Turma.php");
 require_once("$BASE_DIR/classes/PeriodoLetivo.php");
 require_once("$BASE_DIR/classes/Professor.php");
 require_once("$BASE_DIR/classes/DiaLetivoTurma.php");
 require_once("$BASE_DIR/classes/Mensagem.php");
+require_once("$BASE_DIR/classes/Log.php");
 
-$acao = $_POST["acao"];
-$idTurma = $_POST["idTurma"];
-$numMatriculaAluno = $_POST["numMatriculaAluno"];
-$data = $_POST["data"];
-$stringValor = $_POST["stringValor"];
-$usuario = $_SESSION["usuario"];
+$acao = filter_input( INPUT_POST, "acao", FILTER_SANITIZE_STRING);
+$idTurma = filter_input( INPUT_POST, "idTurma", FILTER_SANITIZE_NUMBER_INT);
+$numMatriculaAluno = filter_input( INPUT_POST, "numMatriculaAluno", FILTER_SANITIZE_STRING);
+$data = filter_input(INPUT_POST, "data", FILTER_SANITIZE_STRING);
+$stringValor = filter_input( INPUT_POST, "stringValor", FILTER_SANITIZE_STRING);
 
 $turma = Turma::getTurmaById($idTurma);
 $professor = $turma->getProfessor();
 
 // Verifica se o professor é o titular da turma informada
-if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
-    echo "Usuário não tem permissão para executar essa ação!";
+if( !$turma->isPodeEditarPauta( $login) ) 
+{
+    http_response_code( 403); // Forbidden
+    echo "erro: não autorizado";
     exit;
 }
 
@@ -129,7 +130,13 @@ switch( $acao ) {
                 }
             }
             global $APONTAR_DIA_LETIVO_TURMA;
-            $usuario->incluirLog($APONTAR_DIA_LETIVO_TURMA,  $strLog, $con);
+            $login->incluirLog( $APONTAR_DIA_LETIVO_TURMA,  $strLog, $con);
+            if( $login->getIdPessoa() != $professor->getIdPessoa()) // se for a secretaria apontando
+            {
+                $descricao = "Apontado em sua pauta por " . $login->getPessoa()->getNome() .
+                        "\n<br/>" . $strLog;
+                Log::incluirLog( $professor->getIdPessoa(), $APONTAR_DIA_LETIVO_TURMA, $descricao, $con);
+            }
             mysql_query("COMMIT", $con);
             
         } catch(Exception $exc) {
@@ -143,6 +150,7 @@ switch( $acao ) {
         break;
 
     case "reabrirDiaLetivoTurma":
+        
         $dataDiaLetivoTurma = new DateTime($data);
         $con = BD::conectar();
         try {
@@ -157,11 +165,19 @@ switch( $acao ) {
                     $turma->getPeriodoLetivo()->getSiglaPeriodoLetivo(),
                     $turma->getCurso()->getSiglaCurso() );
             global $REABRIR_DIA_LETIVO_TURMA;
-            $usuario->incluirLog($REABRIR_DIA_LETIVO_TURMA,  $strLog, $con);
-            
+            $login->incluirLog( $REABRIR_DIA_LETIVO_TURMA,  $strLog, $con);
+            $professor = $turma->getProfessor();
+            if( $login->getIdPessoa() != $professor->getIdPessoa()) // se for a secretaria apontando
+            {
+                $descricao = "Reaberta sua pauta por " . $login->getPessoa()->getNome() .
+                        "\n<br/>" . $strLog;
+                Log::incluirLog( $professor->getIdPessoa(), $REABRIR_DIA_LETIVO_TURMA, $descricao, $con);
+            }
             mysql_query("COMMIT", $con);
             
-        } catch(Exception $exc) {
+        } 
+        catch(Exception $exc) 
+        {
             mysql_query("ROLLBACK", $con);
             $col = array();
             $col[] = $exc->getMessage();
@@ -171,9 +187,4 @@ switch( $acao ) {
         Header("Location: /coruja/espacoProfessor/pautaEletronica/pautaEletronica_controle.php?idTurma=" .
             $turma->getIdTurma() . "&data=" . $dataDiaLetivoTurma->format("Y-m-d"));
         break;
-    
-    case "emitirPauta":
-        
-
 }
-?>

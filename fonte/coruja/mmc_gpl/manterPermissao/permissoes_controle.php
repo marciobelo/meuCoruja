@@ -6,13 +6,13 @@
     $nomePessoa = $_REQUEST['nomePessoa'];
     $loginPessoa = Login::obterLoginPorIdPessoa($idPessoa);
     
-    if(!$usuario->temPermissao("UC09.01.00")) {
+    if(!$login->temPermissao("UC09.01.00")) {
         require_once "../sem_permissao.php";
         exit;
     } else {
         $con = BD::conectar();
         $strLog = "Consultadas as permiss&otilde;es do Usu&aacute;rio " . $loginPessoa->getPessoa()->getNome() . ", Nome de Acesso " . $loginPessoa->getNomeAcesso();
-        $usuario->incluirLog('UC09.01.00', $strLog, $con);
+        $login->incluirLog('UC09.01.00', $strLog, $con);
     }
     
     $funcoesToView = Funcao::obterTodasFuncoes();

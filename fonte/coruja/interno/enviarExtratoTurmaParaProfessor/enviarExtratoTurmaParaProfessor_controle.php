@@ -10,7 +10,7 @@ $idPeriodoLetivo = $_REQUEST["idPeriodoLetivo"];
 $turno = $_REQUEST["turno"];
 
 // Verifica Permissão
-if(!$usuario->temPermissao($ENVIAR_EXTRATO_TURMA_PARA_PROFESSOR)) {
+if(!$login->temPermissao($ENVIAR_EXTRATO_TURMA_PARA_PROFESSOR)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }

@@ -124,7 +124,7 @@ class GrupoFuncao
         }
 
         $strLog = "Incluído o Grupo de Permiss&otilde;es " .  $nome . " com as permiss&otilde;es: <br/> $permissoesDoGrupo";
-        $_SESSION['usuario']->incluirLog("UC09.02.01", $strLog, $con);
+        $_SESSION['login']->incluirLog("UC09.02.01", $strLog, $con);
         
         return true;
     }
@@ -162,7 +162,7 @@ class GrupoFuncao
         }
         
         $strLog = "Modificado o Grupo de Permiss&otilde;es " .  $nomeGrupo . " (era " . $nomeAntigo . "), as novas permiss&otilde;es s&atildeo: <br/> $permissoesDoGrupo";
-        $_SESSION['usuario']->incluirLog("UC09.02.03", $strLog, $con);
+        $_SESSION['login']->incluirLog("UC09.02.03", $strLog, $con);
         
         return true;
     }
@@ -188,7 +188,7 @@ class GrupoFuncao
             $permissoesDoGrupo .= " - " . $permissao->getDescricao() . '<br/>';
         }
         $strLog = "Exclu&iacute;do o Grupo de Permiss&otilde;es " .  $this->getNome() . " com as Permiss&otilde;es: <br/>" . $permissoesDoGrupo;
-        $_SESSION['usuario']->incluirLog("UC09.02.02", $strLog, $con);
+        $_SESSION['login']->incluirLog("UC09.02.02", $strLog, $con);
         
         return true;
     }

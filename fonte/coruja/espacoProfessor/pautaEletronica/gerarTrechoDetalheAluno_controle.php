@@ -3,8 +3,8 @@ require_once("../../includes/comum.php");
 require_once("$BASE_DIR/classes/MatriculaAluno.php");
 require_once("$BASE_DIR/classes/Aluno.php");
 
-$usuario = $_SESSION["usuario"];
-if( (!$usuario->isProfessor()) && (!$usuario->isAdministrador())) {
+if( (!$login->isProfessor()) && (!$login->isAdministrador())) 
+{
     echo "Sem permissão!";
     exit;
 }

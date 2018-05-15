@@ -11,7 +11,7 @@ require_once "$BASE_DIR/classes/MatriculaProfessor.php";
 require_once "$BASE_DIR/classes/ComponenteCurricular.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($MUDAR_SITUACAO_DA_TURMA)) {
+if(!$login->temPermissao($MUDAR_SITUACAO_DA_TURMA)) {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit();
 }
@@ -229,6 +229,5 @@ function verificaNotasFaltasSituacoes($idTurma) {
 function registrarLog($siglaCurso, $nomeCurso, $siglaPeiodoLetivo, $siglaDisciplina, $nomeDisciplina, $turno, $grade, $situacaoAntiga, $situacaoNova) {
     $mensagem = "Alterada a situação da turma do curso $siglaCurso($nomeCurso), Período Letivo $siglaPeiodoLetivo, ";
     $mensagem .= "disciplina $siglaDisciplina - $nomeDisciplina, Turno $turno, Grade $grade, da situação $situacaoAntiga para $situacaoNova";
-    $_SESSION["usuario"]->incluirLog('UC01.03.03', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.03.03', $mensagem);
 }
-?>

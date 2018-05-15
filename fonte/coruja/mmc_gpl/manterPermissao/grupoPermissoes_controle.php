@@ -4,8 +4,6 @@
     require_once "$BASE_DIR/classes/Login.php";
     require_once "$BASE_DIR/classes/Funcao.php";
     
-    $usuario = $_SESSION['usuario'];
-    
     if (isset($_REQUEST['mensagem']) && !empty($_REQUEST)) {
         $mensagem = $_REQUEST['mensagem'];
     }
@@ -13,13 +11,13 @@
     $acao = isset($_REQUEST['acao']) ? $_REQUEST['acao'] : 'consultar'; 
     
     if ($acao == 'consultar') {
-        if(!$usuario->temPermissao("UC09.02.00")) {
+        if(!$login->temPermissao("UC09.02.00")) {
             require_once "../sem_permissao.php";
             exit;
         } else {
             $con = BD::conectar();
             $strLog = "Consultados os Grupos de Permiss&otilde;es do sistema";
-            $usuario->incluirLog('UC09.02.00', $strLog, $con);
+            $login->incluirLog('UC09.02.00', $strLog, $con);
         }
 
         $gruposDeFuncao = GrupoFuncao::obterTodos();
@@ -34,7 +32,7 @@
         require("$BASE_DIR/mmc_gpl/manterPermissao/grupoPermissoesListarForm.php");
         
     } elseif($acao == 'incluir') {        
-        if(!$usuario->temPermissao("UC09.02.01")) {
+        if(!$login->temPermissao("UC09.02.01")) {
             require_once "../sem_permissao.php";
             exit;
         }
@@ -51,7 +49,7 @@
         exit;
         
     } elseif ($acao == 'alterar') {
-        if(!$usuario->temPermissao("UC09.02.03")) {
+        if(!$login->temPermissao("UC09.02.03")) {
             require_once "../sem_permissao.php";
             exit;
         }
@@ -81,7 +79,7 @@
         $grupo = GrupoFuncao::obterPorId($_REQUEST['idGrupo']);
         
         if( !isset($_REQUEST['idGrupo']) ) {
-            if(!$_SESSION['usuario']->temPermissao("UC09.02.01")) {
+            if(!$login->temPermissao("UC09.02.01")) {
                 require_once "../sem_permissao.php";
                 exit;
             }
@@ -96,7 +94,7 @@
             Header("Location: grupoPermissoes_controle.php?mensagem=$mensagem");
         //update;    
         } else {
-            if(!$usuario->temPermissao("UC09.02.03")) {
+            if(!$login->temPermissao("UC09.02.03")) {
                 require_once "../sem_permissao.php";
                 exit;
             }
@@ -116,7 +114,7 @@
         }
         
     } elseIf ($acao == 'remover') {
-        if(!$_SESSION['usuario']->temPermissao("UC09.02.02")) {
+        if(!$login->temPermissao("UC09.02.02")) {
             require_once "../sem_permissao.php";
             exit;
         }

@@ -1,19 +1,20 @@
 CACHE MANIFEST
 
 #paginas
-/meuCoruja/index.html
-/meuCoruja/boletim.html
-/meuCoruja/grade.html
-/meuCoruja/historico.html
-/meuCoruja/mensagens.html
-/meuCoruja/detalhamentoFaltas.html
-/meuCoruja/manifest.json
+index.html
+boletim.html
+grade.html
+historico.html
+mensagens.html
+detalhamentoFaltas.html
+manifest.json
+sidebar.html
 
 #css
-/meuCoruja/css/estilo.css
-/meuCoruja/css/login.css
-/meuCoruja/css/tabela.css
-/meuCoruja/css/bootstrap.min.css
+css/estilo.css
+css/login.css
+css/tabela.css
+css/bootstrap.min.css
 
 # Use from network if available
 NETWORK:

@@ -27,7 +27,7 @@ if($action != 'excluir') {
     
     $matrizProposta = MatrizCurricularProposta::obter($infos['siglaCursoMatrizProposta'], (int)$infos['idMatrizVigente']);
     if ($action === 'criar') {
-        if(!$usuario->temPermissao("UC11.01.02.01")) {
+        if(!$login->temPermissao("UC11.01.02.01")) {
             echo "semPermissao";
             exit;
         }
@@ -85,7 +85,7 @@ if($action != 'excluir') {
     $idMatriz = $_POST['idMatrizEquivalente'];
     $siglaDisciplina = strtoupper($_POST['siglaDisciplina']);
     
-    if(!$usuario->temPermissao("UC11.01.02.03")) {
+    if(!$login->temPermissao("UC11.01.02.03")) {
         echo "semPermissao";
         exit;
     }

@@ -5,7 +5,7 @@ require_once "$BASE_DIR/classes/Turma.php";
 require_once "$BASE_DIR/classes/Professor.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($REABRIR_TURMA_FINALIZADA)) {
+if(!$login->temPermissao($REABRIR_TURMA_FINALIZADA)) {
         require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
         exit();
 }
@@ -44,7 +44,7 @@ switch($acao) {
                     ($turma->getProfessor() != null ? $turma->getProfessor()->getNome() : "<não informado>" ),
                     $turma->getCurso()->getSiglaCurso(),
                     $turma->getCurso()->getNomeCurso());
-            $usuario->incluirLog($REABRIR_TURMA_FINALIZADA,$strLog,$con);
+            $login->incluirLog($REABRIR_TURMA_FINALIZADA,$strLog,$con);
             mysql_query("COMMIT", $con);
             Header("location: /coruja/nort/controle/manterTurmas_controle.php?acao=exibirTurmas&siglaCurso=$siglaCurso&idPeriodoLetivo=$idPeriodoLetivo&turno=$turno");
             

@@ -15,12 +15,12 @@
         $siglaCursoFiltro = "";
     }
 
-    if( $acao === "selecionarCurso") {
+    if( $acao === "selecionarCurso") 
+    {
         require_once "$BASE_DIR/classes/Curso.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -35,8 +35,7 @@
         require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -78,8 +77,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -105,8 +103,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -131,8 +128,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario = $_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -150,7 +146,7 @@
 
             $strLog = "Alterada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para CURSANDO,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_REATIVAR,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_REATIVAR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -174,8 +170,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -199,8 +194,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_REATIVAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -218,7 +212,7 @@
 
             $strLog = "Renovada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para CURSANDO,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_RENOVAR, $strLog, $con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_RENOVAR, $strLog, $con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -240,8 +234,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_TRANCAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_TRANCAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -257,7 +250,6 @@
         $listaSituacaoMatriculaHistorico = $ma->obterListaSituacaoMatriculaHistorico();
 
         require_once "$BASE_DIR/interno/manter_situacao_matricula/telaTrancarMatricula.php";
-
     } 
     else if( $acao === "trancarMatricula") 
     {
@@ -265,8 +257,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_TRANCAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_TRANCAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -283,7 +274,7 @@
 
             $strLog = "Alterada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para TRANCADO,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_TRANCAR,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_TRANCAR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -308,8 +299,7 @@
         require_once "$BASE_DIR/classes/ComponenteCurricular.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_CONCLUIR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_CONCLUIR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -346,8 +336,7 @@
         require_once "$BASE_DIR/classes/MatriculaAluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_CONCLUIR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_CONCLUIR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -384,7 +373,7 @@
 
             $strLog = "Alterada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para CONCLUÍDO,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_CONCLUIR,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_CONCLUIR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -407,8 +396,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_DESISTIR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_DESISTIR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -431,8 +419,7 @@
         require_once "$BASE_DIR/classes/MatriculaAluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_DESISTIR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_DESISTIR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -449,7 +436,7 @@
 
             $strLog = "Alterada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para DESISTENTE,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_DESISTIR,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_DESISTIR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -472,8 +459,7 @@
         require_once "$BASE_DIR/classes/Aluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_DESLIGAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_DESLIGAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -496,8 +482,7 @@
         require_once "$BASE_DIR/classes/MatriculaAluno.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_DESLIGAR)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_DESLIGAR)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -514,7 +499,7 @@
 
             $strLog = "Alterada a situação de matrícula do aluno $nomeAluno, matrícula $matriculaAluno, curso $siglaCurso, para DESLIGADO,
             com a observação $texto";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_DESLIGAR,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_DESLIGAR,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {
@@ -532,11 +517,10 @@
     } 
     else if( $acao === "exibirConfirmacaoRematriculaAutomatica") 
     {
-        $siglaCurso=$_REQUEST["siglaCurso"];
+        $siglaCurso = $_REQUEST["siglaCurso"];
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
 
@@ -548,8 +532,7 @@
         require_once "$BASE_DIR/classes/Curso.php";
 
         // Verifica Permissao
-        $usuario=$_SESSION["usuario"];
-        if(!$usuario->temPermissao($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO)) {
+        if(!$login->temPermissao($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
         }
         
@@ -563,7 +546,7 @@
             $curso->processarRematriculaAutomatica($con);
 
             $strLog = "Processada a rematrícula automatica do curso $siglaCurso";
-            $usuario->incluirLog($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO,$strLog,$con);
+            $login->incluirLog($MANTER_SITUACAO_MATRICULAS_PROC_REMATR_AUTO,$strLog,$con);
 
             mysql_query("COMMIT", $con);
         } catch(Exception $ex) {

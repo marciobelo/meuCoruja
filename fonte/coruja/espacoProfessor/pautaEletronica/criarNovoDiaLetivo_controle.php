@@ -15,8 +15,7 @@ $dtInicio = Util::converteDateTime( $turma->getPeriodoLetivo()->getDataInicio() 
 $dtFim = Util::converteDateTime( $turma->getPeriodoLetivo()->getDataFim() );
 
 // Verifica se o professor é o titular da turma informada
-$usuario = $_SESSION["usuario"];
-if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
+if( $professor->getIdPessoa() != $login->getIdPessoa() ) {
     trigger_error("Usuário não tem permissão para executar essa ação!",E_USER_ERROR);
     exit;
 }
@@ -115,7 +114,7 @@ if( !isset ($acao) ) {
             }
 
             global $ALTERAR_DIA_LETIVO_TURMA;
-            $usuario->incluirLog($ALTERAR_DIA_LETIVO_TURMA,  $strLog, $con);
+            $login->incluirLog($ALTERAR_DIA_LETIVO_TURMA,  $strLog, $con);
             mysql_query("COMMIT", $con);
 
             $msgsErro = array();

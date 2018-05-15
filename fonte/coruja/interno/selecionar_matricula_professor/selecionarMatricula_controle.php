@@ -16,8 +16,7 @@ if($acao=="exibirFiltroPesquisa") {
    
     $tipoBusca = $_REQUEST["tipoBusca"];
     // Verifica antes se usuário tem permissão
-    $usuario = $_SESSION["usuario"];
-    if(!$usuario->temPermissao($MANTER_PROFESSOR)) {
+    if(!$login->temPermissao($MANTER_PROFESSOR)) {
         require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     }
     

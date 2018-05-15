@@ -41,7 +41,7 @@ switch( $acao)
     case 'buscarTurmasFiltro':
     case 'buscarTurmasResultado':
 
-        if(!$usuario->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
+        if(!$login->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }
@@ -136,7 +136,7 @@ switch( $acao)
         
     case 'buscarTurmasResultado':
         
-        if (!$usuario->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
+        if (!$login->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }
@@ -205,7 +205,7 @@ switch( $acao)
         
     case 'gerarPDF':
         
-        if (!$usuario->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
+        if (!$login->temPermissao($EMITIR_DIARIO_DE_CLASSE)) {
             require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
             exit();
         }        
@@ -235,7 +235,7 @@ switch( $acao)
         $turma = Turma::getTurmaById($idTurma);
         $professor = $turma->getProfessor();
         // Verifica se o professor é o titular da turma informada
-        if( $professor->getIdPessoa() != $usuario->getIdPessoa() ) {
+        if( !$turma->isPodeEditarPauta($login) ) {
             echo "Usuário não tem permissão para executar essa ação!";
             exit;
         }
@@ -366,7 +366,7 @@ function registrarLog($turmas) {
         " professor $nomeDoProfessor";
 
     }//Fim do Loop que percorre a lista com ID's das turmas
-    $_SESSION["usuario"]->incluirLog('UC01.04.00', $mensagem);
+    $_SESSION["login"]->incluirLog('UC01.04.00', $mensagem);
 }
 
 function gerarPDF($turmas) {

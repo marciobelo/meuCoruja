@@ -7,7 +7,7 @@ require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/classes/Turma.php";
 
 // Verifica Permissão
-if(!$usuario->temPermissao($LANCAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA)) {
+if(!$login->temPermissao($LANCAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA)) {
     require_once("$BASE_DIR/baseCoruja/formularios/sem_permissao.php");
     exit();
 }
@@ -218,5 +218,5 @@ function registrarLog($turma) {
     $mensagem .= "Professor $nomeProfessor";
 
     global $LANCAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA;
-    $_SESSION["usuario"]->incluirLog($LANCAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA, $mensagem);
+    $_SESSION["login"]->incluirLog($LANCAR_NOTAS_E_SITUACAO_DO_ALUNO_EM_TURMA, $mensagem);
 }

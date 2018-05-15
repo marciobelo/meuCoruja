@@ -39,22 +39,22 @@ require_once "$BASE_DIR/includes/menu_horizontal.php";
                     idTurma: idTurma,
                     numMatriculaAluno: numMatriculaAluno,
                     data: data,
-                    stringValor: campo.value,
+                    stringValor: campo.value
                 },
                 function(msg) {
                     $("#" + prefixoIdImagem + "_carregando").css("display","none");
-                    if( msg.substring(0,4) == "erro" ) {
+                    if( msg.substring(0,4) === "erro" ) {
                         $("#" + prefixoIdImagem + "_erro").css("display","inline");
                         $("#" + prefixoIdImagem + "_erro").attr("title",msg.substring(5));
                         $(campo).data("valido", false);
-                    } else if( msg.substring(0,2) == "ok" ) {
+                    } else if( msg.substring(0,2) === "ok" ) {
                         $("#" + prefixoIdImagem + "_ok").css("display","inline");
                         $(campo).data("valido", true);
                     }
                 }
-            ).fail( function() {
+            ).fail( function(obj) {
                         $("#" + prefixoIdImagem + "_erro").css("display","inline");
-                        $("#" + prefixoIdImagem + "_erro").attr("title",msg.substring(5));
+                        $("#" + prefixoIdImagem + "_erro").attr("title",obj.responseText.substring(5));
                         $("#" + prefixoIdImagem + "_carregando").css("display","none");                    
                 }
             );

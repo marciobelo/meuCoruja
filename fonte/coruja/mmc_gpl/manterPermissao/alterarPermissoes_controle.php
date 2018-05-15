@@ -6,7 +6,6 @@
     $idPessoa      = filter_input( INPUT_POST, "idPessoa", FILTER_SANITIZE_NUMBER_INT);
     $idPermissao   = filter_input( INPUT_POST, "idPermissao", FILTER_SANITIZE_STRING);
     $acao          = filter_input( INPUT_POST, "acao", FILTER_SANITIZE_STRING);
-    $usuario       = $_SESSION['usuario'];
     $con           = BD::conectar();
     $loginPessoa   = Login::obterLoginPorIdPessoa($idPessoa);
 
@@ -16,7 +15,7 @@
         $idPermissaoVerificar = 'UC09.01.02';
     }
 
-    if(!$usuario->temPermissao($idPermissaoVerificar)) {
+    if(!$login->temPermissao($idPermissaoVerificar)) {
         echo "Sem Permissao";
         exit;
     }
@@ -39,7 +38,7 @@
         }
         
         $strLog = $acaoLog ." a permiss&atilde;o " . $funcao->getDescricao() . " " . $conectivo . " Usu&aacute;rio " . $loginPessoa->getPessoa()->getNome() . ", Nome de Acesso " .  $loginPessoa->getNomeAcesso();
-        $usuario->incluirLog($idPermissaoVerificar, $strLog, $con);
+        $login->incluirLog($idPermissaoVerificar, $strLog, $con);
 
         mysql_query("COMMIT", $con);
         

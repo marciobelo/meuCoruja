@@ -285,7 +285,7 @@ class DiarioDeClassePDF extends FpdfNort {
         $this->Cell(20,$espacamentoHorizontal,'T.F.',1);
         
         foreach($itensCriterioAvaliacao as $itemCriterioAvaliacao) {
-            $this->Cell(20,$espacamentoHorizontal,$itemCriterioAvaliacao->getRotulo(),1);
+            $this->Cell(23,$espacamentoHorizontal,$itemCriterioAvaliacao->getRotulo(),1);
         }
         $this->Ln();
         
@@ -306,7 +306,7 @@ class DiarioDeClassePDF extends FpdfNort {
                 $this->Cell(67.5,$espacamentoHorizontal,'Aluno',1,0,'C');
                 $this->Cell(20,$espacamentoHorizontal,'T.F.',1);
                 foreach($itensCriterioAvaliacao as $itemCriterioAvaliacao) {
-                    $this->Cell(20,$espacamentoHorizontal,$itemCriterioAvaliacao->getRotulo(),1);
+                    $this->Cell(23,$espacamentoHorizontal,$itemCriterioAvaliacao->getRotulo(),1);
                 }                
                 $this->Ln();
                 
@@ -334,7 +334,7 @@ class DiarioDeClassePDF extends FpdfNort {
             $itensCriterioAvaliacaoInscricaoNota = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
             foreach($itensCriterioAvaliacaoInscricaoNota as $itemCriterioAvaliacaoInscricaoNota) {
                 $itemCriterioAvaliacao = $itemCriterioAvaliacaoInscricaoNota->getItemCriterioAvaliacao(); 
-                $this->Cell(20,$espacamento, $itemCriterioAvaliacao->exibir($inscricao) ,1,0,'',1);
+                $this->Cell(23,$espacamento, $itemCriterioAvaliacao->exibir($inscricao) ,1,0,'',1);
             }
             $this->Ln();
         }

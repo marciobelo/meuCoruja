@@ -7,11 +7,8 @@ require_once "$BASE_DIR/classes/Curso.php";
 require_once "$BASE_DIR/classes/PeriodoLetivo.php";
 require_once "$BASE_DIR/interno/emitir_grade_horario/GradeHorarioPDF.php";
 
-// /coruja/interno/emitir_grade_horario/GradeHorario2_controle.php?siglaCurso=TASI&idPeriodoLetivo=21
-
-$usuario = $_SESSION["usuario"];
 global $EXIBIR_GRADE_HORARIO;
-if( !$usuario->temPermissao($EXIBIR_GRADE_HORARIO) ) {
+if( !$login->temPermissao($EXIBIR_GRADE_HORARIO) ) {
     require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
     exit;
 } else {

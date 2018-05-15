@@ -50,9 +50,9 @@ $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
 $u->login = Login::obterLoginPorIdPessoa($idPessoa);
-$u->senha = Login::obterHashSenha($numMatriculaAluno);
+$u->hashLogin = Login::obterHashSenha($numMatriculaAluno);
 
-$u->foto =  base64_encode(Usuario::obterUsuarioPorIdPessoa($idPessoa)->getFoto());
+$u->foto =  base64_encode(Login::obterLoginPorIdPessoa($idPessoa)->getFoto());
 
 /////
 //BOLETIM//

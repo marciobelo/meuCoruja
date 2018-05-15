@@ -2,12 +2,10 @@
 require_once("../../includes/comum.php");
 require_once("$BASE_DIR/classes/PeriodoLetivo.php");
 require_once("$BASE_DIR/classes/Curso.php");
-require_once("$BASE_DIR/classes/Usuario.php");
 require_once("$BASE_DIR/classes/Util.php");
 require_once("$BASE_DIR/siro/classes/EventoAdministrativo.php");
 	
 // Recupera o usuário logado da sessão
-$usuario = $_SESSION["usuario"];	
 if( isset($_SESSION["siglaCursoFiltro"]))
 {
     $siglaCursoFiltro = $_SESSION["siglaCursoFiltro"];
@@ -32,7 +30,7 @@ include_once "$BASE_DIR/includes/topo.php";
         if($action === "curso" && $siglaCursoFiltro === "") {// acao para exibir a pagina de filtro de curso
         	
 			// Verifica Permissão
-			if(!$usuario->temPermissao($MANTER_PERIODO_LETIVO)) {
+			if(!$login->temPermissao($MANTER_PERIODO_LETIVO)) {
                             require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
                             exit;
 			}		
@@ -67,7 +65,7 @@ include_once "$BASE_DIR/includes/topo.php";
         } elseif($action == "cadastrar") {// acao para carregar o formulario de cadastro
         	
             // Verifica Permissão
-            if(!$usuario->temPermissao($MANTER_PERIODO_LETIVO_INCLUIR)) {
+            if(!$login->temPermissao($MANTER_PERIODO_LETIVO_INCLUIR)) {
                 require_once "$BASE_DIR/baseCoruja/formularios/sem_permissao.php";
                 exit;
             }		
@@ -188,4 +186,3 @@ include_once "$BASE_DIR/includes/topo.php";
 
 // RODAPÉ DA PÁGINA
 include_once "$BASE_DIR/includes/rodape.php";
-?>
