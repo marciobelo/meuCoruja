@@ -1,16 +1,17 @@
 CACHE MANIFEST
 
-#paginas
+paginas
 index.html
 boletim.html
 grade.html
 historico.html
 mensagens.html
+pendencias.html
 detalhamentoFaltas.html
 manifest.json
 sidebar.html
 
-#css
+css
 css/estilo.css
 css/login.css
 css/tabela.css

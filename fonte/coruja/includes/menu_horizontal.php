@@ -80,6 +80,9 @@
 
                 </ul>
             </li>
+			<li><a href="/meu_coruja/index.html">Meu Coruja</a>
+			    
+            </li>
 <?php
     } else if( $login->getPerfil() == Login::PROFESSOR) {
 ?>

@@ -12,6 +12,7 @@ require_once("$BASE_DIR/classes/TempoSemanal.php");
 require_once("$BASE_DIR/classes/Espaco.php");
 require_once("$BASE_DIR/classes/Mensagem.php");
 
+
 error_reporting(0);
 
 function isNull($str) {
@@ -36,7 +37,6 @@ function verificaSituacao($siglaSituacao) {
 }
 
 /////USUARIO
-
 $usuario = $_SESSION["usuario"];
 $idPessoa = $usuario->getIdPessoa();
 $numMatriculaAluno = $usuario->getNomeAcesso();
@@ -49,8 +49,8 @@ $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
 $u->nomeCurso = $curso->getNomeCurso();
 $u->matricula = $matriculaAluno->getMatriculaAluno();
-$u->login = Login::obterLoginPorIdPessoa($idPessoa);
-$u->hashLogin = Login::obterHashSenha($numMatriculaAluno);
+$login = Login::obterLoginPorIdPessoa($idPessoa);
+$u->hashLogin = $login->obterHashSenha($numMatriculaAluno);
 
 $u->foto =  base64_encode(Login::obterLoginPorIdPessoa($idPessoa)->getFoto());
 
@@ -167,7 +167,7 @@ foreach ($inscricoes as $inscricao) {
     array_push($dadosHistorico, $disciplinaHistorico);
 }
 $historico->disciplinas = $dadosHistorico;
-$historico->cr = $disciplinaHistorico->cr;
+$historico->cr = number_format($disciplinaHistorico->cr, 1, ',', '');
 
 
 
