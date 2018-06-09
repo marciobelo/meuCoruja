@@ -26,8 +26,22 @@
                     $('#nav-trigger').prop('checked', true);
                 }
             });
-        </script>
+            
+            $("#btnSair").click(function(event){
+                event.preventDefault();
+                $.ajax({
+                    url: "sair.php",
+                    success: function(){
+                        window.location.replace("sair.php");
+                    },
+                    error: function(){
+                        window.location.replace("index.html");
+                    }
 
+                });
+            });
+            
+        </script>
 
     </head>
     <body>
@@ -44,14 +58,11 @@
             <li class="nav-item" id="link3"><a href="historico.html">Histórico</a></li>
             <li class="nav-item" id="link4"><a class="current" href="pendencias.html">Pendências</a></li>
             <li class="nav-item" id="link5"><a class="current" href="mensagens.html">Mensagens</a></li>
-            <li class="nav-item"><a href="sair.php">Sair</a></li>
+            <li class="nav-item" id="btnSair"><a href="sair.php">Sair</a></li>
         </ul>
 
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger"></label>
     </body>  
-
-
-
 </html>
 
