@@ -80,7 +80,7 @@
 
                 </ul>
             </li>
-			<li><a href="/meu_coruja/index.html">Meu Coruja</a>
+			<li><a href="/coruja/meu_coruja/index.html">Meu Coruja</a>
 			    
             </li>
 <?php
