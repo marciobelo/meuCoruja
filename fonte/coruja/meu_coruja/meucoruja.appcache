@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-paginas
+#paginas
 index.html
 boletim.html
 grade.html
@@ -11,11 +11,14 @@ detalhamentoFaltas.html
 manifest.json
 sidebar.html
 
-css
+#css
 css/estilo.css
 css/login.css
 css/tabela.css
 css/bootstrap.min.css
+
+#recursos
+img/imgAluno.png
 
 # Use from network if available
 NETWORK:

@@ -342,3 +342,29 @@ input[type:"image"]{
 .informacao{
     margin-left: 10px;
 }
+
+
+.alertAtualizacao {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    top: 0; 
+    width: 100%;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.closebtnAtualizacao {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtnAtualizacao:hover {
+    color: black;
+}

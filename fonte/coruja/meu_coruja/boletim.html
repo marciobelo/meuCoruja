@@ -22,6 +22,7 @@
                     $('body').prepend(sidebar);
                 });
             };
+            
             function InserirTabelas() {
                 //For de Critérios de Avaliação
                 for (i = 0; i < controle.criteriosAvaliacao.length; i++) {
@@ -88,6 +89,7 @@
                 jQuery(document).ready(adicionarSideBar);
                 boletim = JSON.parse(localStorage.getItem('meuCoruja')).boletim;
                 controle = JSON.parse(localStorage.getItem('meuCoruja')).controle;
+                
                 InserirTabelas();
                 if (typeof boletim.siglaPeriodoLetivo === 'undefined'){
                     document.getElementById("siglaPeriodoLetivo").innerHTML = "Você não possui nenhuma disciplina atualmente."
@@ -95,7 +97,6 @@
                     periodoLetivo = boletim.siglaPeriodoLetivo;
                     document.getElementById("siglaPeriodoLetivo").innerHTML = periodoLetivo;
                 }
-                
             });
 
         </script>
@@ -110,7 +111,7 @@
             <h1>Boletim</h1>
             <div><h2 id="siglaPeriodoLetivo" align="center"></h2></div>
             <div id="boletim"></div>
-
+            
         </div>
 
     </body>

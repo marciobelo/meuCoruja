@@ -35,6 +35,7 @@ function verificaSituacao($siglaSituacao) {
         return "Isento de disciplina";
     }
 }
+date_default_timezone_set("America/Sao_Paulo");
 
 /////USUARIO
 $usuario = $_SESSION["usuario"];
@@ -241,6 +242,7 @@ $msgControle->mensagens = $mensagens;
 
 $controle->msgControle = $msgControle;
 $controle->criteriosAvaliacao = $criteriosAvaliacao;
+$controle->dataAtualizacao = date("d/m/y - H:i");
 
 $meuCoruja = new stdClass();
 $meuCoruja->usuario = $u;

@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html manifest = "meucoruja.appcache">
+    
     <head>
         <link rel="manifest" href="manifest.json">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -74,12 +75,12 @@
                         console.log(status);
                         meuCoruja = JSON.parse(result);
                         localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));
+                        localStorage.setItem("meuCoruja_flg_online","true");
                         window.location.replace("boletim.html");
                         
                     },
                     error: function(result,status,jqXHR){
-                        console.log("erro aqui");
-                        
+                       exibirMensagemErro(2);
                         
                     },complete: function(){
                         estadoEntrar();
@@ -131,6 +132,8 @@
 
                             if ((meuCoruja.usuario.matricula === document.getElementById("usuario").value) 
                                 && (meuCoruja.usuario.hashLogin === MD5(document.getElementById("senha").value))){
+                            
+                                localStorage.setItem("meuCoruja_flg_online","false");
                                 window.location.replace("boletim.html");
                             }else{
                                 exibirMensagemErro(2);
