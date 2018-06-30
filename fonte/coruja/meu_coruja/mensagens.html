@@ -35,9 +35,16 @@
                 msgControle = JSON.parse(localStorage.getItem('meuCoruja')).controle.msgControle;
                 mensagens = msgControle.mensagens;
                 possuiMaisMsg = msgControle.flgMensagens;
-                for (var i = 0; i < mensagens.length; i++) {
-                    adicionarMensagem(i);
+                
+                if (mensagens.length === 0) {
+                    $('#mensagens').after('<h4 style="text-align:center;color:black">Você não possui mensagens.</h4>');    
+                }else{
+                    for (var i = 0; i < mensagens.length; i++) {
+                        adicionarMensagem(i);
+                    }
                 }
+                
+                
                 sidebar = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
                 
                 if (possuiMaisMsg === true) {

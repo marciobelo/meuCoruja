@@ -54,7 +54,6 @@
             }
             
             function exibirMensagemErro(erro){
-                console.log(erro);
                 switch(erro){
                     case 1: 
                         document.getElementById("msgErro").innerHTML = "Usuário ou Senha incorretos!";
@@ -81,7 +80,7 @@
                     },
                     error: function(result,status,jqXHR){
                        exibirMensagemErro(2);
-                        
+                       window.location.replace("erro.html");
                     },complete: function(){
                         estadoEntrar();
                     }
@@ -104,42 +103,39 @@
                         }
                     },
                     error: function (jqXHR) {
-                            console.log(jqXHR.status);
-                            if (jqXHR.status === 401) {
-                                exibirMensagemErro(1);
-                                estadoEntrar();
-                            }
+                        console.log(jqXHR.status);
+                        if (jqXHR.status === 401) {
+                            exibirMensagemErro(1);
+                            estadoEntrar();
+                        }else {
                             
-                            //Verifico a Existencia do objeto meuCoruja e os atributos necessários para login
+                            //Verifico a Existencia do objeto meuCoruja e os atributos necessários para login offline
+                            
                             var meuCoruja = JSON.parse(localStorage.getItem('meuCoruja'));
-                            console.log(meuCoruja);
-                            if(meuCoruja === null){
-                                console.log("Objeto meuCoruja não existe");
+                        
+                            if (meuCoruja === null || meuCoruja.usuario === null || meuCoruja.usuario.matricula === null || meuCoruja.usuario.hashLogin === null){
+                                console.log("erro na validação do objeto meuCoruja")
                                 exibirMensagemErro(2);
+                                estadoEntrar();
+                                window.location.replace("erro.html");
                                 return;
-                            }else if(meuCoruja.usuario === null){
-                                    console.log("Objeto Usuário não existe.");
-                                    exibirMensagemErro(2);
-                                    return;
-                            }else if((meuCoruja.usuario.matricula === null)
-                                    || (meuCoruja.usuario.hashLogin === null)){
-                                    console.log("Usuário ou Senha Inexistentes");
-                                    exibirMensagemErro(2);
-                                    return;
                             }
 
                             // Verifico se a senha inserida bate com a do objeto meuCoruja
 
                             if ((meuCoruja.usuario.matricula === document.getElementById("usuario").value) 
                                 && (meuCoruja.usuario.hashLogin === MD5(document.getElementById("senha").value))){
-                            
+
                                 localStorage.setItem("meuCoruja_flg_online","false");
                                 window.location.replace("boletim.html");
                             }else{
                                 exibirMensagemErro(2);
                                 estadoEntrar();
                             }
+                        }
 
+                        
+                       
                     }
                 });
                 e.preventDefault();

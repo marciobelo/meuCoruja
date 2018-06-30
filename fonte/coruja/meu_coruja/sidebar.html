@@ -6,6 +6,7 @@
         <script>
             $(document).ready(function () {
                 usuario = JSON.parse(localStorage.getItem('meuCoruja')).usuario;
+                controleSideBar = JSON.parse(localStorage.getItem('meuCoruja')).controle;
                 document.getElementById("nomeUsuario").innerHTML = usuario.nomeUsuario;
                 document.getElementById("curso").innerHTML = usuario.nomeCurso;
                 document.getElementById("matricula").innerHTML = usuario.matricula;
@@ -21,7 +22,7 @@
             function verificarDataAtualizacao(){
                 if (localStorage.getItem('meuCoruja_flg_online') === "false"){
                     document.getElementById("alertAtualizacao").style.display = 'block';
-                    document.getElementById("dataAtualizacao").innerHTML = controle.dataAtualizacao;
+                    document.getElementById("dataAtualizacao").innerHTML = controleSideBar.dataAtualizacao;
                 }
             }
             
@@ -60,7 +61,7 @@
             <li class="nav-item">
                 <div class="alertAtualizacao" id="alertAtualizacao">
                     <span class="closebtnAtualizacao" onclick="this.parentElement.style.display='none';">&times;</span> 
-                    <strong>Atenção!</strong> Dados desatualizados, última atualização feita em <strong><span id="dataAtualizacao"></span></strong>
+                    <strong>Modo Offline!</strong> Última atualização em <strong><span id="dataAtualizacao"></span></strong>
                 </div>
             </li>
             <li class="nav-item">
