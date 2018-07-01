@@ -231,13 +231,14 @@ group by
         {
             $textoUltApontamento = Util::dataSQLParaBr( $reg["ult_apontamento"]);
         }
+        $registroPauta = utf8_decode( str_pad($reg["nome"], 15, " ") . " " . str_pad( $reg["pauta"], 25, " ") . " " . $textoUltApontamento . "\n" );
         if( $reg["ult_apontamento"] == null || Util::isDiasOuMaisAntesDeHoje( new DateTime( $reg["ult_apontamento"]), $diasAtraso) )
         {
-            $atrasados .= utf8_decode( str_pad($reg["nome"], 15, " ") . " " . str_pad( $reg["pauta"], 25, " ") . " " . $textoUltApontamento . "\n" );
+            $atrasados .= $registroPauta;
         }
         else 
         {
-            $emDia .= utf8_decode(str_pad($reg["nome"], 15, " ") . " " . str_pad( $reg["pauta"], 25, " ") . " " . $textoUltApontamento . "\n");
+            $emDia .= $registroPauta;
         }
     }
     $atrasadosOuNinguem = ($atrasados === "" ? "(ninguem)" : $atrasados);

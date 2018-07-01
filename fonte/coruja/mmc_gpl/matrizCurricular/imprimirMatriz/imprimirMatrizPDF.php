@@ -89,8 +89,9 @@ class ImprimirMatrizPDF extends FPDF {
         $this->Cell(190,10, $nomeCurso, 0, 100, 'C');
     }    
     
-    public function montaTabelaDisciplinas($CHTotalDisciplinas) {
-        $CHTotal = $CHTotalDisciplinas + 400;
+    public function montaTabelaDisciplinas($CHTotalDisciplinas) 
+    {
+        $CHTotal = $CHTotalDisciplinas + 100; // SOMA HORAS ATC
         // Header
         $this->SetFont('Arial','B',10);
 
@@ -112,13 +113,9 @@ class ImprimirMatrizPDF extends FPDF {
         $this->Cell(130,5,'Disciplinas: ' . $CHTotalDisciplinas . 'h',1,'', 'R');
         $this->Ln();
         $this->Cell(60,5,'',0,'', 'C');
-        $this->Cell(130,5,'Estágio Supervisionado: 300h',1,'', 'R');
-        $this->Ln();
-        $this->Cell(60,5,'',0,'', 'C');
         $this->Cell(130,5,'Atividade de Extensão Cultural, Iniciação Científica e Projeto Final de Curso: 100h',1,'', 'R');
         $this->Ln();
         $this->Cell(60,5,'',0,'', 'C');
         $this->Cell(130,5, 'Total horas curso: ' . $CHTotal . 'h'  ,1,'', 'R');
     }
-    
 }

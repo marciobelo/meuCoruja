@@ -14,8 +14,8 @@ class RegraBloqueioMatriculaAlunoTest extends PHPUnit_Framework_TestCase
         $regra = RegraBloqueioMatriculaAluno::getInstancia("ExcedeuTempoMaximoCurso", $matriculaAluno);
         
         $this->assertTrue( $regra->deveBloquear() );
-        $this->assertEquals( "Aluno excedeu o tempo máximo permitido. O curso TASI deve ser integralizado em no máximo 60 meses, mas a matrícula já levou 70 meses.",
-                $regra->getTextoCompleto());
+        $this->assertTrue( strpos( $regra->getTextoCompleto(), 
+                "Aluno excedeu o tempo máximo permitido.") !== false);
     }
     
     public function testReprovadoDuasVezesPositivo()

@@ -148,7 +148,7 @@ class ItemCriterioAvaliacao {
         $result = mysql_query($query, $con);
         $linha = mysql_fetch_array($result);
         return new ItemCriterioAvaliacao($linha["idItemCriterioAvaliacao"],
-		$linha["idCriterioAvaliacao"],
+                    $linha["idCriterioAvaliacao"],
                     $linha["rotulo"],
                     $linha["descricao"],
                     $linha["ordem"],

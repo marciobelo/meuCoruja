@@ -15,7 +15,8 @@ if ($_REQUEST["acao"]=="exibirPDF")
     $PDF->setExibeCR( $_REQUEST['exibeCR']=='S');
     if($PDF->verificaArquivo($_REQUEST['mat'])==false){
         $PDF->criarXML($_REQUEST['dtini'], $_REQUEST['dtfim'], $_REQUEST['estabelecimentoVestibular'], $_REQUEST['chtda'], $_REQUEST['ches'], $_REQUEST['chaec'], $_REQUEST['tchc'],
-         $_REQUEST['titulo'], $_REQUEST['dtdefesa'], $_REQUEST['ntcc'], $_REQUEST['enade'], $_REQUEST['dtcolacao'], $_REQUEST['dtExpedicaoDiploma'], $_REQUEST['dtemissao'], $_REQUEST['observacao']);
+         $_REQUEST['titulo'], $_REQUEST['dtdefesa'], $_REQUEST['ntcc'], $_REQUEST['enade'], $_REQUEST['dtcolacao'], $_REQUEST['dtExpedicaoDiploma'], $_REQUEST['dtemissao'], 
+                $_REQUEST['observacao'], $_REQUEST['exclusivoRegistro']);
     }
     $PDF->AddPage('P', 'A4');
     $PDF->gerarCabecalho();

@@ -1,6 +1,3 @@
--- esquema versao
-use Coruja;
-
 ALTER TABLE ComponenteCurricular ADD COLUMN `posicaoPeriodo` INT UNSIGNED DEFAULT 0 NOT NULL;
 
 

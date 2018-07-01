@@ -116,6 +116,10 @@ height=189></IFRAME>
       <td>EXIBE CR?</td>
       <td><input type="checkbox" name="exibeCR" checked="checked" value="S"></td>
     </tr>
+    <tr>
+      <td>EXCLUSIVO PARA REGISTRO?</td>
+      <td><input type="checkbox" name="exclusivoRegistro" value="S"></td>
+    </tr>
   </table>
   <table width="221" border="0" align="center">
     <tr class="tabela_form2">

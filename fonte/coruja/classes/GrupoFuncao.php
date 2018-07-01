@@ -208,7 +208,8 @@ class GrupoFuncao
                     $idsPermissoesGrupo[$idGrupo][] = $funcao->getIdCasoUso();
                 }
 
-                if ( empty(array_diff($idsPermissoesGrupo[$idGrupo], $idsPermissoes)) ) {
+                $arrayDiff = array_diff($idsPermissoesGrupo[$idGrupo], $idsPermissoes);
+                if ( empty($arrayDiff) ) {
                     $gruposFuncao[] = GrupoFuncao::obterPorId($idGrupo);
                 }
             }

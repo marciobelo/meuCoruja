@@ -1457,4 +1457,21 @@ INSERT INTO `Aloca` (`idTurma`, `idTempoSemanal`, `idEspaco`) VALUES
 (79,69,4),
 (79,70,4);
 
+
+-- Cria aluno com matriz 2006.1 para testar equivalencias com 2018.1
+-- Mucilon, matricula 1331,
+INSERT INTO `Pessoa` (`idPessoa`, `nome`, `sexo`, `enderecoLogradouro`, `enderecoNumero`,
+`enderecoComplemento`, `enderecoBairro`, `enderecoMunicipio`, `enderecoEstado`,
+`enderecoCEP`, `dataNascimento`, `nacionalidade`, `naturalidade`, `telefoneResidencial`,
+`telefoneComercial`, `telefoneCelular`, `email`)
+ VALUES (1031,'MUCILON DA SILVA','M','Rua Teste','40',
+  'apto.102','Quintino Bocaiúva','Rio de Janeiro','RJ',
+  '21032-231','1975-05-17','Brasileira','Rio de Janeiro','21-2222-2123',
+  '21-2938-2392','21-9998-2893','mucilon@gmail.com');
+INSERT INTO `Aluno` (`idPessoa`,`nomeMae`,`rgMae`,`nomePai`,`rgPai`,`rgNumero`,`rgDataEmissao`,`rgOrgaoEmissor`,`cpf`,`cpfProprio`,`certidaoNascimentoNumero`,`certidaoNascimentoLivro`,`certidaoNascimentoFolha`,`certidaoNascimentoCidade`,`certidaoNascimentoSubdistrito`,`certidaoNascimentoUF`,`certidaoCasamentoNumero`,`certidaoCasamentoLivro`,`certidaoCasamentoFolha`,`certidaoCasamentoCidade`,`certidaoCasamentoSubdistrito`,`certidaoCasamentoUF`,`estabCursoOrigem`,`estabCursoOrigemUF`,`cursoOrigemAnoConclusao`,`modalidadeCursoOrigem`,`ctps`,`corRaca`,`estadoCivil`,`deficienciaVisual`,`deficienciaMotora`,`deficienciaAuditiva`,`deficienciaMental`,`responsavelLegal`,`rgResponsavel`,`tituloEleitorNumero`,`tituloEleitorData`,`tituloEleitorZona`,`tituloEleitorSecao`,`certificadoAlistamentoMilitarNumero`,`certificadoAlistamentoMilitarSerie`,`certificadoAlistamentoMilitarData`,`certificadoAlistamentoMilitarRM`,`certificadoAlistamentoMilitarCSM`,`certificadoReservistaNumero`,`certificadoReservistaSerie`,`certificadoReservistaData`,`certificadoReservistaCAT`,`certificadoReservistaRM`,`certificadoReservistaCSM`) VALUES 
+(1031,'MUCILONA SILVA','MUCILON DA SILVA PAI',NULL,NULL,'9282029302','1990-04-28','IFP/RJ','93723382739','SIM',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ETER','RJ',2000,'ENSINO MÉDIO',NULL,'AMARELA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `MatriculaAluno` (`matriculaAluno`,`idPessoa`,`dataMatricula`,`siglaCurso`,`idMatriz`,`idPeriodoLetivo`,`turnoIngresso`,`concursoPontos`,`concursoClassificacao`,`situacaoMatricula`,`idFormaIngresso`) VALUES 
+('1331',1031,'2017-07-01','TASI',5,1,'NOITE','20.00','1','CURSANDO','1');
+
+
 COMMIT;

@@ -35,7 +35,7 @@
             echo "</td><td>\n";
             echo "PHP " . PHP_VERSION . " (" . PHP_OS . ")";
             echo "</td></tr></table>\n";
-            echo "<p>Por favor comunique este erro pelo e-mail <b>mbelo.br@gmail.com</b></p>";
+            echo "<p>Por favor comunique este erro pela Central de Atendimento (http://www.faeterj-rio.edu.br/atendimento)</p>";
             echo "</body></html>";
             exit(1);
             break;

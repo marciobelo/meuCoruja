@@ -34,6 +34,7 @@ class HistoricoConcluintesPDF extends FPDF {
     private $situacaoInscricao;
     private $mediaFinal;
     private $exibeCR;
+    private $exclusivoRegistro;
 
     public function setExibeCR( $exibeCR ) {
         $this->exibeCR = $exibeCR;
@@ -340,7 +341,7 @@ class HistoricoConcluintesPDF extends FPDF {
     }
 
     public function criarXML($dtini,$dtfim,$estabelecimentoVestibular, $chtda,$ches,$chaec,$tchc,
-       $titulo,$dtdefesa,$ntcc,$enade,$dtcolacao,$dtExpedicaoDiploma,$dtemissao,$observacao){
+       $titulo,$dtdefesa,$ntcc,$enade,$dtcolacao,$dtExpedicaoDiploma,$dtemissao,$observacao, $exclusivoRegistro){
 
         //versao do encoding xml
          $dom = new DOMDocument("1.0", "utf-8");
@@ -372,6 +373,7 @@ class HistoricoConcluintesPDF extends FPDF {
         $dtemissao = $dom->createElement("dtemissao",$dtemissao);
         if($observacao==null){$observacao=" ";}
         $observacao = $dom->createElement("observacao",utf8_encode($observacao));
+        $this->exclusivoRegistro = $exclusivoRegistro;
 
        //adiciona os nós (informacaoes do contato) em contato
         $historico->appendChild($dtini);
@@ -493,13 +495,17 @@ WHERE
         $this->SetFont('Arial', '', $tamFontePequena);
         $txt = 'DECRETO DE CRIAÇÃO NÚMERO 30.938 DE 18/03/2002 D.O.E.R.J. 19/03/2002
 RECONHECIMENTO : PARECER C.E.E 066/2009 DE 09/06/2009 D.O.E.R.J. 14/07/2009
-DELIBERAÇÃO CEE 361 DE 11/04/2017 D.O.E.R.J. 02/05/2017
-DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
+PARECER CEE Nº3576 DE 18/04/2017 D.O.E.R.J. 26/04/2017
+DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 26/04/2017';
         $this->MultiCell($tamHorizontalDoCabecalho, 4.0, $txt, $this->debug, 'C');
 
         //Texto: Histórico Escolar
         $this->SetFont('Arial', 'B', $tamFonteGrande);
         $txt = 'HISTÓRICO ESCOLAR';
+        if( $this->exclusivoRegistro === "S")
+        {
+            $txt .= " EXCLUSIVO PARA REGISTRO DE DIPLOMA";
+        }
         $this->setXY(10, $this->GetY() + 6.1);
         $this->Cell($this->larguraMaxima, $espacamentoHorizontal, $txt, $this->debug, 1, 'C');
     }
@@ -813,7 +819,7 @@ DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
         $cumprimento3 = 30;
         $cumprimento2 = 160;
 
-        $i += 9.5;
+        $i += 7.5;
         $this->setXY(9, $i);
         $this->SetFont('Arial', 'B', 8);
         $txt = 'CARGA HORÁRIA TOTAL DAS DISCIPLINAS EM AULAS';
@@ -879,13 +885,13 @@ DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
         $txt = 'NOTA DO TCC : ' . $_REQUEST['ntcc'];
         $this->Cell($cumprimento2 + $cumprimento3, $espacamentoHorizontal+0.2, $txt, ($this->debug) ? 1 : 'LRB', 0, 'L');
 
-        $i += 7.2;
+        $i += 6.0;
         $this->setXY(9, $i);
         $this->SetFont('Arial', 'B', 8);
         $txt = 'ENADE : ' . $_REQUEST['enade'];
         $this->MultiCell($cumprimento2 + $cumprimento3, $espacamentoHorizontal-2, $txt, 1, 'L');
 
-        $i += 7.2;
+        $i += 6.0;
         $this->setXY(9, $i);
         $this->SetFont('Arial', 'B', 8);
         $txt = 'DATA DA COLAÇÃO DE GRAU : ' . $_REQUEST['dtcolacao'];
@@ -910,8 +916,9 @@ DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
         $this->MultiCell($cumprimento2 + $cumprimento3, $espacamentoHorizontal-2, $txt, 1, 'C');
 
         $this->larguraMaxima = 190;
-        $cumprimento3 = 95;
-        $cumprimento2 = 95;
+        $cumprimento3 = 55;
+        $cumprimento2 = 55;
+        $comprimento4 = 85;
 
         $i = $this->GetY() + 1.0;
         $this->setXY(9, $i);
@@ -923,22 +930,36 @@ DELIBERAÇÃO CEE 362 DE 11/04/2017 D.O.E.R.J. 02/05/2017';
         $this->setXY(9, $i);
         $this->SetFont('Arial', 'B', 6);
         $txt = '___________________________________';
-        $this->Cell($cumprimento2, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');
+        $this->Cell($cumprimento2, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'L');
 
         $this->SetFont('Arial', 'B', 6);
         $txt = '___________________________________';
         $this->Cell($cumprimento3, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');
 
+        if( $this->exclusivoRegistro === "S")
+        {
+            $this->SetFont('Arial', 'B', 6);
+            $txt = '________________________________________________________________';
+            $this->Cell($comprimento4, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');       
+        }
+            
         $i = $this->GetY() + 3.0;
         $this->setXY(9, $i);
-        $this->SetFont('Arial', 'B', 8);
+        $this->SetFont('Arial', 'B', 6);
         $txt = 'SECRETARIA ACADÊMICA';
-        $this->Cell($cumprimento2, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');
+        $this->Cell($cumprimento2, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'L');
 
-        $this->SetFont('Arial', 'B', 8);
+        $this->SetFont('Arial', 'B', 6);
         $txt = 'DIREÇÃO GERAL';
         $this->Cell($cumprimento3, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');
 
+        if( $this->exclusivoRegistro === "S")
+        {
+            $this->SetFont('Arial', 'B', 6);
+            $txt = 'SECRETARIA ESPECIAL INSTITUCIONAL AVANÇADA - SEIA - FAETEC';
+            $this->Cell($comprimento4, $espacamentoHorizontal, $txt, ($this->debug) ? 1 : '', 0, 'C');
+        }
+        
         $i = $this->h - $this->bMargin - 4.5;
         $this->setXY(9, $i );
         $this->SetFont('Arial', 'B', 6);
