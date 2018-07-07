@@ -1,6 +1,6 @@
 {
   "short_name": "Meu Coruja",
-  "name": "Aplicativo Meu Coruja da FAETERJ-RIO",
+  "name": "Bem vindo ao Meu Coruja!",
   "display": "standalone",
   "orientation": "portrait",
   "start_url": "index.html?launcher=true",

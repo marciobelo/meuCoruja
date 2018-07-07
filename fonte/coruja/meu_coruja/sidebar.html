@@ -39,16 +39,7 @@
             
             $("#btnSair").click(function(event){
                 event.preventDefault();
-                $.ajax({
-                    url: "sair.php",
-                    success: function(){
-                        window.location.replace("sair.php");
-                    },
-                    error: function(){
-                        window.location.replace("index.html");
-                    }
-
-                });
+                window.location.replace("index.html");
             });
             
             

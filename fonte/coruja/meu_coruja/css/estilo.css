@@ -9,6 +9,7 @@
   bottom: 0;
   left: 0;
   z-index: 0;
+  overflow-y: auto;
   
   /* non-critical appearance styles */
   list-style: none;
