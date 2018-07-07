@@ -5,7 +5,7 @@
   "orientation": "portrait",
   "start_url": "index.html?launcher=true",
   "icons": [{
-    "src": "img/icone_teste.png",
+    "src": "img/meu_coruja_icon.png",
     "type": "image/png",
     "sizes": "144x144"
   }] 
