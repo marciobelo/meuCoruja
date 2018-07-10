@@ -62,7 +62,8 @@ class CriterioAvaliacao {
         $con = BD::conectar();
         $query = sprintf("SELECT DISTINCT idCriterioAvaliacao FROM inscricao i
                             INNER JOIN Turma t ON t.idTurma = i.idTurma 
-                            WHERE i.matriculaAluno = '%d' and i.situacaoInscricao = 'CUR'",$matriculaAluno);
+                            WHERE i.matriculaAluno = '%s' and i.situacaoInscricao = 'CUR'",
+                mysql_escape_string($matriculaAluno));
         $result = mysql_query($query, $con);
         $criteriosAvaliacaoCursando = array();
         while ($linha = mysql_fetch_array($result)){
