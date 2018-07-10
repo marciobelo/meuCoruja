@@ -48,7 +48,7 @@ $aluno = Aluno::getAlunoByIdPessoa($idPessoa);
 
 $u = new stdClass();
 $u->nomeUsuario = $aluno->getNome();
-$u->nomeCurso = $curso->getNomeCurso();
+$u->nomeCurso = utf8_encode($curso->getNomeCurso());
 $u->matricula = $matriculaAluno->getMatriculaAluno();
 $login = Login::obterLoginPorIdPessoa($idPessoa);
 $u->hashLogin = $login->obterHashSenha($numMatriculaAluno);
@@ -67,22 +67,22 @@ $disciplinas = array();
 foreach ($inscricoes as $inscricao) {
     $disciplina = new stdClass();
     
-    //informações de cada disciplina
+    //informaï¿½ï¿½es de cada disciplina
     $infoDisciplina = new stdClass();
-    $infoDisciplina->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $infoDisciplina->nomeProfessor = isNull($inscricao->getTurma()->getProfessor()->getNome());
-    $infoDisciplina->emailProfessor = Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail();
+    $infoDisciplina->siglaDisciplina = utf8_encode(isNull($inscricao->getTurma()->getSiglaDisciplina()));
+    $infoDisciplina->nomeProfessor = utf8_encode(isNull($inscricao->getTurma()->getProfessor()->getNome()));
+    $infoDisciplina->emailProfessor = utf8_encode(Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail());
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
     $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
     $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
     $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getCriterioAvaliacao()->getIdCriterioAvalicao());
 
     
-    $boletim->siglaPeriodoLetivo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+    $boletim->siglaPeriodoLetivo = utf8_encode(isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo()));
     
     $disciplina->info = $infoDisciplina;
     
-    //Avaliações de cada disciplina
+    //Avaliaï¿½ï¿½es de cada disciplina
     $avaliacoes = array();
     $itens = $inscricao->obterItensCriterioAvaliacaoInscricaoNota();
     foreach ($itens as $item) {
@@ -90,7 +90,7 @@ foreach ($inscricoes as $inscricao) {
         $avaliacao = new stdClass();
 
         $avaliacao->idCriterioAvaliacao = $item->getItemCriterioAvaliacao()->getIdItemCriterioAvaliacao();
-        $avaliacao->rotulo = isNull($item->getItemCriterioAvaliacao()->getRotulo());
+        $avaliacao->rotulo = utf8_encode(isNull($item->getItemCriterioAvaliacao()->getRotulo()));
         $avaliacao->nota = isNull($item->getNota());
         
         array_push($avaliacoes, $avaliacao);
@@ -119,7 +119,7 @@ foreach ($inscricoes as $inscricao) {
     }
     $disciplina->detalhamentoFaltas = $detalhamentoFaltas;
     
-    //Grade Horária da disciplina
+    //Grade Horï¿½ria da disciplina
     
     $minhaGrade = array();
 
@@ -149,7 +149,7 @@ foreach ($inscricoes as $inscricao) {
  
 $boletim->disciplinas = $disciplinas;
 
-/////HISTÓRICO///////
+/////HISTï¿½RICO///////
 
 $inscricoes = $matriculaAluno->obterInscricoesConcluidas();
 $dadosHistorico = array();
@@ -173,7 +173,7 @@ $historico->cr = number_format($disciplinaHistorico->cr, 1, ',', '');
 
 
 
-///////PENDÊNCIAS//////
+///////PENDï¿½NCIAS//////
 
 $inscricoes = $matriculaAluno->obterComponentesCurricularPendentes();
 
@@ -255,6 +255,8 @@ $jsonMeuCoruja = json_encode($meuCoruja, JSON_PARTIAL_OUTPUT_ON_ERROR);
 
 echo $jsonMeuCoruja;
 
+
+?>
 
 
 
