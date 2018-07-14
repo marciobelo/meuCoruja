@@ -69,8 +69,8 @@ foreach ($inscricoes as $inscricao) {
     
     //informa��es de cada disciplina
     $infoDisciplina = new stdClass();
-    $infoDisciplina->siglaDisciplina = utf8_encode(isNull($inscricao->getTurma()->getSiglaDisciplina()));
-    $infoDisciplina->nomeProfessor = utf8_encode(isNull($inscricao->getTurma()->getProfessor()->getNome()));
+    $infoDisciplina->siglaDisciplina = isNull(utf8_encode(($inscricao->getTurma()->getSiglaDisciplina())));
+    $infoDisciplina->nomeProfessor = isNull(utf8_encode($inscricao->getTurma()->getProfessor()->getNome()));
     $infoDisciplina->emailProfessor = utf8_encode(Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail());
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
     $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
@@ -90,7 +90,7 @@ foreach ($inscricoes as $inscricao) {
         $avaliacao = new stdClass();
 
         $avaliacao->idCriterioAvaliacao = $item->getItemCriterioAvaliacao()->getIdItemCriterioAvaliacao();
-        $avaliacao->rotulo = utf8_encode(isNull($item->getItemCriterioAvaliacao()->getRotulo()));
+        $avaliacao->rotulo = isNull(utf8_encode($item->getItemCriterioAvaliacao()->getRotulo()));
         $avaliacao->nota = isNull($item->getNota());
         
         array_push($avaliacoes, $avaliacao);
@@ -129,15 +129,15 @@ foreach ($inscricoes as $inscricao) {
         $gradeDisciplina = new stdClass();
         $tempo = TempoSemanal::getTempoSemanalById($grade->getIdTempoSemanal());
         $espaco = Espaco::obterEspacoPorId($grade->getIdEspaco());
-        $gradeDisciplina->sala = $espaco->getNome();
+        $gradeDisciplina->sala = utf8_encode($espaco->getNome());
         $gradeDisciplina->diaDaSemana = $tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getDiaSemana();
         
         $horaInicio = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraInicio());
         $horaFim = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraFim());
         $gradeDisciplina->horario = $horaInicio['hour'].":".$horaInicio['minute']." - ".$horaFim['hour'].":".$horaFim['minute'];
         
-        $gradeDisciplina->siglaDisciplina = $inscricao->getTurma()->getSiglaDisciplina();
-        $gradeDisciplina->professor = $inscricao->getTurma()->getProfessor()->getNome();
+        $gradeDisciplina->siglaDisciplina = utf8_encode($inscricao->getTurma()->getSiglaDisciplina());
+        $gradeDisciplina->professor = utf8_encode($inscricao->getTurma()->getProfessor()->getNome());
         
         array_push($minhaGrade, $gradeDisciplina);
         
@@ -156,9 +156,9 @@ $dadosHistorico = array();
 $historico = new stdClass();
 foreach ($inscricoes as $inscricao) {
     $disciplinaHistorico = new stdClass();
-    $disciplinaHistorico->siglaDisciplina = isNull($inscricao->getTurma()->getSiglaDisciplina());
-    $disciplinaHistorico->nomeDisciplina = isNull($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina());
-    $disciplinaHistorico->situacao = isNull(verificaSituacao($inscricao->getSituacaoInscricao()));
+    $disciplinaHistorico->siglaDisciplina = isNull(utf8_encode($inscricao->getTurma()->getSiglaDisciplina()));
+    $disciplinaHistorico->nomeDisciplina = isNull(utf8_encode($inscricao->getTurma()->getComponenteCurricular()->getNomeDisciplina()));
+    $disciplinaHistorico->situacao = isNull(utf8_encode(verificaSituacao($inscricao->getSituacaoInscricao())));
     //  var_dump(verificaSituacao($inscricao->getSituacaoInscricao()));
     $disciplinaHistorico->mediaFinal = isNull($inscricao->getMediaFinal());
     $disciplinaHistorico->faltas = isNull($inscricao->getTotalFaltas());
@@ -182,8 +182,8 @@ $pendencias = array();
 
 foreach ($inscricoes as $inscricao) {
     $pendencia = new stdClass();
-    $pendencia->siglaDisciplina = isNull($inscricao->getSiglaDisciplina());
-    $pendencia->nomeDisciplina = isNull($inscricao->getNomeDisciplina());
+    $pendencia->siglaDisciplina = isNull(utf8_encode($inscricao->getSiglaDisciplina()));
+    $pendencia->nomeDisciplina = isNull(utf8_encode($inscricao->getNomeDisciplina()));
     $pendencia->periodo = isNull($inscricao->getPeriodo());
     $pendencia->cargaHoraria = isNull($inscricao->getCargaHoraria());
     array_push($pendencias, $pendencia);
@@ -208,8 +208,8 @@ foreach ($idsCriteriosAvaliacao as $idCriterioAvaliacao){
         foreach ($itensCriterioAvaliacao as $itemCriterioAvaliacao){
             $item = new stdClass();
             $item->idItemCriterioAvaliacao = $itemCriterioAvaliacao->getIdItemCriterioAvaliacao();
-            $item->rotulo = $itemCriterioAvaliacao->getRotulo();
-            $item->descricao = $itemCriterioAvaliacao->getDescricao();
+            $item->rotulo = utf8_encode($itemCriterioAvaliacao->getRotulo());
+            $item->descricao = utf8_encode($itemCriterioAvaliacao->getDescricao());
             array_push($itens, $item);
         }
         $criterioAvaliacao->itensCriterioAvaliacao = $itens;
@@ -233,8 +233,8 @@ $msgControle->flgMensagens = $possuiMaisMensagens;
 foreach($arrayMsg as $msg){
     $mensagem = new stdClass();
     $mensagem->idMensagem = $msg->getIdMensagem();
-    $mensagem->assunto = $msg->getAssunto();
-    $mensagem->texto = $msg->getTexto();
+    $mensagem->assunto = utf8_encode($msg->getAssunto());
+    $mensagem->texto = utf8_encode($msg->getTexto());
     $mensagem->data = $msg->getDataMensagem()->format('d-m-Y');
     array_push($mensagens, $mensagem);
 }
