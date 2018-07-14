@@ -73,8 +73,8 @@ foreach ($inscricoes as $inscricao) {
     $infoDisciplina->nomeProfessor = isNull(utf8_encode($inscricao->getTurma()->getProfessor()->getNome()));
     $infoDisciplina->emailProfessor = utf8_encode(Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail());
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
-    $infoDisciplina->faltas = isNull($inscricao->getTotalFaltas());
-    $infoDisciplina->limiteFaltas = isNull($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas());
+    $infoDisciplina->faltas = isNull(ceil($inscricao->getTotalFaltas()));
+    $infoDisciplina->limiteFaltas = isNull(ceil($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas()));
     $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getCriterioAvaliacao()->getIdCriterioAvalicao());
 
     
@@ -132,10 +132,17 @@ foreach ($inscricoes as $inscricao) {
         $gradeDisciplina->sala = utf8_encode($espaco->getNome());
         $gradeDisciplina->diaDaSemana = $tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getDiaSemana();
         
-        $horaInicio = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraInicio());
-        $horaFim = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraFim());
-        $gradeDisciplina->horario = $horaInicio['hour'].":".$horaInicio['minute']." - ".$horaFim['hour'].":".$horaFim['minute'];
+        //$horaInicio = date_parse($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraInicio());
+        $horaInicio = date_create($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraInicio());
+        $horaFim = date_create($tempo->getTempoSemanalById($tempo->getIdTempoSemanal())->getHoraFim());
+      
+        $horaInicio = date_format($horaInicio, 'H:i');
+        $horaFim = date_format($horaFim, 'H:i');
+        //$gradeDisciplina->horario = $horaInicio['hour'].":".$horaInicio['minute']." - ".$horaFim['hour'].":".$horaFim['minute'];
+        $gradeDisciplina->horario = $horaInicio." - ".$horaFim;
         
+        //var_dump($horaInicio['hour'].':'.$horaInicio['minute'].'/'.$horaFim.'/'.$gradeDisciplina->horario);
+                
         $gradeDisciplina->siglaDisciplina = utf8_encode($inscricao->getTurma()->getSiglaDisciplina());
         $gradeDisciplina->professor = utf8_encode($inscricao->getTurma()->getProfessor()->getNome());
         

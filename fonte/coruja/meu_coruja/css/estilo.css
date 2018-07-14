@@ -80,8 +80,11 @@
 
 @media screen and (max-width: 600px) {
 	.site-wrap{
-		padding:1em;
+            padding:1em;
+            padding-left: 50px;
+            padding-right: 50px;
 	}
+
         
 }
 
@@ -92,13 +95,14 @@
   
   position: absolute;
   clip: rect(0, 0, 0, 0);
+
 }
 
 label[for="nav-trigger"] {
   /* critical positioning styles */
   position: fixed;
   left: 15px; top: 15px;
-  z-index: 2;
+  z-index: 18;
   
   /* non-critical apperance styles */
   height: 30px;
@@ -112,6 +116,7 @@ label[for="nav-trigger"] {
 .nav-trigger + label, .site-wrap{
     transition-duration: 0s;
     transition-property: none;
+    
 }
 
 .nav-trigger:checked + label {
@@ -192,7 +197,7 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 }
 
 .accordion-item-input:checked ~ .accordion-item-bd {
-  max-height: 1000px;
+  max-height: 100%;
   padding-top: 15px;
   margin-bottom: 15px;
   -webkit-transition: max-height 1s ease-in, margin .3s ease-in, padding .3s ease-in;
