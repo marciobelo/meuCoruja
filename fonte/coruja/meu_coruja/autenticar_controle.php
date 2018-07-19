@@ -5,10 +5,10 @@
     
     $nomeAcesso = filter_input(INPUT_POST, "nomeAcesso");
     $senha = filter_input( INPUT_POST, "senha");
-
+   
     session_start();
     try
-    {
+    {   
         Usuario::autenticar($nomeAcesso, $senha, "ALUNO");
         
         if( isset($_SESSION["usuario"]) ) 

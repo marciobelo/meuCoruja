@@ -73,7 +73,7 @@ foreach ($inscricoes as $inscricao) {
     $infoDisciplina->nomeProfessor = isNull(utf8_encode($inscricao->getTurma()->getProfessor()->getNome()));
     $infoDisciplina->emailProfessor = utf8_encode(Pessoa::obterPessoaPorId($inscricao->getTurma()->getProfessor()->getIdPessoa())->getEmail());
     $infoDisciplina->mediaFinal = isNull($inscricao->getMediaFinal());
-    $infoDisciplina->faltas = isNull(ceil($inscricao->getTotalFaltas()));
+    $infoDisciplina->faltas = isNull(ceil($inscricao->obterFaltasLancadas()));
     $infoDisciplina->limiteFaltas = isNull(ceil($inscricao->getTurma()->getComponenteCurricular()->getLimiteFaltas()));
     $infoDisciplina->idCriterioAvaliacao = isNull($inscricao->getTurma()->getCriterioAvaliacao()->getIdCriterioAvalicao());
 
@@ -100,21 +100,24 @@ foreach ($inscricoes as $inscricao) {
     //Detalhamento de faltas de cada disciplina
     $detalhamentoFaltas = array();
     $diasLetivoDateTime = $inscricao->getTurma()->obterDatasDiaLetivo();
+
     foreach ($diasLetivoDateTime as $diaLetivoTurma) {
         $diaLetivo = new DiaLetivoTurma($inscricao->getTurma(), $diaLetivoTurma);
+        
         $str = $inscricao->obterResumoApontamentoDiaLetivo($diaLetivo);
         
         if ($diaLetivo->getDataLiberacao() !== null) {
             $qtdeFaltas = substr_count($str, "F");
             
             $detalhamentoFalta = new stdClass();
-            $data = date_parse($diaLetivo->getData()->date);
-            $detalhamentoFalta->data = $data['hour'].":".$data['minute']." ".$data['day']."/".$data['month']."/".$data['year'];
+            //$data = date_parse($diaLetivo->getData()->date);
+            //$detalhamentoFalta->data = $data['hour'].":".$data['minute']." ".$data['day']."/".$data['month']."/".$data['year'];
+            $data = date_format(date_create($diaLetivo->getData()->date), 'H:i d/m/Y');
+            
             $detalhamentoFalta->qtdeFaltas = $qtdeFaltas;
             $detalhamentoFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
             
             array_push($detalhamentoFaltas, $detalhamentoFalta);
-            
         }
     }
     $disciplina->detalhamentoFaltas = $detalhamentoFaltas;
@@ -138,10 +141,8 @@ foreach ($inscricoes as $inscricao) {
       
         $horaInicio = date_format($horaInicio, 'H:i');
         $horaFim = date_format($horaFim, 'H:i');
-        //$gradeDisciplina->horario = $horaInicio['hour'].":".$horaInicio['minute']." - ".$horaFim['hour'].":".$horaFim['minute'];
-        $gradeDisciplina->horario = $horaInicio." - ".$horaFim;
         
-        //var_dump($horaInicio['hour'].':'.$horaInicio['minute'].'/'.$horaFim.'/'.$gradeDisciplina->horario);
+        $gradeDisciplina->horario = $horaInicio." - ".$horaFim;
                 
         $gradeDisciplina->siglaDisciplina = utf8_encode($inscricao->getTurma()->getSiglaDisciplina());
         $gradeDisciplina->professor = utf8_encode($inscricao->getTurma()->getProfessor()->getNome());
@@ -261,6 +262,7 @@ $meuCoruja->controle = $controle;
 $jsonMeuCoruja = json_encode($meuCoruja, JSON_PARTIAL_OUTPUT_ON_ERROR);
 
 echo $jsonMeuCoruja;
+
 
 
 ?>

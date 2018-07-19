@@ -51,6 +51,7 @@
                 document.getElementById("usuario").readOnly = true;
                 document.getElementById("senha").readOnly = true;
                 document.getElementById("btnEntrar").disabled = true;
+                document.getElementById("msgErro").style.display = "none";
             }
             
             function exibirMensagemErro(erro){
@@ -71,7 +72,6 @@
                 $.ajax({
                     url: "endpoint_meucoruja.php",
                     success: function(result, status, jqXHR){
-                        console.log(status);
                         meuCoruja = JSON.parse(result);
                         localStorage.setItem("meuCoruja",JSON.stringify(meuCoruja));
                         localStorage.setItem("meuCoruja_flg_online","true");
@@ -89,9 +89,7 @@
             }
             
             $('#loginForm').submit(function (e) {
-                console.log("chamando");
                 estadoCarregando();
-                
                 $.ajax({
                     type: "POST",
                     url: "autenticar_controle.php",
@@ -103,7 +101,6 @@
                         }
                     },
                     error: function (jqXHR) {
-                        console.log(jqXHR.status);
                         if (jqXHR.status === 401) {
                             exibirMensagemErro(1);
                             estadoEntrar();
@@ -114,7 +111,6 @@
                             var meuCoruja = JSON.parse(localStorage.getItem('meuCoruja'));
                         
                             if (meuCoruja === null || meuCoruja.usuario === null || meuCoruja.usuario.matricula === null || meuCoruja.usuario.hashLogin === null){
-                                console.log("erro na validação do objeto meuCoruja")
                                 exibirMensagemErro(2);
                                 estadoEntrar();
                                 window.location.replace("erro.html");
