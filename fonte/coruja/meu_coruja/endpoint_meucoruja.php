@@ -109,15 +109,19 @@ foreach ($inscricoes as $inscricao) {
         if ($diaLetivo->getDataLiberacao() !== null) {
             $qtdeFaltas = substr_count($str, "F");
             
-            $detalhamentoFalta = new stdClass();
-            //$data = date_parse($diaLetivo->getData()->date);
-            //$detalhamentoFalta->data = $data['hour'].":".$data['minute']." ".$data['day']."/".$data['month']."/".$data['year'];
-            $data = date_format(date_create($diaLetivo->getData()->date), 'H:i d/m/Y');
-            
-            $detalhamentoFalta->qtdeFaltas = $qtdeFaltas;
-            $detalhamentoFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
-            
-            array_push($detalhamentoFaltas, $detalhamentoFalta);
+            if ($qtdeFaltas > 0) {
+                $detalhamentoFalta = new stdClass();
+                //$data = date_parse($diaLetivo->getData()->date);
+                //$detalhamentoFalta->data = $data['hour'].":".$data['minute']." ".$data['day']."/".$data['month']."/".$data['year'];
+                $data = date_format(date_create($diaLetivo->getData()->date), 'H:i d/m/Y');
+
+
+                $detalhamentoFalta->qtdeFaltas = $qtdeFaltas;
+                $detalhamentoFalta->data = $data;
+                $detalhamentoFalta->siglaPeriodo = isNull($inscricao->getTurma()->getPeriodoLetivo()->getSiglaPeriodoLetivo());
+
+                array_push($detalhamentoFaltas, $detalhamentoFalta);
+            }
         }
     }
     $disciplina->detalhamentoFaltas = $detalhamentoFaltas;
